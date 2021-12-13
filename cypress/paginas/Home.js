@@ -101,4 +101,11 @@ export class Home {
   click_MenuUsuario() {
     cy.get("#navbarDropdown").click();
   }
+
+  click_OnDemandSeccion() {
+    cy.get("#ondemand-tab").click();
+    // cy.get(
+    //   "/html/body/div[2]/div[3]/div/div/div/main/article/div/section[2]/div[3]/div[2]/div/div/div/div/div[12]/div/div/div/div/div[3]/a"
+    // ).click();
+  }
 }
