@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 export class Registro {
-    type_nombre(nombre) {
+  type_nombre(nombre) {
         cy.get("#input_21_19_3").type(nombre);
       }
     
