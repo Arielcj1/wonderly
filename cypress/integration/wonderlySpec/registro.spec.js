@@ -11,8 +11,8 @@ describe("registro", () => {
   it("Creacion de usuario", () => {
     registro.type_nombre("Belen");
     registro.type_apellidos("Delgadillo");
-    registro.type_correo("patrik2@mailinator.com");
-    registro.type_contrasenia("abcABC123");
+    registro.type_correo("patrik3@mailinator.com");
+    registro.type_contrasenia("1234");
     registro.type_numero("65266222");
     registro.click_siguiente()
     cy.get("h2").should("be.visible");

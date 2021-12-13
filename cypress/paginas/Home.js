@@ -44,10 +44,12 @@ export class Home{
         cy.get('#menu-item-14 > .nav-link').click()
     }
     click_Flecha_Izq(){
-        cy.get('.slick-prev').click()
+        //cy.get('.slick-prev').click()
+        cy.get('.schedule-date-slider > .slick-prev').click
     }
     click_Flecha_Der(){
-        cy.get('.slick-next').click()
+        //cy.get('.slick-next').click()
+        cy.get('.schedule-date-slider > .slick-next').click()
     }
     click_Jueves(){
         cy.get('[data-slick-index="1"] > div > li > .trigger-schedule-clases').click()

@@ -27,11 +27,11 @@ describe('Home Page', () => {
 
       })
 
-    it.skip('Ir a Destrezas',()=>{
+    it('Ir a Destrezas',()=>{
         home.click_Destrezas()
     })
 
-    it.skip('Ir a Por que Wonderly',()=>{
+    it('Ir a Por que Wonderly',()=>{
         home.click_PorqueWonderly()
         cy.wait(4000)
     })
@@ -48,19 +48,19 @@ describe('Home Page', () => {
         cy.wait(5000)
     })
 
-    it.skip('Ir a Explorar nuestras destrezas',()=>{
+    it('Ir a Explorar nuestras destrezas',()=>{
         home.click_Destrezas2()
         cy.wait(5000)
     })
 
-    it.skip('Presioanr botones de desplazamiento',()=>{
+    it('Presioanr botones de desplazamiento',()=>{
         home.click_DesplazarAbajo()
         cy.wait(3000)
         home.click_DesplazarArriba()
         cy.wait(3000)
     })
 
-    it.skip('Iniciar sesion y comprar Membresias', () => {
+    it('Iniciar sesion y comprar Membresias', () => {
         home.click_IniciaSesion()
         ingresar.type_Correo('josemunoz@gmail.com')
         ingresar.type_contrasena('123456')

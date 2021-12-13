@@ -21,7 +21,7 @@ describe('Reserva de clase', () => {
         cy.visit('https://developers.learnwonderly.com/')
       })
 
-    it('Reservar clase Nuevo',()=>{
+    it.skip('Reservar clase Nuevo',()=>{
         home.click_DesplazarAbajo()
         
         home.click_clases_sinRegistro()
@@ -46,7 +46,7 @@ describe('Reserva de clase', () => {
         
     })
 
-    it.skip('Inicia sesion y Reservar clase',()=>{
+    it('Inicia sesion y Reservar clase',()=>{
         home.click_IniciaSesion()
         ingresar.type_Correo('josemunoz@gmail.com')
         ingresar.type_contrasena('123456')
@@ -59,7 +59,7 @@ describe('Reserva de clase', () => {
 
     })
 
-    it.skip('Cancelar reserva clase',()=>{
+    it('Cancelar reserva clase',()=>{
       home.click_IniciaSesion()
       ingresar.type_Correo('josemunoz@gmail.com')
       ingresar.type_contrasena('123456')
