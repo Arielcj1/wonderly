@@ -1,9 +1,8 @@
-/// <reference types="cypress" />
+/// <reference types='cypress' />
 import { Registro } from "../../paginas/Registro";
 
 describe("registro", () => {
-
-  const registro = new Registro();   //Inicializamos variable
+  const registro = new Registro(); //Inicializamos variable
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/registrar-padre/");
@@ -14,7 +13,7 @@ describe("registro", () => {
     registro.type_correo("patrik3@mailinator.com");
     registro.type_contrasenia("1234");
     registro.type_numero("65266222");
-    registro.click_siguiente()
+    registro.click_siguiente();
     cy.get("h2").should("be.visible");
   });
 });
