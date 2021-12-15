@@ -21,7 +21,6 @@ describe("Reserva de clase", () => {
     cy.visit("https://developers.learnwonderly.com/");
   });
 
-<<<<<<< HEAD
   it("Reservar clase Nuevo", () => {
     home.click_DesplazarAbajo();
 
@@ -29,14 +28,6 @@ describe("Reserva de clase", () => {
         registrar.type_nombre('Julio')
         registrar.type_apellidos('Roca')
         registrar.type_correo('julioroca10@gmail.com')
-=======
-  it.skip('Reservar clase Nuevo',()=>{
-     home.click_DesplazarAbajo()        
-     home.click_clases_sinRegistro()
-     registrar.type_nombre('Julio')
-     registrar.type_apellidos('Roca')
-     registrar.type_correo('julioroca10@gmail.com')
->>>>>>> 97a87bdd64116d5fac402c9224a543f8088b6a99
         registrar.type_contrasenia('control123')
         registrar.type_numero('71191102')
         registrar.click_siguiente()//Pagina de Bienvenida, despues de 5 seg, redirecciona a Schedule.
@@ -70,16 +61,6 @@ describe("Reserva de clase", () => {
     ingresar.type_Correo("josemunoz@gmail.com");
     ingresar.type_contrasena("123456");
     ingresar.click_continuar();
-<<<<<<< HEAD
-
-    it('Cancelar reserva clase',()=>{
-      home.click_IniciaSesion()
-      ingresar.type_Correo('josemunoz@gmail.com')
-      ingresar.type_contrasena('123456')
-      ingresar.click_continuar()
-
-=======
->>>>>>> 97a87bdd64116d5fac402c9224a543f8088b6a99
     clase.click_CancelarClase();
     cy.get("#confirmationModalLabel").should("be.visible");
     clase.click_AceptarCancelar();
