@@ -23,4 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+<<<<<<< HEAD
 require('cypress-iframe');
+=======
+import "cypress-file-upload";
+require("cypress-iframe");
+>>>>>>> WorkinginProgressYani
