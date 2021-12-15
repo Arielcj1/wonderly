@@ -23,13 +23,13 @@ describe("Wonderly- Home Page", () => {
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
-  });
-
-  it("Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yani.cardozosalas@gmail.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
+  });
+
+  it("Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -38,10 +38,6 @@ describe("Wonderly- Home Page", () => {
   });
 
   it("Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
-    home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
-    ingresar.click_continuar();
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -51,10 +47,6 @@ describe("Wonderly- Home Page", () => {
   });
 
   it("Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
-    home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
-    ingresar.click_continuar();
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -62,10 +54,6 @@ describe("Wonderly- Home Page", () => {
   });
 
   it("Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
-    home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
-    ingresar.click_continuar();
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfil.click_usuarioPerfil();
@@ -74,10 +62,6 @@ describe("Wonderly- Home Page", () => {
   });
 
   it("Verificar que el hijo pueda conectar un hijo desde el Tablero Mis hijos", () => {
-    home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
-    ingresar.click_continuar();
     home.click_MenuUsuario();
     perfil.click_usuarioPerfil();
     mishijos.click_tableroMisHijos();

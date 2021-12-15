@@ -11,6 +11,10 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.1.1",
+<<<<<<< HEAD
+=======
+    "cypress-file-upload": "^5.0.8",
+>>>>>>> WorkinginProgressYani
     "cypress-iframe": "^1.0.1",
     "cypress-xpath": "^1.6.2"
   },
