@@ -104,8 +104,12 @@ export class Home {
 
   click_OnDemandSeccion() {
     cy.get("#ondemand-tab").click();
-    // cy.get(
-    //   "/html/body/div[2]/div[3]/div/div/div/main/article/div/section[2]/div[3]/div[2]/div/div/div/div/div[12]/div/div/div/div/div[3]/a"
-    // ).click();
+  }
+  click_pruebaGratis() {
+    cy.get("#free-trial-home > .btn").click();
+  }
+  // El boton es Registra a tu hijo(a) desde la bienvenida "Wooho"
+  click_botonRegistraTuHijo() {
+    cy.get(".welcome_parent > .btn").click();
   }
 }
