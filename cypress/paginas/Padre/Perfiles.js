@@ -33,4 +33,5 @@ export class Perfiles{
     click_registrarHijo(){
         cy.get('.mt-3 > .btn').click()
     }
+    
 }

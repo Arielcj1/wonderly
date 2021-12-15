@@ -25,7 +25,12 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 <<<<<<< HEAD
 require('cypress-iframe');
+<<<<<<< HEAD
+
+import 'cypress-file-upload';
+=======
 =======
 import "cypress-file-upload";
 require("cypress-iframe");
 >>>>>>> WorkinginProgressYani
+>>>>>>> 597f32a737a91881a9e9fc38532df7441d2c27a5

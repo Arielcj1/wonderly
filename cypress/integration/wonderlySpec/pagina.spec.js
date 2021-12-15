@@ -42,7 +42,6 @@ describe("Home Page", () => {
     cy.wait(4000);
   });
 
-<<<<<<< HEAD
     it('Ir a Destrezas',()=>{
         home.click_Destrezas()
     })
@@ -51,17 +50,6 @@ describe("Home Page", () => {
         home.click_PorqueWonderly()
         cy.wait(4000)
     })
-=======
-  it("Seleccionar dia Jueves en Schedule", () => {
-    home.click_Jueves();
-    cy.wait(5000);
-  });
-
-  it.skip("Ir a Explorar nuestras destrezas", () => {
-    home.click_Destrezas2();
-    cy.wait(5000);
-  });
->>>>>>> 8b464d0f8d2b7df46a08f09bcb647e4218c4f2ef
 
   it.skip("Presioanr botones de desplazamiento", () => {
     home.click_DesplazarAbajo();
@@ -70,7 +58,6 @@ describe("Home Page", () => {
     cy.wait(3000);
   });
 
-<<<<<<< HEAD
     it('Seleccionar dia Jueves en Schedule', ()=>{
         home.click_Jueves()
         cy.wait(5000)
@@ -104,18 +91,3 @@ describe("Home Page", () => {
 
 
     })
-=======
-  it.skip("Iniciar sesion y comprar Membresias", () => {
-    home.click_IniciaSesion();
-    ingresar.type_Correo("josemunoz@gmail.com");
-    ingresar.type_contrasena("123456");
-    ingresar.click_continuar();
-    cy.wait(3000);
-    home.click_LogoWonderly();
-    home.click_Membresias();
-    home.click_Membresia_Explorador();
-    cy.wait(3000);
-    cy.get(".my-5").should("be.visible");
-  });
-});
->>>>>>> 8b464d0f8d2b7df46a08f09bcb647e4218c4f2ef
