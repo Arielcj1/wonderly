@@ -68,7 +68,6 @@ export class Home {
     cy.get("#menu-item-724 > .nav-link").click();
   }
 
-<<<<<<< HEAD
     click_PorqueWonderly(){
         cy.get('#menu-item-14 > .nav-link').click()
     }
@@ -89,11 +88,6 @@ export class Home {
     click_Membresias(){
         cy.get('#menu-item-724 > .nav-link').click()
     }
-=======
-  click_DesplazarAbajo() {
-    cy.get(".down-link").click();
-  }
->>>>>>> 8b464d0f8d2b7df46a08f09bcb647e4218c4f2ef
 
   click_DesplazarArriba() {
     cy.get(".up-link").click();
