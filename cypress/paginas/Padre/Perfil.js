@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 
 export class Perfil{
+    click_Tablero_Perfil(){
+        cy.get('#menu-item-144 > .nav-link').click()
+    }
     type_nombre(nombre){
         cy.get('#input_1_5').type(nombre)
     }
@@ -42,6 +45,10 @@ export class Perfil{
         cy.get('#input_1_11').select(pais)
     }
 
+    type_codigoPostal(codigo){
+        cy.get('#input_1_14').type(codigo)
+    }
+
     seleccionar_materias(){
         cy.get('#choice_1_21_1').click()
         cy.get('#choice_1_21_2').click()
@@ -66,6 +73,6 @@ export class Perfil{
         cy.get('#menu-item-2666 > .dropdown-item').click()
     }
     click_salir(){
-        cy.get('#menu-item-2666 > .dropdown-item').click()
+        cy.get('#menu-item-143 > .dropdown-item').click()
     }
 }
