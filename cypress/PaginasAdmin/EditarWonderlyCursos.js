@@ -59,18 +59,21 @@ export class EditarWonderlyCursos{
         cy.get('#gform_submit_button_28').click()
     }
 
-    buscar_curso(nombreCurso){
-        for(var i = 1; i <= 7; i++ ){
-            var e = i
+    buscar_curso(nombreCurso, accion){
+        for(var i = 1; i <= 20; i++ ){
+            var aux = 1
+            var aux2 = 0
             cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr['+i+']/td[1]/a').invoke('text')
             .then((text) => {
-               
-                cy.log(text, nombreCurso)
-                if (text == nombreCurso){
-                    cy.log(e)
-                    cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr['+e+']/td[6]/a[1]').click()
-                }
-                
+                let curso = text.trim()
+                if (curso == nombreCurso){
+                    aux2 = aux
+                    aux++
+                }else {
+                        if(aux == 20){
+                            cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr['+aux2+']/td[6]/a['+accion+']').click()
+                        }else aux++
+                    }                
             })
         }
     }

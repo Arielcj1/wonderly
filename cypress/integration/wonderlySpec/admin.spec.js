@@ -88,7 +88,7 @@ describe("Wonderly- Home Page administrador", () => {
 
   it('Verificar que el Admin puede editar un curso', () => {
     homeadmin.click_tableroWonderlyCursos()
-    editarcursos.buscar_curso('Materia Divertida 01')
+    editarcursos.buscar_curso('Materia Divertida 01', 1) //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso 
     editarcursos.type_editarTituloCurso("Materia Divertida 01");
     editarcursos.type_editarDescripcionCurso("Clases personalizadas para ninos de primaria");
     editarcursos.type_editarProyectoFinal('Llega Matrix 4')
