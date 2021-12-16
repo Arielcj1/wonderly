@@ -146,5 +146,4 @@ describe("Wonderly- Home Page administrador", () => {
     cy.get('#confirmationModalButton').click()  //Aceptar Eliminar Curso
     cy.get('.btn-danger').click()               //Cancelar eliminar curso
   })
- 
 });
