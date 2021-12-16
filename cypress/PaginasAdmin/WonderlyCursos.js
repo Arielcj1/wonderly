@@ -65,4 +65,9 @@ export class WonderlyCursos {
   type_youtubeVideo(url) {
     cy.get("#input_35_26").type(url);
   }
+
+  click_agregarCurso(){
+    cy.get('#gform_submit_button_35').click()
+  }
+
 }

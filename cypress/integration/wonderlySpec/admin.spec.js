@@ -2,8 +2,11 @@
 
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
+import { AsignarProfesor } from "../../PaginasAdmin/AsignarProfesor";
+import { EditarWonderlyCursos } from "../../PaginasAdmin/EditarWonderlyCursos";
 import { HomeAdmin } from "../../PaginasAdmin/HomeAdmin";
 import { RegistroProfesor } from "../../PaginasAdmin/RegistroProfesor";
+import { RepetirCurso } from "../../PaginasAdmin/RepetirCurso";
 import { WonderlyCursos } from "../../PaginasAdmin/WonderlyCursos";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
@@ -16,6 +19,9 @@ describe("Wonderly- Home Page administrador", () => {
   const homeadmin = new HomeAdmin();
   const registroprofesor = new RegistroProfesor();
   const wonderlycursos = new WonderlyCursos();
+  const editarcursos = new EditarWonderlyCursos()
+  const asignarprofe = new AsignarProfesor()
+  const repetircurso = new RepetirCurso()
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
@@ -56,10 +62,10 @@ describe("Wonderly- Home Page administrador", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("Comprobar que el administrador pueda crear un curso", () => {
+  it.skip("Comprobar que el administrador pueda crear un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
-    wonderlycursos.type_tituloCurso("Materia Divertida");
+    wonderlycursos.type_tituloCurso("MATERIA DIVERTIDA 01");
     wonderlycursos.type_descripcionCurso(
       "Clases personalizadas para ninos de primaria"
     );
@@ -67,21 +73,78 @@ describe("Wonderly- Home Page administrador", () => {
     // cy.wait(1000);
     // wonderlycursos.click_seleccionarArchivos();
     // wonderlycursos.click_insertaralaPagina();
-    // wonderlycursos.materia("Programación");
-    // wonderlycursos.edades("7-8");
-    // wonderlycursos.type_fechaInicio("15/12/2021");
-    // wonderlycursos.type_fechaFinal("22/12/2021");
-    // wonderlycursos.horaInicio("09:00");
-    // wonderlycursos.duracionClases("60");
-    // wonderlycursos.recuerrenciaClases();
-    wonderlycursos.zonaHoraria("(GMT-07:00) Arizona");
-    wonderlycursos.type_youtubeVideo(
-      "https://www.youtube.com/watch?v=Fn2-6zVqwX8"
-    );
+    wonderlycursos.materia("Programación");
+    wonderlycursos.edades("7-8");
+    wonderlycursos.type_fechaInicio("15/12/2021");
+    wonderlycursos.type_fechaFinal("22/12/2021");
+    wonderlycursos.horaInicio("09:00");
+    wonderlycursos.duracionClases("60");
+    wonderlycursos.recuerrenciaClases();
+    //wonderlycursos.zonaHoraria("(GMT-07:00) Arizona");
+    wonderlycursos.type_youtubeVideo("https://www.youtube.com/watch?v=Fn2-6zVqwX8");
+    wonderlycursos.click_agregarCurso()
+
   });
 
-  //   it("Verificar que el admin pueda asignar profesor a un curso", () => {
-  //     homeadmin.click_tableroWonderlyCursos();
-  //     homeadmin.click_paginacionSiguiente();
-  //   });
+  it('Verificar que el Admin puede editar un curso', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    editarcursos.buscar_curso('Materia Divertida 01')
+    editarcursos.type_editarTituloCurso("Materia Divertida 01");
+    editarcursos.type_editarDescripcionCurso("Clases personalizadas para ninos de primaria");
+    editarcursos.type_editarProyectoFinal('Llega Matrix 4')
+    editarcursos.editarMateria("Programación")
+    editarcursos.editarEdades("7-8");
+    editarcursos.editarHoraInicio("16:00")
+    editarcursos.editarDuracionClases('90')
+    editarcursos.type_youtubeVideo('https://www.youtube.com/watch?v=Fn2-6zVqwX8')
+    editarcursos.click_guardar()
+    cy.get('.alert').should('be.visible')
+  })
+
+  it.skip('Comprobar que el Admin puede asignar un profesor a un curso', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    asignarprofe.click_asignarProfesorCurso()
+    asignarprofe.type_seleccionarProfesor('Martín Carlos Nuñez')
+    asignarprofe.click_asignar()
+  })
+
+  it.skip('Comprobar que el Admin puede ver las clases del curso', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-clases/?curso_padre=4748"] > .svg-inline--fa').click()
+  })
+
+  it.skip('Comprobar que el Admin puede editar la clase desde ver clases de un curso', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-clases/?curso_padre=4748"] > .svg-inline--fa').click()
+    editarcursos.click_editarClase()
+    editarcursos.type_editarTituloClase('Materia divertida Lunes 20/12')
+    editarcursos.type_editarDescripcionClase('Cuando llega MATRIX 4')
+    editarcursos.type_youtubeVideoClase('https://www.youtube.com/watch?v=RMI9fR2MQpU')
+    editarcursos.click_guardarCambiosClase()
+  })
+
+  it.skip('Verificar que el Admin puede asignar un profesor a una clase', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-clases/?curso_padre=4748"] > .svg-inline--fa').click()
+    asignarprofe.click_asignarProfesorClase()
+    asignarprofe.type_seleccionarProfesor('Chris Martin')
+    asignarprofe.click_asignar()
+  })
+
+  it.skip('Verificar que el Admin puede repetir un curso', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    repetircurso.click_iconoRepetirCurso()
+    repetircurso.horaInicio('14:00')
+    repetircurso.duracionClase('60')
+    repetircurso.recurreciaClases()      //Jueves
+    repetircurso.click_repetirCurso()
+  })
+
+  it.skip('Comprobar que el Admin puede Eliminar un curso', () => {
+    homeadmin.click_tableroWonderlyCursos()
+    cy.get(':nth-child(7) > :nth-child(7) > .eliminar-curso-trigger > .svg-inline--fa').click()
+    cy.get('#confirmationModalButton').click()  //Aceptar Eliminar Curso
+    cy.get('.btn-danger').click()               //Cancelar eliminar curso
+  })
+ 
 });
