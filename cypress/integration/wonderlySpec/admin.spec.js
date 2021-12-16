@@ -2,8 +2,11 @@
 
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
+import { AsignarProfesor } from "../../PaginasAdmin/AsignarProfesor";
+import { EditarWonderlyCursos } from "../../PaginasAdmin/EditarWonderlyCursos";
 import { HomeAdmin } from "../../PaginasAdmin/HomeAdmin";
 import { RegistroProfesor } from "../../PaginasAdmin/RegistroProfesor";
+import { RepetirCurso } from "../../PaginasAdmin/RepetirCurso";
 import { WonderlyCursos } from "../../PaginasAdmin/WonderlyCursos";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
@@ -16,6 +19,9 @@ describe("Wonderly- Home Page administrador", () => {
   const homeadmin = new HomeAdmin();
   const registroprofesor = new RegistroProfesor();
   const wonderlycursos = new WonderlyCursos();
+  const editarcursos = new EditarWonderlyCursos();
+  const asignarprofe = new AsignarProfesor();
+  const repetircurso = new RepetirCurso();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
