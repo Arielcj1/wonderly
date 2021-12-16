@@ -23,19 +23,7 @@ export class WonderlyCursos {
   type_descripionProyectoFinal(descripcionProyectoFinal) {
     cy.get("#input_35_37_ifr").type(descripcionProyectoFinal);
   }
-  VerificarCurso() {
-    cy.get(":nth-child(4) > th")
-      .invoke("text")
-      .then((text) => {
-        if (text == "2053") {
-          cy.get(
-            '[href="https://developers.learnwonderly.com/tablero/asignar-profesor/?curso_id=2053&referrer_url=https://developers.learnwonderly.com/tablero/wonderly-cursos"] > .svg-inline--fa'
-          ).click();
-        } else {
-          cy.log("Id no encontrado");
-        }
-      });
-  }
+
   materia(materia) {
     cy.get("#input_35_15").select(materia);
   }
@@ -64,5 +52,35 @@ export class WonderlyCursos {
   }
   type_youtubeVideo(url) {
     cy.get("#input_35_26").type(url);
+  }
+
+  click_botonAgregarCurso() {
+    cy.get("#gform_submit_button_35").click();
+  }
+  click_cursosFuturos() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/a[3]"
+    ).click();
+  }
+
+  VerificarCurso() {
+    cy.get("tbody > :nth-child(1) > th")
+      .invoke("text")
+      .then((text) => {
+        if (text == "2053") {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr[1]/td[6]/a[2]"
+          ).click();
+        } else {
+          cy.log("Id no encontrado");
+        }
+      });
+  }
+
+  select_seleccionarProfesor(profesor) {
+    cy.get("#input_29_3").select(profesor);
+  }
+  click_botonAsignarProfesor() {
+    cy.get("#gform_submit_button_29").click();
   }
 }

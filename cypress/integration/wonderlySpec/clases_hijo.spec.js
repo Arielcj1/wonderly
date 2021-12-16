@@ -32,7 +32,7 @@ describe("Wonderly- Home Page", () => {
 
   it.skip("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfil.click_seleccionarHijo();
-    home.click_MenuUsuario();
+    home.click_MenuUusuario();
     claseshijo.click_menu_clasesHijo();
     clase.click_nombreDeLaClase();
     cy.get(".actions-header > .class-title").should("be.visible");
