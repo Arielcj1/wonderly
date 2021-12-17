@@ -12,7 +12,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Wonderly- Home Page", () => {
+describe("Wonderly- Home Page HIJO", () => {
   const perfil = new Perfil();
   const ingresar = new Ingresar();
   const home = new Home();
@@ -29,7 +29,33 @@ describe("Wonderly- Home Page", () => {
     ingresar.click_continuar();
   });
 
-  it("Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
+  it("1_Demostrar que el hijo puede dirigirse a la pestaña POR QUE WONDERLY?", () => {
+    // Seleccionar el hijo
+    home.click_LogoWonderly();
+    home.click_PorqueWonderly();
+    cy.get("h2").should("be.visible");
+  });
+
+  it.skip("2_Comprobar que el hijo se encuentre en la pestaña de DESTREZAS", () => {
+    // Seleccionar el hijo
+    home.click_LogoWonderly();
+    home.click_Destrezas();
+    cy.get("h2").should("be.visible");
+  });
+
+  it.skip("3_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
+    // Seleccionar el hijo
+    home.click_LogoWonderly();
+    home.click_seccionOnDemand();
+  });
+
+  it.skip("4_Verificar que el hijo se encuentre en la sección EN VIVO", () => {
+    // Seleccionar el hijo
+    home.click_LogoWonderly();
+    home.click_seccionEnVivo();
+  });
+
+  it("5_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -37,7 +63,7 @@ describe("Wonderly- Home Page", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
+  it("6_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -46,14 +72,14 @@ describe("Wonderly- Home Page", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
+  it("7_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
+  it("8_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
     perfil.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfil.click_usuarioPerfil();
