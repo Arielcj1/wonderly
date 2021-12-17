@@ -26,11 +26,7 @@ describe("Home Page", () => {
     perfil.buscar_hijo("Juan Muñoz");
   });
 
-  it.skip("Ir a Destrezas", () => {
-    home.click_Destrezas();
-  });
-
-  it.skip("Ir a Por que Wonderly", () => {
+  it("Ir a Por que Wonderly", () => {
     home.click_PorqueWonderly();
     cy.wait(4000);
   });
@@ -46,12 +42,7 @@ describe("Home Page", () => {
         home.click_Destrezas()
     })
 
-    it('Ir a Por que Wonderly',()=>{
-        home.click_PorqueWonderly()
-        cy.wait(4000)
-    })
-
-  it.skip("Presioanr botones de desplazamiento", () => {
+  it("Presioanr botones de desplazamiento", () => {
     home.click_DesplazarAbajo();
     cy.wait(3000);
     home.click_DesplazarArriba();
@@ -68,13 +59,6 @@ describe("Home Page", () => {
         cy.wait(5000)
     })
 
-    it('Presioanr botones de desplazamiento',()=>{
-        home.click_DesplazarAbajo()
-        cy.wait(3000)
-        home.click_DesplazarArriba()
-        cy.wait(3000)
-    })
-
     it('Iniciar sesion y comprar Membresias', () => {
         home.click_IniciaSesion()
         ingresar.type_Correo('josemunoz@gmail.com')
@@ -88,6 +72,4 @@ describe("Home Page", () => {
         cy.get('.my-5').should('be.visible')
 
       })
-
-
     })

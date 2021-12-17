@@ -24,8 +24,8 @@ describe("Wonderly- Home Page HIJO", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
+    ingresar.type_Correo("padre@gmail.com");
+    ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
@@ -87,7 +87,8 @@ describe("Wonderly- Home Page HIJO", () => {
     cy.get(".card-header").should("be.visible");
   });
 
-  it("Verificar que el hijo pueda conectar un hijo desde el Tablero Mis hijos", () => {
+  //Boton eliminado CONECTAR
+  it.skip("Verificar que el hijo pueda conectar un hijo desde el Tablero Mis hijos", () => {
     home.click_MenuUsuario();
     perfil.click_usuarioPerfil();
     mishijos.click_tableroMisHijos();

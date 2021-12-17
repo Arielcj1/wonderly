@@ -20,46 +20,46 @@ describe("Wonderly- Home Page PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profeclaudia@mailinator.com");
-    ingresar.type_contrasena("123");
+    ingresar.type_Correo("profesor@gmail.com");
+    ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it.skip("1_Verificar que el profesor se encuentre en la pestaña POR QUE WONDERLY?", () => {
+  it("1_Verificar que el profesor se encuentre en la pestaña POR QUE WONDERLY?", () => {
     home.click_LogoWonderly();
     home.click_PorqueWonderly();
     cy.get("h2").should("be.visible");
   });
 
-  it.skip("2_Comprobar que el profesor se encuentre en la pestaña de DESTREZAS", () => {
+  it("2_Comprobar que el profesor se encuentre en la pestaña de DESTREZAS", () => {
     home.click_LogoWonderly();
     home.click_Destrezas();
     cy.get("h2").should("be.visible");
   });
 
-  it.skip("3_Probar que el profesor se encuentre en la sección ON DEMAND", () => {
+  it("3_Probar que el profesor se encuentre en la sección ON DEMAND", () => {
     home.click_LogoWonderly();
     home.click_seccionOnDemand();
   });
 
-  it.skip("4_Verificar que el profesor se encuentre en la sección EN VIVO", () => {
+  it("4_Verificar que el profesor se encuentre en la sección EN VIVO", () => {
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
   });
 
-  it.skip("5_verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
+  it("5_verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it.skip("6_verificar que el profesor pueda dirigirse al tablero de  Alumnos-Profesor", () => {
+  it("6_verificar que el profesor pueda dirigirse al tablero de  Alumnos-Profesor", () => {
     alumnosprofesor.tableroClasesAlumnos();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it.skip("Comprobar que el profesor pueda completar su perfil", () => {
-    perfil.type_nombre("Claudia");
-    perfil.type_apellido("Aranci");
+  it("Comprobar que el profesor pueda completar su perfil", () => {
+    perfil.type_nombre("Profesor");
+    perfil.type_apellido("Uno");
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudad("Sucre");
@@ -73,19 +73,19 @@ describe("Wonderly- Home Page PROFESOR", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it.skip("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
+  it("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.click_nombreClase();
     cy.get("h4").should("be.visible");
   });
 
-  it.skip("9_Verificar que el profesor pueda ver los alumnos inscritos de su clase", () => {
+  it("9_Verificar que el profesor pueda ver los alumnos inscritos de su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.click_numeroDeInscritos();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it.skip("10_Demostrar que el profesor pueda editar su clase", () => {
+  it("10_Demostrar que el profesor pueda editar su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.editarClase();
     clasesprofesor.type_youtubeVideo(

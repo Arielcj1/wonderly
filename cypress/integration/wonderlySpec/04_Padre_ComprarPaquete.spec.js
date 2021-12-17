@@ -22,7 +22,7 @@ describe('Comprar Membresias', () =>{
     beforeEach(() => {
         cy.visit('https://developers.learnwonderly.com/')
         home.click_IniciaSesion()
-        ingresar.type_Correo('julioroca14@gmail.com')
+        ingresar.type_Correo('padre@gmail.com')
         ingresar.type_contrasena('12345')
         ingresar.click_continuar()
       })
@@ -43,7 +43,7 @@ describe('Comprar Membresias', () =>{
         pago.click_enviar()
 
         //compra de Membresia Explorador
-        paquete.type_seleccionarHijo('Juan Roca')
+        paquete.type_seleccionarHijo('Hijo Uno')
         cy.wait(2000)
         paquete.click_suscribirse()
         cy.get('.text-primary').should('be.visible')
@@ -57,11 +57,11 @@ describe('Comprar Membresias', () =>{
         home.click_Membresia_Inventor()
         //Registrar nuevo Hijo
         paquete.click_Aqui_nuevoHijo()
-        registrarhijo.type_nombreHijo('Pedro')
-        registrarhijo.type_apellidoHijo('Roca')
+        registrarhijo.type_nombreHijo('Hijo')
+        registrarhijo.type_apellidoHijo('Cuatro')
         registrarhijo.type_fechaNacimiento('01/01/2011')
         registrarhijo.click_registrar()
-        paquete.type_seleccionarHijo('Pedro Roca')
+        paquete.type_seleccionarHijo('Hijo Cuatro')
         paquete.click_suscribirse()
         cy.get('.text-primary').should('be.visible')
     })
@@ -72,7 +72,7 @@ describe('Comprar Membresias', () =>{
         home.click_Membresias()
         home.click_Membresia_Genio()
 
-        paquete.type_seleccionarHijo('Carlos Roca')
+        paquete.type_seleccionarHijo('Hijo Dos')
         paquete.click_suscribirse()
         cy.get('.text-primary').should('be.visible')
     })

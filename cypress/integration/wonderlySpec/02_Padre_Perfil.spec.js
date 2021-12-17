@@ -28,7 +28,7 @@ describe('Perfil Padre',() => {
         home.click_pruebaGratis()
         registro.type_nombre("Julio");
         registro.type_apellidos("Roca");
-        registro.type_correo("julioroca14@gmail.com");
+        registro.type_correo("padre@gmail.com");
         registro.type_contrasenia("12345");
         registro.type_numero("65266222");
         registro.click_siguiente();
@@ -38,13 +38,13 @@ describe('Perfil Padre',() => {
 
     it('Registrar hijos', () => {
       home.click_IniciaSesion()
-      ingresar.type_Correo('julioroca14@gmail.com')
+      ingresar.type_Correo('padre@gmail.com')
       ingresar.type_contrasena('12345')
       ingresar.click_continuar()
 
       cy.get('.text-center > .btn').click()
-      registrarhijo.type_nombreHijo('Juan')
-      registrarhijo.type_apellidoHijo('Roca')
+      registrarhijo.type_nombreHijo('Hijo')
+      registrarhijo.type_apellidoHijo('Uno')
       registrarhijo.type_fechaNacimiento('01/01/2010')
       registrarhijo.click_registrar()
       cy.get('.alert').should('be.visible')
@@ -52,7 +52,7 @@ describe('Perfil Padre',() => {
 
     it('Registrar nuevo hijo desde Mis hijos', () => {
       home.click_IniciaSesion()
-      ingresar.type_Correo('julioroca14@gmail.com')
+      ingresar.type_Correo('padre@gmail.com')
       ingresar.type_contrasena('12345')
       ingresar.click_continuar()
       perfil.click_mostrarSubmenu()
@@ -60,8 +60,8 @@ describe('Perfil Padre',() => {
       //Registrar nuevo hijo
       mishijos.click_Tablero_MisHijos()
       mishijos.click_RegistrarHijo()
-      registrarhijo.type_nombreHijo('Carlos')
-      registrarhijo.type_apellidoHijo('Roca')
+      registrarhijo.type_nombreHijo('Hijo')
+      registrarhijo.type_apellidoHijo('Dos')
       registrarhijo.type_fechaNacimiento('01/01/2012')
       registrarhijo.click_registrar()
       cy.get('.alert').should('be.visible')
@@ -69,7 +69,7 @@ describe('Perfil Padre',() => {
 
     it('Ir al perfil Padre', () => {
         home.click_IniciaSesion()
-        ingresar.type_Correo('julioroca14@gmail.com')
+        ingresar.type_Correo('padre@gmail.com')
         ingresar.type_contrasena('12345')
         ingresar.click_continuar()
         cy.contains('¿Quién está aprendiendo?').should('be.visible')
@@ -82,7 +82,7 @@ describe('Perfil Padre',() => {
         
       //Ir al Perfil del padre
         home.click_IniciaSesion()
-        ingresar.type_Correo('julioroca14@gmail.com')
+        ingresar.type_Correo('padre@gmail.com')
         ingresar.type_contrasena('12345')
         ingresar.click_continuar()
         perfil.click_mostrarSubmenu()

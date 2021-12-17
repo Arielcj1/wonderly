@@ -20,7 +20,7 @@ describe('Tablero Mis Hijos', () =>{
 
     beforeEach(() => {
         cy.visit('https://developers.learnwonderly.com/')
-        login.login_padre('julioroca14@gmail.com','12345')
+        login.login_padre('padre@gmail.com','12345')
         perfil.click_mostrarSubmenu()
         perfil.click_perfil()
       })
@@ -30,7 +30,8 @@ describe('Tablero Mis Hijos', () =>{
         mishijos.click_Tablero_MisHijos()
     })
 
-    it('Click en Conectar hijo', () => {
+    //Ya no hay boton CONECTAR
+    it.skip('Click en Conectar hijo', () => {
 
         mishijos.click_Tablero_MisHijos()
         mishijos.click_conectarDesconectar('Conectar')
@@ -40,8 +41,8 @@ describe('Tablero Mis Hijos', () =>{
     it('Registrar hijo', () => {
         mishijos.click_Tablero_MisHijos()
         mishijos.click_RegistrarHijo()
-        registrarhijo.type_nombreHijo('Victor')
-        registrarhijo.type_apellidoHijo('Roca')
+        registrarhijo.type_nombreHijo('Hijo')
+        registrarhijo.type_apellidoHijo('tres')
         registrarhijo.type_fechaNacimiento('02/02/2014')
         registrarhijo.click_registrar()
         cy.get('.alert').should('be.visible')
