@@ -3,8 +3,23 @@ export class ClasesProfesor {
   tableroClasesProfesor() {
     cy.get("#menu-item-456 > .nav-link").click();
   }
-  tableroClasesAlumnos() {
-    cy.get("#menu-item-2194 > .nav-link").click();
+
+  click_nombreClase() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/th[2]/a"
+    ).click();
+  }
+
+  click_numeroDeInscritos() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[3]/td[3]/a"
+    ).click();
+  }
+
+  click_botonRegresar() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/a"
+    ).click();
   }
   editarClase() {
     cy.xpath(
