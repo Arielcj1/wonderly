@@ -39,7 +39,7 @@ export class EditarWonderlyCursos{
       }
 
     click_editarClase(){
-        cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-clases/editar-clase/?clase_id=4750"] > .svg-inline--fa').click()
+        cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[6]/a[1]').click()
     }
 
     type_editarTituloClase(titulo){

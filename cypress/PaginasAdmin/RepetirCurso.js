@@ -1,9 +1,6 @@
 ///<reference types="cypress" />
 
 export class RepetirCurso{
-    click_iconoRepetirCurso(){
-        cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-cursos/repetir-curso/?curso_id=4748"] > .svg-inline--fa').click()
-    }
 
     type_fechaInicio(fecha){
         cy.get('#input_36_20').type(fecha)

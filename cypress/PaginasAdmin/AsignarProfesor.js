@@ -2,10 +2,6 @@
 
 export class AsignarProfesor{
 
-    click_asignarProfesorCurso(){
-        cy.get('[href="https://developers.learnwonderly.com/tablero/asignar-profesor/?curso_id=4748&referrer_url=https://developers.learnwonderly.com/tablero/wonderly-cursos"] > .svg-inline--fa').click()
-    }
-
     type_seleccionarProfesor(profesor){
         cy.get('#input_29_3').select(profesor)
     }
@@ -19,6 +15,6 @@ export class AsignarProfesor{
     }
 
     click_asignarProfesorClase(){
-        cy.get('[href="https://developers.learnwonderly.com/tablero/asignar-profesor/?clase_id=4750"] > .svg-inline--fa').click()
+        cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[6]/a[2]').click()
     }
 }
