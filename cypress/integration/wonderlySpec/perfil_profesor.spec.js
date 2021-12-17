@@ -4,16 +4,18 @@ import { Perfil } from "../../paginas/Profesor/Perfil";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { ClasesProfesor } from "../../paginas/Profesor/ClasesProfesor";
+import { AlumnosProfesor } from "../../paginas/Profesor/AlumnosProfesor";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Wonderly- Home Page", () => {
+describe("Wonderly- Home Page PROFESOR", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
   const clasesprofesor = new ClasesProfesor();
+  const alumnosprofesor = new AlumnosProfesor();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
@@ -23,13 +25,35 @@ describe("Wonderly- Home Page", () => {
     ingresar.click_continuar();
   });
 
-  it.skip("verificar que el profesor pueda dirigerse al tablero de sus Clases-Profesor", () => {
+  it.skip("1_Verificar que el profesor se encuentre en la pestaña POR QUE WONDERLY?", () => {
+    home.click_LogoWonderly();
+    home.click_PorqueWonderly();
+    cy.get("h2").should("be.visible");
+  });
+
+  it.skip("2_Comprobar que el profesor se encuentre en la pestaña de DESTREZAS", () => {
+    home.click_LogoWonderly();
+    home.click_Destrezas();
+    cy.get("h2").should("be.visible");
+  });
+
+  it.skip("3_Probar que el profesor se encuentre en la sección ON DEMAND", () => {
+    home.click_LogoWonderly();
+    home.click_seccionOnDemand();
+  });
+
+  it.skip("4_Verificar que el profesor se encuentre en la sección EN VIVO", () => {
+    home.click_LogoWonderly();
+    home.click_seccionEnVivo();
+  });
+
+  it.skip("5_verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it.skip("verificar que el profesor pueda dirigerse al tablero de  Alumnos-Profesor", () => {
-    clasesprofesor.tableroClasesAlumnos();
+  it.skip("6_verificar que el profesor pueda dirigirse al tablero de  Alumnos-Profesor", () => {
+    alumnosprofesor.tableroClasesAlumnos();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
@@ -49,14 +73,19 @@ describe("Wonderly- Home Page", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it.skip("Verificar que el profesor pueda iniciar una clase", () => {
-    perfil.click_tableroClasesProfesor();
-    cy.wait(2000);
-    perfil.click_iniciarClase();
-    cy.get(".title").should("be.visible");
+  it.skip("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.click_nombreClase();
+    cy.get("h4").should("be.visible");
   });
 
-  it.skip("Demostrar que el profesor pueda editar su clase", () => {
+  it.skip("9_Verificar que el profesor pueda ver los alumnos inscritos de su clase", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.click_numeroDeInscritos();
+    cy.get("thead > tr > :nth-child(2)").should("be.visible");
+  });
+
+  it.skip("10_Demostrar que el profesor pueda editar su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.editarClase();
     clasesprofesor.type_youtubeVideo(
@@ -76,5 +105,12 @@ describe("Wonderly- Home Page", () => {
     clasesprofesor.botonAgregarMaterialForm();
     clasesprofesor.click_botonRegresar();
     //cy.get('[data-date="2021-12-17 12:00:00"] > :nth-child(2) > a').should("be.visible");
+  });
+
+  it("12_Verificar que el profesor pueda iniciar una clase", () => {
+    perfil.click_tableroClasesProfesor();
+    cy.wait(2000);
+    perfil.click_iniciarClase();
+    cy.get(".title").should("be.visible");
   });
 });

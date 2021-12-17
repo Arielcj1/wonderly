@@ -165,7 +165,7 @@ describe("Wonderly- Home Page administrador", () => {
     repetircurso.click_repetirCurso();
   });
 
-  it("Comprobar que el Admin puede Eliminar un curso", () => {
+  it.skip("Comprobar que el Admin puede Eliminar un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso('Materia Super divertida 01 - Repetido', 6)
     //eliminarcurso.click_aceptarEliminarCurso()

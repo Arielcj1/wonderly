@@ -103,4 +103,13 @@ export class Home {
   click_MenuUsuario() {
     cy.get("#navbarDropdown").click();
   }
+
+  click_seccionOnDemand() {
+    cy.get("#ondemand-tab").click();
+    // cy.xpath("/html/body/div[4]/div[4]").click();
+  }
+
+  click_seccionEnVivo() {
+    cy.get("#vivo-tab").click();
+  }
 }
