@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { Perfil } from "../../paginas/Hijo/Perfil";
+import { PerfilHijo } from "../../paginas/Hijo/PerfilHijo";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { Clase } from "../../paginas/Hijo/Clase";
@@ -13,7 +13,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 });
 
 describe("Wonderly- Home Page", () => {
-  const perfil = new Perfil();
+  const perfilhijo = new PerfilHijo();
   const ingresar = new Ingresar();
   const home = new Home();
   const clase = new Clase();
@@ -31,22 +31,23 @@ describe("Wonderly- Home Page", () => {
   });
 
   it("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
-    perfil.click_seleccionarHijo();
+    perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     clase.click_nombreDeLaClase();
     cy.get(".actions-header > .class-title").should("be.visible");
   });
 
+  // implementado tambien en el spec del profesor
   it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
-    perfil.click_seleccionarHijo();
+    perfilhijo.click_seleccionarHijo();
     clase.click_botonEntrarClase();
     cy.wait(3000);
     clase.verificarClaseInscrita();
   });
 
   it("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
-    perfil.click_seleccionarHijo();
+    perfilhijo.click_seleccionarHijo();
     home.click_OnDemandSeccion();
     cy.wait(2000);
     clase.click_botonEntrarCurso();
@@ -54,7 +55,7 @@ describe("Wonderly- Home Page", () => {
   });
 
   it("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
-    perfil.click_seleccionarHijo();
+    perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     clase.click_nombreDeLaClase();
@@ -79,7 +80,7 @@ describe("Wonderly- Home Page", () => {
     cy.wait(2000);
     registrarHijo.click_botonExploraCursos();
     cy.wait(2000);
-    perfil.click_seleccionarHijo();
+    perfilhijo.click_seleccionarHijo();
     clase.click_botonEntrarClase();
     clase.verificarClaseInscrita();
     cy.wait(2000);

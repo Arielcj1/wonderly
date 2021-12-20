@@ -104,6 +104,10 @@ export class Home {
     cy.get("#navbarDropdown").click();
   }
 
+  click_salir() {
+    cy.get("#menu-item-143 > .dropdown-item").click();
+  }
+
   click_seccionOnDemand() {
     cy.get("#ondemand-tab").click();
     // cy.xpath("/html/body/div[4]/div[4]").click();

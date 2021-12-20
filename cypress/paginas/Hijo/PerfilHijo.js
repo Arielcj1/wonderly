@@ -1,6 +1,6 @@
 ///<reference types="cypress" />
 
-export class Perfil {
+export class PerfilHijo {
   click_usuarioPerfil() {
     cy.get("#menu-item-319 > .dropdown-item").click();
   }

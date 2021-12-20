@@ -5,6 +5,8 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { ClasesProfesor } from "../../paginas/Profesor/ClasesProfesor";
 import { AlumnosProfesor } from "../../paginas/Profesor/AlumnosProfesor";
+import { PerfilHijo } from "../../paginas/Hijo/PerfilHijo";
+import { Clase } from "../../paginas/Hijo/Clase";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -16,6 +18,8 @@ describe("Wonderly- Home Page PROFESOR", () => {
   const perfil = new Perfil();
   const clasesprofesor = new ClasesProfesor();
   const alumnosprofesor = new AlumnosProfesor();
+  const clase = new Clase();
+  const perfilhijo = new PerfilHijo();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
@@ -73,13 +77,28 @@ describe("Wonderly- Home Page PROFESOR", () => {
     cy.get(".alert").should("be.visible");
   });
 
+  //Implementar que el hijo pueda inscribirse a una clase
+
+  it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
+    home.click_MenuUsuario();
+    home.click_salir();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("jaqueline@gmail.com"); //Cambiar al correo del padre
+    ingresar.type_contrasena("123");
+    ingresar.click_continuar();
+    perfilhijo.click_seleccionarHijo();
+    clase.click_botonEntrarClase();
+    cy.wait(3000);
+    clase.verificarClaseInscrita();
+  });
+
   it("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.click_nombreClase();
     cy.get("h4").should("be.visible");
   });
 
-  it("9_Verificar que el profesor pueda ver los alumnos inscritos de su clase", () => {
+  it.skip("9_Verificar que el profesor pueda ver los alumnos inscritos de su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.click_numeroDeInscritos();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
@@ -100,7 +119,9 @@ describe("Wonderly- Home Page PROFESOR", () => {
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.click_botonAgregarMaterial();
     clasesprofesor.type_tituloFormAgregarMaterial("Lectura, Cuentos");
-    clasesprofesor.type_descripcionFormAgregarMaterial("Cuentos cortos para practicar la lectura");
+    clasesprofesor.type_descripcionFormAgregarMaterial(
+      "Cuentos cortos para practicar la lectura"
+    );
     clasesprofesor.subirArchivoFormAgregarMaterial();
     clasesprofesor.botonAgregarMaterialForm();
     clasesprofesor.click_botonRegresar();
