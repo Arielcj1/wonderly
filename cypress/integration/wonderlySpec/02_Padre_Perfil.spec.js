@@ -22,26 +22,13 @@ describe('Perfil Padre',() => {
 
     beforeEach(() => {
         cy.visit('https://developers.learnwonderly.com/')
+        home.click_IniciaSesion()
+        ingresar.type_Correo('padre5@gmail.com')
+        ingresar.type_contrasena('12345')
+        ingresar.click_continuar()
       })
 
-    it('Registrar Padre', () => {
-        home.click_pruebaGratis()
-        registro.type_nombre("Julio");
-        registro.type_apellidos("Roca");
-        registro.type_correo("padre@gmail.com");
-        registro.type_contrasenia("12345");
-        registro.type_numero("65266222");
-        registro.click_siguiente();
-        cy.get('h2').should('be.visible')
-        
-    })
-
     it('Registrar hijos', () => {
-      home.click_IniciaSesion()
-      ingresar.type_Correo('padre@gmail.com')
-      ingresar.type_contrasena('12345')
-      ingresar.click_continuar()
-
       cy.get('.text-center > .btn').click()
       registrarhijo.type_nombreHijo('Hijo')
       registrarhijo.type_apellidoHijo('Uno')
@@ -51,10 +38,6 @@ describe('Perfil Padre',() => {
     })
 
     it('Registrar nuevo hijo desde Mis hijos', () => {
-      home.click_IniciaSesion()
-      ingresar.type_Correo('padre@gmail.com')
-      ingresar.type_contrasena('12345')
-      ingresar.click_continuar()
       perfil.click_mostrarSubmenu()
       perfil.click_perfil()
       //Registrar nuevo hijo
@@ -68,10 +51,6 @@ describe('Perfil Padre',() => {
     })
 
     it('Ir al perfil Padre', () => {
-        home.click_IniciaSesion()
-        ingresar.type_Correo('padre@gmail.com')
-        ingresar.type_contrasena('12345')
-        ingresar.click_continuar()
         cy.contains('¿Quién está aprendiendo?').should('be.visible')
         perfil.click_mostrarSubmenu()
         perfil.click_perfil()
@@ -81,10 +60,6 @@ describe('Perfil Padre',() => {
     it('Completar datos perfil Padre', () => {
         
       //Ir al Perfil del padre
-        home.click_IniciaSesion()
-        ingresar.type_Correo('padre@gmail.com')
-        ingresar.type_contrasena('12345')
-        ingresar.click_continuar()
         perfil.click_mostrarSubmenu()
         perfil.click_perfil()
 

@@ -31,7 +31,6 @@ describe("Wonderly- Home Page administrador", () => {
     ingresar.type_Correo("neida.veizaga@believesol.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
-    cy.wait(2000);
   });
 
   it("Verificar que el administrador pueda ingresar al tablero Profesores Registrados", () => {
@@ -74,17 +73,6 @@ describe("Wonderly- Home Page administrador", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  /*it("Verificar que el admin pueda asignar profesor a un curso", () => {
-    homeadmin.click_tableroWonderlyCursos();
-    // homeadmin.click_paginacionSiguiente();
-    wonderlycursos.click_cursosFuturos();
-    wonderlycursos.VerificarCurso();
-    wonderlycursos.select_seleccionarProfesor("Claudia ArancibiaA");
-    wonderlycursos.click_botonAsignarProfesor();
-    wonderlycursos.click_cursosFuturos();
-    cy.get("tbody > :nth-child(1) > :nth-child(6)").should("be.visible");
-  });*/
-
   it("Verificar que el Admin puede editar un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("Manitas sucias", 1); //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso
@@ -103,7 +91,7 @@ describe("Wonderly- Home Page administrador", () => {
   it("Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso('Manitas limpias', 2)   //Click en el icono Asignar Profesor
-    asignarprofe.type_seleccionarProfesor("Profesor Dos");
+    asignarprofe.type_seleccionarProfesor("Ana Gunn");
     asignarprofe.click_asignar();
   });
 
@@ -127,7 +115,7 @@ describe("Wonderly- Home Page administrador", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso('Manitas limpias', 4)   //Click en el icono de Ver Clases
     asignarprofe.click_asignarProfesorClase();
-    asignarprofe.type_seleccionarProfesor("Profesor Dos");
+    asignarprofe.type_seleccionarProfesor("Carlos Mendez");
     asignarprofe.click_asignar();
   });
 
@@ -137,9 +125,10 @@ describe("Wonderly- Home Page administrador", () => {
     wonderlyclase.click_iconoAgregarMaterial()
     wonderlyclase.click_agregarMaterial()
     wonderlyclase.type_tituloMaterial('Material Extra de Estudio')
+    wonderlyclase.type_descripcionMaterial('Reforzar los conocimientos')
     wonderlyclase.subirArchivoFormAgregarMaterial()
     wonderlyclase.click_confirmarAgregarMaterial()
-    wonderlyclase.click_botonRegresar()
+    wonderlyclase.click_Regresar()
   })
 
   it("Verificar que el Admin puede repetir un curso", () => {
@@ -149,12 +138,14 @@ describe("Wonderly- Home Page administrador", () => {
     repetircurso.duracionClase("60");
     repetircurso.recurreciaClases(); //Jueves
     repetircurso.click_repetirCurso();
+    cy.get('.alert').should('be.visible');
   });
 
   it("Comprobar que el Admin puede Eliminar un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso('Manitas limpias - Repetido', 6)
+    cy.wait(4000)
     eliminarcurso.click_aceptarEliminarCurso()
-    
+    cy.wait(4000)
   });
 });

@@ -22,10 +22,11 @@ export class WonderlyClases {
     }
 
     click_confirmarAgregarMaterial(){
-        cy.get('.tingle-btn--primary').click()
+        cy.wait(3000);
+        cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
     }
 
-    click_botonRegresar(){
-        cy.get('.tingle-btn--primary').click()
+    click_Regresar(){
+        cy.get('.btn-group > .btn').click()
     }
 }

@@ -2,7 +2,7 @@
 
 export class EliminarCurso{
     click_aceptarEliminarCurso(){
-        cy.get("#confirmationModalButton").click(); //Aceptar Eliminar Curso
+        cy.xpath("/html/body/div[2]/div[5]/div/div/div[3]/button[1]").click()
     }
 
     click_cancelarEliminarCurso(){

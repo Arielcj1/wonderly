@@ -21,7 +21,6 @@ describe("Home Page", () => {
     ingresar.type_Correo("josemunoz@gmail.com");
     ingresar.type_contrasena("123456");
     ingresar.click_continuar();
-    //cy.get('.entry-content > h5.text-center').should('be.visible')
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
     perfil.buscar_hijo("Juan Muñoz");
   });
@@ -49,8 +48,8 @@ describe("Home Page", () => {
     cy.wait(3000);
   });
 
-    it('Seleccionar dia Jueves en Schedule', ()=>{
-        home.click_Jueves()
+    it('Seleccionar un dia en Schedule', ()=>{
+        home.click_dia()
         cy.wait(5000)
     })
 
@@ -59,7 +58,7 @@ describe("Home Page", () => {
         cy.wait(5000)
     })
 
-    it('Iniciar sesion y comprar Membresias', () => {
+    it('Iniciar sesion e ir a Membresias Explorador', () => {
         home.click_IniciaSesion()
         ingresar.type_Correo('josemunoz@gmail.com')
         ingresar.type_contrasena('123456')
