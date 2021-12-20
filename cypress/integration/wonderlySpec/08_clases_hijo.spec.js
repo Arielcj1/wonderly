@@ -25,12 +25,12 @@ describe("Wonderly- Home Page", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre@gmail.com");
+    ingresar.type_Correo("padre0@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it.skip("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -39,22 +39,22 @@ describe("Wonderly- Home Page", () => {
   });
 
   // implementado tambien en el spec del profesor
-  it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
+  it.skip("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
     perfilhijo.click_seleccionarHijo();
     clase.click_botonEntrarClase();
     cy.wait(3000);
     clase.verificarClaseInscrita();
   });
 
-  it("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
+  it.skip("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_OnDemandSeccion();
+    home.click_seccionOnDemand();
     cy.wait(2000);
     clase.click_botonEntrarCurso();
     cy.get(":nth-child(1) > .title-modulo").should("be.visible");
   });
 
-  it("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
+  it.skip("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -68,15 +68,15 @@ describe("Wonderly- Home Page", () => {
     home.click_pruebaGratis();
     registro.type_nombre("Ana");
     registro.type_apellidos("Baptista");
-    registro.type_correo("2padre@gmail.com");
+    registro.type_correo("2padre3@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
     cy.wait(3000);
-    home.click_botonRegistraTuHijo();
-    registrarHijo.type_nombre("Camila");
-    registrarHijo.type_apellido("Baptista");
-    registrarHijo.type_fechaDeNacimiento("09/12/2015");
+    registrarHijo.click_botonRegistraTuHijo();
+    registrarHijo.type_nombreHijoPV("Camila");
+    registrarHijo.type_apellidoHijoPV("Baptista");
+    registrarHijo.type_fechaNacimientoPV("09/12/2015");
     cy.wait(2000);
     registrarHijo.click_botonExploraCursos();
     cy.wait(2000);
