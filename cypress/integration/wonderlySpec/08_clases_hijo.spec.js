@@ -30,7 +30,7 @@ describe("Wonderly- Home Page", () => {
     ingresar.click_continuar();
   });
 
-  it.skip("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -39,14 +39,14 @@ describe("Wonderly- Home Page", () => {
   });
 
   // implementado tambien en el spec del profesor
-  it.skip("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
+  it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
     perfilhijo.click_seleccionarHijo();
     clase.click_botonEntrarClase();
     cy.wait(3000);
     clase.verificarClaseInscrita();
   });
 
-  it.skip("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
+  it("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     cy.wait(2000);
@@ -54,7 +54,7 @@ describe("Wonderly- Home Page", () => {
     cy.get(":nth-child(1) > .title-modulo").should("be.visible");
   });
 
-  it.skip("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
+  it("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -68,7 +68,7 @@ describe("Wonderly- Home Page", () => {
     home.click_pruebaGratis();
     registro.type_nombre("Ana");
     registro.type_apellidos("Baptista");
-    registro.type_correo("2padre3@gmail.com");
+    registro.type_correo("3padre@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
