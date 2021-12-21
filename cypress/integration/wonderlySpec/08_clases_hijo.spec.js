@@ -25,7 +25,7 @@ describe("Wonderly- Home Page", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre0@gmail.com");
+    ingresar.type_Correo("padre12@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -62,13 +62,13 @@ describe("Wonderly- Home Page", () => {
     claseshijo.click_botonUnirseClase();
   });
 
-  it("Comprobar que un nuevo hijo registrado incie una clase, cuando el padre se registre en Wonderly", () => {
+  it("Comprobar que un nuevo hijo registrado se inscriba a una clase en Wonderly", () => {
     perfilpadre.click_mostrarSubmenu();
     perfilpadre.click_salir();
     home.click_pruebaGratis();
     registro.type_nombre("Ana");
     registro.type_apellidos("Baptista");
-    registro.type_correo("3padre@gmail.com");
+    registro.type_correo("13padre@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();

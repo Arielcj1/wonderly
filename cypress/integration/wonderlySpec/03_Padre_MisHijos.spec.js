@@ -20,7 +20,7 @@ describe('Tablero Mis Hijos', () =>{
 
     beforeEach(() => {
         cy.visit('https://developers.learnwonderly.com/')
-        login.login_padre('padre5@gmail.com','12345')
+        login.login_padre('padre12@gmail.com','12345')
         perfil.click_mostrarSubmenu()
         perfil.click_perfil()
       })

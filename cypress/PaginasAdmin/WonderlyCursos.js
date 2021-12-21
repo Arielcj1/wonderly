@@ -45,7 +45,7 @@ export class WonderlyCursos {
   }
 
   recuerrenciaClases() {
-    cy.get("#choice_35_36_2").click();
+    cy.get("#choice_35_36_1").click();     //0 Lunes, 1 Martes, 2 Miercoles
   }
   zonaHoraria(zonaHoraria) {
     cy.get("#field_35_29 > div").select(zonaHoraria, { force: true });

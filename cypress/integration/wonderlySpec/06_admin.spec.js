@@ -54,7 +54,7 @@ describe("Wonderly- Home Page administrador", () => {
   it("Comprobar que el administrador pueda crear un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
-    wonderlycursos.type_tituloCurso("Manitas sucias");
+    wonderlycursos.type_tituloCurso("Mañana de Martes 11:00");
     wonderlycursos.type_descripcionCurso("Clases personalizadas para ninos de primaria");
     wonderlycursos.click_añadirImagen();
     cy.wait(1000);
@@ -62,10 +62,10 @@ describe("Wonderly- Home Page administrador", () => {
     wonderlycursos.click_insertaralaPagina();
     wonderlycursos.materia("Programación");
     wonderlycursos.edades("7-8");
-    wonderlycursos.type_fechaInicio("17/12/2021");
-    wonderlycursos.type_fechaFinal("23/12/2021");
-    wonderlycursos.horaInicio("13:00");
-    wonderlycursos.duracionClases("60");
+    wonderlycursos.type_fechaInicio("21/12/2021");
+    wonderlycursos.type_fechaFinal("31/12/2021");
+    wonderlycursos.horaInicio("11:00");
+    wonderlycursos.duracionClases("30");
     wonderlycursos.recuerrenciaClases();
     // wonderlycursos.zonaHoraria("(GMT-07:00) Arizona");
     wonderlycursos.type_youtubeVideo("https://www.youtube.com/watch?v=Fn2-6zVqwX8");
@@ -75,14 +75,14 @@ describe("Wonderly- Home Page administrador", () => {
 
   it("Verificar que el Admin puede editar un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso("Manitas sucias", 1); //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso
-    editarcursos.type_editarTituloCurso("Manitas limpias");
+    editarcursos.buscar_curso("Mañana de Martes 11:00", 1); //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso
+    editarcursos.type_editarTituloCurso("Mañana de Martes 11:00 Recargado");
     editarcursos.type_editarDescripcionCurso("Clases personalizadas para ninos de primaria");
     editarcursos.type_editarProyectoFinal("Llega Matrix 4");
     editarcursos.editarMateria("Programación");
     editarcursos.editarEdades("7-8");
-    editarcursos.editarHoraInicio("16:00");
-    editarcursos.editarDuracionClases("90");
+    editarcursos.editarHoraInicio("11:00");
+    editarcursos.editarDuracionClases("30");
     editarcursos.type_youtubeVideo("https://www.youtube.com/watch?v=Fn2-6zVqwX8");
     editarcursos.click_guardar();
     cy.get(".alert").should("be.visible");
@@ -90,22 +90,22 @@ describe("Wonderly- Home Page administrador", () => {
 
   it("Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias', 2)   //Click en el icono Asignar Profesor
-    asignarprofe.type_seleccionarProfesor("Ana Gunn");
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado', 2)   //Click en el icono Asignar Profesor
+    asignarprofe.type_seleccionarProfesor("Profesor Doce");
     asignarprofe.click_asignar();
   });
 
   it("Comprobar que el Admin puede Ver Clases del curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias', 4) //Click en el icono de Ver Clases
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado', 4) //Click en el icono de Ver Clases
 
   });
 
   it("Comprobar que el Admin puede editar la clase desde Ver Clases de un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias', 4)  //Click en el icono de Ver Clases
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado', 4)  //Click en el icono de Ver Clases
     editarcursos.click_editarClase();
-    editarcursos.type_editarTituloClase("Materia divertida Lunes 20/12");
+    editarcursos.type_editarTituloClase("Materia divertida martes 21/12");
     editarcursos.type_editarDescripcionClase("Cuando llega MATRIX 4");
     editarcursos.type_youtubeVideoClase("https://www.youtube.com/watch?v=RMI9fR2MQpU");
     editarcursos.click_guardarCambiosClase();
@@ -113,15 +113,15 @@ describe("Wonderly- Home Page administrador", () => {
 
   it("Verificar que el Admin puede asignar un profesor a una clase", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias', 4)   //Click en el icono de Ver Clases
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado', 4)   //Click en el icono de Ver Clases
     asignarprofe.click_asignarProfesorClase();
-    asignarprofe.type_seleccionarProfesor("Carlos Mendez");
+    asignarprofe.type_seleccionarProfesor("Profesor Doce");
     asignarprofe.click_asignar();
   });
 
   it('Verificar que el Admin puede agregar material a una clase', () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias', 4)   //Click en el icono de Ver Clases
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado', 4)   //Click en el icono de Ver Clases
     wonderlyclase.click_iconoAgregarMaterial()
     wonderlyclase.click_agregarMaterial()
     wonderlyclase.type_tituloMaterial('Material Extra de Estudio')
@@ -133,7 +133,7 @@ describe("Wonderly- Home Page administrador", () => {
 
   it("Verificar que el Admin puede repetir un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias', 5)
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado', 5)
     repetircurso.horaInicio("13:00");
     repetircurso.duracionClase("60");
     repetircurso.recurreciaClases(); //Jueves
@@ -143,7 +143,7 @@ describe("Wonderly- Home Page administrador", () => {
 
   it("Comprobar que el Admin puede Eliminar un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso('Manitas limpias - Repetido', 6)
+    editarcursos.buscar_curso('Mañana de Martes 11:00 Recargado - Repetido', 6)
     cy.wait(4000)
     eliminarcurso.click_aceptarEliminarCurso()
     cy.wait(4000)
