@@ -31,21 +31,46 @@ export class WonderlyCursos {
   edades(edades) {
     cy.get("#input_35_16").select(edades);
   }
-  type_fechaInicio(fechaInicio) {
-    cy.get("#input_35_20").type(fechaInicio);
+  type_fechaInicio() {
+    var moment = require('moment')
+    const today = moment().format('DD/MMM/YYYY')
+    cy.get("#input_35_20").type(today);
   }
-  type_fechaFinal(fechaFinal) {
-    cy.get("#input_35_21").type(fechaFinal);
+  type_fechaFinal() {
+    var moment = require('moment')
+    const lastday = moment().add(7,'days').format('DD/MMM/YYYY')
+    cy.get("#input_35_21").type(lastday);
   }
-  horaInicio(horaInicio) {
-    cy.get("#input_35_22").select(horaInicio);
+  horaInicio() {
+    var moment = require('moment')
+    const hora = moment().add(1,'hours').format('H')
+    cy.get("#input_35_22").select(hora + ':00');
   }
   duracionClases(duracionClases) {
     cy.get("#input_35_30").select(duracionClases);
   }
 
   recuerrenciaClases() {
-    cy.get("#choice_35_36_1").click();     //0 Lunes, 1 Martes, 2 Miercoles
+    var moment = require('moment')
+    const day = moment().format('dddd')
+    cy.log(day)
+    if(day == 'Monday'){
+      cy.get("#choice_35_36_0").click();
+    }
+    if (day == 'Tuesday'){
+        cy.get("#choice_35_36_1").click();
+      }
+    if(day == 'Wednesday'){
+        cy.get("#choice_35_36_2").click();
+      }
+    if(day == 'Thursday'){
+      cy.get("#choice_35_36_3").click();
+    }
+    if(day == 'Friday'){
+      cy.get("#choice_35_36_4").click();
+    }
+         //0 Lunes, 1 Martes, 2 Miercoles
+   
   }
   zonaHoraria(zonaHoraria) {
     cy.get("#field_35_29 > div").select(zonaHoraria, { force: true });

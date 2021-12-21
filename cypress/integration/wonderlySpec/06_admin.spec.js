@@ -62,9 +62,9 @@ describe("Wonderly- Home Page administrador", () => {
     wonderlycursos.click_insertaralaPagina();
     wonderlycursos.materia("Programación");
     wonderlycursos.edades("7-8");
-    wonderlycursos.type_fechaInicio("21/12/2021");
-    wonderlycursos.type_fechaFinal("31/12/2021");
-    wonderlycursos.horaInicio("11:00");
+    wonderlycursos.type_fechaInicio();
+    wonderlycursos.type_fechaFinal();
+    wonderlycursos.horaInicio();
     wonderlycursos.duracionClases("30");
     wonderlycursos.recuerrenciaClases();
     // wonderlycursos.zonaHoraria("(GMT-07:00) Arizona");
