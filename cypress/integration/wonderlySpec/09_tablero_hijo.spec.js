@@ -7,6 +7,7 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { MetodoPago } from "../../paginas/Hijo/MetodoPago";
 import { Clase } from "../../paginas/Hijo/Clase";
+import { Autopayment } from "../../paginas/Hijo/Autopayment";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -20,6 +21,7 @@ describe("Wonderly- Home Page HIJO", () => {
   const claseshijo = new ClasesHijo();
   const metodopago = new MetodoPago();
   const clase = new Clase();
+  const autopayment = new Autopayment(); //nueva seccion
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
@@ -29,29 +31,29 @@ describe("Wonderly- Home Page HIJO", () => {
     ingresar.click_continuar();
   });
 
-  it("1_Demostrar que el hijo puede dirigirse a la pestaña POR QUE WONDERLY?", () => {
+  it.skip("1_Demostrar que el hijo puede dirigirse a la pestaña POR QUE WONDERLY?", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_PorqueWonderly();
     cy.get("h2").should("be.visible");
   });
 
-  it("2_Comprobar que el hijo se encuentre en la pestaña de DESTREZAS", () => {
+  it.skip("2_Comprobar que el hijo se encuentre en la pestaña de DESTREZAS", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_Destrezas();
     cy.get("h2").should("be.visible");
   });
 
-  it("3_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
+  it.skip("3_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
   });
 
-  it("4_Verificar que el hijo se encuentre en la sección EN VIVO", () => {
+  it.skip("4_Verificar que el hijo se encuentre en la sección EN VIVO", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionEnVivo();
   });
 
-  it("5_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
+  it.skip("5_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -59,7 +61,7 @@ describe("Wonderly- Home Page HIJO", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("6_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
+  it.skip("6_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -68,14 +70,14 @@ describe("Wonderly- Home Page HIJO", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("7_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
+  it.skip("7_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("8_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
+  it.skip("8_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();
@@ -90,5 +92,14 @@ describe("Wonderly- Home Page HIJO", () => {
     mishijos.click_tableroMisHijos();
     mishijos.click_conectarHijo();
     cy.get(":nth-child(4) > .btn-danger").should("be.visible");
+  });
+
+  // Autopago
+  it("Verificar que el hijo pueda actualizar el auto pago", () => {
+    perfilhijo.click_seleccionarHijo();
+    home.click_MenuUsuario();
+    perfilhijo.click_usuarioPerfil(); //Cuenta
+    mishijos.click_tableroMisHijos();
+    autopayment.verificarAutopayment();
   });
 });
