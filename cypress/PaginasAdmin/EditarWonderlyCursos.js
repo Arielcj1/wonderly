@@ -23,9 +23,12 @@ export class EditarWonderlyCursos{
         cy.get('#input_34_7').select(edades);
     }
 
-    editarHoraInicio(horaInicio) {
-        cy.get('#input_34_10').select(horaInicio);
-    }
+    editarHoraInicio() {
+        var moment = require('moment')
+        const hora = moment().add(1,'hours').format('H')
+        cy.get("#input_34_10").select(hora + ':00');
+      }
+
     editarDuracionClases(duracionClases) {
         cy.get('#input_34_12').select(duracionClases);
     }

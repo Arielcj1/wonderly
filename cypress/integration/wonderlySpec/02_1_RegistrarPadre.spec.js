@@ -20,7 +20,7 @@ describe('Perfil Padre',() => {
         home.click_pruebaGratis()
         registro.type_nombre("Julio");
         registro.type_apellidos("Roca");
-        registro.type_correo("padre12@gmail.com");
+        registro.type_correo("padre14@gmail.com");
         registro.type_contrasenia("12345");
         registro.type_numero("65266222");
         registro.click_siguiente();

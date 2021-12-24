@@ -114,4 +114,8 @@ export class Home {
   click_seccionEnVivo() {
     cy.get("#vivo-tab").click();
   }
+
+  click_pestañaCursos(){
+    cy.get('#menu-item-5424 > .nav-link').click()
+  }
 }

@@ -7,6 +7,7 @@ import { ClasesHijo } from "../../paginas/Hijo/ClasesHijo";
 import { Registro } from "../../paginas/Registro";
 import { RegistrarHijo } from "../../paginas/Padre/RegistrarHijo";
 import { PerfilPadre } from "../../paginas/Padre/PerfilPadre";
+import { ClaseOnDemand } from "../../PaginasAdmin/ClaseOnDemand";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -21,11 +22,12 @@ describe("Wonderly- Home Page", () => {
   const registro = new Registro();
   const registrarHijo = new RegistrarHijo();
   const perfilpadre = new PerfilPadre();
+  const claseondemand = new ClaseOnDemand()
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre12@gmail.com");
+    ingresar.type_Correo("padre14@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -50,8 +52,7 @@ describe("Wonderly- Home Page", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     cy.wait(2000);
-    clase.click_botonEntrarCurso();
-    cy.get(":nth-child(1) > .title-modulo").should("be.visible");
+    claseondemand.verificarCursoOnDemand('Viernes de Ingles 11:00 Editado')
   });
 
   it("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
@@ -68,7 +69,7 @@ describe("Wonderly- Home Page", () => {
     home.click_pruebaGratis();
     registro.type_nombre("Ana");
     registro.type_apellidos("Baptista");
-    registro.type_correo("13padre@gmail.com");
+    registro.type_correo("15padre@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -85,5 +86,17 @@ describe("Wonderly- Home Page", () => {
     clase.verificarClaseInscrita();
     cy.wait(2000);
     cy.get("h4").should("be.visible");
+  });
+
+  it("Comprobar que el hijo pueda ingresar a la clase Ondemand creada", () => {
+    home.click_MenuUsuario();
+    home.click_salir();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("padre14@gmail.com");
+    ingresar.type_contrasena("12345");
+    ingresar.click_continuar();
+    perfilhijo.click_seleccionarHijo();
+    home.click_seccionOnDemand();
+    claseondemand.verificarCursoOnDemand("Viernes de Ingles 11:00 Editado");
   });
 });

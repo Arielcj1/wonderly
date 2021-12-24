@@ -41,7 +41,11 @@ describe("Home Page", () => {
         home.click_Destrezas()
     })
 
-  it("Presioanr botones de desplazamiento", () => {
+    it('Verificar que la pestaña Cursos redirreccione a la vista de cursos', () =>{
+      home.click_pestañaCursos()
+    })
+
+  it("Presionar botones de desplazamiento", () => {
     home.click_DesplazarAbajo();
     cy.wait(3000);
     home.click_DesplazarArriba();
