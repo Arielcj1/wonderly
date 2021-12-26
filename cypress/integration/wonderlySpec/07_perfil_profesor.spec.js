@@ -12,7 +12,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Wonderly- Home Page PROFESOR", () => {
+describe("Wonderly- PROFESOR", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
@@ -24,7 +24,7 @@ describe("Wonderly- Home Page PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesor14@gmail.com");
+    ingresar.type_Correo("profesor15@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -63,7 +63,7 @@ describe("Wonderly- Home Page PROFESOR", () => {
 
   it("Comprobar que el profesor pueda completar su perfil", () => {
     perfil.type_nombre("Profesor");
-    perfil.type_apellido("Catorce");
+    perfil.type_apellido("Quince");
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudad("Sucre");
@@ -83,7 +83,7 @@ describe("Wonderly- Home Page PROFESOR", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre14@gmail.com"); //Cambiar al correo del padre
+    ingresar.type_Correo("padre15@gmail.com"); //Cambiar al correo del padre
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
@@ -125,7 +125,6 @@ describe("Wonderly- Home Page PROFESOR", () => {
     clasesprofesor.subirArchivoFormAgregarMaterial();
     clasesprofesor.botonAgregarMaterialForm();
     clasesprofesor.click_botonRegresar();
-
   });
 
   it("12_Verificar que el profesor pueda iniciar una clase", () => {
@@ -133,6 +132,6 @@ describe("Wonderly- Home Page PROFESOR", () => {
     cy.wait(2000);
     perfil.click_iniciarClase();
     //cy.get(".title").should("be.visible");
-    cy.wait(4000)
+    cy.wait(4000);
   });
 });

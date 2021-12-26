@@ -7,7 +7,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Home Page", () => {
+describe("Home Page - UI", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
@@ -37,13 +37,13 @@ describe("Home Page", () => {
     cy.wait(4000);
   });
 
-    it('Ir a Destrezas',()=>{
-        home.click_Destrezas()
-    })
+  it("Ir a Destrezas", () => {
+    home.click_Destrezas();
+  });
 
-    it('Verificar que la pestaña Cursos redirreccione a la vista de cursos', () =>{
-      home.click_pestañaCursos()
-    })
+  it("Verificar que la pestaña Cursos redirreccione a la vista de cursos", () => {
+    home.click_pestañaCursos();
+  });
 
   it("Presionar botones de desplazamiento", () => {
     home.click_DesplazarAbajo();
@@ -52,27 +52,26 @@ describe("Home Page", () => {
     cy.wait(3000);
   });
 
-    it('Seleccionar un dia en Schedule', ()=>{
-        home.click_dia()
-        cy.wait(5000)
-    })
+  it("Seleccionar un dia en Schedule", () => {
+    home.click_dia();
+    cy.wait(5000);
+  });
 
-    it('Ir a Explorar nuestras destrezas',()=>{
-        home.click_Destrezas2()
-        cy.wait(5000)
-    })
+  it("Ir a Explorar nuestras destrezas", () => {
+    home.click_Destrezas2();
+    cy.wait(5000);
+  });
 
-    it('Iniciar sesion e ir a Membresias Explorador', () => {
-        home.click_IniciaSesion()
-        ingresar.type_Correo('josemunoz@gmail.com')
-        ingresar.type_contrasena('123456')
-        ingresar.click_continuar()
-        cy.wait(3000)
-        home.click_LogoWonderly()
-        home.click_Membresias()
-        home.click_Membresia_Explorador()
-        cy.wait(3000)
-        cy.get('.my-5').should('be.visible')
-
-      })
-    })
+  it("Iniciar sesion e ir a Membresias Explorador", () => {
+    home.click_IniciaSesion();
+    ingresar.type_Correo("josemunoz@gmail.com");
+    ingresar.type_contrasena("123456");
+    ingresar.click_continuar();
+    cy.wait(3000);
+    home.click_LogoWonderly();
+    home.click_Membresias();
+    home.click_Membresia_Explorador();
+    cy.wait(3000);
+    cy.get(".my-5").should("be.visible");
+  });
+});

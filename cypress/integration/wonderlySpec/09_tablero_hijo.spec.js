@@ -13,7 +13,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Wonderly- Home Page HIJO", () => {
+describe("Wonderly- tablero hijo", () => {
   const perfilhijo = new PerfilHijo();
   const ingresar = new Ingresar();
   const home = new Home();
@@ -26,7 +26,7 @@ describe("Wonderly- Home Page HIJO", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre14@gmail.com");
+    ingresar.type_Correo("padre15@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -84,7 +84,6 @@ describe("Wonderly- Home Page HIJO", () => {
     metodopago.click_tableroMetodoPago();
     cy.get(".card-header").should("be.visible");
   });
-
 
   // Autopago
   it("Verificar que el hijo pueda actualizar el auto pago", () => {
