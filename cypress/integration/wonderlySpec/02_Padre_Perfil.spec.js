@@ -22,7 +22,7 @@ describe("Perfil Padre", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre15@gmail.com");
+    ingresar.type_Correo("padre16@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });

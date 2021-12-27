@@ -24,7 +24,7 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesor15@gmail.com");
+    ingresar.type_Correo("profesor16@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -63,7 +63,7 @@ describe("Wonderly- PROFESOR", () => {
 
   it("Comprobar que el profesor pueda completar su perfil", () => {
     perfil.type_nombre("Profesor");
-    perfil.type_apellido("Quince");
+    perfil.type_apellido("Dieciseis");
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudad("Sucre");
@@ -83,7 +83,7 @@ describe("Wonderly- PROFESOR", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre15@gmail.com"); //Cambiar al correo del padre
+    ingresar.type_Correo("padre16@gmail.com"); //Cambiar al correo del padre
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();

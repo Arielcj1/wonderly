@@ -27,7 +27,7 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre15@gmail.com");
+    ingresar.type_Correo("padre16@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -40,19 +40,20 @@ describe("Wonderly- clases hijos", () => {
     cy.get(".actions-header > .class-title").should("be.visible");
   });
 
-  // implementado tambien en el spec del profesor
-  it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
-    perfilhijo.click_seleccionarHijo();
-    clase.click_botonEntrarClase();
-    cy.wait(3000);
-    clase.verificarClaseInscrita();
-  });
+  // // implementado tambien en el spec del profesor
+  // it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
+  //   perfilhijo.click_seleccionarHijo();
+  //   // clase.click_botonEntrarClase();
+  //   clase.click_botonNombreClase();
+  //   cy.wait(3000);
+  //   clase.verificarClaseInscrita();
+  // });
 
   it("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     cy.wait(2000);
-    claseondemand.verificarCursoOnDemand("Lunes de Ingles 11:00 Editado");
+    claseondemand.verificarCursoOnDemand("Lunes 27 de Ingles 11:00 Editado");
   });
 
   it("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
@@ -69,7 +70,7 @@ describe("Wonderly- clases hijos", () => {
     home.click_pruebaGratis();
     registro.type_nombre("Ana");
     registro.type_apellidos("Baptista");
-    registro.type_correo("16padre@gmail.com");
+    registro.type_correo("17padre@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -92,11 +93,11 @@ describe("Wonderly- clases hijos", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre15@gmail.com");
+    ingresar.type_Correo("padre16@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
-    claseondemand.verificarCursoOnDemand("Lunes de Ingles 11:00 Editado");
+    claseondemand.verificarCursoOnDemand("Lunes 27 de Ingles 11:00 Editado");
   });
 });
