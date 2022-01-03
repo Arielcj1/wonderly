@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+// Casos de prueba realizado por Yanina Cardozo
 
 import { MisHijos } from "../../paginas/Hijo/MisHijos";
 import { ClasesHijo } from "../../paginas/Hijo/ClasesHijo";
@@ -26,34 +27,34 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre16@gmail.com");
+    ingresar.type_Correo("padre18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("1_Demostrar que el hijo puede dirigirse a la pestaña POR QUE WONDERLY?", () => {
+  it.skip("1_Demostrar que el hijo puede dirigirse a la pestaña POR QUE WONDERLY?", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_PorqueWonderly();
     cy.get("h2").should("be.visible");
   });
 
-  it("2_Comprobar que el hijo se encuentre en la pestaña de DESTREZAS", () => {
+  it.skip("2_Comprobar que el hijo se encuentre en la pestaña de DESTREZAS", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_Destrezas();
     cy.get("h2").should("be.visible");
   });
 
-  it("3_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
+  it.skip("3_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
   });
 
-  it("4_Verificar que el hijo se encuentre en la sección EN VIVO", () => {
+  it.skip("4_Verificar que el hijo se encuentre en la sección EN VIVO", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionEnVivo();
   });
 
-  it("5_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
+  it.skip("5_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -61,7 +62,7 @@ describe("Wonderly- tablero hijo", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("6_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
+  it.skip("6_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -70,14 +71,14 @@ describe("Wonderly- tablero hijo", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("7_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
+  it.skip("7_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("8_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
+  it.skip("8_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();

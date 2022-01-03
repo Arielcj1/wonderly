@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+// Casos de prueba realizado por Yanina Cardozo
+
 import { PerfilHijo } from "../../paginas/Hijo/PerfilHijo";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
@@ -27,12 +29,12 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre16@gmail.com");
+    ingresar.type_Correo("padre18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it.skip("Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -49,7 +51,7 @@ describe("Wonderly- clases hijos", () => {
   //   clase.verificarClaseInscrita();
   // });
 
-  it("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
+  it.skip("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     cy.wait(2000);
@@ -64,7 +66,7 @@ describe("Wonderly- clases hijos", () => {
     claseshijo.click_botonUnirseClase();
   });
 
-  it("Comprobar que un nuevo hijo registrado se inscriba a una clase en Wonderly", () => {
+  it.skip("Comprobar que un nuevo hijo registrado se inscriba a una clase en Wonderly", () => {
     perfilpadre.click_mostrarSubmenu();
     perfilpadre.click_salir();
     home.click_pruebaGratis();
@@ -93,11 +95,11 @@ describe("Wonderly- clases hijos", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre16@gmail.com");
+    ingresar.type_Correo("padre18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
-    claseondemand.verificarCursoOnDemand("Lunes 27 de Ingles 11:00 Editado");
+    claseondemand.verificarCursoOnDemand("Martes 04 de Ingles 11:00");
   });
 });

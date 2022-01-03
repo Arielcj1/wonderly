@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+// Casos de prueba realizado por Patrik Delgadillo
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { MisHijos } from "../../paginas/Padre/MisHijos";
@@ -22,12 +22,12 @@ describe("Perfil Padre", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre16@gmail.com");
+    ingresar.type_Correo("padre18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("Registrar hijos", () => {
+  it("Comprobar que el padre pueda registrar sus hijos", () => {
     cy.get(".text-center > .btn").click();
     registrarhijo.type_nombreHijo("Hijo");
     registrarhijo.type_apellidoHijo("Uno");
@@ -36,7 +36,7 @@ describe("Perfil Padre", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("Registrar nuevo hijo desde Mis hijos", () => {
+  it.skip("Verificar que se pueda registrar un nuevo hijo desde Mis hijos", () => {
     perfil.click_mostrarSubmenu();
     perfil.click_perfil();
     //Registrar nuevo hijo
@@ -49,14 +49,14 @@ describe("Perfil Padre", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("Ir al perfil Padre", () => {
+  it("Verificar que al padre pueda Ir al perfil Padre", () => {
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
     perfil.click_mostrarSubmenu();
     perfil.click_perfil();
     cy.get(".text-dark").should("be.visible");
   });
 
-  it("Completar datos perfil Padre", () => {
+  it("Demostrar que el padre pueda completar datos del perfil", () => {
     //Ir al Perfil del padre
     perfil.click_mostrarSubmenu();
     perfil.click_perfil();

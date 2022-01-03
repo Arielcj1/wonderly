@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+// Casos de prueba realizado por Patrik Delgadillo
 
 import { Login } from "../../paginas/login";
 import { MisHijos } from "../../paginas/Padre/MisHijos";
@@ -10,7 +11,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Tablero Mis Hijos", () => {
+describe.skip("Tablero Mis Hijos", () => {
   const login = new Login();
   const mishijos = new MisHijos();
   const home = new Home();
@@ -19,16 +20,16 @@ describe("Tablero Mis Hijos", () => {
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
-    login.login_padre("padre16@gmail.com", "12345");
+    login.login_padre("padre17@gmail.com", "12345");
     perfil.click_mostrarSubmenu();
     perfil.click_perfil();
   });
 
-  it("Ir al Tablero Mis Hijos", () => {
+  it("Verificar que el padre pueda Ir al Tablero Mis Hijos", () => {
     mishijos.click_Tablero_MisHijos();
   });
 
-  it("Registrar hijo", () => {
+  it("Demostrar que el padre pueda registrar a su hijo desde Tablero Mis Hijos", () => {
     mishijos.click_Tablero_MisHijos();
     mishijos.click_RegistrarHijo();
     registrarhijo.type_nombreHijo("Hijo");

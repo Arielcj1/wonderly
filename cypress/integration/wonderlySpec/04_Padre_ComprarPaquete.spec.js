@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+// Casos de prueba realizado por Patrik Delgadillo
 
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
@@ -20,12 +21,12 @@ describe("Comprar Membresias", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre16@gmail.com");
+    ingresar.type_Correo("padre18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("Comprar membresia Explorador", () => {
+  it("Verificar que el padre pueda comprar la membresia Explorador", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Explorador();
@@ -46,7 +47,7 @@ describe("Comprar Membresias", () => {
     cy.get(".text-primary").should("be.visible");
   });
 
-  it("Comprar membresia Inventor", () => {
+  it.skip("Verificar que el padre pueda comprar la membresia Inventor", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -61,7 +62,7 @@ describe("Comprar Membresias", () => {
     cy.get(".text-primary").should("be.visible");
   });
 
-  it("Comprar membresia Genio", () => {
+  it.skip("Verificar que el padre pueda comprar la membresia Genio", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();

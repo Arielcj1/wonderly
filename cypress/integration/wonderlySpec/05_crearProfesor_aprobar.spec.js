@@ -1,4 +1,5 @@
 ///<reference types="cypress" />
+// Casos de prueba realizado por Yanina Cardozo
 
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
@@ -30,8 +31,8 @@ describe("Creacion de un profesor", () => {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profesor");
-    registroprofesor.type_apellido("Dieciseis");
-    registroprofesor.type_correoElectronico("profesor16@gmail.com");
+    registroprofesor.type_apellido("Dieciocho");
+    registroprofesor.type_correoElectronico("profesor18@gmail.com");
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
@@ -39,7 +40,7 @@ describe("Creacion de un profesor", () => {
   });
 
   it("Verificar que se pueda completar informacion", () => {
-    ingresar.type_Correo("profesor16@gmail.com");
+    ingresar.type_Correo("profesor18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);

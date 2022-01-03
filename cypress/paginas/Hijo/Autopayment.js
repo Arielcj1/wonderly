@@ -2,7 +2,8 @@
 export class Autopayment {
   verificarAutopayment() {
     var position = 1;
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 1; i++) {
+      //de cuatro hijos a 1 hijo
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr[" +
           i +

@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+// Casos de prueba realizado por Patrik Delgadillo
+
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { Perfil } from "../../paginas/Perfil";
@@ -7,7 +9,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Home Page - UI", () => {
+describe.skip("Home Page - UI", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
@@ -16,7 +18,7 @@ describe("Home Page - UI", () => {
     cy.visit("https://developers.learnwonderly.com/");
   });
 
-  it("Iniciar sesion", () => {
+  it("Verificar que un usuario pueda Iniciar sesion", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("josemunoz@gmail.com");
     ingresar.type_contrasena("123456");
@@ -25,19 +27,19 @@ describe("Home Page - UI", () => {
     perfil.buscar_hijo("Juan Muñoz");
   });
 
-  it("Ir a Por que Wonderly", () => {
+  it("Comprobar que un usuario pueda Ir a la pestaña Por que Wonderly", () => {
     home.click_PorqueWonderly();
     cy.wait(4000);
   });
 
-  it("Presionar flechas Derecha y Izquierda en Schedule", () => {
+  it("Verificar que se pueda presionar las flechas Derecha e Izquierda en Schedule", () => {
     home.click_Flecha_Der();
     cy.wait(4000);
     home.click_Flecha_Izq();
     cy.wait(4000);
   });
 
-  it("Ir a Destrezas", () => {
+  it("Comprobar que un usuario pueda Ir a Destrezas", () => {
     home.click_Destrezas();
   });
 
@@ -45,24 +47,24 @@ describe("Home Page - UI", () => {
     home.click_pestañaCursos();
   });
 
-  it("Presionar botones de desplazamiento", () => {
+  it("Comprobar que al presionar botones de desplazamiento se dirijan abajo y arriba", () => {
     home.click_DesplazarAbajo();
     cy.wait(3000);
     home.click_DesplazarArriba();
     cy.wait(3000);
   });
 
-  it("Seleccionar un dia en Schedule", () => {
+  it("Verificar que se pueda seleccionar un dia en Schedule", () => {
     home.click_dia();
     cy.wait(5000);
   });
 
-  it("Ir a Explorar nuestras destrezas", () => {
+  it("Comprobar que un usuario pueda Ir al boton Explorar nuestras destrezas", () => {
     home.click_Destrezas2();
     cy.wait(5000);
   });
 
-  it("Iniciar sesion e ir a Membresias Explorador", () => {
+  it("Demostrar que un usuario Inicie sesion y pueda ir a las Membresias Explorador", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("josemunoz@gmail.com");
     ingresar.type_contrasena("123456");

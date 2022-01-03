@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+// Casos de prueba realizado por Yanina Cardozo
 
 import { Perfil } from "../../paginas/Profesor/Perfil";
 import { Home } from "../../paginas/Home";
@@ -24,44 +25,44 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesor16@gmail.com");
+    ingresar.type_Correo("profesor18@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("1_Verificar que el profesor se encuentre en la pestaña POR QUE WONDERLY?", () => {
+  it.skip("1_Verificar que el profesor se encuentre en la pestaña POR QUE WONDERLY?", () => {
     home.click_LogoWonderly();
     home.click_PorqueWonderly();
     cy.get("h2").should("be.visible");
   });
 
-  it("2_Comprobar que el profesor se encuentre en la pestaña de DESTREZAS", () => {
+  it.skip("2_Comprobar que el profesor se encuentre en la pestaña de DESTREZAS", () => {
     home.click_LogoWonderly();
     home.click_Destrezas();
     cy.get("h2").should("be.visible");
   });
 
-  it("3_Probar que el profesor se encuentre en la sección ON DEMAND", () => {
+  it.skip("3_Probar que el profesor se encuentre en la sección ON DEMAND", () => {
     home.click_LogoWonderly();
     home.click_seccionOnDemand();
   });
 
-  it("4_Verificar que el profesor se encuentre en la sección EN VIVO", () => {
+  it.skip("4_Verificar que el profesor se encuentre en la sección EN VIVO", () => {
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
   });
 
-  it("5_verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
+  it.skip("5_verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it("6_verificar que el profesor pueda dirigirse al tablero de  Alumnos-Profesor", () => {
+  it.skip("6_verificar que el profesor pueda dirigirse al tablero de  Alumnos-Profesor", () => {
     alumnosprofesor.tableroClasesAlumnos();
     //cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it("Comprobar que el profesor pueda completar su perfil", () => {
+  it.skip("Comprobar que el profesor pueda completar su perfil", () => {
     perfil.type_nombre("Profesor");
     perfil.type_apellido("Dieciseis");
     perfil.type_telefono("65266222");
@@ -83,7 +84,7 @@ describe("Wonderly- PROFESOR", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre16@gmail.com"); //Cambiar al correo del padre
+    ingresar.type_Correo("padre18@gmail.com"); //Cambiar al correo del padre
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
@@ -92,7 +93,7 @@ describe("Wonderly- PROFESOR", () => {
     clase.verificarClaseInscrita();
   });
 
-  it("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
+  it.skip("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.click_nombreClase();
     cy.get("h4").should("be.visible");
@@ -104,7 +105,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it("10_Demostrar que el profesor pueda editar su clase", () => {
+  it.skip("10_Demostrar que el profesor pueda editar su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.editarClase();
     clasesprofesor.type_youtubeVideo(
@@ -114,7 +115,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("Probar que el profesor pueda agregar material a su clase", () => {
+  it.skip("Probar que el profesor pueda agregar material a su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.click_botonAgregarMaterial();
