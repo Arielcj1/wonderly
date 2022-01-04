@@ -63,7 +63,7 @@ describe("Wonderly - administrador", () => {
     ondemand.click_clasesOnDemand();
     ondemand.click_agregarClaseOnDemand();
 
-    ondemand.type_tituloClase("Clase OnDemand Gratis 7");
+    ondemand.type_tituloClase("Clase OnDemand Gratis 8");
     ondemand.type_descripcionClase("Detalle de la clase ondemand para niños");
     ondemand.select_materia("Inglés");
     ondemand.select_edades("7-8");
@@ -108,7 +108,7 @@ describe("Wonderly - administrador", () => {
   it("Comprobar que el administrador pueda crear un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
-    wonderlycursos.type_tituloCurso("Martes 04 de Ingles 11:00");
+    wonderlycursos.type_tituloCurso("Miercoles 05 de Ingles 11:00");
     wonderlycursos.type_descripcionCurso(
       "Clases personalizadas para ninos de primaria"
     );
@@ -154,14 +154,14 @@ describe("Wonderly - administrador", () => {
 
   it("Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso("Martes 04 de Ingles 11:00", 2); //Click en el icono Asignar Profesor
-    asignarprofe.type_seleccionarProfesor("Profesor Dieciocho");
+    editarcursos.buscar_curso("Miercoles 05 de Ingles 11:00", 2); //Click en el icono Asignar Profesor
+    asignarprofe.type_seleccionarProfesor("Profesor Diecinueve");
     asignarprofe.click_asignar();
   });
 
   it("Comprobar que el Adimin pueda asignar una clase ondemand a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso("Martes 04 de Ingles 11:00", 3);
+    editarcursos.buscar_curso("Miercoles 05 de Ingles 11:00", 3);
     claseondemand.select_claseOnDemand("INGLES PARA Niños"); // Agregar clase on demand
     claseondemand.botonAsignarClaseOnDemand();
   });
@@ -193,7 +193,7 @@ describe("Wonderly - administrador", () => {
 
   it("Verificar que el Admin puede agregar material a una clase", () => {
     homeadmin.click_tableroWonderlyCursos();
-    editarcursos.buscar_curso("Martes 04 de Ingles 11:00", 4); //Click en el icono de Ver Clases
+    editarcursos.buscar_curso("Miercoles 05 de Ingles 11:00", 4); //Click en el icono de Ver Clases
     wonderlyclase.click_iconoAgregarMaterial();
     wonderlyclase.click_agregarMaterial();
     wonderlyclase.type_tituloMaterial("Material Extra de Estudio");

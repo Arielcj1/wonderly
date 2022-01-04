@@ -25,7 +25,7 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesor18@gmail.com");
+    ingresar.type_Correo("profesor19@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -84,7 +84,7 @@ describe("Wonderly- PROFESOR", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre18@gmail.com"); //Cambiar al correo del padre
+    ingresar.type_Correo("padre19@gmail.com"); //Cambiar al correo del padre
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();

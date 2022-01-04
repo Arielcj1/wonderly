@@ -29,7 +29,7 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre18@gmail.com");
+    ingresar.type_Correo("padre19@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -55,7 +55,7 @@ describe("Wonderly- clases hijos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     cy.wait(2000);
-    claseondemand.verificarCursoOnDemand("Lunes 27 de Ingles 11:00 Editado");
+    claseondemand.verificarCursoOnDemand("Miercoles 05 de Ingles 11:00");
   });
 
   it("Verificar que el hijo pueda entrar a la clase mediante Zoom", () => {
@@ -95,11 +95,11 @@ describe("Wonderly- clases hijos", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre18@gmail.com");
+    ingresar.type_Correo("padre19@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
-    claseondemand.verificarCursoOnDemand("Martes 04 de Ingles 11:00");
+    claseondemand.verificarCursoOnDemand("Miercoles 05 de Ingles 11:00");
   });
 });
