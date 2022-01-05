@@ -29,7 +29,7 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre19@gmail.com");
+    ingresar.type_Correo("padre20@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -95,11 +95,11 @@ describe("Wonderly- clases hijos", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre19@gmail.com");
+    ingresar.type_Correo("padre20@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
-    claseondemand.verificarCursoOnDemand("Miercoles 05 de Ingles 11:00");
+    claseondemand.verificarCursoOnDemand("Viernes 07 de Ingles 12:00");
   });
 });

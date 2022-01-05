@@ -31,8 +31,8 @@ describe("Creacion de un profesor", () => {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profesor");
-    registroprofesor.type_apellido("Diecinueve");
-    registroprofesor.type_correoElectronico("profesor19@gmail.com");
+    registroprofesor.type_apellido("Veinte");
+    registroprofesor.type_correoElectronico("profesor20@gmail.com");
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
@@ -40,7 +40,7 @@ describe("Creacion de un profesor", () => {
   });
 
   it("Verificar que se pueda completar informacion", () => {
-    ingresar.type_Correo("profesor19@gmail.com");
+    ingresar.type_Correo("profesor20@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);

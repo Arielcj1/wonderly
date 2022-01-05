@@ -57,8 +57,58 @@ export class ClasesProfesor {
   botonAgregarMaterialForm() {
     cy.wait(3000);
     cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+    cy.wait(3000);
   }
   click_botonRegresar() {
     cy.get(".btn-group > .btn").click();
+  }
+  // Para eliminar material
+  verificarMaterial(nombre) {
+    cy.get("td")
+      .invoke("text")
+      .then((text) => {
+        if (text.trim().toLowerCase() == nombre.trim().toLowerCase()) {
+          cy.log("No se puede eliminar material porque no existe material");
+        } else {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr/td[4]/ul/li[2]/button"
+          ).click();
+          cy.wait(2000);
+          cy.get(".btn-group > .btn").click; //boton regresar
+        }
+      });
+  }
+
+  // Agregar 3 veces el material
+  AgregarMaterial2davez(titulo, descripcion, attachFile) {
+    for (var i = 1; i <= 3; i++) {
+      cy.get(".gpnf-add-entry").click();
+      cy.xpath(
+        "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[1]/div/input"
+      )
+        .clear()
+        .type(titulo + i);
+      cy.xpath(
+        "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[2]/div/textarea"
+      )
+        .clear()
+        .type(descripcion + i);
+      cy.get("input[type=file]").attachFile(attachFile);
+      cy.wait(3000);
+      cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+      cy.wait(3000);
+    }
+  }
+
+  // Eliminar 2 de los 3 materiales
+  EliminarMaterialAgregado() {
+    for (var i = 1; i <= 2; i++) {
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
+          i +
+          "]/td[4]/ul/li[2]/button"
+      ).click();
+    }
+    cy.get(".btn-group > .btn").click(); //boton regresar
   }
 }
