@@ -27,7 +27,7 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre18@gmail.com");
+    ingresar.type_Correo("padre20@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });

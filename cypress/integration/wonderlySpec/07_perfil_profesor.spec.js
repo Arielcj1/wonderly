@@ -25,8 +25,10 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesor19@gmail.com");
+    ingresar.type_Correo("profesor20@gmail.com");
     ingresar.type_contrasena("12345");
+    // ingresar.type_Correo("profeana@gmail.com");
+    // ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
   });
 
@@ -84,7 +86,7 @@ describe("Wonderly- PROFESOR", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre19@gmail.com"); //Cambiar al correo del padre
+    ingresar.type_Correo("padre20@gmail.com"); //Cambiar al correo del padre
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
@@ -134,5 +136,26 @@ describe("Wonderly- PROFESOR", () => {
     perfil.click_iniciarClase();
     //cy.get(".title").should("be.visible");
     cy.wait(4000);
+  });
+
+  // Eliminar material
+  it.skip("Verificar que el profesor pueda eliminar material de su clase", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.iconoAgregarMaterial();
+    clasesprofesor.AgregarMaterial2davez(
+      "Titulo ",
+      "Esto es una descripción ",
+      "sample.pdf"
+    );
+    clasesprofesor.click_botonRegresar();
+    cy.wait(2000);
+    clasesprofesor.iconoAgregarMaterial();
+    clasesprofesor.EliminarMaterialAgregado();
+    cy.get(".text-dark").should("be.visible");
+
+    // clasesprofesor.tableroClasesProfesor();
+    // clasesprofesor.iconoAgregarMaterial();
+    // clasesprofesor.click_botonAgregarMaterial();
+    // clasesprofesor.verificarMaterial("No hay materiales.");
   });
 });
