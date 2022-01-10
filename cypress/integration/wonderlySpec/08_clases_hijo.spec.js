@@ -69,7 +69,7 @@ describe("Wonderly- clases hijos", () => {
   it.skip("Comprobar que un nuevo hijo registrado se inscriba a una clase en Wonderly", () => {
     perfilpadre.click_mostrarSubmenu();
     perfilpadre.click_salir();
-    home.click_pruebaGratis();
+    home.boton_RegistroGratis();
     registro.type_nombre("Ana");
     registro.type_apellidos("Baptista");
     registro.type_correo("17padre@gmail.com");

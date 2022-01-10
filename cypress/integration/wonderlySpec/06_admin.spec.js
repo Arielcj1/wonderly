@@ -226,23 +226,22 @@ describe("Wonderly - administrador", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("LUNES 27", 4); //Click en el icono de Ver Clases
     wonderlyclase.click_iconoAgregarMaterial();
-    wonderlyclase.verificar_Material()
+    wonderlyclase.verificar_Material();
     cy.wait(2000);
     wonderlyclase.click_Regresar();
   });
 
-  it.skip('Verificar que un Admin puede agregar y eliminar material de una clase', () => {
+  it.skip("Verificar que un Admin puede agregar y eliminar material de una clase", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("LUNES 27", 4); //Click en el icono de Ver Clases
     wonderlyclase.click_iconoAgregarMaterial();
-    wonderlyclase.agregar3Materiales()
+    wonderlyclase.agregar3Materiales();
 
     cy.wait(2000);
     wonderlyclase.click_Regresar();
     wonderlyclase.click_iconoAgregarMaterial();
     //wonderlyclase.verificar_Material()
-    wonderlyclase.eliminarMaterialClase()
+    wonderlyclase.eliminarMaterialClase();
     wonderlyclase.click_Regresar();
-
-  })
+  });
 });

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 export class Home {
-  click_pruebaGratis() {
+  boton_RegistroGratis() {
     cy.get("#free-trial-home > .btn").click();
   }
 
@@ -10,41 +10,6 @@ export class Home {
   }
   click_Destrezas() {
     cy.get("#menu-item-17 > .nav-link").click();
-  }
-  click_clases_sinRegistro() {
-    //cy.get('#3630').click()
-    //cy.contains('Reservar mi clase').click()
-    cy.xpath(
-      "/html/body/div[2]/div[3]/div/div/div/main/article/div/section[2]/div[3]/div/div/div/div/div[1]/div/div/div[3]/button"
-    ).click();
-  }
-
-  click_clase_conRegistro() {
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div/div/div/div/div[1]/div/div/div[3]/button"
-    ).click();
-  }
-
-  click_clase() {
-    //cy.get('#2247').click()
-    if (text == "Reservar mi clase") {
-      cy.get("#2247").click();
-    } else {
-      cy.log("Esta clase ya esta reservada");
-    }
-  }
-
-  click_clase_Cancelar() {
-    //cy.get('#2247').click()
-    cy.get("#2247")
-      .invoke("text")
-      .then((text) => {
-        if (text != "Reservar mi clase") {
-          cy.get("#2247").click();
-        } else {
-          cy.log("Esta clase no esta reservada");
-        }
-      });
   }
 
   click_PorqueWonderly() {
@@ -115,7 +80,38 @@ export class Home {
     cy.get("#vivo-tab").click();
   }
 
-  click_pestañaCursos(){
-    cy.get('#menu-item-5424 > .nav-link').click()
+  click_pestañaCursos() {
+    cy.get("#menu-item-5424 > .nav-link").click();
+  }
+
+  boton_7diasGratis() {
+    //Boton menu 7 dias gratis
+    cy.get("#menu-item-6020 > .nav-link").click();
+  }
+
+  boton_conMovimiento7diasGratis() {
+    cy.get(".mb-0 > .btn").click();
+  }
+
+  //  Menu de Destrezas
+
+  menu_Robotica() {
+    cy.get("#menu-item-6026 > .nav-link").click();
+  }
+  menu_Programacion() {
+    cy.get("#menu-item-6027 > .nav-link").click();
+  }
+  menu_DesarrolloVideoJuegos() {
+    cy.get("#menu-item-6028 > .nav-link").click();
+  }
+  menu_Matematicas() {
+    cy.get("#menu-item-6029 > .nav-link").click();
+  }
+  menu_Ingles() {
+    cy.get("#menu-item-6030 > .nav-link").click();
+  }
+
+  impactoSocial() {
+    cy.get("#menu-item-6094 > .nav-link").click();
   }
 }
