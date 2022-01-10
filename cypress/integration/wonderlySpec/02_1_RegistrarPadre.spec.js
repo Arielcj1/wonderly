@@ -17,7 +17,7 @@ describe("Perfil Padre - REGISTRO", () => {
   });
 
   it("Verificar que el padre pueda registrarse", () => {
-    home.click_pruebaGratis();
+    home.boton_RegistroGratis();
     registro.type_nombre("Julio");
     registro.type_apellidos("Roca");
     registro.type_correo("padre20@gmail.com");

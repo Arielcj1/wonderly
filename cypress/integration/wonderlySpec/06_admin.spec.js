@@ -58,7 +58,7 @@ describe("Wonderly - administrador", () => {
     cy.wait(1000);
   });
 
-  it.skip("Comprobar que el admin puede crear una clase on demand", () => {
+  it("Comprobar que el admin puede crear una clase on demand", () => {
     ondemand.click_wonderlyClasesTablero();
     ondemand.click_clasesOnDemand();
     ondemand.click_agregarClaseOnDemand();
@@ -92,7 +92,7 @@ describe("Wonderly - administrador", () => {
     ondemand.click_guardar();
   });
 
-  it.skip("Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
+  it("Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
     ondemand.click_wonderlyClasesTablero();
     ondemand.click_clasesOnDemand();
     modulosonDemand.buscar_cursoOnDemand("INGLES PARA Niños", 2);
@@ -105,7 +105,7 @@ describe("Wonderly - administrador", () => {
     cy.wait(3000);
   });
 
-  it.skip("Comprobar que el administrador pueda crear un curso", () => {
+  it("Comprobar que el administrador pueda crear un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
     wonderlycursos.type_tituloCurso("Viernes 07 de Ingles 12:00");
@@ -152,14 +152,14 @@ describe("Wonderly - administrador", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it.skip("Comprobar que el Admin puede asignar un profesor a un curso", () => {
+  it("Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("Viernes 07 de Ingles 12:00", 2); //Click en el icono Asignar Profesor
     asignarprofe.type_seleccionarProfesor("Profesor Veinte");
     asignarprofe.click_asignar();
   });
 
-  it.skip("Comprobar que el Adimin pueda asignar una clase ondemand a un curso", () => {
+  it("Comprobar que el Adimin pueda asignar una clase ondemand a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("Viernes 07 de Ingles 12:00", 3);
     claseondemand.select_claseOnDemand("INGLES PARA Niños"); // Agregar clase on demand
@@ -226,23 +226,22 @@ describe("Wonderly - administrador", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("LUNES 27", 4); //Click en el icono de Ver Clases
     wonderlyclase.click_iconoAgregarMaterial();
-    wonderlyclase.verificar_Material()
+    wonderlyclase.verificar_Material();
     cy.wait(2000);
     wonderlyclase.click_Regresar();
   });
 
-  it.skip('Verificar que un Admin puede agregar y eliminar material de una clase', () => {
+  it.skip("Verificar que un Admin puede agregar y eliminar material de una clase", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso("LUNES 27", 4); //Click en el icono de Ver Clases
     wonderlyclase.click_iconoAgregarMaterial();
-    wonderlyclase.agregar3Materiales()
+    wonderlyclase.agregar3Materiales();
 
     cy.wait(2000);
     wonderlyclase.click_Regresar();
     wonderlyclase.click_iconoAgregarMaterial();
     //wonderlyclase.verificar_Material()
-    wonderlyclase.eliminarMaterialClase()
+    wonderlyclase.eliminarMaterialClase();
     wonderlyclase.click_Regresar();
-
-  })
+  });
 });
