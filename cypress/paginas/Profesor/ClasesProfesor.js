@@ -102,7 +102,7 @@ export class ClasesProfesor {
 
   // Eliminar 2 de los 3 materiales
   EliminarMaterialAgregado() {
-    for (var i = 1; i <= 2; i++) {
+    for (var i = 1; i <= 1; i++) {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
           i +
@@ -110,5 +110,28 @@ export class ClasesProfesor {
       ).click();
     }
     cy.get(".btn-group > .btn").click(); //boton regresar
+  }
+
+  // Editar material
+  EditarMaterialAgregado(titulo, attachFile) {
+    for (var i = 1; i <= 1; i++) {
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
+          i +
+          "]/td[4]/ul/li[1]/button"
+      ).click();
+
+      cy.wait(2000);
+      cy.xpath(
+        "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[1]/div/input"
+      )
+        .clear()
+        .type(titulo + i);
+      cy.get("input[type=file]").attachFile(attachFile);
+
+      cy.wait(3000);
+      cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+      cy.wait(3000);
+    }
   }
 }

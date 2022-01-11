@@ -8,6 +8,7 @@ import { ClasesProfesor } from "../../paginas/Profesor/ClasesProfesor";
 import { AlumnosProfesor } from "../../paginas/Profesor/AlumnosProfesor";
 import { PerfilHijo } from "../../paginas/Hijo/PerfilHijo";
 import { Clase } from "../../paginas/Hijo/Clase";
+import { Destrezas } from "../../paginas/Destrezas";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -21,16 +22,19 @@ describe("Wonderly- PROFESOR", () => {
   const alumnosprofesor = new AlumnosProfesor();
   const clase = new Clase();
   const perfilhijo = new PerfilHijo();
+  const destrezas = new Destrezas();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesor20@gmail.com");
-    ingresar.type_contrasena("12345");
-    // ingresar.type_Correo("profeana@gmail.com");
-    // ingresar.type_contrasena("abcABC123");
+    // ingresar.type_Correo("profesor20@gmail.com");
+    // ingresar.type_contrasena("12345");
+    ingresar.type_Correo("profeana@gmail.com");
+    ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
   });
+
+  // Navegacion menu arriba
 
   it.skip("1_Verificar que el profesor se encuentre en la pestaña POR QUE WONDERLY?", () => {
     home.click_LogoWonderly();
@@ -44,6 +48,13 @@ describe("Wonderly- PROFESOR", () => {
     cy.get("h2").should("be.visible");
   });
 
+  it.skip("Verificar que el profesor se encuentre en la pestaña de cursos", () => {
+    home.click_pestañaCursos();
+    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  });
+
+  // Secciones EN VIVO y ON DEMAND
+
   it.skip("3_Probar que el profesor se encuentre en la sección ON DEMAND", () => {
     home.click_LogoWonderly();
     home.click_seccionOnDemand();
@@ -54,6 +65,7 @@ describe("Wonderly- PROFESOR", () => {
     home.click_seccionEnVivo();
   });
 
+  // Tableros del Profesor
   it.skip("5_verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
@@ -82,7 +94,7 @@ describe("Wonderly- PROFESOR", () => {
 
   //Implementar que el hijo pueda inscribirse a una clase
 
-  it("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
+  it.skip("Verificar que el hijo pueda inscribirse a una clase desde la seccion en VIVO", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
@@ -130,7 +142,7 @@ describe("Wonderly- PROFESOR", () => {
     clasesprofesor.click_botonRegresar();
   });
 
-  it("12_Verificar que el profesor pueda iniciar una clase", () => {
+  it.skip("12_Verificar que el profesor pueda iniciar una clase", () => {
     perfil.click_tableroClasesProfesor();
     cy.wait(2000);
     perfil.click_iniciarClase();
@@ -138,8 +150,8 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(4000);
   });
 
-  // Eliminar material
-  it.skip("Verificar que el profesor pueda eliminar material de su clase", () => {
+  // Agregar para Eliminar y editar material
+  it("Verificar que el profesor pueda eliminar material de su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.AgregarMaterial2davez(
@@ -151,7 +163,13 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(2000);
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.EliminarMaterialAgregado();
-    cy.get(".text-dark").should("be.visible");
+    clasesprofesor.iconoAgregarMaterial();
+    clasesprofesor.EditarMaterialAgregado(
+      "Prueba para editar el titulo",
+      "SegundoCuento.pdf"
+    );
+
+    // cy.get(".text-dark").should("be.visible");
 
     // clasesprofesor.tableroClasesProfesor();
     // clasesprofesor.iconoAgregarMaterial();

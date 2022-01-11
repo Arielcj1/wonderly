@@ -9,6 +9,7 @@ import { Ingresar } from "../../paginas/Ingresar";
 import { MetodoPago } from "../../paginas/Hijo/MetodoPago";
 import { Clase } from "../../paginas/Hijo/Clase";
 import { Autopayment } from "../../paginas/Hijo/Autopayment";
+import { Destrezas } from "../../paginas/Destrezas";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -22,7 +23,8 @@ describe("Wonderly- tablero hijo", () => {
   const claseshijo = new ClasesHijo();
   const metodopago = new MetodoPago();
   const clase = new Clase();
-  const autopayment = new Autopayment(); //nueva seccion
+  const autopayment = new Autopayment();
+  const destrezas = new Destrezas();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
@@ -32,6 +34,7 @@ describe("Wonderly- tablero hijo", () => {
     ingresar.click_continuar();
   });
 
+  // Navegacion por pestañas y secciones
   it.skip("1_Demostrar que el hijo puede dirigirse a la pestaña POR QUE WONDERLY?", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_PorqueWonderly();
@@ -52,6 +55,11 @@ describe("Wonderly- tablero hijo", () => {
   it.skip("4_Verificar que el hijo se encuentre en la sección EN VIVO", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionEnVivo();
+  });
+
+  it("Verificar que el hijo se encuentre en la pestaña de cursos", () => {
+    home.click_pestañaCursos();
+    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
   });
 
   it.skip("5_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {

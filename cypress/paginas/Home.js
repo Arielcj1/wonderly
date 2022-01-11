@@ -114,4 +114,7 @@ export class Home {
   impactoSocial() {
     cy.get("#menu-item-6094 > .nav-link").click();
   }
+  prensa() {
+    cy.get("#menu-item-6097 > .nav-link").click();
+  }
 }
