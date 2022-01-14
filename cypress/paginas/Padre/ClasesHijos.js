@@ -19,4 +19,10 @@ export class ClasesHijos {
   botonPreguntaWhatsapp() {
     cy.get("#pills-tab > .btn").click();
   }
+
+  botonInscribeteCursos() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div[1]/div[8]/div/div/div[2]/div/div[1]/a"
+    ).click();
+  }
 }
