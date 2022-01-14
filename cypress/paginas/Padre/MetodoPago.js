@@ -13,6 +13,10 @@ export class MetodoPago{
         cy.get('.card-footer > .btn').click()
     }
 
+    click_anadirTarjeta(){
+        cy.get('.entry-content > .btn').click()
+    }
+
     //Actualiza datos de Tarjeta
     type_numTarjeta(numero){
         cy.get('#input_37_12_1').type(numero)

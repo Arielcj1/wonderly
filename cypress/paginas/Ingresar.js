@@ -13,4 +13,8 @@ export class Ingresar {
     click_continuar(){
         cy.get('#gform_submit_button_0').click()
     }
+
+    close_modalMessage(){
+        cy.get('.modal-body > .close > span').click()
+    }
 }

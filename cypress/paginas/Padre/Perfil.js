@@ -64,7 +64,7 @@ export class Perfil{
         cy.get('#navbarDropdown').click()
     }
     click_perfil(){
-        cy.get('#menu-item-319 > .dropdown-item').click()
+        cy.get('#menu-item-319 > .dropdown-item').click()  //Click en la opcion Cuenta del dropdown menu
     }
     click_perfiles(){
         cy.get('#menu-item-2667 > .dropdown-item').click()

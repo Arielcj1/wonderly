@@ -29,7 +29,7 @@ describe.skip("Tablero Mis Hijos", () => {
     mishijos.click_Tablero_MisHijos();
   });
 
-  it("Demostrar que el padre pueda registrar a su hijo desde Tablero Mis Hijos", () => {
+  it("Demostrar que el padre pueda registrar a su hijo desde Tablero Mis Hijos", () => {   //ya esta hecho, 
     mishijos.click_Tablero_MisHijos();
     mishijos.click_RegistrarHijo();
     registrarhijo.type_nombreHijo("Hijo");

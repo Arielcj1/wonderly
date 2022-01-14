@@ -35,4 +35,18 @@ export class RegistrarHijo {
   click_botonExploraCursos() {
     cy.get(".form_footer > .btn").click();
   }
+
+  //Boton inscribete de un curso desde el home de Wonderly
+  click_botonInscribete(){
+    cy.get('.clases-vivo-list > .slick-list > .slick-track > .slick-current > :nth-child(1) > .col > :nth-child(1) > .course-block > .course-actions > .btn').click()
+  }
+
+  click_botonInscribeteGratis(){
+    cy.xpath("/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[3]/a[1]").click()
+  }
+
+  //despues que se hace click en la pestaña Cursos
+  click_inscribeteCurso(){
+    cy.get(':nth-child(1) > .px-0 > .course-block > .course-body > .d-flex > .mr-1 > .btn').click()
+  }
 }

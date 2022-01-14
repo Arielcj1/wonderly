@@ -42,4 +42,16 @@ export class Registro {
       click_aceptar(){
         cy.get('#modalBooking > .modal-dialog > .modal-content > .modal-footer > .btn').click({force:true})
       }
+
+      click_Modal(){
+        cy.get('#validationModal').click()
+      }
+
+      click_ModalClose(){
+        cy.get('.modal-body > .close > span').click()
+      }
+      //en la pagina de welcome despues de registrar un nuevo padre
+      click_botonRegistarHijos(){
+        cy.get('.welcome_parent > .btn').click()
+      }
 }
