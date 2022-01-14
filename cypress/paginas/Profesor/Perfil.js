@@ -1,43 +1,40 @@
 /// <reference types="cypress" />
 
 export class Perfil {
-
-  type_telefono_PrimeraVez(telefono){
-    cy.get('#input_8_3').type(telefono);
+  type_telefono_PrimeraVez(telefono) {
+    cy.get("#input_8_3").clear().type(telefono);
   }
 
-  type_fechaNac_primeraVez(fecha){
-    cy.get('#input_8_4').type(fecha);
+  type_fechaNac_primeraVez(fecha) {
+    cy.get("#input_8_4").type(fecha);
   }
-  select_pais_primeraVez(pais){
-    cy.get('#input_8_6').select(pais);
+  select_pais_primeraVez(pais) {
+    cy.get("#input_8_6").select(pais);
   }
-  select_comoNosConociste_primeraVez(como){
-    cy.get('#input_8_8').select(como)
+  select_comoNosConociste_primeraVez(como) {
+    cy.get("#input_8_8").select(como);
   }
-  click_siguiente_PV(){
-    cy.get('#gform_submit_button_8').click();
+  click_siguiente_PV() {
+    cy.get("#gform_submit_button_8").click();
   }
-  type_descripcion_PV(desc){
-    cy.get('#input_9_2').type(desc);
+  type_descripcion_PV(desc) {
+    cy.get("#input_9_2").type(desc);
   }
-  type_equipo_PV(equipo){
-    cy.get('#input_9_1').type(equipo);
+  type_equipo_PV(equipo) {
+    cy.get("#input_9_1").type(equipo);
   }
-  check_especialidad_PV(){
-    cy.get('#choice_9_3_1').check();
+  check_especialidad_PV() {
+    cy.get("#choice_9_3_1").check();
   }
-  check_experiencia_PV(){
-    cy.get('#choice_9_5_1').check();
+  check_experiencia_PV() {
+    cy.get("#choice_9_5_1").check();
   }
-  subir_doc_PV(){
+  subir_doc_PV() {
     cy.get("input[type=file]").attachFile("SegundoCuento.pdf");
   }
-  listo_PV(){
-    cy.get('#gform_submit_button_9').click();
+  listo_PV() {
+    cy.get("#gform_submit_button_9").click();
   }
-
-
 
   click_tableroClasesProfesor() {
     cy.get("#menu-item-456 > .nav-link").click();
@@ -93,8 +90,24 @@ export class Perfil {
     cy.get("input[type=file]").attachFile("SegundoCuento.pdf");
   }
 
-  click_botonGuardar() {
+  // Prueba En documentoWord
+  subirArchivo() {
+    cy.wait(2000);
+    cy.get("input[type=file]").attachFile("file-sample5.docx");
+  }
+
+  click_botonGuardar(alert) {
     cy.get("#gform_submit_button_10").click();
+    cy.wait(3000);
+    cy.get(".alert")
+      .invoke("text")
+      .then((text) => {
+        if (text.trim().includes(alert.trim())) {
+          cy.log("Es un archivo PDF");
+        } else {
+          cy.log("No es un archivo PDF");
+        }
+      });
   }
   click_iniciarClase() {
     cy.xpath(

@@ -13,7 +13,8 @@ export class Home {
   }
 
   click_PorqueWonderly() {
-    cy.get("#menu-item-14 > .nav-link").click();
+    // cy.get("#menu-item-14 > .nav-link").click();
+    cy.get("#menu-item-71 > .nav-link").click();
   }
   click_Flecha_Izq() {
     cy.get(".schedule-date-slider > .slick-prev").click();
@@ -24,6 +25,12 @@ export class Home {
   click_dia() {
     cy.get(
       '[data-slick-index="1"] > div > li > .trigger-schedule-clases'
+    ).click();
+  }
+
+  click_diaSchedule() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[8]/div/li/a"
     ).click();
   }
   click_Destrezas2() {
@@ -64,7 +71,8 @@ export class Home {
   }
 
   click_MenuUsuario() {
-    cy.get("#navbarDropdown").click();
+    // cy.get("#navbarDropdown").click();
+    cy.get("#menu-item-142 > #navbarDropdown").click();
   }
 
   click_salir() {

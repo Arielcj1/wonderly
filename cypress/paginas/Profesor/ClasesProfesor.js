@@ -114,7 +114,7 @@ export class ClasesProfesor {
 
   // Editar material
   EditarMaterialAgregado(titulo, attachFile) {
-    for (var i = 1; i <= 1; i++) {
+    for (var i = 1; i <= 2; i++) {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
           i +
@@ -132,6 +132,53 @@ export class ClasesProfesor {
       cy.wait(3000);
       cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
       cy.wait(3000);
+    }
+  }
+
+  VerificarFecha() {
+    const ArrayDefechas = [];
+    let incremento = 1;
+    for (var i = 1; i <= 4; i++) {
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[" +
+          i +
+          "]/td[1]"
+      )
+        .invoke("text")
+        .then((fecha) => {
+          ArrayDefechas.push(fecha);
+          if (incremento === 4) {
+            const arrayFechasOrdenadas = ArrayDefechas.sort();
+            for (var j = 0; j < ArrayDefechas.length; j++) {
+              cy.log(" Fecha: ", ArrayDefechas[j]);
+
+              if (ArrayDefechas[j] == arrayFechasOrdenadas[j]) {
+                cy.log(
+                  "----",
+                  ArrayDefechas[j],
+                  " == ",
+                  arrayFechasOrdenadas[j]
+                );
+              } else {
+                cy.log("las fechas no estan ordenadas");
+              }
+            }
+          }
+          incremento++;
+        });
+
+      // HORA;
+      // for (var k = 1; k <= 4; k++) {
+      //   cy.xpath(
+      //     "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[" +
+      //       k +
+      //       "]/td[2]"
+      //   )
+      //     .invoke("text")
+      //     .then((hour) => {
+      //       cy.log("La hora es ", hour);
+      //     });
+      // }
     }
   }
 }

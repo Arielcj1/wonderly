@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-// Casos de prueba realizado por Patrik Delgadillo
+// Casos de prueba realizado por Patrik Delgadillo y Yanina Cardozo
 
 import { Destrezas } from "../../paginas/Destrezas";
 import { Home } from "../../paginas/Home";
@@ -84,6 +84,13 @@ describe("Home Page - UI", () => {
   it("Comprobar que el usuario se encuentre en la pestaña de Impacto social", () => {
     home.impactoSocial();
     cy.get("h2").should("be.visible");
+  });
+
+  it("Verificar que el usuario se encuentre en el contenido de Presnsa", () => {
+    home.prensa();
+    cy.get("h2")
+      .should("contain.text", "Bienvenido a Wonderly")
+      .should("be.visible");
   });
 
   it("Verificar que el usuario se encuentre en la materia Robotica desde el menu Destrezas", () => {

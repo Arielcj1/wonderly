@@ -23,7 +23,7 @@ describe("Creacion de un profesor", () => {
     home.click_IniciaSesion();
   });
 
-  it("Verificar que el admin pueda crear un profesor", () => {
+  it.skip("1_Verificar que el admin pueda crear un profesor", () => {
     ingresar.type_Correo("neida.veizaga@believesol.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
@@ -39,12 +39,22 @@ describe("Creacion de un profesor", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("Verificar que se pueda completar informacion", () => {
+  it.skip("2_Comprobar que un profesor puede iniciar sesion en wonderly", () => {
     ingresar.type_Correo("profesor20@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);
-    perfil.type_telefono_PrimeraVez("79846521");
+    cy.get("#menu-item-144 > .nav-link")
+      .should("contain.text", "Perfil")
+      .should("be.visible");
+  });
+
+  it("3_Comprobar que un profesor puede editar y completar sus datos personales", () => {
+    ingresar.type_Correo("profesor20@gmail.com");
+    ingresar.type_contrasena("12345");
+    ingresar.click_continuar();
+    cy.wait(2000);
+    perfil.type_telefono_PrimeraVez("79846522");
     perfil.type_fechaNac_primeraVez("12/12/1985");
     perfil.select_pais_primeraVez("Bolivia");
     perfil.select_comoNosConociste_primeraVez("Facebook");
@@ -57,5 +67,21 @@ describe("Creacion de un profesor", () => {
     perfil.subir_doc_PV();
     perfil.listo_PV();
     cy.get(".text-dark").should("be.visible");
+  });
+
+  it.skip("4_Comprobar que se muestra un mensaje de advertencia cuando no ingresa todos los datos requeridos para iniciar sesion", () => {
+    ingresar.type_Correo("profesor20@gmail.com");
+    ingresar.type_contrasena("1234");
+    ingresar.click_continuar();
+    cy.wait(2000);
+    cy.get(".message-error > .title").should("be.visible");
+  });
+
+  it.skip("5_Comprobar que un profesor no pueda ingresar con email y contraseña incorrecta", () => {
+    ingresar.type_Correo("profesor201@gmail.com");
+    ingresar.type_contrasena("123456789");
+    ingresar.click_continuar();
+    cy.wait(2000);
+    cy.get(".message-error > .title").should("be.visible");
   });
 });
