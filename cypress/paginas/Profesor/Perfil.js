@@ -62,7 +62,7 @@ export class Perfil {
   }
 
   type_ciudad(ciudad) {
-    cy.get("#input_10_20").clear().type(ciudad);
+    cy.get("#input_10_20").clear().type(ciudad).clear();
   }
 
   type_descripcionAcercaDeTi(descripcion) {
@@ -113,5 +113,18 @@ export class Perfil {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[4]/button[2]"
     ).click();
+  }
+
+  iniciarLaClaseAntes(nombre) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[4]/button[2]"
+    ).click();
+    cy.get(".title")
+      .invoke("text")
+      .then((text) => {
+        if (text == nombre) {
+          cy.log("No puede iniciar la clase ");
+        }
+      });
   }
 }

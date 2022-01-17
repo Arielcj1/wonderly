@@ -1,4 +1,5 @@
 ///<reference types="cypress"/>
+// Casos de prueba realizado por Yanina Cardozo
 
 import { Clase } from "../../paginas/Hijo/Clase";
 import { MembresiasHijo } from "../../paginas/Hijo/MembresiasHijo";
@@ -7,7 +8,6 @@ import { PerfilHijo } from "../../paginas/Hijo/PerfilHijo";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 
-// Casos de prueba realizado por Yanina Cardozo
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });

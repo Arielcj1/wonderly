@@ -33,21 +33,21 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre20@gmail.com");
-    ingresar.type_contrasena("12345");
+    ingresar.type_Correo("yani.cardozosalas@gmail.com");
+    ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
   });
 
   // NAVEGACION POR LOS TABLEROS: 1,2,3,4
-  it.skip("1_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
+  it("1_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
-    perfilhijo.click_usuarioPerfil();
-    cy.get(".text-dark").should("be.visible");
+    // perfilhijo.click_usuarioPerfil();
+    // cy.get(".text-dark").should("be.visible");
   });
 
-  it.skip("2_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
+  it("2_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -56,14 +56,14 @@ describe("Wonderly- tablero hijo", () => {
     cy.get(".text-dark").should("be.visible");
   });
 
-  it.skip("3_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
+  it("3_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     cy.get(".text-dark").should("be.visible");
   });
 
-  it.skip("4_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
+  it("4_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();
@@ -72,7 +72,7 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   //  BIENVENIDA: 5,6,7,8
-  it.skip("5_Verificar que el hijo pueda ver el titulo de Bienvenido al sistema/Nombre del hijo en el Tab de Perfil", () => {
+  it("5_Verificar que el hijo pueda ver el titulo de Bienvenido al sistema/Nombre del hijo en el Tab de Perfil", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();
@@ -81,7 +81,7 @@ describe("Wonderly- tablero hijo", () => {
       .should("be.visible"); //Nombre del hijo
   });
 
-  it.skip("6_Verificar que el hijo pueda ver el titulo de Bienvenido al sistema/Nombre del hijo en el Tab de Mis hijos", () => {
+  it("6_Verificar que el hijo pueda ver el titulo de Bienvenido al sistema/Nombre del hijo en el Tab de Mis hijos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();
@@ -91,7 +91,7 @@ describe("Wonderly- tablero hijo", () => {
       .should("be.visible"); //Nombre del hijo
   });
 
-  it.skip("7_Comprobar que el hijo pueda ver el titulo de Bienvenido al sistema/Nombre del hijo en el Tab de Clases hijo", () => {
+  it("7_Comprobar que el hijo pueda ver el titulo de Bienvenido al sistema/Nombre del hijo en el Tab de Clases hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();
@@ -101,7 +101,7 @@ describe("Wonderly- tablero hijo", () => {
       .should("be.visible"); //Nombre del hijo
   });
 
-  it.skip('8_Demostrar que un hijo pueda ver el titulo de Bienvenido a tu perfil/nombre del padre en el Tab de "Método de Pago', () => {
+  it('8_Demostrar que un hijo pueda ver el titulo de Bienvenido a tu perfil/nombre del padre en el Tab de "Método de Pago', () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     perfilhijo.click_usuarioPerfil();
@@ -112,32 +112,32 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   // SECCION: 9
-  it.skip("9_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
+  it("9_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
   });
 
-  it.skip("10_Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
+  it("10_Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     cy.wait(2000);
     claseondemand.verificarCursoOnDemand("Miercoles 05 de Ingles 11:00");
   });
 
-  it.skip("10_1_Comprobar que el hijo pueda ingresar a la clase Ondemand creada", () => {
+  it("10_1_Comprobar que el hijo pueda ingresar a la clase Ondemand creada", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_seccionOnDemand();
     claseondemand.verificarCursoOnDemand("Viernes 07 de Ingles 12:00");
   });
 
   // INSCRIPCION: 10
-  it.skip("11_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", () => {
+  it("11_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", () => {
     perfilhijo.click_seleccionarHijo();
     cy.wait(3000);
     clase.verificarClaseInscrita();
   });
 
-  it.skip("16_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
+  it("16_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
