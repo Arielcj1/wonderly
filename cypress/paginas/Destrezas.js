@@ -9,7 +9,7 @@ export class Destrezas {
     cy.get(":nth-child(2) > .container > .row > .col-md-7 > .btn").click();
   }
   botonMirarCursoIngles() {
-    cy.get(":nth-child(3) > .container > .row > .col-md-7 > .btn").click();
+    cy.get(":nth-child(4) > .container > .row > .col-md-7 > .btn").click();
   }
   botonMirarCursoMatematicas() {
     cy.get(".pb-md-0 > .container > .row > .col-md-7 > .btn").click();

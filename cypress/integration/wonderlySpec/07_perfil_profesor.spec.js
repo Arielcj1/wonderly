@@ -47,7 +47,7 @@ describe("Wonderly- PROFESOR", () => {
       .should("be.visible");
   });
 
-  it("9_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos.", () => {
+  it.skip("9_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos.", () => {
     perfil.type_nombre("Ana");
     perfil.type_apellido("Gunn");
     perfil.type_telefono("65266222");
@@ -60,19 +60,18 @@ describe("Wonderly- PROFESOR", () => {
     perfil.check_ExperienciaRangoEdad();
     perfil.seleccionarArchivo();
     perfil.click_botonGuardar("Su información ha sido guardada con éxito");
-  });
-
-  it.skip("10_Verificar que el archivo subido del CV sea en formato PDF", () => {
-    perfil.subirArchivo();
-    perfil.click_botonGuardar(
-      "El tipo de archivo subido no está permitido. Debe ser uno de los siguientes: pdf."
-    );
     cy.get(".title").should("be.visible");
   });
 
-  //Implementar que el hijo pueda inscribirse a una clase
+  // Revisar:
+  it.skip("10_Verificar que el archivo subido del CV sea en formato PDF", () => {
+    perfil.subirArchivo();
+    perfil.click_botonGuardar("¡Oops! Hubo un problema con tu envío.");
+    cy.get(".title").should("be.visible");
+  });
 
-  it.skip("1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase", () => {
+  //HIJO SE INSCRIBE A UNA CLASE:
+  it.skip("10_1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase", () => {
     home.click_MenuUsuario();
     home.click_salir();
     home.click_IniciaSesion();
@@ -84,19 +83,33 @@ describe("Wonderly- PROFESOR", () => {
     clase.verificarClaseInscrita();
   });
 
-  it.skip("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
-    clasesprofesor.tableroClasesProfesor();
+  it.skip("11_Verificar que un profesor puede iniciar una clase desde el detalle de la clase", () => {
+    perfil.click_tableroClasesProfesor();
+    cy.wait(2000);
     clasesprofesor.click_nombreClase();
-    cy.get("h4").should("be.visible");
+    clasesprofesor.boton_iniciarClase();
   });
 
-  it.skip("9_Verificar que el profesor pueda ver los alumnos inscritos de su clase", () => {
-    clasesprofesor.tableroClasesProfesor();
-    clasesprofesor.click_numeroDeInscritos();
-    cy.get("thead > tr > :nth-child(2)").should("be.visible");
+  it.skip("12_Verificar que un profesor puede Iniciar clase desde el tablero Clases profesor", () => {
+    perfil.click_tableroClasesProfesor();
+    cy.wait(2000);
+    perfil.click_iniciarClase();
+    cy.wait(4000);
   });
 
-  it.skip("13_erificar que un profesor puede editar su clase.", () => {
+  it.skip("13_Verificar que un profesor puede Iniciar clase desde el Schedule", () => {
+    home.click_LogoWonderly();
+    home.click_seccionEnVivo();
+    clasesprofesor.boton_iniciarClaseSchedule("Iniciar Clase");
+  });
+
+  it.skip("14_Verificar que un profesor puede ver sus clases asignadas desde el schedule", () => {
+    home.click_LogoWonderly();
+    home.click_seccionEnVivo();
+    clasesprofesor.verificarClaseAsignadaSchedule("Iniciar Clase");
+  });
+
+  it.skip("15_Verificar que un profesor puede editar su clase.", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.editarClase();
     clasesprofesor.type_youtubeVideo(
@@ -106,7 +119,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it.skip("14_Verificar que un profesor puede agregar material a su clase", () => {
+  it.skip("16_Verificar que un profesor puede agregar material a su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.click_botonAgregarMaterial();
@@ -119,16 +132,8 @@ describe("Wonderly- PROFESOR", () => {
     clasesprofesor.click_botonRegresar();
   });
 
-  it.skip("12_Verificar que el profesor pueda iniciar una clase", () => {
-    perfil.click_tableroClasesProfesor();
-    cy.wait(2000);
-    perfil.click_iniciarClase();
-    //cy.get(".title").should("be.visible");
-    cy.wait(4000);
-  });
-
-  // Agregar para Eliminar y editar material
-  it.skip("15_16_Verificar que un profesor puede eliminar material y editar material a su clase", () => {
+  // Agregar material para Eliminar
+  it.skip("17_Verificar que un profesor puede eliminar material de su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.AgregarMaterial2davez(
@@ -140,6 +145,19 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(2000);
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.EliminarMaterialAgregado();
+  });
+
+  //Agregar Material para Editar
+  it.skip("18_Verificar que un profesor puede editar material a su clase", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.iconoAgregarMaterial();
+    clasesprofesor.AgregarMaterial2davez(
+      "Titulo ",
+      "Esto es una descripción ",
+      "sample.pdf"
+    );
+    clasesprofesor.click_botonRegresar();
+    cy.wait(2000);
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.EditarMaterialAgregado(
       "Prueba para editar el titulo",
@@ -147,9 +165,47 @@ describe("Wonderly- PROFESOR", () => {
     );
   });
 
-  it.skip("Verificar que las clases esten ordenadas cronologicamente", () => {
+  //Completar
+  it.skip("19_Verificar que el material agregado por el profesor respeta los formatos permitidos y el tamaño maximo de archivo", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.iconoAgregarMaterial();
+    clasesprofesor.click_botonAgregarMaterial();
+    clasesprofesor.type_tituloFormAgregarMaterial("       ,        ");
+    clasesprofesor.type_descripcionFormAgregarMaterial("                 ");
+    clasesprofesor.subirArchivoFormAgregarMaterial();
+    clasesprofesor.botonAgregarMaterialForm();
+    clasesprofesor.click_botonRegresar();
+  });
+
+  it.skip("20_Verificar que las clases esten ordenadas cronologicamente", () => {
     cy.wait(2000);
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.VerificarFecha();
+  });
+
+  it.skip("21_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.click_nombreClase();
+    cy.get(".actions-header > .class-title").should("be.visible");
+    cy.get(".detail-materia > b").should("be.visible");
+  });
+
+  it.skip("Comprobar que un profesor no puede iniciar una clase hasta 30 minutos que inicie una clase.", () => {
+    perfil.click_tableroClasesProfesor();
+    cy.wait(2000);
+    perfil.iniciarLaClaseAntes("¡Oops! Es muy pronto para inciar la clase.");
+    cy.wait(4000);
+  });
+
+  // Completar el 25
+  it.skip("24_Comprobar que un profesor puede ver la cantidad de alumnos registrados a una clase desde Clases Profesor.", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.click_numeroDeInscritos();
+    cy.get("thead > tr > :nth-child(2)").should("be.visible");
+  });
+
+  it("25_Comprobar que un profesor pueda ver la cantidad de inscritos de su clase en '0' cuando no hay hijos inscritos", () => {
+    clasesprofesor.tableroClasesProfesor();
+    clasesprofesor.click_numeroDeInscritos("0");
   });
 });

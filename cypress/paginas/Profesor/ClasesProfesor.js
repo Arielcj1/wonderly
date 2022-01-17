@@ -10,10 +10,64 @@ export class ClasesProfesor {
     ).click();
   }
 
-  click_numeroDeInscritos() {
+  //Iniciar clase desde el detalle de la clase
+  boton_iniciarClase() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[3]/td[3]/a"
+      "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
     ).click();
+  }
+
+  click_numeroDeInscritos(numero) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]"
+    )
+      .invoke("text")
+      .then((text) => {
+        cy.log("ttt", text, "nnnn", numero);
+        if (text.trim() == numero.trim()) {
+          cy.log("El numero de inscritos es 0");
+        } else {
+          cy.log("Esta clase tiene alumnos inscritos");
+        }
+      });
+
+    // "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[3]/td[3]/a"
+  }
+
+  //Iniciar clase desde el Schedula
+  boton_iniciarClaseSchedule(nombre) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text == nombre) {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+          ).click();
+          cy.wait(3000);
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
+          ).click();
+          cy.wait(2000);
+        } else {
+          cy.log("No es la clase del profesor");
+        }
+      });
+  }
+  verificarClaseAsignadaSchedule(nombre) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text == nombre) {
+          cy.log("Es una clase asignada al profesor");
+          cy.wait(2000);
+        } else {
+          cy.log("No es una clase asignada al profesor");
+        }
+      });
   }
 
   click_botonRegresar() {
@@ -102,7 +156,7 @@ export class ClasesProfesor {
 
   // Eliminar 2 de los 3 materiales
   EliminarMaterialAgregado() {
-    for (var i = 1; i <= 1; i++) {
+    for (var i = 1; i <= 2; i++) {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
           i +
@@ -133,6 +187,7 @@ export class ClasesProfesor {
       cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
       cy.wait(3000);
     }
+    cy.get(".btn-group > .btn").click(); //boton regresar
   }
 
   VerificarFecha() {
