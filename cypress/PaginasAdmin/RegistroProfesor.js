@@ -22,4 +22,8 @@ export class RegistroProfesor {
   click_botonListo() {
     cy.get("#gform_submit_button_5").click();
   }
+
+  close_modalMessage(){
+    cy.get('#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span').click()
+  }
 }

@@ -28,9 +28,14 @@ export class WonderlyCursos {
     cy.get("#input_35_15").select(materia);
   }
 
-  edades(edades) {
-    cy.get("#input_35_16").select(edades);
+  edades() {
+    //cy.get("#input_35_16").select(edades);
+    cy.get('#button_38_select_all').click()
+    cy.wait(2000)
+    cy.get('#button_38_select_all').click()
+    cy.get('#choice_35_38_2').click()   //Edades entre 7-8
   }
+
   type_fechaInicio() {
     var moment = require('moment')
     const today = moment().format('DD/MMM/YYYY')
@@ -82,10 +87,17 @@ export class WonderlyCursos {
   click_botonAgregarCurso() {
     cy.get("#gform_submit_button_35").click();
   }
+
+  click_cursosPasados(){
+    cy.xpath("/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/a[1]").click()
+  }
+
+  click_todosLosCursos(){
+    cy.xpath("/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/a[2]").click()
+  }
+
   click_cursosFuturos() {
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/a[3]"
-    ).click();
+    cy.xpath("/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/a[3]").click();
   }
 
   VerificarCurso() {
@@ -107,5 +119,13 @@ export class WonderlyCursos {
   }
   click_botonAsignarProfesor() {
     cy.get("#gform_submit_button_29").click();
+  }
+
+  seleccionarCurso(){
+    cy.xpath("/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr[1]/td[1]/a").click()   //click en el 1er curso de la lista
+  }
+
+  close_modalMessage(){
+    cy.get('#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span').click()
   }
 }

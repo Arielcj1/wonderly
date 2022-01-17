@@ -71,4 +71,8 @@ export class OnDemand {
     click_guardar(){
         cy.get('#gform_submit_button_42').click()
     }
+
+    click_nombreClaseOnDemand(){
+        cy.get(':nth-child(6) > :nth-child(2) > a').click()    //Click en la 6 clase de la lista
+    }
 }

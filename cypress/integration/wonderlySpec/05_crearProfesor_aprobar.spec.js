@@ -23,7 +23,7 @@ describe("Creacion de un profesor", () => {
     home.click_IniciaSesion();
   });
 
-  it.skip("1_Verificar que el admin pueda crear un profesor", () => {
+  it("Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", () => {
     ingresar.type_Correo("neida.veizaga@believesol.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
@@ -39,22 +39,12 @@ describe("Creacion de un profesor", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it.skip("2_Comprobar que un profesor puede iniciar sesion en wonderly", () => {
+  it("Verificar que se pueda completar informacion", () => {
     ingresar.type_Correo("profesor20@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);
-    cy.get("#menu-item-144 > .nav-link")
-      .should("contain.text", "Perfil")
-      .should("be.visible");
-  });
-
-  it("3_Comprobar que un profesor puede editar y completar sus datos personales", () => {
-    ingresar.type_Correo("profesor20@gmail.com");
-    ingresar.type_contrasena("12345");
-    ingresar.click_continuar();
-    cy.wait(2000);
-    perfil.type_telefono_PrimeraVez("79846522");
+    perfil.type_telefono_PrimeraVez("79846521");
     perfil.type_fechaNac_primeraVez("12/12/1985");
     perfil.select_pais_primeraVez("Bolivia");
     perfil.select_comoNosConociste_primeraVez("Facebook");

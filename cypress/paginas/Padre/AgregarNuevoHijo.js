@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 export class AgregarNuevoHijo{
+    
     type_NombreHijo(nombre){
         cy.get('#name_1').type(nombre)
     }
@@ -28,11 +29,12 @@ export class AgregarNuevoHijo{
         cy.get('#birthday_2').type(fecha)
     }
 
-    eliminarHijo2(){
-        cy.get('#\32  > .text-right > .btn_round > .svg-inline--fa').click()
-    }
+    // eliminarHijo2(){
+    //     cy.get('#\32  > .text-right > .btn_round > .svg-inline--fa').click()
+    // }
 
     botonExploraCursos(){
         cy.get('.form_footer > .btn').click()
     }
+
 }

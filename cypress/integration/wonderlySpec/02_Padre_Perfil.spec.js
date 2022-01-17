@@ -2,7 +2,7 @@
 // Casos de prueba realizado por Patrik Delgadillo
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
-import { AgregarNuevoHijo } from "../../paginas/Padre/AgregarNuevoHijo";
+import {AgregarNuevoHijo} from "../../paginas/Padre/AgregarNuevoHijo"
 import { MisHijos } from "../../paginas/Padre/MisHijos";
 import { Perfil } from "../../paginas/Padre/Perfil";
 import { Perfiles } from "../../paginas/Padre/Perfiles";
@@ -24,7 +24,7 @@ describe("Perfil Padre", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre20@gmail.com");
+    ingresar.type_Correo("nuevopadre01@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -79,7 +79,7 @@ describe("Perfil Padre", () => {
     mishijos.click_Tablero_MisHijos();
   });
 
-  it.skip("10_Demostrar que un padre pueda registrar a un hijo desde el tablero 'Mis hijos' ", () => {
+  it("10_Demostrar que un padre pueda registrar a un hijo desde el tablero 'Mis hijos' ", () => {
     perfil.click_mostrarSubmenu();
     perfil.click_perfil();
     //Registrar nuevo hijo

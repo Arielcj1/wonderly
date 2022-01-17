@@ -79,4 +79,12 @@ export class WonderlyClases {
         }
         cy.wait(2000)
     }
+
+    click_nombreCurso(){
+        cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[1]/a').click()
+    }
+
+    click_nombreClase(){
+        cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[2]/a').click()
+    }
 }

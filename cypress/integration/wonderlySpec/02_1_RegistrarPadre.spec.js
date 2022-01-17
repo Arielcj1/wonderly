@@ -18,43 +18,43 @@ describe("Perfil Padre - REGISTRO", () => {
     cy.visit("https://developers.learnwonderly.com/");
   });
 
-  it.skip("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", () => {
+  it("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", () => {
     home.boton_RegistroGratis();
-    registro.type_nombre("Julio");
+    registro.type_nombre("Diego");
     registro.type_apellidos("Roca");
-    registro.type_correo("padre20@gmail.com");
+    registro.type_correo("nuevopadre01@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
     cy.get("h2").should("be.visible");
   });
 
-  it.skip ("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Prueba por 7 dias' ", () => {
+  it("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Prueba por 7 dias' ", () => {
     home.boton_conMovimiento7diasGratis()
     registro.type_nombre("Pedro");
-    registro.type_apellidos("Perez");
-    registro.type_correo("nuevopadre01@gmail.com");
-    registro.type_contrasenia("12345");
-    registro.type_numero("65266222");
-    registro.click_siguiente();
-    cy.get("h2").should("be.visible");
-  })
-
-  it.skip ("03_Verificar que un padre pueda registrarse desde el boton Menú '7 dias gratis' ", () => {
-    home.boton_7diasGratis()
-    registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
     registro.type_correo("nuevopadre02@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
     cy.get("h2").should("be.visible");
+  })
+
+  it("03_Verificar que un padre pueda registrarse desde el boton Menú '7 dias gratis' ", () => {
+    home.boton_7diasGratis()
+    registro.type_nombre("Juan");
+    registro.type_apellidos("Perez");
+    registro.type_correo("nuevopadre03@gmail.com");
+    registro.type_contrasenia("12345");
+    registro.type_numero("65266222");
+    registro.click_siguiente();
+    cy.get("h2").should("be.visible");
 
   })
 
-  it.skip("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", () => {
+  it("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre20@gmail.com");
+    ingresar.type_Correo("nuevopadre01@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   })
@@ -69,9 +69,9 @@ describe("Perfil Padre - REGISTRO", () => {
 
   it('Probar que un padre no pueda registrarse con un correo ya usado en Wonderly', ()=> {
     home.boton_RegistroGratis();
-    registro.type_nombre("Julio");
+    registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");
-    registro.type_correo("padre20@gmail.com");
+    registro.type_correo("nuevopadre01@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
