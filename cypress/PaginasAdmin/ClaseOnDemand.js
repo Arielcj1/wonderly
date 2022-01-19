@@ -45,7 +45,7 @@ export class ClaseOnDemand {
     cy.wait(2000);
     var position = 1;
 
-    for (let i = 1; i <= 17; i++) {
+    for (let i = 1; i <= 8; i++) {
       var encontrado = 0;
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[2]/div/div/div/div/div[" +
@@ -54,17 +54,18 @@ export class ClaseOnDemand {
       )
         .invoke("text")
         .then((text) => {
+          cy.log("************************", text);
           if (text.trim() == nombreClase.trim()) {
             encontrado = position;
           } else {
             cy.log("No se ha encontrado el curso");
           }
-          if (position == 17) {
+          if (position == 8) {
             cy.xpath(
               "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[2]/div/div/div/div/div[" +
                 encontrado +
-                "]/div/div/div/div/div[3]/a"
-            ).click();
+                "]/div/div/div/div/div[1]/div[2]/div/a"
+            ).click({ force: true });
           }
           position++;
         });

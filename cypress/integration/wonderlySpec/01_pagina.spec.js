@@ -159,10 +159,12 @@ describe("Home Page - UI", () => {
     cy.get("h2.mb-4").should("contain.text", "Matemáticas");
   });
 
-  // it("23_Demostrar que al presionar el boton Mira el curso redireccione a la Vista de desarrollo de Video Juegos", () => {
-  //   home.click_Destrezas();
-  //   cy.get("h2.mb-4").should("contain.text", "Desarrollo de videojuegos");
-  // });
+  it.skip("23_Demostrar que al presionar el boton Mira el curso redireccione a la Vista de desarrollo de Video Juegos", () => {
+    home.click_Destrezas();
+    destrezas.botonMirarCursoDesarrolloVideoJuego();
+    cy.log;
+    cy.get("h2.mb-4").should("contain.text", "Desarrollo de videojuegos");
+  });
 
   it.skip('24_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Robotica', () => {
     home.click_Destrezas();
@@ -170,19 +172,19 @@ describe("Home Page - UI", () => {
     destrezas.botonComenzarAhora();
   });
 
-  it('25_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Matematica', () => {
+  it.skip('25_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Matematica', () => {
     home.click_Destrezas();
     destrezas.botonMirarCursoMatematicas();
     destrezas.botonComenzarAhora();
   });
 
-  it('26_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Programacion', () => {
+  it.skip('26_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Programacion', () => {
     home.click_Destrezas();
     destrezas.botonMirarcursoProgramacion();
     destrezas.botonComenzarAhora();
   });
 
-  it('27_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Ingles', () => {
+  it.skip('27_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Ingles', () => {
     home.click_Destrezas();
     destrezas.botonMirarCursoIngles();
     destrezas.botonComenzarAhora();

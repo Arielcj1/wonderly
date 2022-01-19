@@ -8,8 +8,9 @@ export class PerfilHijo {
     cy.get(":nth-child(2) > .wonderly-login-hijo-trigger").click();
   }
   click_cuenta() {
-    cy.get("#menu-item-142 > #navbarDropdown").click();
-    cy.get("#menu-item-319 > .dropdown-item").click();
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[3]/a"
+    ).click({ force: true });
   }
   click_perfiles() {
     cy.get("#menu-item-2667 > .dropdown-item").click();

@@ -3,7 +3,7 @@ export class Autopayment {
   //PARA ACTIVAR:
   verificarAutopaymentActivar() {
     var position = 1;
-    for (var i = 1; i <= 2; i++) {
+    for (var i = 1; i <= 1; i++) {
       //de cuatro hijos a 1 hijo
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr[" +
@@ -39,7 +39,7 @@ export class Autopayment {
   //PARA CANCELAR:
   verificarAutopaymentCancelar() {
     var position = 1;
-    for (var i = 1; i <= 2; i++) {
+    for (var i = 1; i <= 1; i++) {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr[" +
           i +
@@ -69,7 +69,7 @@ export class Autopayment {
   //PARA COMPRAR LA MEMBRESIA GENIO INVENTOR Y EXPLORADOR
   ActualizarMembresia() {
     var position = 1;
-    for (var i = 1; i <= 2; i++) {
+    for (var i = 1; i <= 1; i++) {
       //de cuatro hijos a 1 hijo
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr[" +

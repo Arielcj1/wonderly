@@ -15,7 +15,7 @@ export class Destrezas {
     cy.get(".pb-md-0 > .container > .row > .col-md-7 > .btn").click();
   }
   botonMirarCursoDesarrolloVideoJuego() {
-    cy.get(".separator.pb-0 > .container > .row > .col-md-7 > .btn").click();
+    cy.get(":nth-child(3) > .container > .row > .col-md-7 > .btn").click();
   }
 
   botonInscribeteGratisHoy() {
