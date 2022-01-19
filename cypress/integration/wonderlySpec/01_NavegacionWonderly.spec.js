@@ -22,8 +22,8 @@ describe("Home Page - UI", () => {
 
   it("1_Verificar que un usuario pueda Iniciar sesion", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("josemunoz@gmail.com");
-    ingresar.type_contrasena("123456");
+    ingresar.type_Correo("josemunoz@gmail.com");    //Cambiar usuario
+    ingresar.type_contrasena("123456");             //cambiar password
     ingresar.click_continuar();
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
     perfil.buscar_hijo("Juan Muñoz");
@@ -75,8 +75,8 @@ describe("Home Page - UI", () => {
 
   it("11_Demostrar que un usuario Inicie sesion y pueda ir a las Membresias Explorador", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("josemunoz@gmail.com");
-    ingresar.type_contrasena("123456");
+    ingresar.type_Correo("josemunoz@gmail.com");    //CAmbiar ususario
+    ingresar.type_contrasena("123456");             //Cambiar password
     ingresar.click_continuar();
     cy.wait(3000);
     home.click_LogoWonderly();
@@ -159,7 +159,7 @@ describe("Home Page - UI", () => {
     cy.get("h2.mb-4").should("contain.text", "Matemáticas");
   });
 
-  it.skip("23_Demostrar que al presionar el boton Mira el curso redireccione a la Vista de desarrollo de Video Juegos", () => {
+  it("23_Demostrar que al presionar el boton Mira el curso redireccione a la Vista de desarrollo de Video Juegos", () => {
     home.click_Destrezas();
     destrezas.botonMirarCursoDesarrolloVideoJuego();
     cy.log;
@@ -172,19 +172,19 @@ describe("Home Page - UI", () => {
     destrezas.botonComenzarAhora();
   });
 
-  it.skip('25_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Matematica', () => {
+  it('25_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Matematica', () => {
     home.click_Destrezas();
     destrezas.botonMirarCursoMatematicas();
     destrezas.botonComenzarAhora();
   });
 
-  it.skip('26_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Programacion', () => {
+  it('26_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Programacion', () => {
     home.click_Destrezas();
     destrezas.botonMirarcursoProgramacion();
     destrezas.botonComenzarAhora();
   });
 
-  it.skip('27_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Ingles', () => {
+  it('27_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Ingles', () => {
     home.click_Destrezas();
     destrezas.botonMirarCursoIngles();
     destrezas.botonComenzarAhora();
