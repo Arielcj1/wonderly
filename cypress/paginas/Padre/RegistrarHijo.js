@@ -42,7 +42,7 @@ export class RegistrarHijo {
   }
 
   click_botonInscribeteGratis(){
-    cy.xpath("/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[3]/a[1]").click()
+    cy.xpath("/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a").click()
   }
 
   //despues que se hace click en la pestaña Cursos

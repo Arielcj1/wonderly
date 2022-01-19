@@ -60,10 +60,7 @@ export class ClaseOnDemand {
             cy.log("No se ha encontrado el curso");
           }
           if (position == 17) {
-            cy.xpath(
-              "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[2]/div/div/div/div/div[" +
-                encontrado +
-                "]/div/div/div/div/div[3]/a"
+            cy.xpath("/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[2]/div/div/div/div/div["+encontrado+"]/div/div/div/div/div[3]/a"
             ).click();
           }
           position++;

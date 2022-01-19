@@ -9,7 +9,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Perfil Padre - REGISTRO", () => {
+describe("Padre - Registrar padre", () => {
   const home = new Home();
   const registro = new Registro();
   const ingresar = new Ingresar()
@@ -67,7 +67,7 @@ describe("Perfil Padre - REGISTRO", () => {
     cy.get('.message-error > .title').should('be.visible')
   })
 
-  it('Probar que un padre no pueda registrarse con un correo ya usado en Wonderly', ()=> {
+  it('06_Probar que un padre no pueda registrarse con un correo ya usado en Wonderly', ()=> {
     home.boton_RegistroGratis();
     registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");
@@ -76,7 +76,6 @@ describe("Perfil Padre - REGISTRO", () => {
     registro.type_numero("65266222");
     registro.click_siguiente();
     registro.click_Modal()
-    //registro.click_ModalClose()
     cy.get('#validation_message_21_2').should('be.visible')
   })
 

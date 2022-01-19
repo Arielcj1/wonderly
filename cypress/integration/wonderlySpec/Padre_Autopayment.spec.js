@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 
-import { Clase } from "../../paginas/Hijo/Clase";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { AutopaymentPadre } from "../../paginas/Padre/AutopaymentPadre";
@@ -15,7 +14,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
     return false;
   });
 
-describe("Wonderly- tablero hijo", () => {
+describe("Padre - Autopayment y otros TCs", () => {
     const home = new Home()
     const ingresar = new Ingresar()
     const mishijos =new MisHijos()
@@ -29,70 +28,62 @@ describe("Wonderly- tablero hijo", () => {
     beforeEach(() => {
         cy.visit("https://developers.learnwonderly.com/");
         home.click_IniciaSesion();
-        ingresar.type_Correo("padre20@gmail.com");
+        ingresar.type_Correo("nuevopadre01@gmail.com");
         ingresar.type_contrasena("12345");
         ingresar.click_continuar();
       });
 
-    it('Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos', () => {
-        perfil.click_mostrarSubmenu();
+    it('01_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos', () => {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment()
+        autopaymentpadre.verificarAutopayment(1)
 
     })
 
-    it('Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos', ()=> {
-        perfil.click_mostrarSubmenu();
+    it('02_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos', ()=> {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment()
+        autopaymentpadre.verificarAutopayment(1)
     })
 
-    it('Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', ()=> {
-        perfil.click_mostrarSubmenu();
+    it('03_Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', ()=> {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment()
+        autopaymentpadre.verificarAutopayment(1)
         autopaymentpadre.click_opcionExplorador()
         autopaymentpadre.click_botonEnviar()
         cy.get('.alert').should('be.visible')
     })
 
-    it('Verificar que pueda Actualizar Membresia "Inventor" desde el tablero Mis hijos', ()=> {
-        perfil.click_mostrarSubmenu();
+    it('04_Verificar que pueda Actualizar Membresia "Inventor" desde el tablero Mis hijos', ()=> {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment()
+        autopaymentpadre.verificarAutopayment(2)
         autopaymentpadre.click_opcionInventor()
         autopaymentpadre.click_botonEnviar()
         cy.get('.alert').should('be.visible')
     })
 
-    it('Verificar que pueda Actualizar Membresia "Genio" desde el tablero Mis hijos', ()=> {
-        perfil.click_mostrarSubmenu();
+    it('05_Verificar que pueda Actualizar Membresia "Genio" desde el tablero Mis hijos', ()=> {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment()
+        autopaymentpadre.verificarAutopayment(3)
         autopaymentpadre.click_opcionGenio()
         autopaymentpadre.click_botonEnviar()
         cy.get('.alert').should('be.visible')
     })
 
-    it('Verificar que un padre puede ver sus hijos registrados desde Mis Hijos', () => {
-        perfil.click_mostrarSubmenu()
+    it('06_Verificar que un padre puede ver sus hijos registrados desde Mis Hijos', () => {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
     })
 
-    it('Verificar que un padre puede ver todas las clases de sus hijos desde Clases Hijo.', () => {
-        perfil.click_mostrarSubmenu()
+    it('07_Verificar que un padre puede ver todas las clases de sus hijos desde Clases Hijo.', () => {
         perfil.click_perfil();
         claseshijo.click_Tablero_ClasesHijo()
     })
 
-    it('Comprobar que un padre pueda actualizar los datos de la tarjeta de pago desde Método de Pago', () => {
-        perfil.click_mostrarSubmenu()
+    it('08_Comprobar que un padre pueda actualizar los datos de la tarjeta de pago desde Método de Pago', () => {
         perfil.click_perfil();
         metodopago.click_tablero_MetodoPago()
         metodopago.click_actualizar()  //Click en el boton Actualizar desde el tablero Metodo de Pago
@@ -103,10 +94,9 @@ describe("Wonderly- tablero hijo", () => {
         metodopago.type_cvc("123");
         metodopago.type_nomTitular("Super Julio Roca");
         metodopago.click_enviar();
-        cy.get('#gform_confirmation_message_37').should('be.visible')
     })
 
-    it('Verificar que un padre pueda actualizar el método de pago cuando compra una membresía', () => {
+    it('09_Verificar que un padre pueda actualizar el método de pago cuando compra una membresía', () => {
         home.click_LogoWonderly()
         home.click_Membresia_Explorador()
         comprarpaquete.click_botonAqui()
@@ -117,12 +107,12 @@ describe("Wonderly- tablero hijo", () => {
          metodopago.type_cvc("123");
          metodopago.type_nomTitular("Super Julio Roca Sayajin");
          metodopago.click_enviar();
-         cy.get('#gform_confirmation_message_37').should('be.visible')
     })
 
-    it('Comprobar que un padre no puede reservar un clase.', () => {
+    it('10_Comprobar que un padre no puede reservar un clase.', () => {
         home.click_LogoWonderly()
-        cy.contains('Matematicas Niños').click()
+        cy.get('#vivo-tab').click()
+        cy.contains('Robótica 4pm').click()
         registrarhijo.click_botonInscribeteGratis()
         cy.get('.modal-content > .my-3').should('be.visible')  //Assert es que le muestre los perfiles de los hijos para elija un hijo
     })

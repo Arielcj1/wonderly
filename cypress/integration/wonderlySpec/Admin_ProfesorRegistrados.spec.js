@@ -10,7 +10,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
     return false;
   });
 
-  describe("Administrador - Login", () => {
+  describe("Administrador - Profesores Registrados", () => {
 
     const home = new Home()
     const ingresar = new Ingresar()
@@ -26,20 +26,31 @@ Cypress.on("uncaught:exception", (err, runnable) => {
         ingresar.click_continuar();
       });
 
-    it('Verificar que el admin pueda editar su perfil.', () => {
+    it('01_Verificar que el admin pueda editar su perfil.', () => {
         perfiladmin.type_nombreAdmin('Neida')
         perfiladmin.type_apellidoAdmin('Veizaga')
         perfiladmin.click_botonGuardar()
         cy.get('.alert').should('be.visible')   //Assert  "Su información ha sido guardada con éxito"
     })
 
-    it('Verificar que el administrador pueda ingresar al tablero Profesores Registrados', () => {
+    it('02_Verificar que el administrador pueda ingresar al tablero Profesores Registrados', () => {
         homeadmin.click_tableroProfesoresRegistrados();
-        cy.get(".text-dark").should("be.visible");
         cy.wait(1000);
     })
 
-    it('Comprobar que el sistema muestra un mensaje de advertencia cuando no se completan los datos requeridos en el formulario Registra a un profesor.', () => {
+    it("03_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", () => {
+      homeadmin.click_tableroProfesoresRegistrados();
+      homeadmin.click_botonRegistrarProfesor();
+      registroprofesor.type_nombre("Profesor");
+      registroprofesor.type_apellido("Veinte");
+      registroprofesor.type_correoElectronico("profesor20@gmail.com");
+      registroprofesor.type_contrasenia("12345");
+      registroprofesor.type_confirmarContrasenia("12345");
+      registroprofesor.click_botonListo();
+      cy.get(".alert").should("be.visible");
+    });
+
+    it('04_Comprobar que el sistema muestra un mensaje de advertencia cuando no se completan los datos requeridos en el formulario Registra a un profesor.', () => {
         homeadmin.click_tableroProfesoresRegistrados()
         homeadmin.click_botonRegistrarProfesor()
         registroprofesor.click_botonListo()
@@ -47,7 +58,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
         cy.wait(1000);
     })
 
-    it('Comprobar que el sistema señala cuales son los campos obligatorios para completar en el formulario Registra a un profesor.', () => {
+    it('05_Comprobar que el sistema señala cuales son los campos obligatorios para completar en el formulario Registra a un profesor.', () => {
       homeadmin.click_tableroProfesoresRegistrados()
       homeadmin.click_botonRegistrarProfesor()
       registroprofesor.click_botonListo()

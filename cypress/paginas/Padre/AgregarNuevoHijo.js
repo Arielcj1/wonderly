@@ -15,7 +15,7 @@ export class AgregarNuevoHijo{
     }
 
     click_AgregarHijo(){
-        cy.get(':nth-child(4) > .btn').click()
+        cy.get('.form_body > :nth-child(4) > .btn').click()
     }
 
     type_NombreHijo2(nombre){
@@ -29,9 +29,15 @@ export class AgregarNuevoHijo{
         cy.get('#birthday_2').type(fecha)
     }
 
-    // eliminarHijo2(){
-    //     cy.get('#\32  > .text-right > .btn_round > .svg-inline--fa').click()
-    // }
+    eliminarHijo2(){
+
+        var pos = 3
+        for(var i = 1; i <= 3; i++){
+            
+            cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div/div[2]/div/div/div[1]/div[1]/form['+pos+']/div[3]/a').click({force: true})
+            pos--
+        }
+    }
 
     botonExploraCursos(){
         cy.get('.form_footer > .btn').click()

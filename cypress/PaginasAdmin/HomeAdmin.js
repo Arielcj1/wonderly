@@ -9,6 +9,11 @@ export class HomeAdmin {
   click_tableroWonderlyClases() {
     cy.get("#menu-item-3885 > .nav-link").click();
   }
+
+  click_tableroWonderlyOnDemand(){
+    cy.get('#menu-item-7272 > .nav-link').click()
+  }
+
   click_botonRegistrarProfesor() {
     // cy.get(".post-168 > .btn").click();
     cy.xpath("/html/body/div[2]/div[2]/div/div/div/main/article/a").click();

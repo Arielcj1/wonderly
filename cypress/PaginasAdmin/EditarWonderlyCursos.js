@@ -19,8 +19,12 @@ export class EditarWonderlyCursos{
         cy.get('#input_34_6').select(materia);
     }
 
-    editarEdades(edades) {
-        cy.get('#input_34_7').select(edades);
+    editarEdades() {
+        //cy.get('#input_34_7').select(edades);
+        cy.get('#button_20_select_all').click()
+        cy.wait(3000)
+        cy.get('#button_20_select_all').click()
+        cy.get('#choice_34_20_2').click()
     }
 
     editarHoraInicio() {

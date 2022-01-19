@@ -15,6 +15,7 @@ export class Ingresar {
     }
 
     close_modalMessage(){
-        cy.get('.modal-body > .close > span').click()
+        //cy.get('.modal-body > .close > span').click()
+        cy.get('#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span').click()
     }
 }

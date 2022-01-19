@@ -5,13 +5,13 @@ export class OnDemand {
         cy.get('#menu-item-3885 > .nav-link').click()
     }
 
-    click_clasesOnDemand(){
-        cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-clases/?filtrar_por=ondemand"]').click()
-        //cy.contains('Clases on demand').click()
-    }
+    // click_clasesOnDemand(){
+    //     cy.get('[href="https://developers.learnwonderly.com/tablero/wonderly-clases/?filtrar_por=ondemand"]').click()
+    //     //cy.contains('Clases on demand').click()
+    // }
 
     click_agregarClaseOnDemand(){
-        cy.get('.post-236 > .btn-primary').click()
+        cy.get('.post-7266 > .btn').click()
     }
 
     type_tituloClase(titulo){
@@ -27,8 +27,8 @@ export class OnDemand {
         cy.get('#input_41_4').select(materia)
     }
 
-    select_edades(edad){
-        cy.get('#input_41_5').select(edad)
+    select_edades(){
+        cy.get('#choice_41_8_3').click()   //edad entre 7-8
     }
 
     type_youtubeVideo(url){
@@ -56,8 +56,12 @@ export class OnDemand {
         cy.get('#input_42_7').select(materia)
     }
 
-    select_editaredades(edad){
-        cy.get('#input_42_8').select(edad)
+    select_editaredades(){
+        //cy.get('#input_42_8').select(edad)
+        cy.get('#button_10_select_all').click()
+        cy.wait(2000)
+        cy.get('#button_10_select_all').click()
+        cy.get('#choice_42_10_2').click()
     }
 
     type_editaryoutubeVideo(url){

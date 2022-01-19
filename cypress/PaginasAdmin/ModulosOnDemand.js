@@ -2,7 +2,7 @@
 
 export class ModulosOnDemand {
   buscar_cursoOnDemand(nombreCurso, accion) {
-    for (var i = 1; i <= 20; i++) {
+    for (var i = 1; i <= 7; i++) {
       var aux = 1;
       var aux2 = 0;
       cy.xpath(
@@ -13,11 +13,12 @@ export class ModulosOnDemand {
         .invoke("text")
         .then((text) => {
           let curso = text.trim();
+          cy.log(curso, nombreCurso)
           if (curso == nombreCurso) {
             aux2 = aux;
             aux++;
           } else {
-            if (aux == 20) {
+            if (aux == 7) {
               cy.xpath(
                 "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[" +
                   aux2 +

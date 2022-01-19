@@ -17,14 +17,14 @@ describe("Administrador - Login", () => {
        
       });
     
-    it('Verificar que el Admin puede ingresar con Correo electronico valido y Contraseña valido.', () => {
+    it('01_Verificar que el Admin puede ingresar con Correo electronico valido y Contraseña valido.', () => {
         home.click_IniciaSesion();
         ingresar.type_Correo("neida.veizaga@believesol.com");
         ingresar.type_contrasena("abcABC123");
         ingresar.click_continuar();
     })
 
-    it('Verificar que el Admin no puede ingresar con Correo electronico invalido y Contraseña invalido.', () => {
+    it('02_Verificar que el Admin no puede ingresar con Correo electronico invalido y Contraseña invalido.', () => {
         home.click_IniciaSesion();
         ingresar.type_Correo("neida.xxx@believesol.com");
         ingresar.type_contrasena("abcABCxxx");
@@ -32,13 +32,13 @@ describe("Administrador - Login", () => {
         cy.get('.message-error > .title').should('be.visible')
     })
 
-    it('Verificar que el sistema muestra un mensaje de advertencia cuando no se completan los datos requeridos.', () => {
+    it('03_Verificar que el sistema muestra un mensaje de advertencia cuando no se completan los datos requeridos.', () => {
         home.click_IniciaSesion();
         ingresar.click_continuar();
         cy.get('.message-error > .title').should('be.visible')
     })
 
-    it('Verificar que el sistema señala cuales son los campos obligatorios para completar.', () => {
+    it('04_Verificar que el sistema señala cuales son los campos obligatorios para completar.', () => {
         home.click_IniciaSesion();
         ingresar.click_continuar();
         cy.get('.message-error > .title').should('be.visible')

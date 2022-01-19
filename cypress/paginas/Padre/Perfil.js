@@ -13,7 +13,7 @@ export class Perfil{
     }
 
     type_fechaNacimiento(fechaNac){
-        cy.get('#input_1_20').type(fechaNac)         //  DD/MM/AAAA
+        cy.get('#input_1_20').clear().type(fechaNac)         //  DD/MM/AAAA
     }
 
     type_contrasena(contrasena){
@@ -30,15 +30,15 @@ export class Perfil{
     }
 
     type_direccion(direccion){
-        cy.get('#input_1_10').type(direccion)
+        cy.get('#input_1_10').clear().type(direccion)
     }
 
     type_ciudad(ciudad){
-        cy.get('#input_1_12').type(ciudad)
+        cy.get('#input_1_12').clear().type(ciudad)
     }
 
     type_provincia(provincia){
-        cy.get('#input_1_13').type(provincia)
+        cy.get('#input_1_13').clear().type(provincia)
     }
 
     type_pais(pais){
@@ -46,7 +46,7 @@ export class Perfil{
     }
 
     type_codigoPostal(codigo){
-        cy.get('#input_1_14').type(codigo)
+        cy.get('#input_1_14').clear().type(codigo)
     }
 
     seleccionar_materias(){
@@ -60,19 +60,12 @@ export class Perfil{
     }
 
     //submenu del perfil 
-    click_mostrarSubmenu(){
-        cy.get('#navbarDropdown').click()
-    }
     click_perfil(){
-        cy.get('#menu-item-319 > .dropdown-item').click()  //Click en la opcion Cuenta del dropdown menu
+        cy.get('#menu-item-6738 > #navbarDropdown').click()
     }
+
     click_perfiles(){
-        cy.get('#menu-item-2667 > .dropdown-item').click()
+        cy.xpath("/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[1]/a").click({force: true})
     }
-    click_clasesHijo(){
-        cy.get('#menu-item-2666 > .dropdown-item').click()
-    }
-    click_salir(){
-        cy.get('#menu-item-143 > .dropdown-item').click()
-    }
+
 }

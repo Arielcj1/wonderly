@@ -29,7 +29,7 @@ export class ComprarPaquete{
     }
 
     verificarPrecioTotal(precio){
-        cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div[1]/div/div/p[6]/text()').invoke('text').then((text) => {
+        cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div[1]/div/div/p[5]/text()').invoke('text').then((text) => {
             if(text == precio){
                 cy.log('Precio Total correcto: ' + text)
             }else{
