@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
 export class Perfil {
+  click_salirDelMenu() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[2]/a"
+    ).click({ force: true });
+  }
   type_telefono_PrimeraVez(telefono) {
     cy.get("#input_8_3").clear().type(telefono);
   }
@@ -62,6 +67,9 @@ export class Perfil {
   }
 
   type_ciudad(ciudad) {
+    cy.get("#input_10_20").clear().type(ciudad);
+  }
+  type_ciudadClear(ciudad) {
     cy.get("#input_10_20").clear().type(ciudad).clear();
   }
 
@@ -96,7 +104,12 @@ export class Perfil {
     cy.get("input[type=file]").attachFile("file-sample5.docx");
   }
 
-  click_botonGuardar(alert) {
+  click_botonGuardar() {
+    cy.get("#gform_submit_button_10").click();
+  }
+
+  // Para archivo diferente de PDF
+  click_botonGuardarArchivo(alert) {
     cy.get("#gform_submit_button_10").click();
     cy.wait(3000);
     cy.get(".alert")
@@ -111,13 +124,13 @@ export class Perfil {
   }
   click_iniciarClase() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[4]/button[2]"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/button[2]"
     ).click();
   }
 
   iniciarLaClaseAntes(nombre) {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[4]/button[2]"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/button[2]"
     ).click();
     cy.get(".title")
       .invoke("text")

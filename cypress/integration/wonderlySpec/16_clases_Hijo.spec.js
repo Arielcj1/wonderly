@@ -40,80 +40,82 @@ describe("Wonderly- clases hijos", () => {
   });
 
   //CLASES
-  it.skip("31_Verificar que un hijo puede ingresar al detalle de un curso desde el schedule.", () => {
+  it.skip("27_Verificar que un hijo puede ingresar al detalle de un curso desde el schedule.", () => {
     perfilhijo.click_seleccionarHijo();
+    home.click_LogoWonderly();
     home.click_seccionEnVivo();
     clase.click_botonEntrarClase();
     claseshijo.aprendizajeProyecto();
     cy.wait(2000);
     claseshijo.botonPreguntaWhatsapp();
   });
-  it.skip("32_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
+  it.skip("28_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
+    perfilhijo.click_seleccionarHijo();
     home.click_pestañaCursos();
     claseshijo.botonInscribeteCursos();
-    cy.get("h4").should("be.visible");
+    claseshijo.botonPreguntaWhatsapp();
+    claseshijo.aprendizajeProyecto();
+    cy.get(".col-md-7 > .title").should("be.visible");
   });
 
-  it.skip("33_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it.skip("29_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
+    perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
+    cy.wait(3000);
     clase.click_nombreDeLaClase();
     cy.get(".actions-header > .class-title").should("be.visible");
   });
 
-  it.skip("34_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {
+  it.skip("30_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
+    perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
     clase.click_nombreDeLaClase();
     claseshijo.click_botonUnirseClase();
   });
 
-  // it.skip(37_"verificar que las clases esten ordenadas cronologicamente", () => {
-  //   perfilhijo.click_seleccionarHijo();
-  //   home.click_MenuUsuario();
-  //   claseshijo.click_menu_clasesHijo();
-  //   clase.VerificarFecha();
-  // });
-
-  it.skip("38_Verificar que un hijo pueda descargar el material de una clase", () => {
+  it.skip("33_verificar que las clases esten ordenadas cronologicamente", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
+    perfilhijo.click_cuenta();
+    claseshijo.click_menu_clasesHijo();
+    clase.VerificarFecha();
+  });
+
+  it.skip("34_Verificar que un hijo pueda descargar el material de una clase", () => {
+    perfilhijo.click_seleccionarHijo();
+    perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
     clase.click_nombreDeLaClase();
     clase.click_descargarMaterial();
   });
 
-  it("41_Verificar que el hijo pueda ver el counter de la clase", () => {
+  it.skip("37_Verificar que el hijo pueda ver el counter de la clase", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
+    perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
     clase.click_nombreDeLaClase();
     cy.get(".countdown-container").should("be.visible");
   });
-  // AUTOPAYMENT: 41,42,43,44,45,46
+  // AUTOPAYMENT:
 
-  it.skip("42_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos", () => {
+  it("38_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
-    perfilhijo.click_usuarioPerfil(); //Cuenta
+    perfilhijo.click_cuenta();
     mishijos.click_tableroMisHijos();
     autopayment.verificarAutopaymentActivar();
   });
 
-  it.skip("43_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos", () => {
+  it("39_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
-    perfilhijo.click_usuarioPerfil(); //Cuenta
+    perfilhijo.click_cuenta();
     mishijos.click_tableroMisHijos();
     autopayment.verificarAutopaymentCancelar();
   });
 
-  it.skip("44_45_46_Verificar que pueda Actualizar Membresia Genio, Inventor y Explorador desde el tablero Mis hijos", () => {
+  it("40_41_42_Verificar que pueda Actualizar Membresia Genio, Inventor y Explorador desde el tablero Mis hijos", () => {
     perfilhijo.click_seleccionarHijo();
-    home.click_MenuUsuario();
-    perfilhijo.click_usuarioPerfil(); //Cuenta
+    perfilhijo.click_cuenta();
     mishijos.click_tableroMisHijos();
     autopayment.ActualizarMembresia();
   });

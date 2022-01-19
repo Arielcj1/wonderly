@@ -17,22 +17,13 @@ export class ClasesProfesor {
     ).click();
   }
 
-  click_numeroDeInscritos(numero) {
+  click_iconoVerAlumnosInscritos() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]"
-    )
-      .invoke("text")
-      .then((text) => {
-        cy.log("ttt", text, "nnnn", numero);
-        if (text.trim() == numero.trim()) {
-          cy.log("El numero de inscritos es 0");
-        } else {
-          cy.log("Esta clase tiene alumnos inscritos");
-        }
-      });
-
-    // "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[3]/td[3]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/a[3]"
+    ).click();
   }
+
+  verAlumnosInscritos() {}
 
   //Iniciar clase desde el Schedula
   boton_iniciarClaseSchedule(nombre) {
@@ -77,19 +68,19 @@ export class ClasesProfesor {
   }
   editarClase() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[4]/a[1]"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/a[1]"
     ).click();
   }
 
   type_youtubeVideo(url) {
-    cy.get("#input_28_4").type(url);
+    cy.get("#input_28_4").clear().type(url);
   }
   click_botonGuardar() {
     cy.get("#gform_submit_button_28").click();
   }
   iconoAgregarMaterial() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[4]/a[2]"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/a[2]"
     ).click();
   }
   click_botonAgregarMaterial() {
@@ -113,6 +104,16 @@ export class ClasesProfesor {
     cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
     cy.wait(3000);
   }
+
+  //formato
+
+  agregarMaterialForm() {
+    cy.wait(3000);
+    cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+    cy.xpath(
+      "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[2]/div[2]"
+    ).should("be.visible");
+  }
   click_botonRegresar() {
     cy.get(".btn-group > .btn").click();
   }
@@ -135,7 +136,7 @@ export class ClasesProfesor {
 
   // Agregar 3 veces el material
   AgregarMaterial2davez(titulo, descripcion, attachFile) {
-    for (var i = 1; i <= 3; i++) {
+    for (var i = 1; i <= 2; i++) {
       cy.get(".gpnf-add-entry").click();
       cy.xpath(
         "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[1]/div/input"
@@ -168,13 +169,13 @@ export class ClasesProfesor {
 
   // Editar material
   EditarMaterialAgregado(titulo, attachFile) {
+    cy.wait(2000);
     for (var i = 1; i <= 2; i++) {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
           i +
           "]/td[4]/ul/li[1]/button"
       ).click();
-
       cy.wait(2000);
       cy.xpath(
         "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[1]/div/input"

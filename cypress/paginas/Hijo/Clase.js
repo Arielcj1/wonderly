@@ -13,7 +13,7 @@ export class Clase {
 
   verificarClaseInscrita() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a"
     )
       .invoke("text")
       .then((text) => {
@@ -24,7 +24,7 @@ export class Clase {
           //   "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[11]/div/div/div/div/div[3]/a"
           // ).click(); //Click en el boton Inscribete
           cy.xpath(
-            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a"
           ).click();
           cy.wait(5000);
           cy.xpath(
@@ -65,14 +65,14 @@ export class Clase {
   // boton inscribete desde el Schedule
   click_InscribeteSchedule() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
     ).click();
   }
 
   // Desde el detalle del curso
   click_inscribeteGratis() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[3]/a[1]"
+      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
     ).click();
     cy.wait(3000);
   }

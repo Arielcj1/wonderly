@@ -71,21 +71,23 @@ export class Home {
   }
 
   click_MenuUsuario() {
-    // cy.get("#menu-item-142 > #navbarDropdown").click();
     cy.get("#menu-item-6738 > #navbarDropdown").click();
   }
 
   click_salir() {
-    cy.get("#menu-item-143 > .dropdown-item").click();
+    // cy.get("#menu-item-6738 > #navbarDropdown").click();
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[4]/a"
+    ).click({ force: true });
   }
 
   click_seccionOnDemand() {
     cy.get("#ondemand-tab").click();
-    // cy.xpath("/html/body/div[4]/div[4]").click();
   }
 
   click_seccionEnVivo() {
     cy.get("#vivo-tab").click();
+    cy.wait(2000);
   }
 
   click_pestañaCursos() {

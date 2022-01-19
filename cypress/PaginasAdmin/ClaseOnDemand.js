@@ -54,6 +54,7 @@ export class ClaseOnDemand {
       )
         .invoke("text")
         .then((text) => {
+          cy.log("************************", text);
           if (text.trim() == nombreClase.trim()) {
             encontrado = position;
           } else {

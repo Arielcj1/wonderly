@@ -75,63 +75,71 @@ export class MembresiasHijo {
       cy.get(".title")
         .should("contain.text", "Hubo un problema con tu envío.")
         .should("be.visible");
-      cy.get(".modal-body > .close > span").click(); //Salir
+      cy.get(
+        "#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span"
+      ).click(); //Salir
       cy.get(".custom-logo").click();
     }
   }
 
   // Verificar el detalle de la compra de la memebresia Explorador
-  verificarDetalleCompraMembresia(membresia, precio) {
+  verificarDetalleCompraMembresiaExplorador(membresia, precio) {
     cy.get(".card-body > :nth-child(1)")
       .invoke("text")
-      .then((text) => {
-        if (text.trim() == membresia.trim()) {
-          cy.get(".list-group-item")
-            .invoke("text")
-            .then((text) => {
-              cy.log("precio ", text);
-              if (text.trim() == precio.trim()) {
-                cy.get(".card-body > :nth-child(1)").should("be.visible");
-                cy.get(".list-group-item").should("be.visible");
-              }
-            });
-        }
-      });
-  }
-
-  // Inventor
-  verificarDetalleCompraMembresia(membresia, precio) {
-    cy.get(".card-body > :nth-child(1)")
-      .invoke("text")
-      .then((tipoMembresiaInventor) => {
+      .then((MembresiaExplorador) => {
         cy.get(".list-group-item")
           .invoke("text")
-          .then((precioInventor) => {
+          .then((precioExplorador) => {
             if (
-              tipoMembresiaInventor.trim() === membresia.trim() &&
-              precioInventor.trim() == precio.trim()
+              MembresiaExplorador.trim() == membresia.trim() &&
+              precioExplorador.trim() &&
+              precio.trim()
             ) {
               cy.get(".card-body > :nth-child(1)").should("be.visible");
               cy.get(".list-group-item").should("be.visible");
+              cy.wait(2000);
             }
           });
       });
   }
 
-  // Genio
-  verificarDetalleCompraMembresia(membresia, precio) {
+  // Inventor
+  verificarDetalleCompraMembresiaInventor(membresia, precio) {
     cy.get(".card-body > :nth-child(1)")
       .invoke("text")
-      .then((tipoMembresiaGenio) => {
+      .then((MembresiaInventor) => {
         cy.get(".list-group-item")
           .invoke("text")
-          .then((precioInventor) => {
+          .then((precioExplorador) => {
             if (
-              tipoMembresiaGenio.trim() === membresia.trim() &&
-              precioInventor.trim() == precio.trim()
+              MembresiaInventor.trim() == membresia.trim() &&
+              precioExplorador.trim() &&
+              precio.trim()
             ) {
               cy.get(".card-body > :nth-child(1)").should("be.visible");
               cy.get(".list-group-item").should("be.visible");
+              cy.wait(2000);
+            }
+          });
+      });
+  }
+
+  // // Genio
+  verificarDetalleCompraMembresiaGenio(membresia, precio) {
+    cy.get(".card-body > :nth-child(1)")
+      .invoke("text")
+      .then((MembresiaGenio) => {
+        cy.get(".list-group-item")
+          .invoke("text")
+          .then((precioExplorador) => {
+            if (
+              MembresiaGenio.trim() == membresia.trim() &&
+              precioExplorador.trim() &&
+              precio.trim()
+            ) {
+              cy.get(".card-body > :nth-child(1)").should("be.visible");
+              cy.get(".list-group-item").should("be.visible");
+              cy.wait(2000);
             }
           });
       });
