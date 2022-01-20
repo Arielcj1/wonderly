@@ -48,10 +48,6 @@ describe("Administrador - Login", () => {
         wonderlycursos.click_todosLosCursos()
     })
 
-    it('Verificar que cuando se agrega un curso con fecha de inicio futuro aparece en Cursos futuros', () => {
-        
-    })
-
     it('03_Verificar que al seleccionar un curso lo redireccione al detalle del curso.', () => {
         homeadmin.click_tableroWonderlyCursos()
         wonderlycursos.seleccionarCurso()       //Click en el 1er curso de la lista
@@ -206,4 +202,29 @@ describe("Administrador - Login", () => {
         eliminarcurso.click_aceptarEliminarCurso();
         cy.wait(4000);
     });
+
+    it('Verificar que cuando se agrega un curso con fecha de inicio futuro aparece en Cursos futuros', () => {
+        homeadmin.click_tableroWonderlyCursos()
+        homeadmin.click_botonAgregarCurso();
+        wonderlycursos.type_tituloCurso("Curso Futuro 02");    
+        wonderlycursos.type_descripcionCurso("Clases personalizadas para ninos de primaria");
+
+        wonderlycursos.type_descripionProyectoFinal("Descripcion del Proyecto Final")
+        wonderlycursos.materia("Inglés");
+        wonderlycursos.edades();
+        wonderlycursos.type_FechaIncioFuturo('26/01/2022')
+        wonderlycursos.type_FechaFinalFuturo('10/02/2022');
+        wonderlycursos.horaInicio();
+        wonderlycursos.duracionClases("30");
+        wonderlycursos.recuerrenciaClases();
+        wonderlycursos.type_youtubeVideo("https://www.youtube.com/watch?v=Fn2-6zVqwX8");
+        cy.wait(2000);
+        wonderlycursos.click_botonAgregarCurso();
+        cy.wait(3000);
+        cy.get(".alert").should("be.visible");
+        cy.wait(2000)
+        wonderlycursos.click_cursosFuturos()
+        wonderlycursos.buscar_CursoFuturo("Curso Futuro 02")
+        cy.contains('Aprendizaje y proyecto final').should('be.visible')
+    })
 })

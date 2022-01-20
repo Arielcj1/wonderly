@@ -20,8 +20,10 @@ export class WonderlyCursos {
   click_insertaralaPagina() {
     cy.get(".media-toolbar-primary > .button").click();
   }
+
   type_descripionProyectoFinal(descripcionProyectoFinal) {
-    cy.get("#input_35_37_ifr").type(descripcionProyectoFinal);
+    cy.iframe("iframe[id=input_35_37_ifr]").click();
+    cy.iframe("iframe[id=input_35_37_ifr]").type(descripcionProyectoFinal);
   }
 
   materia(materia) {
@@ -29,7 +31,6 @@ export class WonderlyCursos {
   }
 
   edades() {
-    //cy.get("#input_35_16").select(edades);
     cy.get('#button_38_select_all').click()
     cy.wait(2000)
     cy.get('#button_38_select_all').click()
@@ -127,5 +128,33 @@ export class WonderlyCursos {
 
   close_modalMessage(){
     cy.get('#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span').click()
+  }
+
+  type_FechaIncioFuturo(fechainicio){
+    cy.get('#input_35_20').type(fechainicio)
+  }
+
+  type_FechaFinalFuturo(fechafinal){
+    cy.get('#input_35_21').type(fechafinal)
+  }
+
+  buscar_CursoFuturo(nombrecurso){
+    for(var i = 1; i <= 20; i++ ){
+      var aux = 1
+      var aux2 = 0
+      cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr['+i+']/td[1]/a').invoke('text').then((text) => {
+        let curso = text.trim()
+        if (curso == nombrecurso){
+          aux2 = aux
+          aux++
+          cy.log("CURSO ENCONTRADO")
+        }else{
+          if(aux == 20){
+            cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[3]/table/tbody/tr['+aux2+']/td[1]/a').click()
+          }else{aux++}
+          cy.log("Curso no encontrado")
+        }
+      })
+    }
   }
 }

@@ -20,7 +20,6 @@ export class EditarWonderlyCursos{
     }
 
     editarEdades() {
-        //cy.get('#input_34_7').select(edades);
         cy.get('#button_20_select_all').click()
         cy.wait(3000)
         cy.get('#button_20_select_all').click()
