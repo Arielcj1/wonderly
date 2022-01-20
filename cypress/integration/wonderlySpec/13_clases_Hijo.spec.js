@@ -24,13 +24,13 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario padre
-    ingresar.type_contrasena("123"); //Cambiar contraseña
+    ingresar.type_Correo("nuevopadre07@gmail.com"); //Cambiar usuario padre
+    ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });
 
   //CLASES
-  it.skip("27_Verificar que un hijo puede ingresar al detalle de un curso desde el schedule.", () => {
+  it("27_Verificar que un hijo puede ingresar al detalle de un curso desde el schedule.", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
@@ -39,7 +39,7 @@ describe("Wonderly- clases hijos", () => {
     cy.wait(2000);
     claseshijo.botonPreguntaWhatsapp();
   });
-  it.skip("28_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
+  it("28_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_pestañaCursos();
     claseshijo.botonInscribeteCursos();
@@ -48,7 +48,7 @@ describe("Wonderly- clases hijos", () => {
     cy.get(".col-md-7 > .title").should("be.visible");
   });
 
-  it.skip("29_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it("29_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
@@ -57,7 +57,7 @@ describe("Wonderly- clases hijos", () => {
     cy.get(".actions-header > .class-title").should("be.visible");
   });
 
-  it.skip("30_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {
+  it("30_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
@@ -72,7 +72,7 @@ describe("Wonderly- clases hijos", () => {
     clase.VerificarFecha();
   });
 
-  it.skip("34_Verificar que un hijo pueda descargar el material de una clase", () => {
+  it("34_Verificar que un hijo pueda descargar el material de una clase", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
@@ -80,7 +80,7 @@ describe("Wonderly- clases hijos", () => {
     clase.click_descargarMaterial();
   });
 
-  it.skip("37_Verificar que el hijo pueda ver el counter de la clase", () => {
+  it("37_Verificar que el hijo pueda ver el counter de la clase", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();

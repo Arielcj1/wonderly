@@ -42,8 +42,8 @@ Cypress.on("uncaught:exception", (err, runnable) => {
       homeadmin.click_tableroProfesoresRegistrados();
       homeadmin.click_botonRegistrarProfesor();
       registroprofesor.type_nombre("Profesor");
-      registroprofesor.type_apellido("Veinte");
-      registroprofesor.type_correoElectronico("profesor20@gmail.com");
+      registroprofesor.type_apellido("Prueba1");
+      registroprofesor.type_correoElectronico("profesorprueba1@gmail.com");
       registroprofesor.type_contrasenia("12345");
       registroprofesor.type_confirmarContrasenia("12345");
       registroprofesor.click_botonListo();

@@ -23,13 +23,13 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario Padre
-    ingresar.type_contrasena("abcABC123"); //Cambiar contraseña
+    ingresar.type_Correo("nuevopadre07@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });
 
   // INSCRIPCION:
-  it.skip("7_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", () => {
+  it("7_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", () => {
     perfilhijo.click_seleccionarHijo();
     cy.wait(3000);
     home.click_LogoWonderly();
@@ -38,7 +38,7 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   //MEMBRESIAS RESERVAS:
-  it.skip("9_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
+  it("9_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario Padre
@@ -54,7 +54,7 @@ describe("Wonderly- tablero hijo", () => {
     clase.verificarClaseInscrita();
   });
 
-  it.skip("10_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", () => {
+  it("10_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario Padre
@@ -70,7 +70,7 @@ describe("Wonderly- tablero hijo", () => {
     clase.verificarClaseInscrita();
   });
 
-  it.skip("11_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", () => {
+  it("11_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario Padre
@@ -86,7 +86,7 @@ describe("Wonderly- tablero hijo", () => {
     clase.verificarClaseInscrita();
   });
 
-  it.skip("12_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
+  it("12_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("marquito@gmail.com"); //Cambiar un nuevo usuario existente
@@ -98,7 +98,7 @@ describe("Wonderly- tablero hijo", () => {
     cy.get(".modal-body > p").should("be.visible");
   });
 
-  it.skip("13_Verificar que un hijo con membresia free no pueda Inscribirse a una clase que exceda sus 7 dias gratis.", () => {
+  it("13_Verificar que un hijo con membresia free no pueda Inscribirse a una clase que exceda sus 7 dias gratis.", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("yenny@gmail.com");

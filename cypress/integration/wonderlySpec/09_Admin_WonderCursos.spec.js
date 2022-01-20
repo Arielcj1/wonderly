@@ -57,7 +57,7 @@ describe("Administrador - Login", () => {
     it('04_Comprobar que el administrador pueda agregar un curso nuevo completando los campos requeridos.', () => {
         homeadmin.click_tableroWonderlyCursos()
         homeadmin.click_botonAgregarCurso();
-        wonderlycursos.type_tituloCurso("Lunes 17 - 2022");    
+        wonderlycursos.type_tituloCurso("Jueves 20 - 2022");    
         wonderlycursos.type_descripcionCurso("Clases personalizadas para ninos de primaria");
         wonderlycursos.click_añadirImagen();
         cy.wait(1000);
@@ -110,8 +110,8 @@ describe("Administrador - Login", () => {
 
     it("07_Verificar que el Admin puede editar un curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27", 1); //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso
-        editarcursos.type_editarTituloCurso("LUNES 27 Editado");
+        editarcursos.buscar_curso("Jueves 20 - 2022", 1); //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso
+        editarcursos.type_editarTituloCurso("Jueves 20 - 2022 Editado");
         editarcursos.type_editarDescripcionCurso("Clases personalizadas para ninos de primaria");
         editarcursos.type_editarProyectoFinal("Llega Matrix 4");
         editarcursos.editarMateria("Inglés");
@@ -125,26 +125,26 @@ describe("Administrador - Login", () => {
 
     it("08_Comprobar que el Admin puede asignar un profesor a un curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 2); //Click en el icono Asignar Profesor
-        asignarprofe.type_seleccionarProfesor("Jose Muñoz");
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 2); //Click en el icono Asignar Profesor
+        asignarprofe.type_seleccionarProfesor("Profesor Cero");
         asignarprofe.click_asignar();
     });
     
     it("09_Comprobar que el Adimin pueda asignar una clase ondemand a un curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 3);
-        claseondemand.select_claseOnDemand("Clase OnDemand Gratis 1"); // Agregar clase on demand
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 3);
+        claseondemand.select_claseOnDemand("Clase OnDemand Editado 3"); // Agregar clase on demand
         claseondemand.botonAsignarClaseOnDemand();
     });
 
     it("10_Comprobar que el Admin puede Ver Clases del curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 4); //Click en el icono de Ver Clases
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 4); //Click en el icono de Ver Clases
     });
 
     it("11_Comprobar que el Admin puede editar la clase desde Ver Clases de un curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 4); //Click en el icono de Ver Clases
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 4); //Click en el icono de Ver Clases
         editarcursos.click_editarClase();
         editarcursos.type_editarTituloClase("Lunes de ingles");
         editarcursos.type_editarDescripcionClase("Cuando llega MATRIX 4");
@@ -154,15 +154,15 @@ describe("Administrador - Login", () => {
 
     it("12_Verificar que el Admin puede asignar un profesor a una clase", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 4); //Click en el icono de Ver Clases
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 4); //Click en el icono de Ver Clases
         asignarprofe.click_asignarProfesorClase();
-        asignarprofe.type_seleccionarProfesor("Jose Muñoz");
+        asignarprofe.type_seleccionarProfesor("Profesor Cero");
         asignarprofe.click_asignar();
     });
     
     it("13_Verificar que el Admin puede agregar material a una clase", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 4); //Click en el icono de Ver Clases
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 4); //Click en el icono de Ver Clases
         wonderlyclase.click_iconoAgregarMaterial();
         wonderlyclase.click_agregarMaterial();
         wonderlyclase.type_tituloMaterial("Material Extra de Estudio");
@@ -175,7 +175,7 @@ describe("Administrador - Login", () => {
 
     it("14_Verificar que un Admin puede agregar y eliminar material de una clase", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 4); //Click en el icono de Ver Clases
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 4); //Click en el icono de Ver Clases
         wonderlyclase.click_iconoAgregarMaterial();
         wonderlyclase.agregar3Materiales();
         cy.wait(2000);
@@ -187,7 +187,7 @@ describe("Administrador - Login", () => {
 
     it("15_Verificar que el Admin puede repetir un curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado", 5);
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado", 5);
         repetircurso.horaInicio("13:00");
         repetircurso.duracionClase("60");
         repetircurso.recurreciaClases(); //Jueves
@@ -197,7 +197,7 @@ describe("Administrador - Login", () => {
     
     it("16_Comprobar que el Admin puede Eliminar un curso", () => {
         homeadmin.click_tableroWonderlyCursos();
-        editarcursos.buscar_curso("LUNES 27 Editado - Repetido", 6);
+        editarcursos.buscar_curso("Jueves 20 - 2022 Editado - Repetido", 6);
         cy.wait(4000);
         eliminarcurso.click_aceptarEliminarCurso();
         cy.wait(4000);
@@ -206,7 +206,7 @@ describe("Administrador - Login", () => {
     it('Verificar que cuando se agrega un curso con fecha de inicio futuro aparece en Cursos futuros', () => {
         homeadmin.click_tableroWonderlyCursos()
         homeadmin.click_botonAgregarCurso();
-        wonderlycursos.type_tituloCurso("Curso Futuro 02");    
+        wonderlycursos.type_tituloCurso("Curso Futuro 03");    
         wonderlycursos.type_descripcionCurso("Clases personalizadas para ninos de primaria");
 
         wonderlycursos.type_descripionProyectoFinal("Descripcion del Proyecto Final")
@@ -224,7 +224,7 @@ describe("Administrador - Login", () => {
         cy.get(".alert").should("be.visible");
         cy.wait(2000)
         wonderlycursos.click_cursosFuturos()
-        wonderlycursos.buscar_CursoFuturo("Curso Futuro 02")
+        wonderlycursos.buscar_CursoFuturo("Curso Futuro 03")
         cy.contains('Aprendizaje y proyecto final').should('be.visible')
     })
 })

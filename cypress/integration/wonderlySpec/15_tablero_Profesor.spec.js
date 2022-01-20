@@ -6,9 +6,6 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { ClasesProfesor } from "../../paginas/Profesor/ClasesProfesor";
 import { AlumnosProfesor } from "../../paginas/Profesor/AlumnosProfesor";
-import { PerfilHijo } from "../../paginas/Hijo/PerfilHijo";
-import { Clase } from "../../paginas/Hijo/Clase";
-import { Destrezas } from "../../paginas/Destrezas";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -20,34 +17,31 @@ describe("Wonderly- PROFESOR", () => {
   const perfil = new Perfil();
   const clasesprofesor = new ClasesProfesor();
   const alumnosprofesor = new AlumnosProfesor();
-  const clase = new Clase();
-  const perfilhijo = new PerfilHijo();
-  const destrezas = new Destrezas();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesordeprueba3@gmail.com"); ////Cambiar el correo del profesor nuevo
-    ingresar.type_contrasena("12345"); ////Cambiar la contraseña que le corresponde
+    ingresar.type_Correo("profesorcero@gmail.com"); //Cambiar el correo del profesor nuevo
+    ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
     ingresar.click_continuar();
   });
 
   // TABLEROS PROFESOR:
-  it.skip("8_Verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
+  it("8_Verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it.skip("9_Verificar que un profesor puede ver todos los alumnos que se registraron a sus clases desde tablero Alumnos Profesor", () => {
+  it("9_Verificar que un profesor puede ver todos los alumnos que se registraron a sus clases desde tablero Alumnos Profesor", () => {
     alumnosprofesor.tableroClasesAlumnos();
     cy.get("#menu-item-456 > .nav-link")
       .should("contain.text", "Clases Profesor")
       .should("be.visible");
   });
 
-  it.skip("10_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos de su perfil", () => {
+  it("10_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos de su perfil", () => {
     perfil.type_nombre("Profesor"); //Nombre del profesor nuevo
-    perfil.type_apellido("DePrueba2"); //Apellido del profesor nuevo
+    perfil.type_apellido("Cero"); //Apellido del profesor nuevo
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudadClear("Sucre");
@@ -62,7 +56,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.get(".title").should("be.visible");
   });
 
-  it.skip("11_Verificar que el archivo subido del CV sea en formato PDF", () => {
+  it("11_Verificar que el archivo subido del CV sea en formato PDF", () => {
     perfil.subirArchivo();
     perfil.click_botonGuardar("¡Oops! Hubo un problema con tu envío.");
     cy.get(".title").should("be.visible");

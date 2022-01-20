@@ -23,20 +23,25 @@ describe("MEMBRESIAS", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("marieschrei@gmail.com");
-    ingresar.type_contrasena("123");
+    ingresar.type_Correo("nuevopadre07@gmail.com");
+    ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
   });
 
   // COMPRA DE MEMBRESIAS EXPLORADOR, INVENTOR y GENIO
-  it.skip("17_18_19_Verificar que un hijo puede comprar una membresia Explorador, Inventor y Genio", () => {
+  it("17_18_19_Verificar que un hijo puede comprar una membresia Explorador, Inventor y Genio", () => {
+    home.click_salir()
+    ingresar.type_Correo("marieschrei@gmail.com");
+    ingresar.type_contrasena("123");
+    ingresar.click_continuar();
+    perfilhijo.click_seleccionarHijo()
     home.click_LogoWonderly();
     membresiahijos.Membresia("Angelica Schrei");
   });
 
   //DETALLE DE LA MEMBRESIA: EXPLORADOR, INVENTOR y GENIO
-  it.skip("20_Comprobar que el detalle de la membresia 'Explorador' coincide con el Detalle de compra", () => {
+  it("20_Comprobar que el detalle de la membresia 'Explorador' coincide con el Detalle de compra", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Explorador();
     membresiahijos.verificarDetalleCompraMembresiaExplorador(
@@ -45,7 +50,7 @@ describe("MEMBRESIAS", () => {
     );
   });
 
-  it.skip("21_Comprobar que el detalle de la membresia 'Inventor' coincide con el Detalle de compra", () => {
+  it("21_Comprobar que el detalle de la membresia 'Inventor' coincide con el Detalle de compra", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Inventor();
     membresiahijos.verificarDetalleCompraMembresiaInventor(
@@ -54,7 +59,7 @@ describe("MEMBRESIAS", () => {
     );
   });
 
-  it.skip("22_Comprobar que el detalle de la membresia 'Genio' coincide con el Detalle de compra", () => {
+  it("22_Comprobar que el detalle de la membresia 'Genio' coincide con el Detalle de compra", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Genio();
     membresiahijos.verificarDetalleCompraMembresiaGenio(

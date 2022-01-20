@@ -25,8 +25,8 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario Padre
-    ingresar.type_contrasena("abcABC123"); //Cambiar contraseña
+    ingresar.type_Correo("nuevopadre07@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });
 
@@ -76,6 +76,6 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     cy.wait(2000);
-    claseondemand.verificarCursoOnDemand("Programación On-Demand");
+    claseondemand.verificarCursoOnDemand("Clase OnDemand Editado 3");
   });
 });
