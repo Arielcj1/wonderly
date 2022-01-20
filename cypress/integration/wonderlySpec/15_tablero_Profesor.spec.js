@@ -21,7 +21,7 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesorcero@gmail.com"); //Cambiar el correo del profesor nuevo
+    ingresar.type_Correo("profesoruno@gmail.com"); //Cambiar el correo del profesor nuevo
     ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
     ingresar.click_continuar();
   });
@@ -41,7 +41,7 @@ describe("Wonderly- PROFESOR", () => {
 
   it("10_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos de su perfil", () => {
     perfil.type_nombre("Profesor"); //Nombre del profesor nuevo
-    perfil.type_apellido("Cero"); //Apellido del profesor nuevo
+    perfil.type_apellido("Uno"); //Apellido del profesor nuevo
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudadClear("Sucre");

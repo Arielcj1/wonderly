@@ -23,7 +23,7 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("nuevopadre07@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_Correo("padre0@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });
@@ -47,7 +47,7 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     home.click_Membresia_Explorador();
-    membresiahijos.select_MembresiaHijo("July Schrei"); //Se debe Crear un hijo
+    membresiahijos.select_MembresiaHijo("Angel Schrei"); //Se debe Crear un hijo
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();
@@ -63,7 +63,7 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     home.click_Membresia_Inventor();
-    membresiahijos.select_MembresiaHijo("Lucia Schrei"); //Se debe Crear un hijo
+    membresiahijos.select_MembresiaHijo("Pedro Schrei"); //Se debe Crear un hijo
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();
@@ -81,7 +81,7 @@ describe("Wonderly- tablero hijo", () => {
     cy.wait(2000);
     home.click_Membresia_Genio();
     cy.wait(2000);
-    membresiahijos.select_MembresiaHijo("Anita Schrei"); //Se debe Crear un hijo
+    membresiahijos.select_MembresiaHijo("Sergio Schrei"); //Se debe Crear un hijo
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();

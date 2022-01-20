@@ -18,20 +18,20 @@ describe("Comprar Membresias Hijos", () => {
   const paquete = new ComprarPaquete();
   const pago = new MetodoPago();
   const registrarhijo = new RegistrarHijo();
-  const perfil = new Perfil()
+  const perfil = new Perfil();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("nuevopadre09@gmail.com");
+    ingresar.type_Correo("padre0@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("01_Verificar que un padre pueda Añadir Tarjeta.", ()=> {
+  it("01_Verificar que un padre pueda Añadir Tarjeta.", () => {
     perfil.click_perfil();
-    pago.click_tablero_MetodoPago()
-    pago.click_anadirTarjeta()
+    pago.click_tablero_MetodoPago();
+    pago.click_anadirTarjeta();
     //Completar o Actualizar datos de Tarjeta de Credito o Debito
     pago.type_numTarjeta("4242424242424242");
     pago.type_mesExp("05");
@@ -39,9 +39,8 @@ describe("Comprar Membresias Hijos", () => {
     pago.type_cvc("123");
     pago.type_nomTitular("Julio Roca");
     pago.click_enviar();
-    cy.get('#gform_confirmation_message_37').should('be.visible')
-
-  })
+    cy.get("#gform_confirmation_message_37").should("be.visible");
+  });
 
   it("02_Comprobar que un padre puede comprar una membresia 'Explorador'.", () => {
     home.click_LogoWonderly();
@@ -56,7 +55,7 @@ describe("Comprar Membresias Hijos", () => {
   it("03_Comprobar que un padre puede comprar una membresia 'Inventor'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
-    home.click_Membresia_Inventor()
+    home.click_Membresia_Inventor();
     paquete.type_seleccionarHijo("Hijo Curso");
     cy.wait(2000);
     paquete.click_suscribirse();
@@ -79,9 +78,9 @@ describe("Comprar Membresias Hijos", () => {
     paquete.type_seleccionarHijo("Hijo Dos");
     paquete.click_suscribirse();
     //cy.get(".text-primary").should("be.visible");   //¡Gracias por tu compra!
-    paquete.verificarTipoMembresia('Explorador')
-    paquete.verificarPrecioTotal('29.99 USD.')
-  })
+    paquete.verificarTipoMembresia("Explorador");
+    paquete.verificarPrecioTotal("29.99 USD.");
+  });
 
   it("06_Comprobar que el detalle de la membresia 'Inventor' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
@@ -90,9 +89,9 @@ describe("Comprar Membresias Hijos", () => {
     paquete.type_seleccionarHijo("Hijo Schedule");
     paquete.click_suscribirse();
     //cy.get(".text-primary").should("be.visible");   //¡Gracias por tu compra!
-    paquete.verificarTipoMembresia('Inventor')
-    paquete.verificarPrecioTotal('49.99 USD.')
-  })
+    paquete.verificarTipoMembresia("Inventor");
+    paquete.verificarPrecioTotal("49.99 USD.");
+  });
 
   it("07_Comprobar que el detalle de la membresia 'Genio' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
@@ -101,16 +100,16 @@ describe("Comprar Membresias Hijos", () => {
     paquete.type_seleccionarHijo("Hijo Perfiles");
     paquete.click_suscribirse();
     //cy.get(".text-primary").should("be.visible");   //¡Gracias por tu compra!
-    paquete.verificarTipoMembresia('Genio')
-    paquete.verificarPrecioTotal('69.99 USD.')
-  })
+    paquete.verificarTipoMembresia("Genio");
+    paquete.verificarPrecioTotal("69.99 USD.");
+  });
 
   it("08_Comprobar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Explorador();
     paquete.click_suscribirse();
-    cy.get('.title').should('be.visible')
+    cy.get(".title").should("be.visible");
   });
 
   it("09_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Explorador'. ", () => {

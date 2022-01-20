@@ -24,7 +24,7 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("nuevopadre07@gmail.com"); //Cambiar usuario padre
+    ingresar.type_Correo("padre0@gmail.com"); //Cambiar usuario padre
     ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });

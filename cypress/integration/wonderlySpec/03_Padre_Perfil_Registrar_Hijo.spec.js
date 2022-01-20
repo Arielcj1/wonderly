@@ -2,7 +2,7 @@
 // Casos de prueba realizado por Patrik Delgadillo
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
-import {AgregarNuevoHijo} from "../../paginas/Padre/AgregarNuevoHijo"
+import { AgregarNuevoHijo } from "../../paginas/Padre/AgregarNuevoHijo";
 import { MisHijos } from "../../paginas/Padre/MisHijos";
 import { Perfil } from "../../paginas/Padre/Perfil";
 import { Perfiles } from "../../paginas/Padre/Perfiles";
@@ -16,29 +16,29 @@ describe("Perfil Padre y Registro de hijos", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
-  const perfiles = new Perfiles()
+  const perfiles = new Perfiles();
   const registrarhijo = new RegistrarHijo();
   const mishijos = new MisHijos();
-  const agregarnuevohijo = new AgregarNuevoHijo()
+  const agregarnuevohijo = new AgregarNuevoHijo();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("nuevopadre09@gmail.com");
+    ingresar.type_Correo("padre0@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
   it("01_Verificar que un padre pueda Ir a su Perfil", () => {
-    perfil.click_perfil()      //Click en la opcion Cuenta del dropdown menu
+    perfil.click_perfil(); //Click en la opcion Cuenta del dropdown menu
   });
 
-  it('02_Verificar que se muestra un mensaje de advertencia cuando no se completa todos los campos requeridos en su Perfil.', () => {
+  it("02_Verificar que se muestra un mensaje de advertencia cuando no se completa todos los campos requeridos en su Perfil.", () => {
     //Ir al Perfil del padre
-    perfil.click_perfil();   //Click en la opcion Cuenta del dropdown menu
-    perfil.click_guardar()
-    cy.get('.title').should('be.visible')
-  })
+    perfil.click_perfil(); //Click en la opcion Cuenta del dropdown menu
+    perfil.click_guardar();
+    cy.get(".title").should("be.visible");
+  });
 
   it("03_Verificar que un padre puede editar y completar su Perfil.", () => {
     //Ir al Perfil del padre
@@ -82,79 +82,80 @@ describe("Perfil Padre y Registro de hijos", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it('07_Demostrar que un padre pueda registrar a un hijo desde el menú en Perfiles', () => {
+  it("07_Demostrar que un padre pueda registrar a un hijo desde el menú en Perfiles", () => {
     perfil.click_perfil();
-    cy.wait(2000)
-    perfil.click_perfiles()
-    cy.wait(2000)
-    perfiles.click_registrarHijo()
+    cy.wait(2000);
+    perfil.click_perfiles();
+    cy.wait(2000);
+    perfiles.click_registrarHijo();
     registrarhijo.type_nombreHijo("Hijo");
     registrarhijo.type_apellidoHijo("Perfiles");
     registrarhijo.type_fechaNacimiento("01/01/2012");
     registrarhijo.click_registrar();
     cy.get(".alert").should("be.visible");
-  })
+  });
 
-  it('08_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso en el schedule', ()=> {
-    home.click_LogoWonderly()
-    cy.get('#vivo-tab').click()
-    registrarhijo.click_botonInscribete()
-    registrarhijo.click_botonInscribeteGratis()
-    perfiles.click_registrarHijo()
+  it("08_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso en el schedule", () => {
+    home.click_LogoWonderly();
+    cy.get("#vivo-tab").click();
+    registrarhijo.click_botonInscribete();
+    registrarhijo.click_botonInscribeteGratis();
+    perfiles.click_registrarHijo();
     registrarhijo.type_nombreHijo("Hijo");
     registrarhijo.type_apellidoHijo("Schedule");
     registrarhijo.type_fechaNacimiento("01/01/2012");
     registrarhijo.click_registrar();
     cy.get(".alert").should("be.visible");
-  })
+  });
 
-  it('09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos', ()=> {
-    home.click_pestañaCursos()
-    registrarhijo.click_inscribeteCurso()
-    registrarhijo.click_botonInscribeteGratis()
-    perfiles.click_registrarHijo()
+  it("09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos", () => {
+    home.click_pestañaCursos();
+    registrarhijo.click_inscribeteCurso();
+    registrarhijo.click_botonInscribeteGratis();
+    perfiles.click_registrarHijo();
     registrarhijo.type_nombreHijo("Hijo");
     registrarhijo.type_apellidoHijo("Curso");
     registrarhijo.type_fechaNacimiento("01/01/2012");
     registrarhijo.click_registrar();
     cy.get(".alert").should("be.visible");
-  })
+  });
 
-  
+  it("10_Comprobar que un padre pueda registrar a mas de un hijo desde el formulario Agregar nuevo hijo", () => {
+    home.click_LogoWonderly();
+    cy.visit(
+      "https://developers.learnwonderly.com/registrar-padre/agregar-nuevo-hijo/"
+    );
+    agregarnuevohijo.type_Birthday("01/01/2016"); //dd/mm/yyyy
+    agregarnuevohijo.type_NombreHijo("Hijo1");
+    agregarnuevohijo.type_ApellidoHijo("Uno1");
 
-  it('10_Comprobar que un padre pueda registrar a mas de un hijo desde el formulario Agregar nuevo hijo', ()=> {
-    home.click_LogoWonderly()
-    cy.visit("https://developers.learnwonderly.com/registrar-padre/agregar-nuevo-hijo/")
-    agregarnuevohijo.type_Birthday('01/01/2016')  //dd/mm/yyyy
-    agregarnuevohijo.type_NombreHijo('Hijo1')
-    agregarnuevohijo.type_ApellidoHijo('Uno1')
-    
-    agregarnuevohijo.click_AgregarHijo()
+    agregarnuevohijo.click_AgregarHijo();
 
-    agregarnuevohijo.type_Birthday2('01/01/2016')
-    agregarnuevohijo.type_NombreHijo2('Hijo2')
-    agregarnuevohijo.type_ApellidoHijo2('Dos2')
-    agregarnuevohijo.botonExploraCursos()
+    agregarnuevohijo.type_Birthday2("01/01/2016");
+    agregarnuevohijo.type_NombreHijo2("Hijo2");
+    agregarnuevohijo.type_ApellidoHijo2("Dos2");
+    agregarnuevohijo.botonExploraCursos();
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
-  })
+  });
 
-  it('11_Probar que un padre pueda eliminar el registro de un hijo desde el formulario Agregar nuevo hijo', () => {
-    home.click_LogoWonderly()
-    cy.visit("https://developers.learnwonderly.com/registrar-padre/agregar-nuevo-hijo/")
-    agregarnuevohijo.type_Birthday('01/01/2016')  //dd/mm/yyyy
-    agregarnuevohijo.type_NombreHijo('Hijo1')
-    agregarnuevohijo.type_ApellidoHijo('Uno1')
-    
-    agregarnuevohijo.click_AgregarHijo()
+  it("11_Probar que un padre pueda eliminar el registro de un hijo desde el formulario Agregar nuevo hijo", () => {
+    home.click_LogoWonderly();
+    cy.visit(
+      "https://developers.learnwonderly.com/registrar-padre/agregar-nuevo-hijo/"
+    );
+    agregarnuevohijo.type_Birthday("01/01/2016"); //dd/mm/yyyy
+    agregarnuevohijo.type_NombreHijo("Hijo1");
+    agregarnuevohijo.type_ApellidoHijo("Uno1");
 
-    agregarnuevohijo.type_Birthday2('01/01/2016')
-    agregarnuevohijo.type_NombreHijo2('Hijo2')
-    agregarnuevohijo.type_ApellidoHijo2('Dos2')
+    agregarnuevohijo.click_AgregarHijo();
 
-    agregarnuevohijo.click_AgregarHijo()
+    agregarnuevohijo.type_Birthday2("01/01/2016");
+    agregarnuevohijo.type_NombreHijo2("Hijo2");
+    agregarnuevohijo.type_ApellidoHijo2("Dos2");
 
-    agregarnuevohijo.eliminarHijo2()
-    cy.wait(2000)
-  })
-  
+    agregarnuevohijo.click_AgregarHijo();
+
+    agregarnuevohijo.eliminarHijo2();
+    cy.wait(2000);
+  });
 });
