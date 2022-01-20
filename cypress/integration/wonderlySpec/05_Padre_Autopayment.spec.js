@@ -28,7 +28,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     beforeEach(() => {
         cy.visit("https://developers.learnwonderly.com/");
         home.click_IniciaSesion();
-        ingresar.type_Correo("nuevopadre07@gmail.com");
+        ingresar.type_Correo("nuevopadre09@gmail.com");
         ingresar.type_contrasena("12345");
         ingresar.click_continuar();
       });
@@ -36,14 +36,14 @@ describe("Padre - Autopayment y otros TCs", () => {
     it('01_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos', () => {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment(1)
+        autopaymentpadre.verificarAutopayment(5)
 
     })
 
     it('02_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos', ()=> {
         perfil.click_perfil();
         mishijos.click_Tablero_MisHijos()
-        autopaymentpadre.verificarAutopayment(1)
+        autopaymentpadre.verificarAutopayment(5)
     })
 
     it('03_Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', ()=> {
@@ -112,7 +112,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     it('10_Comprobar que un padre no puede reservar un clase.', () => {
         home.click_LogoWonderly()
         cy.get('#vivo-tab').click()
-        cy.contains('Robótica 4pm').click()
+        cy.contains('Robótica 4pm').click()    //Cambiar nombre de curso
         registrarhijo.click_botonInscribeteGratis()
         cy.get('.modal-content > .my-3').should('be.visible')  //Assert es que le muestre los perfiles de los hijos para elija un hijo
     })

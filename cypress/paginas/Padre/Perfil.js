@@ -61,7 +61,8 @@ export class Perfil{
 
     //submenu del perfil 
     click_perfil(){
-        cy.get('#menu-item-6738 > #navbarDropdown').click()
+        //cy.get('#menu-item-6738 > #navbarDropdown').click()
+        cy.get('#menu-item-6738 > .nav-link').click()
     }
 
     click_perfiles(){
