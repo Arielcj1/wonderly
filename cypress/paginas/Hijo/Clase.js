@@ -20,16 +20,13 @@ export class Clase {
         if (text == "Inscríbete") {
           cy.log("El hijo puede inscribirse a la clase");
           cy.wait(2000);
-          // cy.xpath(
-          //   "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[11]/div/div/div/div/div[3]/a"
-          // ).click(); //Click en el boton Inscribete
           cy.xpath(
             "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a"
-          ).click();
+          ).click({ force: true });
           cy.wait(5000);
           cy.xpath(
-            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[3]/a[1]"
-          ).click();
+            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div/div[2]/div/a"
+          ).click(); //boton Inscribete
           cy.get(".modal-body > p").should("be.visible");
           cy.get(
             "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"

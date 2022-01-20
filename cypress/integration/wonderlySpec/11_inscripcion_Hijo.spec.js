@@ -23,8 +23,8 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
+    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("abcABC123"); //Cambiar contraseña
     ingresar.click_continuar();
   });
 
@@ -38,50 +38,68 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   //MEMBRESIAS RESERVAS:
-  it.skip("9_Comprobar que un hijo con membresia Explorador puede reservar una clase desde el schedule", () => {
-    home.click_LogoWonderly();
-    home.click_Membresia_Explorador();
-    membresiahijos.select_MembresiaHijo("July Schrei");
-    membresiahijos.botonSubscribirse();
-    membresiahijos.botonMembresiasCompradas();
-    home.click_LogoWonderly();
-    clase.verificarClaseInscrita();
-  });
-
-  it.skip("10_Comprobar que un hijo con membresia INVENTOR puede reservar una clase desde el schedule", () => {
-    home.click_LogoWonderly();
-    home.click_Membresia_Inventor();
-    membresiahijos.select_MembresiaHijo("Lucia Schrei"); //Crear un hijo
-    membresiahijos.botonSubscribirse();
-    membresiahijos.botonMembresiasCompradas();
-    home.click_LogoWonderly();
-    clase.verificarClaseInscrita();
-  });
-
-  it.skip("11_Comprobar que un hijo con membresia GENIO puede reservar una clase desde el schedule", () => {
-    home.click_LogoWonderly();
-    home.click_Membresia_Genio;
-    membresiahijos.select_MembresiaHijo("Anita Schrei"); //Crear un hijo
-    membresiahijos.botonSubscribirse();
-    membresiahijos.botonMembresiasCompradas();
-    home.click_LogoWonderly();
-    clase.verificarClaseInscrita();
-  });
-
-  it("12_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
-    home.click_MenuUsuario();
+  it.skip("9_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
     home.click_salir();
     home.click_IniciaSesion();
-    ingresar.type_Correo("marquito@gmail.com"); //Cambiar un nuevo usuario
-    ingresar.type_contrasena("123");
+    ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("123"); //Cambiar contraseña
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
+    home.click_LogoWonderly();
+    home.click_Membresia_Explorador();
+    membresiahijos.select_MembresiaHijo("July Schrei"); //Se debe Crear un hijo
+    membresiahijos.botonSubscribirse();
+    membresiahijos.botonMembresiasCompradas();
+    home.click_LogoWonderly();
+    clase.verificarClaseInscrita();
+  });
+
+  it.skip("10_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", () => {
+    home.click_salir();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("123"); //Cambiar contraseña
+    ingresar.click_continuar();
+    perfilhijo.click_seleccionarHijo();
+    home.click_LogoWonderly();
+    home.click_Membresia_Inventor();
+    membresiahijos.select_MembresiaHijo("Lucia Schrei"); //Se debe Crear un hijo
+    membresiahijos.botonSubscribirse();
+    membresiahijos.botonMembresiasCompradas();
+    home.click_LogoWonderly();
+    clase.verificarClaseInscrita();
+  });
+
+  it.skip("11_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", () => {
+    home.click_salir();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("123"); //Cambiar contraseña
+    ingresar.click_continuar();
+    perfilhijo.click_seleccionarHijo();
+    home.click_LogoWonderly();
+    home.click_Membresia_Genio;
+    membresiahijos.select_MembresiaHijo("Anita Schrei"); //Se debe Crear un hijo
+    membresiahijos.botonSubscribirse();
+    membresiahijos.botonMembresiasCompradas();
+    home.click_LogoWonderly();
+    clase.verificarClaseInscrita();
+  });
+
+  it.skip("12_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
+    home.click_salir();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("marquito@gmail.com"); //Cambiar un nuevo usuario existente
+    ingresar.type_contrasena("123");
+    ingresar.click_continuar();
+    perfilhijo.click_seleccionarHijo(); //Se debe  Crear un hijo
     clase.click_botonInscribeteCursos1eravez();
     clase.click_botonInscribeteCursos2davez();
     cy.get(".modal-body > p").should("be.visible");
   });
 
   it.skip("13_Verificar que un hijo con membresia free no pueda Inscribirse a una clase que exceda sus 7 dias gratis.", () => {
+    home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("yenny@gmail.com");
     ingresar.type_contrasena("123");
@@ -100,7 +118,8 @@ describe("Wonderly- tablero hijo", () => {
     );
   });
 
-  it.skip("14_Verificar que un hijo con membresia Explorador no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+  it("14_Verificar que un hijo con membresia Explorador no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+    home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("fernanda@gmail.com");
     ingresar.type_contrasena("123");
@@ -118,6 +137,7 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   it("15_Verificar que un hijo con membresia Inventor no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+    home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("angel@gmail.com");
     ingresar.type_contrasena("123");
@@ -135,6 +155,7 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   it("16_Verificar que un hijo con membresia Genio no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+    home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("amalia@gmail.com");
     ingresar.type_contrasena("123");

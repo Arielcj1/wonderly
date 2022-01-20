@@ -127,4 +127,7 @@ export class Home {
   prensa() {
     cy.get("#menu-item-6097 > .nav-link").click();
   }
+  membresiasMenuAbajo() {
+    cy.get("#menu-item-724 > .nav-link").click();
+  }
 }

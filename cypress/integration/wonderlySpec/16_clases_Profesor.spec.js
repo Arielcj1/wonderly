@@ -50,7 +50,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(4000);
   });
 
-  it.skip("13_Verificar que un profesor puede Iniciar clase desde el tablero Clases profesor", () => {
+  it.skip("13_Verificar que un profesor puede Iniciar su clase 30 minutos antes que inicie su clase desde el tablero Clases profesor", () => {
     perfil.click_tableroClasesProfesor();
     cy.wait(2000);
     perfil.click_iniciarClase();

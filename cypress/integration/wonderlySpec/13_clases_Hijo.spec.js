@@ -6,10 +6,6 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { Clase } from "../../paginas/Hijo/Clase";
 import { ClasesHijo } from "../../paginas/Hijo/ClasesHijo";
-import { Registro } from "../../paginas/Registro";
-import { RegistrarHijo } from "../../paginas/Padre/RegistrarHijo";
-import { PerfilPadre } from "../../paginas/Padre/PerfilPadre";
-import { ClaseOnDemand } from "../../PaginasAdmin/ClaseOnDemand";
 import { Autopayment } from "../../paginas/Hijo/Autopayment";
 import { MisHijos } from "../../paginas/Hijo/MisHijos";
 
@@ -23,19 +19,13 @@ describe("Wonderly- clases hijos", () => {
   const home = new Home();
   const clase = new Clase();
   const claseshijo = new ClasesHijo();
-  const registro = new Registro();
-  const registrarHijo = new RegistrarHijo();
-  const perfilpadre = new PerfilPadre();
-  const claseondemand = new ClaseOnDemand();
   const mishijos = new MisHijos();
   const autopayment = new Autopayment();
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    // ingresar.type_Correo("padre20@gmail.com");
-    // ingresar.type_contrasena("12345");
-    ingresar.type_Correo("marieschrei@gmail.com");
-    ingresar.type_contrasena("123");
+    ingresar.type_Correo("marieschrei@gmail.com"); //Cambiar usuario padre
+    ingresar.type_contrasena("123"); //Cambiar contraseña
     ingresar.click_continuar();
   });
 

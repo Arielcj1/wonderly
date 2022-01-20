@@ -23,47 +23,47 @@ describe("Creacion de un profesor", () => {
     home.click_IniciaSesion();
   });
 
-  it.skip("1_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", () => {
+  it("1_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", () => {
     ingresar.type_Correo("neida.veizaga@believesol.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
     cy.wait(2000);
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
-    registroprofesor.type_nombre("Fernando");
-    registroprofesor.type_apellido("Oporto");
-    registroprofesor.type_correoElectronico("profefernando@gmail.com"); //Crear un nuevo profesor, correo electornico
+    registroprofesor.type_nombre("Profesor"); //Nombre del profesor
+    registroprofesor.type_apellido("DePrueba3"); // Apellido del profesor
+    registroprofesor.type_correoElectronico("profesordeprueba3@gmail.com"); //Crear un nuevo profesor, correo electornico
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
     cy.get(".alert").should("be.visible");
   });
 
-  it.skip("2_Comprobar que un profesor no pueda ingresar con email y contraseña incorrecta", () => {
-    ingresar.type_Correo("profepedrro@gmail.com"); //Cambiar el correo del profesor nuevo
+  it("2_Comprobar que un profesor no pueda ingresar con email y contraseña incorrecta", () => {
+    ingresar.type_Correo("profesordepruebaa3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("123456789");
     ingresar.click_continuar();
     cy.wait(2000);
     cy.get(".message-error > .title").should("be.visible");
   });
 
-  it.skip("3_Comprobar que se muestra un mensaje de advertencia cuando no ingresa todos los datos requeridos para iniciar sesion", () => {
-    ingresar.type_Correo("profepedro@gmail.com"); //Cambiar el correo del profesor nuevo
+  it("3_Comprobar que se muestra un mensaje de advertencia cuando no ingresa todos los datos requeridos para iniciar sesion", () => {
+    ingresar.type_Correo("profesordepruebaa3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena(" ");
     ingresar.click_continuar();
     cy.wait(2000);
     cy.get(".message-error > .title").should("be.visible");
   });
 
-  it.skip("4_Comprobar que un profesor puede iniciar sesion en wonderly", () => {
+  it("4_Comprobar que un profesor puede iniciar sesion en wonderly", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("profepedro@gmail.com"); //Cambiar el correo del profesor nuevo
+    ingresar.type_Correo("profesordeprueba3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it.skip("5_Verificar que pueda completar informacion cuando entra por primera vez", () => {
-    ingresar.type_Correo("profefernando@gmail.com"); //Cambiar el correo del profesor nuevo
+  it("5_Verificar que pueda completar informacion cuando entra por primera vez", () => {
+    ingresar.type_Correo("profesordeprueba3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);
@@ -85,7 +85,7 @@ describe("Creacion de un profesor", () => {
   });
 
   it("6_Comprobar que un profesor pueda editar sus datos personales", () => {
-    ingresar.type_Correo("profefernando@gmail.com"); //Cambiar el correo del profesor nuevo
+    ingresar.type_Correo("profesordeprueba3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);
