@@ -112,7 +112,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     it('10_Comprobar que un padre no puede reservar un clase.', () => {
         home.click_LogoWonderly()
         cy.get('#vivo-tab').click()
-        cy.contains('Robótica 4pm').click()    //Cambiar nombre de curso
+        cy.contains('Curso 7 de la TARDE').click()    //Cambiar nombre de curso
         registrarhijo.click_botonInscribeteGratis()
         cy.get('.modal-content > .my-3').should('be.visible')  //Assert es que le muestre los perfiles de los hijos para elija un hijo
     })
