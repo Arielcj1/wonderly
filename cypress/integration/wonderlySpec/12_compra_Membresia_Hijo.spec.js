@@ -24,7 +24,6 @@ describe("MEMBRESIAS", () => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
     ingresar.type_Correo("marieschrei@gmail.com");
-    // ingresar.type_Correo("yenny@gmail.com");
     ingresar.type_contrasena("123");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
@@ -33,7 +32,7 @@ describe("MEMBRESIAS", () => {
   // COMPRA DE MEMBRESIAS EXPLORADOR, INVENTOR y GENIO
   it.skip("17_18_19_Verificar que un hijo puede comprar una membresia Explorador, Inventor y Genio", () => {
     home.click_LogoWonderly();
-    membresiahijos.Membresia("July Schrei");
+    membresiahijos.Membresia("Angelica Schrei");
   });
 
   //DETALLE DE LA MEMBRESIA: EXPLORADOR, INVENTOR y GENIO

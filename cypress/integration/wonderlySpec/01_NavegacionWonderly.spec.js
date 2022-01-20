@@ -22,8 +22,8 @@ describe("Home Page - UI", () => {
 
   it("1_Verificar que un usuario pueda Iniciar sesion", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("josemunoz@gmail.com");    //Cambiar usuario
-    ingresar.type_contrasena("123456");             //cambiar password
+    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario
+    ingresar.type_contrasena("abcABC123"); //cambiar password
     ingresar.click_continuar();
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
     perfil.buscar_hijo("Juan Muñoz");
@@ -75,8 +75,8 @@ describe("Home Page - UI", () => {
 
   it("11_Demostrar que un usuario Inicie sesion y pueda ir a las Membresias Explorador", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("josemunoz@gmail.com");    //CAmbiar ususario
-    ingresar.type_contrasena("123456");             //Cambiar password
+    ingresar.type_Correo("josemunoz@gmail.com"); //CAmbiar ususario
+    ingresar.type_contrasena("123456"); //Cambiar password
     ingresar.click_continuar();
     cy.wait(3000);
     home.click_LogoWonderly();
@@ -129,6 +129,12 @@ describe("Home Page - UI", () => {
   it("18_Verificar que el usuario  se encuentre en la materia Ingles desde el menu Destrezas", () => {
     home.menu_Ingles();
     cy.get("h2.mb-4").should("contain.text", "Inglés").should("be.visible");
+  });
+
+  it("Verificar que redireccione al menu de Membresias desde la pagina de Wonderly", () => {
+    home.membresiasMenuAbajo();
+    cy.get(".content > .container > .mb-5").should("be.visible");
+    cy.wait(2000);
   });
 
   // Boton "Mira el curso" desde la pestaña Destrezas menu Arriba

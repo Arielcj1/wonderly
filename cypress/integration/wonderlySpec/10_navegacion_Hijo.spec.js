@@ -25,20 +25,20 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com");
-    ingresar.type_contrasena("abcABC123");
+    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_contrasena("abcABC123"); //Cambiar contraseña
     ingresar.click_continuar();
   });
 
   // NAVEGACION POR LOS TABLEROS:
-  it.skip("1_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
+  it("1_Verificar que el hijo se encuentre en el Tablero de Perfil", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
     cy.get("#menu-item-144 > .nav-link").should("contain.text", "Perfil");
   });
 
-  it.skip("2_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
+  it("2_Verificar que el hijo se encuentre en el tablero de Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     cy.wait(2000);
@@ -46,14 +46,14 @@ describe("Wonderly- tablero hijo", () => {
     cy.get("#menu-item-211 > .nav-link").should("contain.text", "Mis Hijos");
   });
 
-  it.skip("3_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
+  it("3_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
     cy.get("#menu-item-704 > .nav-link").should("contain.text", "Clases");
   });
 
-  it.skip("4_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
+  it("4_Verificar que el hijo se encuentre en el tablero de Metodo de Pago", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     metodopago.click_tableroMetodoPago();
@@ -64,7 +64,7 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   // SECCION:
-  it.skip("5_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
+  it("5_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     home.click_seccionOnDemand();
@@ -72,7 +72,7 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   //
-  it.skip("6_Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
+  it("6_Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     cy.wait(2000);
