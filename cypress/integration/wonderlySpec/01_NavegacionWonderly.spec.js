@@ -26,7 +26,7 @@ describe("Home Page - UI", () => {
     ingresar.type_contrasena("abcABC123"); //cambiar password
     ingresar.click_continuar();
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
-    perfil.buscar_hijo("Juan Muñoz");
+    perfil.buscar_hijo("Alex Cardozo");
   });
 
   it("2_Demostrar que un usuario pueda ver los cursos de la seccion de EN VIVO", () => {
