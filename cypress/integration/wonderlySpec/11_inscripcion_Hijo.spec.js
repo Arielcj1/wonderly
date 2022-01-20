@@ -78,7 +78,9 @@ describe("Wonderly- tablero hijo", () => {
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
-    home.click_Membresia_Genio;
+    cy.wait(2000);
+    home.click_Membresia_Genio();
+    cy.wait(2000);
     membresiahijos.select_MembresiaHijo("Anita Schrei"); //Se debe Crear un hijo
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();

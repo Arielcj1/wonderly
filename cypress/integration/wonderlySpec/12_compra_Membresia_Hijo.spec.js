@@ -31,11 +31,12 @@ describe("MEMBRESIAS", () => {
 
   // COMPRA DE MEMBRESIAS EXPLORADOR, INVENTOR y GENIO
   it("17_18_19_Verificar que un hijo puede comprar una membresia Explorador, Inventor y Genio", () => {
-    home.click_salir()
+    home.click_salir();
+    home.click_IniciaSesion();
     ingresar.type_Correo("marieschrei@gmail.com");
     ingresar.type_contrasena("123");
     ingresar.click_continuar();
-    perfilhijo.click_seleccionarHijo()
+    perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     membresiahijos.Membresia("Angelica Schrei");
   });
@@ -69,7 +70,7 @@ describe("MEMBRESIAS", () => {
   });
 
   //MENSAJE DE ADVERTENCIA: EXPLORADOR, INVENTOR y GENIO
-  it.skip("23_24_25_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Explorador, Inventor y Genio", () => {
+  it("23_24_25_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Explorador, Inventor y Genio", () => {
     home.click_LogoWonderly();
     membresiahijos.MensajeAdvertencia();
   });
