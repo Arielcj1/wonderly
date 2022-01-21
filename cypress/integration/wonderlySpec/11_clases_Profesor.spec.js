@@ -29,7 +29,7 @@ describe("Wonderly- PROFESOR", () => {
   });
 
   //HIJO SE INSCRIBE A UNA CLASE:
-  it("11_1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase", () => {
+  it.skip("11_1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase", () => {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
     ingresar.type_Correo("padre0@gmail.com"); //Cambiar el correo del padre nuevo
@@ -42,7 +42,7 @@ describe("Wonderly- PROFESOR", () => {
     clase.verificarClaseInscrita();
   });
 
-  it("12_Verificar que un profesor puede iniciar una clase desde el detalle de la clase", () => {
+  it.skip("12_Verificar que un profesor puede iniciar una clase desde el detalle de la clase", () => {
     perfil.click_tableroClasesProfesor();
     cy.wait(2000);
     clasesprofesor.click_nombreClase();
@@ -50,7 +50,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(4000);
   });
 
-  it("13_Verificar que un profesor puede Iniciar su clase 30 minutos antes que inicie su clase desde el tablero Clases profesor", () => {
+  it.skip("13_Verificar que un profesor puede Iniciar su clase 30 minutos antes que inicie su clase desde el tablero Clases profesor", () => {
     perfil.click_tableroClasesProfesor();
     cy.wait(2000);
     perfil.click_iniciarClase();

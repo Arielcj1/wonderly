@@ -28,13 +28,14 @@ export class ClasesProfesor {
   //Iniciar clase desde el Schedula
   boton_iniciarClaseSchedule(nombre) {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+       
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
     )
       .invoke("text")
       .then((text) => {
         if (text == nombre) {
           cy.xpath(
-            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
           ).click();
           cy.wait(3000);
           cy.xpath(
@@ -48,13 +49,16 @@ export class ClasesProfesor {
   }
   verificarClaseAsignadaSchedule(nombre) {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
     )
       .invoke("text")
       .then((text) => {
         if (text == nombre) {
           cy.log("Es una clase asignada al profesor");
           cy.wait(2000);
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
+          ).click()
         } else {
           cy.log("No es una clase asignada al profesor");
         }

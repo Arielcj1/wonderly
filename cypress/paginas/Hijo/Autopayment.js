@@ -127,6 +127,7 @@ export class Autopayment {
                   position +
                   "]/td[4]/a"
               ).click();
+              cy.wait(3000)
             }
           }
           position++;

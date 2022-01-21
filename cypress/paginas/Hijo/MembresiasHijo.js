@@ -55,8 +55,8 @@ export class MembresiasHijo {
       ).click();
       cy.get("#input_25_29").select(hijo);
       cy.get("#gform_submit_button_25").click(); //Subscribirse
-      cy.get(".mx-2 > :nth-child(1)").should("be.visible");
-      cy.get(".mb-5 > .btn").click(); //boton membresias compradas
+      //cy.get(".mx-2 > :nth-child(1)").should("be.visible");
+      cy.get('.mt-5 > .btn').click(); //boton membresias compradas
       cy.get(
         ":nth-child(1) > :nth-child(3) > .list-group > .list-group-item"
       ).should("be.visible");
