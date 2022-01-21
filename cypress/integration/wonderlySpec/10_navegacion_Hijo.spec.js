@@ -25,7 +25,7 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre0@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_Correo("padre3@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });
