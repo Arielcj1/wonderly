@@ -23,7 +23,7 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesoruno@gmail.com"); //Cambiar el correo del profesor nuevo
+    ingresar.type_Correo("profesordos@gmail.com"); //Cambiar el correo del profesor nuevo
     ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
     ingresar.click_continuar();
   });
@@ -32,7 +32,7 @@ describe("Wonderly- PROFESOR", () => {
   it.skip("11_1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase", () => {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre0@gmail.com"); //Cambiar el correo del padre nuevo
+    ingresar.type_Correo("padre3@gmail.com"); //Cambiar el correo del padre nuevo
     ingresar.type_contrasena("12345"); //Cambiar la constraseña del padre nuevo que le corresponde
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
