@@ -15,7 +15,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Administrador - Login", () => {
+describe("Administrador - Wonderly Cursos", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const homeadmin = new HomeAdmin();
@@ -35,19 +35,19 @@ describe("Administrador - Login", () => {
     ingresar.click_continuar();
   });
 
-  it("01_Verificar que el administrador pueda ir al tablero Wonderly Cursos", () => {
+  it.skip("01_Verificar que el administrador pueda ir al tablero Wonderly Cursos", () => {
     homeadmin.click_tableroWonderlyCursos();
     cy.contains("Todos los cursos").should("be.visible");
   });
 
-  it('02_Verificar que el Admin pueda seleccionar "Cursos pasados", "Todos los cursos" y "Cursos futuros" desde el tablero Wonderly Cursos', () => {
+  it.skip('02_Verificar que el Admin pueda seleccionar "Cursos pasados", "Todos los cursos" y "Cursos futuros" desde el tablero Wonderly Cursos', () => {
     homeadmin.click_tableroWonderlyCursos();
     wonderlycursos.click_cursosPasados();
     wonderlycursos.click_cursosFuturos();
     wonderlycursos.click_todosLosCursos();
   });
 
-  it("03_Verificar que al seleccionar un curso lo redireccione al detalle del curso.", () => {
+  it.skip("03_Verificar que al seleccionar un curso lo redireccione al detalle del curso.", () => {
     homeadmin.click_tableroWonderlyCursos();
     wonderlycursos.seleccionarCurso(); //Click en el 1er curso de la lista
     cy.get("#pills-proyecto-tab > :nth-child(1)").should("be.visible"); //Assert "Aprendizaje y proyecto final"

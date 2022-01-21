@@ -23,8 +23,8 @@ describe("Comprar Membresias Hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padreprueba1@gmail.com");
-    ingresar.type_contrasena("123");
+    ingresar.type_Correo("padre0@gmail.com");
+    ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 

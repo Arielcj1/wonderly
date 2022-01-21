@@ -71,7 +71,8 @@ export class Home {
   }
 
   click_MenuUsuario() {
-    cy.get("#menu-item-6738 > #navbarDropdown").click();
+    //cy.get("#menu-item-6738 > #navbarDropdown").click();
+    cy.get('#menu-item-6738 > .nav-link').click()
   }
 
   click_salir() {

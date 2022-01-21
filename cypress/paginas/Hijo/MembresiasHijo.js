@@ -42,7 +42,8 @@ export class MembresiasHijo {
   }
 
   botonMembresiasCompradas() {
-    cy.get(".mb-5 > .btn").click();
+    //cy.get(".mb-5 > .btn").click();
+    cy.get('.mt-5 > .btn').click()
   }
 
   Membresia(hijo) {
@@ -153,11 +154,10 @@ export class MembresiasHijo {
     }
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[39]/div/li/a"
-    ).click();
+    ).click();  //Click en la fecha
     cy.wait(3000);
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
-    ).click(); //click boton Inscribete
+    cy.contains('Curso Martes 01 de marzo Matematicas II').click()
+   
   }
 
   verificarInscripcionInventor() {
@@ -167,11 +167,10 @@ export class MembresiasHijo {
     }
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[39]/div/li/a"
-    ).click();
+    ).click();  //Click en la fecha
     cy.wait(3000);
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
-    ).click(); //click boton Inscribete
+    cy.contains('Curso Martes 01 de marzo Matematicas II').click()
+   
   }
 
   verificarInscripcionGenio() {
@@ -181,10 +180,9 @@ export class MembresiasHijo {
     }
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[39]/div/li/a"
-    ).click();
+    ).click();       //Click en la fecha
     cy.wait(3000);
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
-    ).click(); //click boton Inscribete
+    cy.contains('Curso Martes 01 de marzo Matematicas II').click()
+    
   }
 }
