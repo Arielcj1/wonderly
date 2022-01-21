@@ -28,27 +28,27 @@ describe("Padre - Autopayment y otros TCs", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre0@gmail.com");
-    ingresar.type_contrasena("12345");
+    ingresar.type_Correo("padreprueba1@gmail.com");
+    ingresar.type_contrasena("123");
     ingresar.click_continuar();
   });
 
   it("01_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos", () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(5);
+    autopaymentpadre.verificarAutopayment(1);
   });
 
   it("02_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos", () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(5);
+    autopaymentpadre.verificarAutopayment(1);
   });
 
   it('03_Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(1);
+    autopaymentpadre.verificarAutopayment(4);
     autopaymentpadre.click_opcionExplorador();
     autopaymentpadre.click_botonEnviar();
     cy.get(".alert").should("be.visible");
@@ -57,7 +57,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   it('04_Verificar que pueda Actualizar Membresia "Inventor" desde el tablero Mis hijos', () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(2);
+    autopaymentpadre.verificarAutopayment(5);
     autopaymentpadre.click_opcionInventor();
     autopaymentpadre.click_botonEnviar();
     cy.get(".alert").should("be.visible");
@@ -66,7 +66,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   it('05_Verificar que pueda Actualizar Membresia "Genio" desde el tablero Mis hijos', () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(3);
+    autopaymentpadre.verificarAutopayment(6);
     autopaymentpadre.click_opcionGenio();
     autopaymentpadre.click_botonEnviar();
     cy.get(".alert").should("be.visible");
@@ -108,7 +108,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     metodopago.click_enviar();
   });
 
-  it("10_Comprobar que un padre no puede reservar un clase.", () => {
+  it.skip("10_Comprobar que un padre no puede reservar un clase.", () => {
     home.click_LogoWonderly();
     cy.get("#vivo-tab").click();
     cy.contains("Curso 7 de la TARDE").click(); //Cambiar nombre de curso
