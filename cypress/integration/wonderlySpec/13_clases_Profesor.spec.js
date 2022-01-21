@@ -149,10 +149,15 @@ describe("Wonderly- PROFESOR", () => {
   });
 
   it("23_Comprobar que un profesor no pueda iniciar una clase hasta 30 minutos que inicie una clase.", () => {
+    perfil.click_salirDelMenu();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("profegoodman@gmail.com");
+    ingresar.type_contrasena("12345");
+    ingresar.click_continuar();
     perfil.click_tableroClasesProfesor();
-    cy.wait(2000);
+    cy.wait(3000);
     perfil.iniciarLaClaseAntes("¡Oops! Es muy pronto para inciar la clase.");
-    cy.wait(4000);
+    cy.wait(3000);
   });
 
   it("25_Comprobar que un profesor pueda ver los alumnos registrados desde el icono ver Alumnos registrados.", () => {
