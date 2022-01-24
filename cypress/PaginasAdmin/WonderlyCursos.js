@@ -75,6 +75,9 @@ export class WonderlyCursos {
     if(day == 'Friday'){
       cy.get("#choice_35_36_4").click();
     }
+    if(day == 'Saturday'){
+      cy.get('#choice_35_36_5').click()
+    }
          //0 Lunes, 1 Martes, 2 Miercoles
    
   }
