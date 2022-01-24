@@ -1,5 +1,5 @@
+// Autor: Patrik Delgadillo
 /// <reference types="cypress" />
-// Casos de prueba realizado por Patrik Delgadillo
 
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
@@ -23,7 +23,7 @@ describe("Comprar Membresias Hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre3@gmail.com");
+    ingresar.type_Correo("padre6@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });

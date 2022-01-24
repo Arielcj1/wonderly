@@ -1,5 +1,6 @@
+// Casos de prueba realizado por:
+// Autor: Patrik Delgadillo y Yanina Cardozo
 /// <reference types="cypress" />
-// Casos de prueba realizado por Patrik Delgadillo y Yanina Cardozo
 
 import { Destrezas } from "../../paginas/Destrezas";
 import { Home } from "../../paginas/Home";

@@ -22,7 +22,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_RegistroGratis();
     registro.type_nombre("Diego");
     registro.type_apellidos("Roca");
-    registro.type_correo("padre3@gmail.com");
+    registro.type_correo("padre6@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -33,7 +33,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_conMovimiento7diasGratis();
     registro.type_nombre("Pedro");
     registro.type_apellidos("Perez");
-    registro.type_correo("padre4@gmail.com");
+    registro.type_correo("padre7@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -44,7 +44,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_7diasGratis();
     registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
-    registro.type_correo("padre5@gmail.com");
+    registro.type_correo("padre8@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -53,7 +53,7 @@ describe("Padre - Registrar padre", () => {
 
   it("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre3@gmail.com");
+    ingresar.type_Correo("padre6@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -70,7 +70,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_RegistroGratis();
     registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");
-    registro.type_correo("padre3@gmail.com");
+    registro.type_correo("padre6@gmail.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();

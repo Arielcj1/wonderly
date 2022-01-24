@@ -1,5 +1,6 @@
+// Casos de prueba realizado por:
+// Autor: Yanina Cardozo
 /// <reference types="cypress" />
-// Casos de prueba realizado por Yanina Cardozo
 
 import { Perfil } from "../../paginas/Profesor/Perfil";
 import { Home } from "../../paginas/Home";
@@ -21,27 +22,27 @@ describe("Wonderly- PROFESOR", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesordos@gmail.com"); //Cambiar el correo del profesor nuevo
+    ingresar.type_Correo("profesor3@gmail.com"); //Cambiar el correo del profesor nuevo
     ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
     ingresar.click_continuar();
   });
 
   // TABLEROS PROFESOR:
-  it("8_Verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
+  it("1_Verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
   });
 
-  it("9_Verificar que un profesor puede ver todos los alumnos que se registraron a sus clases desde tablero Alumnos Profesor", () => {
+  it("2_Verificar que un profesor puede ver todos los alumnos que se registraron a sus clases desde tablero Alumnos Profesor", () => {
     alumnosprofesor.tableroClasesAlumnos();
     cy.get("#menu-item-456 > .nav-link")
       .should("contain.text", "Clases Profesor")
       .should("be.visible");
   });
 
-  it("10_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos de su perfil", () => {
+  it("3_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos de su perfil", () => {
     perfil.type_nombre("Profesor"); //Nombre del profesor nuevo
-    perfil.type_apellido("Dos"); //Apellido del profesor nuevo
+    perfil.type_apellido("Tres"); //Apellido del profesor nuevo
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudadClear("Sucre");
@@ -56,7 +57,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.get(".title").should("be.visible");
   });
 
-  it("11_Verificar que el archivo subido del CV sea en formato PDF", () => {
+  it("4_Verificar que el archivo subido del CV sea en formato PDF", () => {
     perfil.subirArchivo();
     perfil.click_botonGuardar("¡Oops! Hubo un problema con tu envío.");
     cy.get(".title").should("be.visible");

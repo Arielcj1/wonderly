@@ -1,3 +1,4 @@
+// Autor: Yanina Cardozo
 ///<reference types="cypress" />
 export class ClasesHijo {
   click_menu_clasesHijo() {
