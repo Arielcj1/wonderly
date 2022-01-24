@@ -1,5 +1,6 @@
+// Casos de prueba realizado por:
+// Autor: Yanina Cardozo
 ///<reference types="cypress" />
-// Casos de prueba realizado por Yanina Cardozo
 
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
@@ -31,8 +32,8 @@ describe("Creacion de un profesor", () => {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profesor"); //Nombre del profesor
-    registroprofesor.type_apellido("Dos"); // Apellido del profesor
-    registroprofesor.type_correoElectronico("profesordos@gmail.com"); //Crear un nuevo profesor, correo electornico
+    registroprofesor.type_apellido("Tres"); // Apellido del profesor
+    registroprofesor.type_correoElectronico("profesor3@gmail.com"); //Crear un nuevo profesor, correo electornico
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
@@ -57,13 +58,13 @@ describe("Creacion de un profesor", () => {
 
   it("4_Comprobar que un profesor puede iniciar sesion en wonderly", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("profesordos@gmail.com"); //Correo del profesor nuevo
+    ingresar.type_Correo("profesor3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
   it("5_Verificar que pueda completar informacion cuando entra por primera vez", () => {
-    ingresar.type_Correo("profesordos@gmail.com"); //Correo del profesor nuevo
+    ingresar.type_Correo("profesor3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);
@@ -85,7 +86,7 @@ describe("Creacion de un profesor", () => {
   });
 
   it("6_Comprobar que un profesor pueda editar sus datos personales", () => {
-    ingresar.type_Correo("profesordos@gmail.com"); //Correo del profesor nuevo
+    ingresar.type_Correo("profesor3@gmail.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);

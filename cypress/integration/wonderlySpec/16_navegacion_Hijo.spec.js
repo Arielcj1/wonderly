@@ -1,5 +1,6 @@
+// Casos de prueba realizado por:
+// Autor: Yanina Cardozo
 /// <reference types="cypress" />
-// Casos de prueba realizado por Yanina Cardozo
 
 import { MisHijos } from "../../paginas/Hijo/MisHijos";
 import { ClasesHijo } from "../../paginas/Hijo/ClasesHijo";
@@ -25,7 +26,7 @@ describe("Wonderly- tablero hijo", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre3@gmail.com"); //Cambiar usuario Padre
+    ingresar.type_Correo("padre6@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
   });
@@ -75,6 +76,6 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     cy.wait(2000);
-    claseondemand.verificarCursoOnDemand("Clase OnDemand Editado 4");
+    claseondemand.verificarCursoOnDemand("Clase OnDemand Editado 6");
   });
 });

@@ -1,23 +1,24 @@
+// Autor: Yanina Cardozo
 /// <reference types="cypress" />
 export class ClasesProfesor {
   tableroClasesProfesor() {
     cy.get("#menu-item-456 > .nav-link").click();
   }
 
-  click_nombreClase() {
+  clickNombreClase() {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/th[2]/a"
     ).click();
   }
 
   //Iniciar clase desde el detalle de la clase
-  boton_iniciarClase() {
+  botonIniciarClase() {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
     ).click();
   }
 
-  click_iconoVerAlumnosInscritos() {
+  clickIconoVerAlumnosInscritos() {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/a[3]"
     ).click();
@@ -25,10 +26,11 @@ export class ClasesProfesor {
 
   verAlumnosInscritos() {}
 
-  //Iniciar clase desde el Schedula
-  boton_iniciarClaseSchedule(nombre) {
+  //Iniciar clase desde el Schedule
+  //Parametro:
+  //nombre tipo: string
+  botonIniciarClaseSchedule(nombre) {
     cy.xpath(
-       
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
     )
       .invoke("text")
@@ -58,7 +60,7 @@ export class ClasesProfesor {
           cy.wait(2000);
           cy.xpath(
             "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
-          ).click()
+          ).click();
         } else {
           cy.log("No es una clase asignada al profesor");
         }
@@ -139,7 +141,7 @@ export class ClasesProfesor {
   }
 
   // Agregar 3 veces el material
-  AgregarMaterial2davez(titulo, descripcion, attachFile) {
+  agregarMaterial2daVez(titulo, descripcion, attachFile) {
     for (var i = 1; i <= 2; i++) {
       cy.get(".gpnf-add-entry").click();
       cy.xpath(
@@ -160,7 +162,7 @@ export class ClasesProfesor {
   }
 
   // Eliminar 2 de los 3 materiales
-  EliminarMaterialAgregado() {
+  eliminarMaterialAgregado() {
     for (var i = 1; i <= 2; i++) {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/form/div[1]/div/div[1]/div/table/tbody[1]/tr[" +
@@ -172,7 +174,7 @@ export class ClasesProfesor {
   }
 
   // Editar material
-  EditarMaterialAgregado(titulo, attachFile) {
+  editarMaterialAgregado(titulo, attachFile) {
     cy.wait(2000);
     for (var i = 1; i <= 2; i++) {
       cy.xpath(
@@ -193,52 +195,5 @@ export class ClasesProfesor {
       cy.wait(3000);
     }
     cy.get(".btn-group > .btn").click(); //boton regresar
-  }
-
-  VerificarFecha() {
-    const ArrayDefechas = [];
-    let incremento = 1;
-    for (var i = 1; i <= 4; i++) {
-      cy.xpath(
-        "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[" +
-          i +
-          "]/td[1]"
-      )
-        .invoke("text")
-        .then((fecha) => {
-          ArrayDefechas.push(fecha);
-          if (incremento === 4) {
-            const arrayFechasOrdenadas = ArrayDefechas.sort();
-            for (var j = 0; j < ArrayDefechas.length; j++) {
-              cy.log(" Fecha: ", ArrayDefechas[j]);
-
-              if (ArrayDefechas[j] == arrayFechasOrdenadas[j]) {
-                cy.log(
-                  "----",
-                  ArrayDefechas[j],
-                  " == ",
-                  arrayFechasOrdenadas[j]
-                );
-              } else {
-                cy.log("las fechas no estan ordenadas");
-              }
-            }
-          }
-          incremento++;
-        });
-
-      // HORA;
-      // for (var k = 1; k <= 4; k++) {
-      //   cy.xpath(
-      //     "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[" +
-      //       k +
-      //       "]/td[2]"
-      //   )
-      //     .invoke("text")
-      //     .then((hour) => {
-      //       cy.log("La hora es ", hour);
-      //     });
-      // }
-    }
   }
 }

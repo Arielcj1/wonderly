@@ -63,7 +63,7 @@ describe("Administrador - Wonderly Clases", () => {
     homeadmin.click_tableroWonderlyOnDemand();
     ondemand.click_agregarClaseOnDemand();
     //Completar campos de la clase on demand
-    ondemand.type_tituloClase("Clase OnDemand Gratis 5");
+    ondemand.type_tituloClase("Clase OnDemand Gratis 6");
     ondemand.type_descripcionClase("Detalle de la clase ondemand para niños");
     ondemand.select_materia("Inglés");
     ondemand.select_edades(); //Checkbox de edad 7-8
@@ -75,9 +75,9 @@ describe("Administrador - Wonderly Clases", () => {
 
   it("07_Verificar que el Admin puede editar una clase on demand", () => {
     homeadmin.click_tableroWonderlyOnDemand();
-    modulosonDemand.buscar_cursoOnDemand("Clase OnDemand Gratis 5", 1); //busca la clase on demand para editar
+    modulosonDemand.buscar_cursoOnDemand("Clase OnDemand Gratis 6", 1); //busca la clase on demand para editar
     //Realizar cambios para editar
-    ondemand.type_editarTituloClase("Clase OnDemand Editado 5");
+    ondemand.type_editarTituloClase("Clase OnDemand Editado 6");
     ondemand.type_editardescripcionClase(
       "Hay que pagar para ver este contenido, nada es gratis"
     );
@@ -94,7 +94,7 @@ describe("Administrador - Wonderly Clases", () => {
 
   it("08_Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
     homeadmin.click_tableroWonderlyOnDemand();
-    modulosonDemand.buscar_cursoOnDemand("Clase OnDemand Editado 5", 2);
+    modulosonDemand.buscar_cursoOnDemand("Clase OnDemand Editado 6", 2);
     modulosonDemand.agregar_Modulos_Clases(
       "Modulo ",
       "Clase ",

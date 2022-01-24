@@ -41,8 +41,8 @@ describe("Administrador - Profesores Registrados", () => {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profesor");
-    registroprofesor.type_apellido("Prueba3");
-    registroprofesor.type_correoElectronico("profesorprueba3@gmail.com");
+    registroprofesor.type_apellido("teacher2");
+    registroprofesor.type_correoElectronico("teacher2@gmail.com");
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
