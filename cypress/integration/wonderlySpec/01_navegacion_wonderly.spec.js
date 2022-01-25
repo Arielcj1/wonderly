@@ -76,7 +76,7 @@ describe("Home Page - UI", () => {
 
   it("11_Demostrar que un usuario Inicie sesion y pueda ir a las Membresias Explorador", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //CAmbiar ususario
+    ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar ususario
     ingresar.type_contrasena("abcABC123"); //Cambiar password
     ingresar.click_continuar();
     cy.wait(3000);

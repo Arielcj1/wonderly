@@ -14,15 +14,18 @@ describe("Padre - Registrar padre", () => {
   const registro = new Registro();
   const ingresar = new Ingresar();
 
-  beforeEach(() => {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+    });
   });
 
-  it("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", () => {
+  it("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", function () {
     home.boton_RegistroGratis();
     registro.type_nombre("Diego");
     registro.type_apellidos("Roca");
-    registro.type_correo("padre6@gmail.com");
+    cy.get("#input_21_2").type(this.variables.correoPadre);
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -33,7 +36,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_conMovimiento7diasGratis();
     registro.type_nombre("Pedro");
     registro.type_apellidos("Perez");
-    registro.type_correo("padre7@gmail.com");
+    registro.type_correo("padre2@testtraining.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -44,7 +47,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_7diasGratis();
     registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
-    registro.type_correo("padre8@gmail.com");
+    registro.type_correo("padre3@testtraining.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -53,7 +56,7 @@ describe("Padre - Registrar padre", () => {
 
   it("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", () => {
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre6@gmail.com");
+    ingresar.type_Correo("padre1@testtraining.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -70,7 +73,7 @@ describe("Padre - Registrar padre", () => {
     home.boton_RegistroGratis();
     registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");
-    registro.type_correo("padre6@gmail.com");
+    // registro.type_correo("padre1@testtraining.com");
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();

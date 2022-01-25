@@ -1,6 +1,8 @@
 // Autor: Yanina Cardozo
 ///<reference types= "cypress" />
 
+import { testCaseConfig } from "../../helpers/helpers";
+
 export class MembresiasHijo {
   // Verificar membresia
   verificarMembresia(descripcion) {
@@ -66,7 +68,26 @@ export class MembresiasHijo {
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[39]/div/li/a"
     ).click(); //Click en la fecha
     cy.wait(3000);
-    cy.contains("Curso 04 de marzo Ingles II").click(); //Cambio de nombre del curso
+    cy.contains(testCaseConfig.nombreCursoMembresiaExpirada).click(); //Cambio de nombre del curso
+  }
+
+  //Compra de 3 membresias: Explorador, Inventor y Genio
+  Membresia(hijo) {
+    for (var i = 1; i <= 3; i++) {
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/section[3]/div/div/div[1]/div/div/div[" +
+          i +
+          "]/div/div/div[2]/a"
+      ).click();
+      cy.get("#input_25_29").select(hijo);
+      cy.get("#gform_submit_button_25").click(); //Subscribirse
+      //cy.get(".mx-2 > :nth-child(1)").should("be.visible");
+      cy.get(".mt-5 > .btn").click(); //boton membresias compradas
+      cy.get(
+        ":nth-child(1) > :nth-child(3) > .list-group > .list-group-item"
+      ).should("be.visible");
+      cy.get(".custom-logo").click();
+    }
   }
 
   //  Mensaje de advertencia de la membresia

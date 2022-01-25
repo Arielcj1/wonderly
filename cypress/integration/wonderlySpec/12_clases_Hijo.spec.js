@@ -25,21 +25,13 @@ describe("Wonderly- clases hijos", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre6@gmail.com"); //Cambiar usuario padre
+    ingresar.type_Correo("padre1@testtraining.com"); //Cambiar usuario padre
     ingresar.type_contrasena("12345"); //Cambiar contraseña
     ingresar.click_continuar();
+    cy.wait(1000);
   });
 
   //CLASES
-  it("1_Verificar que un hijo puede ingresar al detalle de un curso desde el schedule.", () => {
-    perfilhijo.click_seleccionarHijo();
-    home.click_LogoWonderly();
-    home.click_seccionEnVivo();
-    clase.click_botonEntrarClase();
-    claseshijo.aprendizajeProyecto();
-    cy.wait(2000);
-    claseshijo.botonPreguntaWhatsapp();
-  });
   it("2_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_pestañaCursos();
@@ -56,14 +48,6 @@ describe("Wonderly- clases hijos", () => {
     cy.wait(3000);
     clase.click_nombreDeLaClase();
     cy.get(".actions-header > .class-title").should("be.visible");
-  });
-
-  it("6_Verificar que el hijo pueda ver el counter de la clase", () => {
-    perfilhijo.click_seleccionarHijo();
-    perfilhijo.click_cuenta();
-    claseshijo.click_menu_clasesHijo();
-    clase.click_nombreDeLaClase();
-    cy.get(".countdown-container").should("be.visible");
   });
 
   it("4_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {

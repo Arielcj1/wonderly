@@ -24,7 +24,7 @@ describe("MEMBRESIAS", () => {
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre6@gmail.com"); //Cambiar el correo del padre
+    ingresar.type_Correo("padre1@testtraining.com"); //Cambiar el correo del padre
     ingresar.type_contrasena("12345"); //Cambiar contraseña del padre
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();

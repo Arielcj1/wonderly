@@ -1,5 +1,8 @@
 // Autor: Yanina Cardozo
 ///<reference types="cypress" />
+
+import { testCaseConfig } from "../../helpers/helpers";
+
 export class Clase {
   click_nombreDeLaClase() {
     cy.xpath(
@@ -7,9 +10,7 @@ export class Clase {
     ).click();
   }
   click_botonEntrarClase() {
-    cy.get(
-      ".clases-vivo-list > .slick-list > .slick-track > .slick-current > :nth-child(1) > .col > :nth-child(1) > .course-block > .course-actions > .btn"
-    ).click();
+    cy.contains(testCaseConfig.nombreDelCursoCreado).click({ force: true });
   }
 
   verificarClaseInscrita() {
@@ -22,9 +23,10 @@ export class Clase {
         if (text == "Inscríbete") {
           cy.log("El hijo puede inscribirse a la clase");
           cy.wait(2000);
-          cy.xpath(
-            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div[3]/a"
-          ).click({ force: true });
+          cy.contains(testCaseConfig.nombreDelCursoCreado).click({
+            force: true,
+          });
+
           cy.wait(5000);
           cy.xpath(
             "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
@@ -46,7 +48,7 @@ export class Clase {
   }
   // boton inscribete desde el Schedule
   click_InscribeteSchedule() {
-    cy.contains("Curso 01 de febrero Ingles I").click(); //Cambio de nombre del curso
+    cy.contains(testCaseConfig.nombreCursoMembresiaFree).click(); //Cambio de nombre del curso
   }
 
   // Desde el detalle del curso
@@ -55,6 +57,25 @@ export class Clase {
       "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
     ).click();
     cy.wait(3000);
+  }
+
+  verificarSiSeInscribio(nombre) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text == nombre) {
+          cy.log("*/*/********", nombre);
+          cy.log("El hijo puede inscribirse");
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+          ).click(); //boton inscribir clase desde adento
+        } else {
+          cy.log("Hijo inscrito");
+          cy.wait(2000);
+        }
+      });
   }
 
   // boton inscribete Desde pestania Cursos

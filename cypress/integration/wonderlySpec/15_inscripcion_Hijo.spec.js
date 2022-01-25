@@ -7,12 +7,13 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { Clase } from "../../paginas/Hijo/Clase";
 import { MembresiasHijo } from "../../paginas/Hijo/MembresiasHijo";
+import { testCaseConfig } from "../../helpers/helpers";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Wonderly- tablero hijo", () => {
+describe("Wonderly- Inscripcion a curso con Membresias", () => {
   const perfilhijo = new PerfilHijo();
   const ingresar = new Ingresar();
   const home = new Home();
@@ -36,7 +37,9 @@ describe("Wonderly- tablero hijo", () => {
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();
-    clase.verificarClaseInscrita();
+    home.click_seccionEnVivo();
+    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
+    clase.verificarSiSeInscribio("Inscríbete Gratis");
   });
 
   it("3_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", () => {
@@ -51,7 +54,9 @@ describe("Wonderly- tablero hijo", () => {
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();
-    clase.verificarClaseInscrita();
+    home.click_seccionEnVivo();
+    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
+    clase.verificarSiSeInscribio("Inscríbete Gratis");
   });
 
   it("4_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", () => {
@@ -68,7 +73,9 @@ describe("Wonderly- tablero hijo", () => {
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();
-    clase.verificarClaseInscrita();
+    home.click_seccionEnVivo();
+    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
+    clase.verificarSiSeInscribio("Inscríbete Gratis");
   });
 
   it("5_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
@@ -151,7 +158,7 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     cy.wait(3000);
     home.click_LogoWonderly();
-    home.click_Membresia_Inventor();
+    home.click_Membresia_Genio();
     membresiahijos.comprarTipoDeMembresia("Samuel Vargas");
     home.click_LogoWonderly();
     cy.wait(3000);
