@@ -1,6 +1,7 @@
 ///<reference types="cypress" />
 // Casos de prueba realizado por Patrik Delgadillo
 
+import { testCaseConfig } from "../../helpers/helpers";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { HomeAdmin } from "../../PaginasAdmin/HomeAdmin";
@@ -20,7 +21,7 @@ describe("Administrador - Wonderly Clases", () => {
   const ondemand = new OnDemand();
   const modulosonDemand = new ModulosOnDemand();
 
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
     ingresar.type_Correo("neida.veizaga@believesol.com");
@@ -63,7 +64,7 @@ describe("Administrador - Wonderly Clases", () => {
     homeadmin.click_tableroWonderlyOnDemand();
     ondemand.click_agregarClaseOnDemand();
     //Completar campos de la clase on demand
-    ondemand.type_tituloClase("Clase OnDemand Gratis 7"); //Cambiar clase on demand
+    ondemand.type_tituloClase(testCaseConfig.nombreClaseOnDemand); //Cambiar clase on demand
     ondemand.type_descripcionClase("Detalle de la clase ondemand para niños");
     ondemand.select_materia("Inglés");
     ondemand.select_edades(); //Checkbox de edad 7-8
@@ -75,9 +76,9 @@ describe("Administrador - Wonderly Clases", () => {
 
   it("07_Verificar que el Admin puede editar una clase on demand", () => {
     homeadmin.click_tableroWonderlyOnDemand();
-    modulosonDemand.buscar_cursoOnDemand("Clase OnDemand Gratis 7", 1); //busca la clase on demand para editar
+    modulosonDemand.buscar_cursoOnDemand(testCaseConfig.nombreClaseOnDemand, 1); //busca la clase on demand para editar
     //Realizar cambios para editar
-    ondemand.type_editarTituloClase("Clase OnDemand Editado 7");
+    ondemand.type_editarTituloClase(testCaseConfig.nombreClaseOnDemandEditado);
     ondemand.type_editardescripcionClase(
       "Hay que pagar para ver este contenido, nada es gratis"
     );
@@ -94,7 +95,7 @@ describe("Administrador - Wonderly Clases", () => {
 
   it("08_Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
     homeadmin.click_tableroWonderlyOnDemand();
-    modulosonDemand.buscar_cursoOnDemand("Clase OnDemand Editado 7", 2); //Cambiar clase on demand
+    modulosonDemand.buscar_cursoOnDemand(testCaseConfig.nombreClaseOnDemandEditado, 2); //Cambiar clase on demand
     modulosonDemand.agregar_Modulos_Clases(
       "Modulo ",
       "Clase ",

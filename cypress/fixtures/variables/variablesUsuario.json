@@ -1,4 +1,8 @@
 {
-  "correoPadre": "padre4@testtraining.com",
-  "correoProfesor": "profesor2@testtraining.com"
+  "correoPadre1": "padreprueba1@testtraining.com",
+  "correoPadre2": "padreprueba2@testtraining.com",
+  "correoPadre3": "padreprueba3@testtraining.com",
+  "correoProfesor": "profeprueba1@testtraining.com",
+  "correoTeacher": "teacher4@testtraining.com",
+  "claseOnDemand": "Clase OnDemand Gratis 8"
 }

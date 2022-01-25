@@ -22,13 +22,15 @@ describe("Wonderly- clases hijos", () => {
   const claseshijo = new ClasesHijo();
   const mishijos = new MisHijos();
   const autopayment = new Autopayment();
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
-    home.click_IniciaSesion();
-    ingresar.type_Correo("padre1@testtraining.com"); //Cambiar usuario padre
-    ingresar.type_contrasena("12345"); //Cambiar contraseña
-    ingresar.click_continuar();
-    cy.wait(1000);
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+      home.click_IniciaSesion();
+      cy.get('#input_1').type(this.variables.correoPadre1);
+      ingresar.type_contrasena("12345");
+      ingresar.click_continuar();
+    });
   });
 
   //CLASES

@@ -24,18 +24,21 @@ describe("Wonderly- PROFESOR", () => {
   const perfilhijo = new PerfilHijo();
   const claseshijo = new ClasesHijo();
 
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
-    home.click_IniciaSesion();
-    ingresar.type_Correo("profesor1@testtraining.com"); //Cambiar el correo del profesor nuevo
-    ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
-    ingresar.click_continuar();
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+      home.click_IniciaSesion();
+      cy.get('#input_1').type(this.variables.correoProfesor);
+      ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
+      ingresar.click_continuar();
+    });
   });
 
   it("1_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", () => {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre1@testtraining.com"); //Cambiar el correo padre nuevo
+    cy.get('#input_1').type(this.variables.correoPadre1); //Cambiar el correo padre nuevo
     ingresar.type_contrasena("12345"); //Cambiar la constraseña del padre nuevo que le corresponde
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
@@ -50,7 +53,7 @@ describe("Wonderly- PROFESOR", () => {
   it("2_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", () => {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre1@testtraining.com"); //Cambiar el correo del padre nuevo
+    cy.get('#input_1').type(this.variables.correoPadre1);//Cambiar el correo del padre nuevo
     ingresar.type_contrasena("12345"); //Cambiar la constraseña del padre nuevo que le corresponde
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
@@ -62,7 +65,7 @@ describe("Wonderly- PROFESOR", () => {
   it("6_Comprobar que el hijo pueda ver el counter de la clase", () => {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    ingresar.type_Correo("padre1@testtraining.com");
+    cy.get('#input_1').type(this.variables.correoPadre1);
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();

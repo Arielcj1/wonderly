@@ -9,6 +9,7 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { MetodoPago } from "../../paginas/Hijo/MetodoPago";
 import { ClaseOnDemand } from "../../PaginasAdmin/ClaseOnDemand";
+import { testCaseConfig } from "../../helpers/helpers";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -23,12 +24,15 @@ describe("Wonderly- tablero hijo", () => {
   const metodopago = new MetodoPago();
   const claseondemand = new ClaseOnDemand();
 
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
-    home.click_IniciaSesion();
-    ingresar.type_Correo("padre1@testtraining.com"); //Cambiar usuario Padre
-    ingresar.type_contrasena("12345"); //Cambiar contraseña
-    ingresar.click_continuar();
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+      home.click_IniciaSesion();
+      cy.get('#input_1').type(this.variables.correoPadre1);
+      ingresar.type_contrasena("12345");
+      ingresar.click_continuar();
+    });
   });
 
   // NAVEGACION POR LOS TABLEROS:
@@ -76,6 +80,6 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     cy.wait(2000);
-    claseondemand.verificarCursoOnDemand("Clase OnDemand Editado 7");
+    claseondemand.verificarCursoOnDemand(testCaseConfig.nombreClaseOnDemandEditado);
   });
 });

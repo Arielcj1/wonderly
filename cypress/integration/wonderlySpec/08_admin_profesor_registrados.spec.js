@@ -17,12 +17,16 @@ describe("Administrador - Profesores Registrados", () => {
   const homeadmin = new HomeAdmin();
   const registroprofesor = new RegistroProfesor();
 
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
-    home.click_IniciaSesion();
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+      home.click_IniciaSesion();
     ingresar.type_Correo("neida.veizaga@believesol.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
+    });
+    
   });
 
   it("01_Verificar que el admin pueda editar su perfil.", () => {
@@ -37,12 +41,13 @@ describe("Administrador - Profesores Registrados", () => {
     cy.wait(1000);
   });
 
-  it("03_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", () => {
+  it("03_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", function() {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
-    registroprofesor.type_nombre("Profesor");
-    registroprofesor.type_apellido("teacher3"); //Cambiar apellido
-    registroprofesor.type_correoElectronico("teacher3@testtraining.com"); //Correo de otro profesor nuevo
+    registroprofesor.type_nombre("Profe");
+    registroprofesor.type_apellido("teacher1"); //Cambiar apellido
+    cy.get("#input_5_3").type(this.variables.correoTeacher);
+    //registroprofesor.type_correoElectronico("teacher3@testtraining.com"); //Correo de otro profesor nuevo
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();

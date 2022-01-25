@@ -19,21 +19,26 @@ describe("Creacion de un profesor", () => {
   const registroprofesor = new RegistroProfesor();
   const perfil = new Perfil();
 
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
-    home.click_IniciaSesion();
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+      home.click_IniciaSesion();
+    });
+
   });
 
-  it("1_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", () => {
+  it("1_Comprobar que el Admin pueda registrar profesor desde el tablero Profesores Registrados.", function() {
     ingresar.type_Correo("neida.veizaga@believesol.com");
     ingresar.type_contrasena("abcABC123");
     ingresar.click_continuar();
     cy.wait(2000);
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
-    registroprofesor.type_nombre("Profesor"); //Nombre del profesor
+    registroprofesor.type_nombre("Profe"); //Nombre del profesor
     registroprofesor.type_apellido("Uno"); // Apellido del profesor
-    registroprofesor.type_correoElectronico("profesor1@testtraining.com"); //Crear un nuevo profesor, correo electornico
+    cy.get("#input_5_3").type(this.variables.correoProfesor);
+    //registroprofesor.type_correoElectronico("profesor1@testtraining.com"); //Crear un nuevo profesor, correo electornico
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
@@ -56,15 +61,16 @@ describe("Creacion de un profesor", () => {
     cy.get(".message-error > .title").should("be.visible");
   });
 
-  it("4_Comprobar que un profesor puede iniciar sesion en wonderly", () => {
-    home.click_IniciaSesion();
-    ingresar.type_Correo("profesor1@testtraining.com"); //Correo del profesor nuevo
+  it("4_Comprobar que un profesor puede iniciar sesion en wonderly", function() {
+    //home.click_IniciaSesion();
+    cy.get('#input_1').type(this.variables.correoProfesor);
+    //ingresar.type_Correo("profesor1@testtraining.com"); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("5_Verificar que pueda completar informacion cuando entra por primera vez", () => {
-    ingresar.type_Correo("profesor1@testtraining.com"); //Correo del profesor nuevo
+  it("5_Verificar que pueda completar informacion cuando entra por primera vez", function() {
+    cy.get('#input_1').type(this.variables.correoProfesor); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);
@@ -85,8 +91,8 @@ describe("Creacion de un profesor", () => {
       .should("be.visible");
   });
 
-  it("6_Comprobar que un profesor pueda editar sus datos personales", () => {
-    ingresar.type_Correo("profesor1@testtraining.com"); //Correo del profesor nuevo
+  it("6_Comprobar que un profesor pueda editar sus datos personales", function() {
+    cy.get('#input_1').type(this.variables.correoProfesor); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     cy.wait(2000);

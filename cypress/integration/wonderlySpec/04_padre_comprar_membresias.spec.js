@@ -20,12 +20,15 @@ describe("Comprar Membresias Hijos", () => {
   const registrarhijo = new RegistrarHijo();
   const perfil = new Perfil();
 
-  beforeEach(() => {
+  beforeEach(function() {
     cy.visit("https://developers.learnwonderly.com/");
-    home.click_IniciaSesion();
-    ingresar.type_Correo("padre1@testtraining.com");
-    ingresar.type_contrasena("12345");
-    ingresar.click_continuar();
+    cy.fixture("variables/variablesUsuario").then((variables) => {
+      this.variables = variables;
+      home.click_IniciaSesion();
+      cy.get('#input_1').type(this.variables.correoPadre1);
+      ingresar.type_contrasena("12345");
+      ingresar.click_continuar();
+    });
   });
 
   it("01_Verificar que un padre pueda Añadir Tarjeta.", () => {
