@@ -49,7 +49,7 @@ export class WonderlyCursos {
   }
   horaInicio() {
     var moment = require("moment");
-    const hora = moment().add(2, "hours").format("H");
+    const hora = moment().add(1, "hours").format("HH");
     cy.get("#input_35_22").select(hora + ":00");
   }
   duracionClases(duracionClases) {

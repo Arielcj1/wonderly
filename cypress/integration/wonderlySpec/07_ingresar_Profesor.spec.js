@@ -36,8 +36,7 @@ describe("Creacion de un profesor", () => {
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profe"); //Nombre del profesor
     registroprofesor.type_apellido("Dos"); // Apellido del profesor
-    cy.get("#input_5_3").type(this.variables.correoProfesor);
-    //registroprofesor.type_correoElectronico("profesor1@testtraining.com"); //Crear un nuevo profesor, correo electornico
+    cy.get("#input_5_3").type(this.variables.correoProfesor); //Crear un nuevo profesor, correo electornico
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
@@ -62,8 +61,7 @@ describe("Creacion de un profesor", () => {
 
   it("4_Comprobar que un profesor puede iniciar sesion en wonderly", function () {
     //home.click_IniciaSesion();
-    cy.get("#input_1").type(this.variables.correoProfesor);
-    //ingresar.type_Correo("profesor1@testtraining.com"); //Correo del profesor nuevo
+    cy.get("#input_1").type(this.variables.correoProfesor); //Correo del profesor nuevo
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
