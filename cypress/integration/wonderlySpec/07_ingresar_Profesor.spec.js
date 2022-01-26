@@ -36,7 +36,7 @@ describe("Creacion de un profesor", () => {
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profe"); //Nombre del profesor
     registroprofesor.type_apellido("Dos"); // Apellido del profesor
-    cy.get("#input_5_3").type(this.variables.correoProfesor); //Crear un nuevo profesor, correo electornico
+    cy.get("#input_5_3").type(this.variables.correoProfesor); //Crear un nuevo profesor, correo electronico
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
     registroprofesor.click_botonListo();
