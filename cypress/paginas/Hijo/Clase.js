@@ -6,7 +6,7 @@ import { testCaseConfig } from "../../helpers/helpers";
 export class Clase {
   click_nombreDeLaClase() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[1]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/div[1]/div/div[4]/a"
     ).click();
   }
   click_botonEntrarClase() {
@@ -59,25 +59,6 @@ export class Clase {
     cy.wait(3000);
   }
 
-  verificarSiSeInscribio(nombre) {
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-    )
-      .invoke("text")
-      .then((text) => {
-        if (text == nombre) {
-          cy.log("*/*/********", nombre);
-          cy.log("El hijo puede inscribirse");
-          cy.xpath(
-            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-          ).click(); //boton inscribir clase desde adento
-        } else {
-          cy.log("Hijo inscrito");
-          cy.wait(2000);
-        }
-      });
-  }
-
   // boton inscribete Desde pestania Cursos
   click_botonInscribeteCursos1eravez() {
     cy.xpath(
@@ -85,9 +66,23 @@ export class Clase {
     ).click();
     cy.wait(2000);
   }
-  click_botonInscribeteCursos2davez() {
+  //funcion boton inscribete Gratis desde el detalle de clase
+  click_botonInscribeteCursos2davez(nombre) {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-    ).click();
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text == nombre) {
+          cy.log("El hijo puede inscribirse");
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+          ).click();
+          cy.get(".modal-body > p").should("be.visible");
+        } else {
+          cy.log("El hijo ya esta inscrito al curso");
+          cy.wait(2000);
+        }
+      });
   }
 }

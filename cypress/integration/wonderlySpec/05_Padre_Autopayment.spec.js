@@ -25,12 +25,12 @@ describe("Padre - Autopayment y otros TCs", () => {
   const comprarpaquete = new ComprarPaquete();
   const registrarhijo = new RegistrarHijo();
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get('#input_1').type(this.variables.correoPadre1);
+      cy.get("#input_1").type(this.variables.correoPadre1);
       ingresar.type_contrasena("12345");
       ingresar.click_continuar();
     });
@@ -114,7 +114,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   it("10_Comprobar que un padre no puede reservar un clase.", () => {
     home.click_LogoWonderly();
     cy.get("#vivo-tab").click();
-    cy.contains("Mate 7pm - Repetido").click(); //Cambiar nombre de curso
+    cy.contains("Imagina tú mundo").click(); //Cambiar nombre de curso
     registrarhijo.click_botonInscribeteGratis();
     cy.get(".modal-content > .my-3").should("be.visible"); //Assert es que le muestre los perfiles de los hijos para elija un hijo
   });

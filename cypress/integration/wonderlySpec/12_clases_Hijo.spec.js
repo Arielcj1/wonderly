@@ -22,19 +22,19 @@ describe("Wonderly- clases hijos", () => {
   const claseshijo = new ClasesHijo();
   const mishijos = new MisHijos();
   const autopayment = new Autopayment();
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get('#input_1').type(this.variables.correoPadre1);
+      cy.get("#input_1").type(this.variables.correoPadre1);
       ingresar.type_contrasena("12345");
       ingresar.click_continuar();
     });
   });
 
   //CLASES
-  it("2_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
+  it("1_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_pestañaCursos();
     claseshijo.botonInscribeteCursos();
@@ -43,16 +43,16 @@ describe("Wonderly- clases hijos", () => {
     cy.get(".col-md-7 > .title").should("be.visible");
   });
 
-  it("3_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it("2_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
     cy.wait(3000);
     clase.click_nombreDeLaClase();
-    cy.get(".actions-header > .class-title").should("be.visible");
+    cy.get("h4").should("be.visible");
   });
 
-  it("4_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {
+  it("3_Verificar que un hijo pueda ingresar 30 minutos antes cuya clase esta por empezar", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
@@ -60,7 +60,7 @@ describe("Wonderly- clases hijos", () => {
     claseshijo.click_botonUnirseClase();
   });
 
-  it("5_Verificar que un hijo pueda descargar el material de una clase", () => {
+  it.skip("4_Verificar que un hijo pueda descargar el material de una clase", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
@@ -70,21 +70,22 @@ describe("Wonderly- clases hijos", () => {
 
   // AUTOPAYMENT:
 
-  it("7_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos", () => {
+  it("6_Verificar que pueda Activar el Autopayment desde el tablero Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     mishijos.click_tableroMisHijos();
     autopayment.verificarAutopaymentActivar();
   });
 
-  it("8_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos", () => {
+  it("7_Verificar que pueda Cancelar el Autopayment desde el tablero Mis Hijos", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     mishijos.click_tableroMisHijos();
     autopayment.verificarAutopaymentCancelar();
   });
 
-  it("9_Verificar que pueda Actualizar Membresia Genio, Inventor y Explorador desde el tablero Mis hijos", () => {
+  it("8_Verificar que pueda Actualizar Membresia Genio, Inventor y Explorador desde el tablero Mis hijos", () => {
+    cy.wait(2000);
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     mishijos.click_tableroMisHijos();

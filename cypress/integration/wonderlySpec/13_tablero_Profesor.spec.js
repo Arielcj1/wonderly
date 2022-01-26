@@ -19,12 +19,12 @@ describe("Wonderly- PROFESOR", () => {
   const clasesprofesor = new ClasesProfesor();
   const alumnosprofesor = new AlumnosProfesor();
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get('#input_1').type(this.variables.correoProfesor);
+      cy.get("#input_1").type(this.variables.correoProfesor);
       ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
       ingresar.click_continuar();
     });

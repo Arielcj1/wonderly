@@ -91,7 +91,7 @@ export class Perfil {
   }
 
   check_ExperienciaRangoEdad() {
-    cy.get("#choice_10_25_6").click();
+    cy.get("#choice_10_25_2").click();
   }
 
   seleccionarArchivo() {

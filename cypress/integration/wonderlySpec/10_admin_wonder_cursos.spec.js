@@ -138,14 +138,16 @@ describe("Administrador - Wonderly Cursos", () => {
   it("08_Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 2); //Click en el icono Asignar Profesor
-    asignarprofe.type_seleccionarProfesor("Profe Uno"); //Cambiar al nuevo profesor
+    asignarprofe.type_seleccionarProfesor("Profe Dos"); //Cambiar al nuevo profesor
     asignarprofe.click_asignar();
   });
 
   it("09_Comprobar que el Adimin pueda asignar una clase ondemand a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 3);
-    claseondemand.select_claseOnDemand(testCaseConfig.nombreClaseOnDemandEditado); // Agregar clase on demand
+    claseondemand.select_claseOnDemand(
+      testCaseConfig.nombreClaseOnDemandEditado
+    ); // Agregar clase on demand
     claseondemand.botonAsignarClaseOnDemand();
   });
 
@@ -170,7 +172,7 @@ describe("Administrador - Wonderly Cursos", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 4); //Click en el icono de Ver Clases
     asignarprofe.click_asignarProfesorClase();
-    asignarprofe.type_seleccionarProfesor("Profe Uno");
+    asignarprofe.type_seleccionarProfesor("Profe Dos");
     asignarprofe.click_asignar();
   });
 

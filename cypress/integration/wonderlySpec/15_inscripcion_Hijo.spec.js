@@ -25,7 +25,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
   });
 
   //MEMBRESIAS RESERVAS:
-  it("2_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
+  it.skip("2_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
@@ -33,13 +33,13 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     home.click_Membresia_Explorador();
-    membresiahijos.select_MembresiaHijo("Hillary Teran"); //Se debe Crear un hijo
+    membresiahijos.select_MembresiaHijo("Belen Teran"); //Se debe Crear un hijo
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
     cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
-    clase.verificarSiSeInscribio("Inscríbete Gratis");
+    clase.click_botonInscribeteCursos2davez("Inscríbete gratis");
   });
 
   it("3_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", () => {
@@ -47,16 +47,17 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
     ingresar.click_continuar();
-    perfilhijo.click_seleccionarHijo();
+    perfilhijo.seleccionarHijoPosicion(2);
     home.click_LogoWonderly();
     home.click_Membresia_Inventor();
     membresiahijos.select_MembresiaHijo("Alejandra Teran"); //Se debe Crear un hijo
     membresiahijos.botonSubscribirse();
     membresiahijos.botonMembresiasCompradas();
+
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
     cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
-    clase.verificarSiSeInscribio("Inscríbete Gratis");
+    clase.click_botonInscribeteCursos2davez("Inscríbete gratis");
   });
 
   it("4_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", () => {
@@ -64,7 +65,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
     ingresar.click_continuar();
-    perfilhijo.click_seleccionarHijo();
+    perfilhijo.seleccionarHijoPosicion(3);
     home.click_LogoWonderly();
     cy.wait(2000);
     home.click_Membresia_Genio();
@@ -75,7 +76,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
     cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
-    clase.verificarSiSeInscribio("Inscríbete Gratis");
+    clase.click_botonInscribeteCursos2davez("Inscríbete gratis");
   });
 
   it("5_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
@@ -85,8 +86,8 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo(); //Se debe  Crear un hijo
     clase.click_botonInscribeteCursos1eravez();
-    clase.click_botonInscribeteCursos2davez();
-    cy.get(".modal-body > p").should("be.visible");
+    clase.click_botonInscribeteCursos2davez("Inscríbete gratis");
+    //
   });
 
   it("6_Demostrar que un hijo con membresia free no pueda Inscribirse a una clase que exceda sus 7 dias gratis.", () => {
@@ -121,7 +122,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     home.click_LogoWonderly();
     cy.wait(3000);
     home.click_seccionEnVivo();
-    membresiahijos.tipoDeMembresiaParaComprar(); //Cambio de nombre del curso js
+    membresiahijos.tipoDeMembresiaParaInscribir(); //Cambio de nombre del curso js
     clase.click_inscribeteGratis();
     cy.get(".container > .mb-5").should(
       "contain.text",
@@ -142,7 +143,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     home.click_LogoWonderly();
     cy.wait(3000);
     home.click_seccionEnVivo();
-    membresiahijos.tipoDeMembresiaParaComprar(); //Cambio de nombre del curso js
+    membresiahijos.tipoDeMembresiaParaInscribir(); //Cambio de nombre del curso js
     clase.click_inscribeteGratis();
     cy.get(".container > .mb-5").should(
       "contain.text",
@@ -159,11 +160,11 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_Membresia_Genio();
-    membresiahijos.comprarTipoDeMembresia("Samuel Vargas");
+    membresiahijos.comprarTipoDeMembresia("Cecilia Vargas");
     home.click_LogoWonderly();
     cy.wait(3000);
     home.click_seccionEnVivo();
-    membresiahijos.tipoDeMembresiaParaComprar(); //Cambio de nombre del curso js
+    membresiahijos.tipoDeMembresiaParaInscribir(); //Cambio de nombre del curso js
     clase.click_inscribeteGratis();
     cy.get(".container > .mb-5").should(
       "contain.text",

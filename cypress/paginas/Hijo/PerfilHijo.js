@@ -8,6 +8,15 @@ export class PerfilHijo {
   click_seleccionarHijo() {
     cy.get(":nth-child(2) > .wonderly-login-hijo-trigger").click();
   }
+
+  seleccionarHijoPosicion(position) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/main/article/div/div[1]/div[" +
+        position +
+        "]/button"
+    ).click();
+  }
+
   click_cuenta() {
     cy.xpath(
       "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[3]/a"
