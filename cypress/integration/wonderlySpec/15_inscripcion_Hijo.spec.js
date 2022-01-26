@@ -25,7 +25,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
   });
 
   //MEMBRESIAS RESERVAS:
-  it.skip("2_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
+  it("2_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
