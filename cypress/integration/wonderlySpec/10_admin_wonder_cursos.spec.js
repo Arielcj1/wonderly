@@ -16,7 +16,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Administrador - Wonderly Cursos", () => {
+describe.skip("Administrador - Wonderly Cursos", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const homeadmin = new HomeAdmin();
@@ -225,7 +225,7 @@ describe("Administrador - Wonderly Cursos", () => {
     cy.wait(4000);
   });
 
-  it("Verificar que cuando se agrega un curso con fecha de inicio futuro aparece en Cursos futuros", () => {
+  it.skip("Verificar que cuando se agrega un curso con fecha de inicio futuro aparece en Cursos futuros", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
     wonderlycursos.type_tituloCurso(testCaseConfig.nombreCursoFuturo);

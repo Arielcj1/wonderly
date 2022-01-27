@@ -15,7 +15,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Padre - Autopayment y otros TCs", () => {
+describe.skip("Padre - Autopayment y otros TCs", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const mishijos = new MisHijos();

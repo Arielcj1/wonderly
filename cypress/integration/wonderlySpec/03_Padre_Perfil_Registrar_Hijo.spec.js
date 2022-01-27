@@ -12,7 +12,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Perfil Padre y Registro de hijos", () => {
+describe.skip("Perfil Padre y Registro de hijos", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();

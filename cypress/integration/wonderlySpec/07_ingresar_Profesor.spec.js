@@ -13,7 +13,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Creacion de un profesor", () => {
+describe.skip("Creacion de un profesor", () => {
   const ingresar = new Ingresar();
   const home = new Home();
   const homeadmin = new HomeAdmin();

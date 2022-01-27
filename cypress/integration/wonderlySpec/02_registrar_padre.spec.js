@@ -9,7 +9,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Padre - Registrar padre", () => {
+describe.skip("Padre - Registrar padre", () => {
   const home = new Home();
   const registro = new Registro();
   const ingresar = new Ingresar();

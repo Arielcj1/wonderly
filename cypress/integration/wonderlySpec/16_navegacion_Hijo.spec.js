@@ -24,12 +24,12 @@ describe("Wonderly- tablero hijo", () => {
   const metodopago = new MetodoPago();
   const claseondemand = new ClaseOnDemand();
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get('#input_1').type(this.variables.correoPadre1);
+      cy.get("#input_1").type(this.variables.correoPadre1);
       ingresar.type_contrasena("12345");
       ingresar.click_continuar();
     });
@@ -80,6 +80,6 @@ describe("Wonderly- tablero hijo", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     cy.wait(2000);
-    claseondemand.verificarCursoOnDemand(testCaseConfig.nombreClaseOnDemandEditado);
+    claseondemand.verificarCursoOnDemand(testCaseConfig.claseOnDemandBuscar);
   });
 });

@@ -72,7 +72,8 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
-    clase.click_botonEntrarClase();
+    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
+    // clase.click_botonEntrarClase();
     cy.get(".countdown-container").should("be.visible");
     cy.wait(3000);
   });
