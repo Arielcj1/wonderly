@@ -32,7 +32,7 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Prueba por 7 dias' ", function() {
+  it("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Prueba por 7 dias' ", function () {
     home.boton_conMovimiento7diasGratis();
     registro.type_nombre("Pedro");
     registro.type_apellidos("Perez");
@@ -43,7 +43,7 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("03_Verificar que un padre pueda registrarse desde el boton Menú '7 dias gratis' ", function() {
+  it("03_Verificar que un padre pueda registrarse desde el boton Menú '7 dias gratis' ", function () {
     home.boton_7diasGratis();
     registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
@@ -54,9 +54,9 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", function() {
+  it("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", function () {
     home.click_IniciaSesion();
-    cy.get('#input_1').type(this.variables.correoPadre1);
+    cy.get("#input_1").type(this.variables.correoPadre1);
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
@@ -69,7 +69,7 @@ describe("Padre - Registrar padre", () => {
     cy.get(".message-error > .title").should("be.visible");
   });
 
-  it("06_Probar que un padre no pueda registrarse con un correo ya usado en Wonderly", function() {
+  it("06_Probar que un padre no pueda registrarse con un correo ya usado en Wonderly", function () {
     home.boton_RegistroGratis();
     registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");

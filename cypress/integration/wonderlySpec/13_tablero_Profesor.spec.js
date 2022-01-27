@@ -7,6 +7,7 @@ import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { ClasesProfesor } from "../../paginas/Profesor/ClasesProfesor";
 import { AlumnosProfesor } from "../../paginas/Profesor/AlumnosProfesor";
+import { testCaseConfig } from "../../helpers/helpers";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -45,7 +46,7 @@ describe("Wonderly- PROFESOR", () => {
 
   it("3_Comprobar que se muestra un mensaje de advertencia cuando no completa todos los campos requeridos de su perfil", () => {
     perfil.type_nombre("Profe"); //Nombre del profesor nuevo
-    perfil.type_apellido("Uno"); //Apellido del profesor nuevo
+    perfil.type_apellido(testCaseConfig.apellidoProfesor); //Apellido del profesor nuevo
     perfil.type_telefono("65266222");
     perfil.type_fechaNacimiento("01/12/1988");
     perfil.type_ciudadClear("Sucre");

@@ -2,6 +2,7 @@
 // Autor: Yanina Cardozo
 ///<reference types="cypress" />
 
+import { testCaseConfig } from "../../helpers/helpers";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { Perfil } from "../../paginas/Profesor/Perfil";
@@ -35,7 +36,7 @@ describe("Creacion de un profesor", () => {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profe"); //Nombre del profesor
-    registroprofesor.type_apellido("Dos"); // Apellido del profesor
+    registroprofesor.type_apellido(testCaseConfig.apellidoProfesor); // Apellido del profesor
     cy.get("#input_5_3").type(this.variables.correoProfesor); //Crear un nuevo profesor, correo electronico
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");

@@ -21,7 +21,7 @@ describe("Administrador - Wonderly Clases", () => {
   const ondemand = new OnDemand();
   const modulosonDemand = new ModulosOnDemand();
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     home.click_IniciaSesion();
     ingresar.type_Correo("neida.veizaga@believesol.com");
@@ -95,7 +95,10 @@ describe("Administrador - Wonderly Clases", () => {
 
   it("08_Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
     homeadmin.click_tableroWonderlyOnDemand();
-    modulosonDemand.buscar_cursoOnDemand(testCaseConfig.nombreClaseOnDemandEditado, 2); //Cambiar clase on demand
+    modulosonDemand.buscar_cursoOnDemand(
+      testCaseConfig.nombreClaseOnDemandEditado,
+      2
+    ); //Cambiar clase on demand
     modulosonDemand.agregar_Modulos_Clases(
       "Modulo ",
       "Clase ",

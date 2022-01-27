@@ -6,7 +6,7 @@ export class ClasesHijo {
     // cy.get("#menu-item-2666 > .dropdown-item").click();
   }
 
-  click_botonUnirseClase(advertencia) {
+  click_botonUnirseClase() {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button[1]"
     ).click();
@@ -28,5 +28,28 @@ export class ClasesHijo {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/div[1]/div/div/div[2]/div/div[1]/a"
     ).click();
+  }
+
+  clickBotonUnirmeClase(nombre) {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text.trim() == nombre.trim()) {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
+          ).click();
+        } else {
+          cy.contains("Reservar mi clase").click();
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
+          ).click();
+        }
+      });
+  }
+
+  clickBotonReservaMiClase() {
+    cy.contains("Reservar mi clase").click();
   }
 }

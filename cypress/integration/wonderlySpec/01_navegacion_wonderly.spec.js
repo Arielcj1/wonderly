@@ -101,37 +101,6 @@ describe("Home Page - UI", () => {
       .should("be.visible");
   });
 
-  it("14_Verificar que el usuario se encuentre en la materia Robotica desde el menu Destrezas", () => {
-    home.menu_Robotica();
-    cy.get("h2.mb-4").should("contain.text", "Robótica");
-  });
-
-  it("15_Verificar que el usuario  se encuentre en la materia Programacion desde el menu Destrezas", () => {
-    home.menu_Programacion();
-    cy.get("h2.mb-4")
-      .should("contain.text", "Programación")
-      .should("be.visible");
-  });
-
-  it("16_Verificar que el usuario  se encuentre en la materia Desarrollo Video Juegos desde el menu Destrezas", () => {
-    home.menu_DesarrolloVideoJuegos();
-    cy.get("h2.mb-4")
-      .should("contain.text", "Desarrollo de videojuegos")
-      .should("be.visible");
-  });
-
-  it("17_Verificar que el usuario se encuentre en la materia Matematicas desde el menu Destrezas", () => {
-    home.menu_Matematicas();
-    cy.get("h2.mb-4")
-      .should("contain.text", "Matemáticas")
-      .should("be.visible");
-  });
-
-  it("18_Verificar que el usuario  se encuentre en la materia Ingles desde el menu Destrezas", () => {
-    home.menu_Ingles();
-    cy.get("h2.mb-4").should("contain.text", "Inglés").should("be.visible");
-  });
-
   it("Verificar que redireccione al menu de Membresias desde la pagina de Wonderly", () => {
     home.membresiasMenuAbajo();
     cy.get(".content > .container > .mb-5").should("be.visible");

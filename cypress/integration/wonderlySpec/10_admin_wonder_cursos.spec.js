@@ -68,7 +68,9 @@ describe("Administrador - Wonderly Cursos", () => {
     wonderlycursos.materia("Inglés");
     wonderlycursos.edades();
     wonderlycursos.type_fechaInicio();
+    cy.wait(1000);
     wonderlycursos.type_fechaFinal();
+    cy.wait(1000);
     wonderlycursos.horaInicio();
     wonderlycursos.duracionClases("30");
     wonderlycursos.recuerrenciaClases();
@@ -102,7 +104,7 @@ describe("Administrador - Wonderly Cursos", () => {
     );
     wonderlycursos.materia("Inglés");
     wonderlycursos.type_fechaInicio();
-    wonderlycursos.type_fechaFinal();
+    wonderlycursos.type_fechaFinal(); //Cambiar fecha
     wonderlycursos.horaInicio();
     wonderlycursos.duracionClases("30");
     wonderlycursos.click_botonAgregarCurso();
@@ -138,7 +140,9 @@ describe("Administrador - Wonderly Cursos", () => {
   it("08_Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 2); //Click en el icono Asignar Profesor
-    asignarprofe.type_seleccionarProfesor("Profe Dos"); //Cambiar al nuevo profesor
+    asignarprofe.type_seleccionarProfesor(
+      testCaseConfig.nombreCompletoProfesor
+    ); //Cambiar al nuevo profesor
     asignarprofe.click_asignar();
   });
 
@@ -172,7 +176,9 @@ describe("Administrador - Wonderly Cursos", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 4); //Click en el icono de Ver Clases
     asignarprofe.click_asignarProfesorClase();
-    asignarprofe.type_seleccionarProfesor("Profe Dos");
+    asignarprofe.type_seleccionarProfesor(
+      testCaseConfig.nombreCompletoProfesor
+    );
     asignarprofe.click_asignar();
   });
 

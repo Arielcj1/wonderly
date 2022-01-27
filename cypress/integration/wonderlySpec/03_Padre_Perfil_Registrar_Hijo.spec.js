@@ -21,20 +21,19 @@ describe("Perfil Padre y Registro de hijos", () => {
   const mishijos = new MisHijos();
   const agregarnuevohijo = new AgregarNuevoHijo();
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
 
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get('#input_1').type(this.variables.correoPadre1);
+      cy.get("#input_1").type(this.variables.correoPadre1);
       ingresar.type_contrasena("12345");
       ingresar.click_continuar();
     });
-
   });
 
-  it("01_Verificar que un padre pueda Ir a su Perfil", function() {
+  it("01_Verificar que un padre pueda Ir a su Perfil", function () {
     perfil.click_perfil(); //Click en la opcion Cuenta del dropdown menu
   });
 

@@ -39,14 +39,19 @@ export class WonderlyCursos {
 
   type_fechaInicio() {
     var moment = require("moment");
-    const today = moment().format("DD/MMM/YYYY");
+    const today = moment().format("DD/MM/YYYY");
     cy.get("#input_35_20").type(today);
   }
+  // Preguntar sobre fechaFinal
   type_fechaFinal() {
     var moment = require("moment");
-    const lastday = moment().add(7, "days").format("DD/MMM/YYYY");
+    const lastday = moment().add(7, "days").format("DD/MM/YYYY");
     cy.get("#input_35_21").type(lastday);
   }
+  // type_fechaFinal(fecha) {
+  //   cy.get("#input_35_21").type(fecha);
+  // }
+
   horaInicio() {
     var moment = require("moment");
     const hora = moment().add(1, "hours").format("HH");

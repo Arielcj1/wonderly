@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import { testCaseConfig } from "../../helpers/helpers";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
 import { AutopaymentPadre } from "../../paginas/Padre/AutopaymentPadre";
@@ -114,7 +115,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   it("10_Comprobar que un padre no puede reservar un clase.", () => {
     home.click_LogoWonderly();
     cy.get("#vivo-tab").click();
-    cy.contains("Imagina tú mundo").click(); //Cambiar nombre de curso
+    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
     registrarhijo.click_botonInscribeteGratis();
     cy.get(".modal-content > .my-3").should("be.visible"); //Assert es que le muestre los perfiles de los hijos para elija un hijo
   });

@@ -44,7 +44,7 @@ describe("Administrador - Profesores Registrados", () => {
     homeadmin.click_tableroProfesoresRegistrados();
     homeadmin.click_botonRegistrarProfesor();
     registroprofesor.type_nombre("Profe");
-    registroprofesor.type_apellido("teacher1"); //Cambiar apellido
+    registroprofesor.type_apellido("teacher6"); //Cambiar apellido
     cy.get("#input_5_3").type(this.variables.correoTeacher); //Correo de otro profesor nuevo
     registroprofesor.type_contrasenia("12345");
     registroprofesor.type_confirmarContrasenia("12345");
