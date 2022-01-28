@@ -6,7 +6,7 @@ import { testCaseConfig } from "../../helpers/helpers";
 export class Clase {
   click_nombreDeLaClase() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/div[1]/div/div[4]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/div[2]/div/div[6]/a"
     ).click();
   }
   click_botonEntrarClase() {
@@ -32,7 +32,7 @@ export class Clase {
   }
   // boton inscribete desde el Schedule
   click_InscribeteSchedule() {
-    cy.contains(testCaseConfig.nombreCursoMembresiaFree).click(); //Cambio de nombre del curso
+    cy.contains(testCaseConfig.nombreCursoMembresiaFree).click({force: true}); //Cambio de nombre del curso
   }
 
   // Desde el detalle del curso

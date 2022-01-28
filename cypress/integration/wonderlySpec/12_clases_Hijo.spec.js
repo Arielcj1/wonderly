@@ -34,7 +34,7 @@ describe("Wonderly- clases hijos", () => {
   });
 
   //CLASES
-  it("1_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
+  it.skip("1_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_pestañaCursos();
     claseshijo.botonInscribeteCursos();
@@ -43,7 +43,7 @@ describe("Wonderly- clases hijos", () => {
     cy.get(".col-md-7 > .title").should("be.visible");
   });
 
-  it("2_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
+  it.skip("2_Comprobar que el hijo pueda ver el detalle de una clase desde Clases Hijo", () => {
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
     claseshijo.click_menu_clasesHijo();
