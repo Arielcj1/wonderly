@@ -1,1 +1,6 @@
-{ "projectId": "dw8s21" }
+{ "projectId": "dw8s21",
+    "retries": {
+        "runMode": 2,
+        "openMode": 2
+      }
+}
