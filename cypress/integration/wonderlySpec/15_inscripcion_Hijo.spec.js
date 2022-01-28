@@ -113,7 +113,6 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_contrasena("123");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
-    cy.wait(3000);
     home.click_LogoWonderly();
     home.click_Membresia_Explorador();
     membresiahijos.comprarTipoDeMembresia("Mabel Diaz");
@@ -134,7 +133,6 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_contrasena("123");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
-    cy.wait(3000);
     home.click_LogoWonderly();
     home.click_Membresia_Inventor();
     membresiahijos.comprarTipoDeMembresia("Fer Gutierrez");
@@ -155,7 +153,6 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_contrasena("123");
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
-    cy.wait(3000);
     home.click_LogoWonderly();
     home.click_Membresia_Genio();
     membresiahijos.comprarTipoDeMembresia("Cecilia Vargas");

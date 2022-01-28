@@ -13,7 +13,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe.skip("Administrador - Wonderly Clases", () => {
+describe("Administrador - Wonderly Clases", () => {
   const ingresar = new Ingresar();
   const home = new Home();
   const homeadmin = new HomeAdmin();
@@ -60,7 +60,7 @@ describe.skip("Administrador - Wonderly Clases", () => {
     );
   });
 
-  it.skip("06_Comprobar que el admin puede Agregar clase on demand.", () => {
+  it("06_Comprobar que el admin puede Agregar clase on demand.", () => {
     homeadmin.click_tableroWonderlyOnDemand();
     ondemand.click_agregarClaseOnDemand();
     //Completar campos de la clase on demand
@@ -93,7 +93,7 @@ describe.skip("Administrador - Wonderly Clases", () => {
     cy.wait(3000);
   });
 
-  it.skip("08_Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
+  it("08_Verificar que el Admin puede agregar Modulos y clases a una clase On Demand", () => {
     homeadmin.click_tableroWonderlyOnDemand();
     modulosonDemand.buscar_cursoOnDemand(
       testCaseConfig.nombreClaseOnDemandEditado,

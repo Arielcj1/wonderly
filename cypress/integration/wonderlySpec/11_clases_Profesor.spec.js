@@ -62,6 +62,7 @@ describe("Wonderly- PROFESOR", () => {
     home.click_seccionEnVivo();
     clase.verificarClaseInscrita();
   });
+
   it("h5_Comprobar que el hijo pueda ver el counter de la clase", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
@@ -72,7 +73,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
-    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
+    cy.contains(testCaseConfig.nombreDelCursoCreado).click({ force: true }); //Cambiar nombre de curso
     // clase.click_botonEntrarClase();
     cy.get(".countdown-container").should("be.visible");
     cy.wait(3000);

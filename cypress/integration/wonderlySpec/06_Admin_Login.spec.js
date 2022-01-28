@@ -7,7 +7,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe.skip("Administrador - Login", () => {
+describe("Administrador - Login", () => {
   const home = new Home();
   const ingresar = new Ingresar();
 

@@ -10,7 +10,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe.skip("Administrador - Profesores Registrados", () => {
+describe("Administrador - Profesores Registrados", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfiladmin = new PerfilAdmin();

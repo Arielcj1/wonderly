@@ -12,7 +12,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe.skip("Comprar Membresias Hijos", () => {
+describe("Comprar Membresias Hijos", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const paquete = new ComprarPaquete();

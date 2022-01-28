@@ -79,7 +79,6 @@ describe("Wonderly- tablero hijo", () => {
   it("6_Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
-    cy.wait(2000);
     claseondemand.verificarCursoOnDemand(testCaseConfig.claseOnDemandBuscar);
   });
 });

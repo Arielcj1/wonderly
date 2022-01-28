@@ -11,7 +11,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe.skip("Home Page - UI", () => {
+describe("Home Page - UI", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();

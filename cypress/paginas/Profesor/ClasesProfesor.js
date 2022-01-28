@@ -21,6 +21,7 @@ export class ClasesProfesor {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
     ).click();
+    cy.wait(2000);
   }
 
   editarClase() {
