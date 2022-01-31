@@ -133,25 +133,22 @@ export class Home {
   }
 
   verificarExistenciaElemento(contenedor, elemento) {
-    var existe;
     cy.get(contenedor).then((body) => {
       if (body.find(elemento).length > 0) {
+        cy.writeFile('cypress/fixtures/verificador.json', {verify: 'true'})
         cy.log("EXISTE");
-        existe = true;
       } else {
         cy.log("NO EXISTE");
-        existe = false;
+        cy.writeFile('cypress/fixtures/verificador.json', {verify: 'false'})
       }
     });
-    return existe;
   }
 
-  inscribirCurso() {
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-    ).click(); //boton Inscribete
-    cy.get(
-      "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
-    ).click(); //cerrar modal
+  inscribirCurso(verify) {
+    cy.log(verify)
+    if(verify == 'true'){
+      cy.xpath("/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a").click(); //boton Inscribete
+      cy.get("#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span").click(); //cerrar modal
+    }
   }
 }

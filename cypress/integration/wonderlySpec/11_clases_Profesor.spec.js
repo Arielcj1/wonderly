@@ -33,6 +33,9 @@ describe("Wonderly- PROFESOR", () => {
       ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
       ingresar.click_continuar();
     });
+    cy.fixture("verificador").then((verifica)=>{
+      this.verifica = verifica;
+    })
   });
 
   it.skip("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
@@ -62,12 +65,9 @@ describe("Wonderly- PROFESOR", () => {
     home.click_seccionEnVivo();
     clase.diaSchedule();
     clase.verificarClaseInscrita();
-    var existe = home.verificarExistenciaElemento(
-      ".site-container",
-      "#pills-calendario"
-    );
-    cy.log("////", existe);
-    home.inscribirCurso(existe);
+    home.verificarExistenciaElemento(".site-container","#pills-calendario");
+    cy.wait(4000)
+    home.inscribirCurso(this.verifica.verify);
   });
 
   it("h5_Comprobar que el hijo pueda ver el counter de la clase", function () {
