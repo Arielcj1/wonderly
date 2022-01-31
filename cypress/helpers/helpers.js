@@ -3,7 +3,7 @@ export const testCaseConfig = {
   apellidoProfesor: "Diez",
   nombreClaseOnDemand: "Clase OnDemand Gratis 17", //spec 9
   nombreClaseOnDemandEditado: "Clase OnDemand editado 17", //spec 9
-  nombreDelCursoCreado: "Viernes Alegres", //spec 10
+  nombreDelCursoCreado: "Inglés 6pm", //spec 10
   nombreCursoEditado: "Viernes Alegres - Editado", //spec 10 //cambiar curso
   nombreCursoRepetido: "Viernes Alegres - Editado - Repetido", //spec 10
   // nombreCursoFuturo: "Curso Futuro prueba 4", //.

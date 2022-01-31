@@ -30,7 +30,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
     ingresar.click_continuar();
-    perfilhijo.click_seleccionarHijo();
+    perfilhijo.seleccionarHijoPosicion(2);
     home.click_LogoWonderly();
     home.click_Membresia_Explorador();
     membresiahijos.select_MembresiaHijo("Belen Teran"); //Se debe Crear un hijo
@@ -64,7 +64,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
     ingresar.click_continuar();
-    perfilhijo.seleccionarHijoPosicion(2);
+    perfilhijo.seleccionarHijoPosicion(1);
     home.click_LogoWonderly();
     home.click_Membresia_Genio();
     cy.wait(2000);

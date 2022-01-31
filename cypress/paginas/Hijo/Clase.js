@@ -17,12 +17,25 @@ export class Clase {
     cy.contains(testCaseConfig.nombreDelCursoCreado).click({
       force: true,
     });
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-    ).click(); //boton Inscribete
-    cy.get(
-      "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
-    ).click(); //cerrar modal
+    // cy.wait(2000);
+    // // VERIFICADOR DE LA EXISTENCIA DE UN ELEMENTO EN EL DOM (Document Object Model)
+    // cy.get(".site-container").then((body) => {
+    //   if (body.find("#pills-calendario").length > 0) {
+    //     cy.log("El elemento existe");
+    //     cy.xpath(
+    //       "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+    //     ).click(); //boton Inscribete
+    //     cy.get(
+    //       "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
+    //     ).click(); //cerrar modal
+    //   } else {
+    //     cy.log("El elemento no existe");
+    //   }
+    // });
+  }
+
+  diaSchedule() {
+    cy.get(".slick-current > div > li > .trigger-schedule-clases").click();
   }
 
   click_descargarMaterial() {
@@ -32,7 +45,7 @@ export class Clase {
   }
   // boton inscribete desde el Schedule
   click_InscribeteSchedule() {
-    cy.contains(testCaseConfig.nombreCursoMembresiaFree).click({force: true}); //Cambio de nombre del curso
+    cy.contains(testCaseConfig.nombreCursoMembresiaFree).click({ force: true }); //Cambio de nombre del curso
   }
 
   // Desde el detalle del curso

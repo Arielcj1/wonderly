@@ -10,11 +10,11 @@ export class PerfilHijo {
   }
 
   seleccionarHijoPosicion(position) {
-    cy.wait(2000)
+    cy.wait(2000);
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/main/article/div/div[1]/div[" +
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div[1]/div[" +
         position +
-        "]/button"
+        "]/button/div"
     ).click();
   }
 

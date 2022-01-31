@@ -35,7 +35,7 @@ describe("Wonderly- PROFESOR", () => {
     });
   });
 
-  it("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
+  it.skip("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
     cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo padre nuevo
@@ -60,7 +60,14 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
+    clase.diaSchedule();
     clase.verificarClaseInscrita();
+    var existe = home.verificarExistenciaElemento(
+      ".site-container",
+      "#pills-calendario"
+    );
+    cy.log("////", existe);
+    home.inscribirCurso(existe);
   });
 
   it("h5_Comprobar que el hijo pueda ver el counter de la clase", function () {

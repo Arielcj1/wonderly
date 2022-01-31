@@ -72,7 +72,7 @@ export class Home {
 
   click_MenuUsuario() {
     //cy.get("#menu-item-6738 > #navbarDropdown").click();
-    cy.get('#menu-item-6738 > .nav-link').click()
+    cy.get("#menu-item-6738 > .nav-link").click();
   }
 
   click_salir() {
@@ -130,5 +130,28 @@ export class Home {
   }
   membresiasMenuAbajo() {
     cy.get("#menu-item-724 > .nav-link").click();
+  }
+
+  verificarExistenciaElemento(contenedor, elemento) {
+    var existe;
+    cy.get(contenedor).then((body) => {
+      if (body.find(elemento).length > 0) {
+        cy.log("EXISTE");
+        existe = true;
+      } else {
+        cy.log("NO EXISTE");
+        existe = false;
+      }
+    });
+    return existe;
+  }
+
+  inscribirCurso() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+    ).click(); //boton Inscribete
+    cy.get(
+      "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
+    ).click(); //cerrar modal
   }
 }
