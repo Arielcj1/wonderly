@@ -33,9 +33,7 @@ describe("Wonderly- PROFESOR", () => {
       ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
       ingresar.click_continuar();
     });
-    cy.fixture("verificador").then((verifica)=>{
-      this.verifica = verifica;
-    })
+    
   });
 
   it.skip("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
@@ -56,18 +54,20 @@ describe("Wonderly- PROFESOR", () => {
   it("p1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo del padre nuevo
+    cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo del padre nuevo      
     ingresar.type_contrasena("12345"); //Cambiar la constraseña del padre nuevo que le corresponde
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
-    clase.diaSchedule();
+    clase.diaSchedule();      
     clase.verificarClaseInscrita();
     home.verificarExistenciaElemento(".site-container","#pills-calendario");
-    cy.wait(4000)
-    home.inscribirCurso(this.verifica.verify);
+    cy.fixture("verificador").then((verifica)=>{
+      this.verifica = verifica;
+      home.inscribirCurso(this.verifica.verify);
+    });
   });
 
   it("h5_Comprobar que el hijo pueda ver el counter de la clase", function () {
