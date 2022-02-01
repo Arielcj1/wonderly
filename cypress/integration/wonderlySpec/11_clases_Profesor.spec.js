@@ -33,10 +33,9 @@ describe("Wonderly- PROFESOR", () => {
       ingresar.type_contrasena("12345"); //Cambiar la contraseña que le corresponde
       ingresar.click_continuar();
     });
-    
   });
 
-  it.skip("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
+  it("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
     cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo padre nuevo
@@ -54,17 +53,22 @@ describe("Wonderly- PROFESOR", () => {
   it("p1_Comprobar que un hijo pueda inscribirse a una clase entrando al detalle de la clase desde el Schedule", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo del padre nuevo      
+    cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo del padre nuevo
     ingresar.type_contrasena("12345"); //Cambiar la constraseña del padre nuevo que le corresponde
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
-    clase.diaSchedule();      
-    clase.verificarClaseInscrita();
-    home.verificarExistenciaElemento(".site-container","#pills-calendario");
-    cy.fixture("verificador").then((verifica)=>{
+    clase.diaSchedule();
+    clase.clickNombreDelCursoSchedule();
+    home.verificarExistenciaElemento(
+      ".site-container",
+      "#pills-calendario",
+      "verificador1"
+    );
+    cy.fixture("verificador1").then((verifica) => {
+      cy.log("VERIFICADOR 1", verifica);
       this.verifica = verifica;
       home.inscribirCurso(this.verifica.verify);
     });
@@ -80,7 +84,7 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
-    cy.contains(testCaseConfig.nombreDelCursoCreado).click({ force: true }); //Cambiar nombre de curso
+    clase.clickNombreDelCursoSchedule();
     // clase.click_botonEntrarClase();
     cy.get(".countdown-container").should("be.visible");
     cy.wait(3000);
@@ -103,17 +107,13 @@ describe("Wonderly- PROFESOR", () => {
 
   it("p4_Demostrar que un profesor puede iniciar una clase desde el detalle de la clase", () => {
     perfil.click_tableroClasesProfesor();
-    cy.wait(2000);
     clasesprofesor.clickNombreClaseTablero();
     clasesprofesor.botonIniciarClase();
-    cy.wait(4000);
   });
 
   it("p5_Comprobar que un profesor puede Iniciar su clase 30 minutos antes que inicie su clase desde el tablero Clases profesor", () => {
     perfil.click_tableroClasesProfesor();
-    cy.wait(2000);
     perfil.click_iniciarClase();
-    cy.wait(4000);
   });
 
   it("p6_Demostrar que un profesor puede editar su clase.", () => {
@@ -197,25 +197,45 @@ describe("Wonderly- PROFESOR", () => {
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfil.click_tableroClasesProfesor();
-    cy.wait(3000);
     perfil.iniciarLaClaseAntes("¡Oops! Es muy pronto para inciar la clase.");
     cy.wait(3000);
   });
 
-  it("p13_Demostrar que un profesor pueda ver los alumnos registrados desde el icono ver Alumnos registrados.", () => {
+  it("p13_Demostrar que un profesor pueda ver los alumnos registrados desde el icono ver Alumnos registrados.", function () {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.clickIconoVerAlumnosInscritos();
-    cy.get("tbody > tr > th").should("have.length", 1); //cambiar el numero de inscritos para verificar el assert
+    home.verificarExistenciaElemento(
+      ".site-container",
+      ".table",
+      "verificador2"
+    );
+    cy.wait(2000);
+    cy.fixture("verificador2").then((verifica) => {
+      cy.log("VERIFICADOR 2", verifica);
+      this.verifica = verifica;
+      home.mensajeAlumnosInscritos(this.verifica.verify);
+    });
   });
 
-  it("p14_Probar que un profesor pueda ver el mensaje cuando no se han inscrito alumnos a su clase", () => {
+  it("p14_Probar que un profesor pueda ver el mensaje cuando no se han inscrito alumnos a su clase", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
     ingresar.type_Correo("profepedro@gmail.com");
+    // ingresar.type_Correo("profeana@gmail.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.clickIconoVerAlumnosInscritos();
-    cy.get(".message").should("be.visible");
+    home.verificarExistenciaElemento(
+      ".site-container",
+      ".table",
+      "verificador3"
+    );
+    cy.wait(2000);
+    cy.fixture("verificador3").then((verifica) => {
+      cy.log("VERIFICADOR 3", verifica);
+      this.verifica = verifica;
+      home.mensajeAlumnosInscritos(this.verifica.verify);
+    });
   });
 });

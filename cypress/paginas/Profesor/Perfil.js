@@ -44,6 +44,7 @@ export class Perfil {
 
   click_tableroClasesProfesor() {
     cy.get("#menu-item-456 > .nav-link").click();
+    cy.wait(2000);
   }
   type_nombre(nombre) {
     cy.get("#input_10_37").clear().type(nombre);
@@ -127,6 +128,7 @@ export class Perfil {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/table/tbody/tr[1]/td[3]/button[2]"
     ).click();
+    cy.wait(3000);
   }
 
   iniciarLaClaseAntes(nombre) {

@@ -132,24 +132,39 @@ export class Home {
     cy.get("#menu-item-724 > .nav-link").click();
   }
 
-  verificarExistenciaElemento(contenedor, elemento) {
+  verificarExistenciaElemento(contenedor, elemento, fileName) {
     cy.get(contenedor).then((body) => {
       if (body.find(elemento).length > 0) {
-        cy.writeFile('cypress/fixtures/verificador.json', {verify: 'true'})
-        cy.log("EXISTE Curso");
+        cy.writeFile(`cypress/fixtures/${fileName}.json`, { verify: "true" });
+        cy.log("EXISTE EL ELEMENTO");
       } else {
-        cy.log("NO EXISTE");
-        cy.writeFile('cypress/fixtures/verificador.json', {verify: 'false'})
+        cy.writeFile(`cypress/fixtures/${fileName}.json`, {
+          verify: "false",
+        });
+        cy.log("NO EXISTE EL ELEMENTO");
       }
     });
   }
 
-
   inscribirCurso(verify) {
-    cy.log("******" + verify)
-    if(verify == 'true'){
-      cy.xpath("/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a").click(); //boton Inscribete
-      cy.get("#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span").click(); //cerrar modal
+    cy.log("******" + verify);
+    if (verify == "true") {
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+      ).click(); //boton Inscribete
+      cy.get(
+        "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
+      ).click(); //cerrar modal
+    }
+  }
+
+  mensajeAlumnosInscritos(verify) {
+    if (verify == "true") {
+      cy.log("Los alumnos estan inscritos a la clase");
+      cy.get("tbody > tr > th").should("have.length", 1); //cambiar el numero de inscritos para verificar el assert
+    } else {
+      cy.log("No Existen alumnos inscritos a la clase");
+      cy.get(".message").should("be.visible");
     }
   }
 }

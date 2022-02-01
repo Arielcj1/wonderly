@@ -65,7 +65,7 @@ export class MembresiasHijo {
       cy.wait(1000);
     }
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[40]/div/li/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[39]/div/li/a"
     ).click(); //Click en la fecha
     cy.wait(3000);
     cy.contains(testCaseConfig.nombreCursoMembresiaExpirada).click(); //Cambio de nombre del curso

@@ -20,6 +20,7 @@
     "url": "https://github.com/Arielcj1/wonderly.git"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "jquery": "^3.6.0",
     "moment": "^2.29.1"
   }

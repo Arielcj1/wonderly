@@ -13,25 +13,10 @@ export class Clase {
     cy.contains(testCaseConfig.nombreDelCursoCreado).click({ force: true });
   }
 
-  verificarClaseInscrita() {
+  clickNombreDelCursoSchedule() {
     cy.contains(testCaseConfig.nombreDelCursoCreado).click({
       force: true,
     });
-    // cy.wait(2000);
-    // // VERIFICADOR DE LA EXISTENCIA DE UN ELEMENTO EN EL DOM (Document Object Model)
-    // cy.get(".site-container").then((body) => {
-    //   if (body.find("#pills-calendario").length > 0) {
-    //     cy.log("El elemento existe");
-    //     cy.xpath(
-    //       "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-    //     ).click(); //boton Inscribete
-    //     cy.get(
-    //       "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
-    //     ).click(); //cerrar modal
-    //   } else {
-    //     cy.log("El elemento no existe");
-    //   }
-    // });
   }
 
   diaSchedule() {
