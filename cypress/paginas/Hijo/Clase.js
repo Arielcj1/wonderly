@@ -40,14 +40,6 @@ export class Clase {
     ).click();
     cy.wait(3000);
   }
-
-  // boton inscribete Desde pestania Cursos
-  click_botonInscribeteCursos1eravez() {
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div[1]/div[6]/div/div/div[2]/div/div[1]/a"
-    ).click();
-    cy.wait(2000);
-  }
   //funcion boton inscribete Gratis desde el detalle de clase
   click_botonInscribeteCursos2davez(nombre) {
     cy.xpath(

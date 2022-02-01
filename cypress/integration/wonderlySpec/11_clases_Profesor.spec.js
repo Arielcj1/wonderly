@@ -60,7 +60,6 @@ describe("Wonderly- PROFESOR", () => {
     cy.wait(3000);
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
-    clase.diaSchedule();
     clase.clickNombreDelCursoSchedule();
     home.verificarExistenciaElemento(
       ".site-container",

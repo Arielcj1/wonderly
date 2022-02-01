@@ -26,7 +26,7 @@ export class ClasesHijo {
 
   botonInscribeteCursos() {
     cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/div[1]/div/div/div[2]/div/div[1]/a"
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div[1]/div[6]/div/div/div[2]/div/div[1]/a"
     ).click();
   }
 
@@ -40,13 +40,13 @@ export class ClasesHijo {
           cy.xpath(
             "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
           ).click();
-          cy.wait(2000)
+          cy.wait(2000);
         } else {
           cy.contains("Reservar mi clase").click();
           cy.xpath(
             "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
           ).click();
-          cy.wait(2000)
+          cy.wait(2000);
         }
       });
   }
