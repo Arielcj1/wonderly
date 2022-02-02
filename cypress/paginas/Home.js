@@ -135,12 +135,12 @@ export class Home {
   verificarExistenciaElemento(contenedor, elemento, fileName) {
     cy.get(contenedor).then((body) => {
       if (body.find(elemento).length > 0) {
-        cy.writeFile(`cypress/fixtures/${fileName}.json`, {
+        cy.writeFile(`cypress/fixtures/verificadores/${fileName}.json`, {
           verify: "true",
         });
         cy.log("EXISTE EL ELEMENTO");
       } else {
-        cy.writeFile(`cypress/fixtures/${fileName}.json`, {
+        cy.writeFile(`cypress/fixtures/verificadores/${fileName}.json`, {
           verify: "false",
         });
         cy.log("NO EXISTE EL ELEMENTO");

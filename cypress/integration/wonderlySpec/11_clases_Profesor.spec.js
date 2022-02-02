@@ -35,7 +35,7 @@ describe("Wonderly- PROFESOR", () => {
     });
   });
 
-  it("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
+  it.skip("h7_Comprobar que un hijo puede navegar por el detalle de un curso desde el schedule.", function () {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
     cy.get("#input_1").type(this.variables.correoPadre1); //Cambiar el correo padre nuevo
@@ -66,7 +66,7 @@ describe("Wonderly- PROFESOR", () => {
       "#pills-calendario",
       "verificador1"
     );
-    cy.fixture("verificador1").then((verifica) => {
+    cy.fixture("verificadores/verificador1").then((verifica) => {
       cy.log("VERIFICADOR 1", verifica);
       this.verifica = verifica;
       home.inscribirCurso(this.verifica.verify);
@@ -209,7 +209,7 @@ describe("Wonderly- PROFESOR", () => {
       "verificador2"
     );
     cy.wait(2000);
-    cy.fixture("verificador2").then((verifica) => {
+    cy.fixture("verificadores/verificador2").then((verifica) => {
       cy.log("VERIFICADOR 2", verifica);
       this.verifica = verifica;
       home.mensajeAlumnosInscritos(this.verifica.verify);
@@ -231,7 +231,7 @@ describe("Wonderly- PROFESOR", () => {
       "verificador3"
     );
     cy.wait(2000);
-    cy.fixture("verificador3").then((verifica) => {
+    cy.fixture("verificadores/verificador3").then((verifica) => {
       cy.log("VERIFICADOR 3", verifica);
       this.verifica = verifica;
       home.mensajeAlumnosInscritos(this.verifica.verify);

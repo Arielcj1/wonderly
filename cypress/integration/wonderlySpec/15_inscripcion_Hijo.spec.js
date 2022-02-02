@@ -46,7 +46,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
       "#pills-calendario",
       "verificador4"
     );
-    cy.fixture("verificador4").then((verifica) => {
+    cy.fixture("verificadores/verificador4").then((verifica) => {
       cy.log("VERIFICADOR 4", verifica);
       this.verifica = verifica;
       home.inscribirCurso(this.verifica.verify);
@@ -73,7 +73,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
       "#pills-calendario",
       "verificador5"
     );
-    cy.fixture("verificador5").then((verifica) => {
+    cy.fixture("verificadores/verificador5").then((verifica) => {
       cy.log("VERIFICADOR 5", verifica);
       this.verifica = verifica;
       home.inscribirCurso(this.verifica.verify);
@@ -100,7 +100,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
       "#pills-calendario",
       "verificador6"
     );
-    cy.fixture("verificador6").then((verifica) => {
+    cy.fixture("verificadores/verificador6").then((verifica) => {
       cy.log("VERIFICADOR 6", verifica);
       this.verifica = verifica;
       home.inscribirCurso(this.verifica.verify);
