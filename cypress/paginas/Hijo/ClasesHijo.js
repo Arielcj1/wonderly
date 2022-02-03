@@ -1,5 +1,8 @@
 // Autor: Yanina Cardozo
 ///<reference types="cypress" />
+
+import { testCaseConfig } from "../../helpers/helpers";
+
 export class ClasesHijo {
   click_menu_clasesHijo() {
     cy.get("#menu-item-704 > .nav-link").click();
@@ -53,5 +56,35 @@ export class ClasesHijo {
 
   clickBotonReservaMiClase() {
     cy.contains("Reservar mi clase").click();
+  }
+
+  inscribirCurso(verify) {
+    cy.log("******" + verify);
+    if (verify == "true") {
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+      ).click(); //boton Inscribete
+      cy.get(
+        "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
+      ).click(); //cerrar modal
+    }
+  }
+
+  verificarCursosExistentesSchedule(verify) {
+    if (verify == "true") {
+      cy.log("No existen clases en esta fecha");
+    } else {
+      cy.log("Entrando al curso");
+      cy.wait(3000);
+      cy.contains(testCaseConfig.nombreCursoMembresiaExpirada).click(); //Cambio de nombre del curso
+      cy.xpath(
+        "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
+      ).click(); // boton inscribete gratis
+      cy.wait(3000);
+      cy.get(".container > .mb-5").should(
+        "contain.text",
+        "Escoge el camino hacia la genialidad"
+      );
+    }
   }
 }

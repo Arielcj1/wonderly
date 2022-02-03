@@ -27,7 +27,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
   });
 
   // //MEMBRESIAS RESERVAS:
-  it("2_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", function () {
+  it.skip("2_Comprobar que un hijo con membresia Explorador pueda inscribirse a una clase desde el schedule", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
@@ -54,7 +54,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     // clase.click_botonInscribeteCursos2davez("Inscríbete gratis");
   });
 
-  it("3_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", function () {
+  it.skip("3_Comprobar que un hijo con membresia INVENTOR pueda inscribirse a una clase desde el schedule", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
@@ -80,7 +80,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     });
   });
 
-  it("4_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", function () {
+  it.skip("4_Comprobar que un hijo con membresia GENIO pueda inscribirse a una clase desde el schedule", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("alfredo@gmail.com"); //Cambiar usuario Padre
     ingresar.type_contrasena("123"); //Cambiar contraseña
@@ -107,7 +107,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     });
   });
 
-  it("5_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
+  it.skip("5_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("marquito@gmail.com"); //Cambiar un nuevo usuario existente
     ingresar.type_contrasena("123");
@@ -137,7 +137,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     );
   });
 
-  it("7_Verificar que un hijo con membresia Explorador no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+  it("7_Verificar que un hijo con membresia Explorador no pueda inscribirse a  una clase que exceda sus 31 dias", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("angel@gmail.com");
     ingresar.type_contrasena("123");
@@ -150,14 +150,19 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     cy.wait(3000);
     home.click_seccionEnVivo();
     membresiahijos.tipoDeMembresiaParaInscribir(); //Cambio de nombre del curso js
-    clase.click_inscribeteGratis();
-    cy.get(".container > .mb-5").should(
-      "contain.text",
-      "Escoge el camino hacia la genialidad"
+    home.verificarExistenciaElemento(
+      ".site-container",
+      ".alert-warning",
+      "verificador7"
     );
+    cy.fixture("verificadores/verificador7").then((verifica) => {
+      cy.log("VERIFICADOR 7", verifica);
+      this.verifica = verifica;
+      claseshijo.verificarCursosExistentesSchedule(this.verifica.verify);
+    });
   });
 
-  it("8_Probar que un hijo con membresia Inventor no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+  it("8_Probar que un hijo con membresia Inventor no pueda inscribirse a  una clase que exceda sus 31 dias", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("fernanda@gmail.com");
     ingresar.type_contrasena("123");
@@ -170,14 +175,19 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     cy.wait(3000);
     home.click_seccionEnVivo();
     membresiahijos.tipoDeMembresiaParaInscribir(); //Cambio de nombre del curso js
-    clase.click_inscribeteGratis();
-    cy.get(".container > .mb-5").should(
-      "contain.text",
-      "Escoge el camino hacia la genialidad"
+    home.verificarExistenciaElemento(
+      ".site-container",
+      ".alert-warning",
+      "verificador8"
     );
+    cy.fixture("verificadores/verificador8").then((verifica) => {
+      cy.log("VERIFICADOR 8", verifica);
+      this.verifica = verifica;
+      claseshijo.verificarCursosExistentesSchedule(this.verifica.verify);
+    });
   });
 
-  it("9_Comprobar que un hijo con membresia Genio no pueda inscribirse a  una clase que exceda sus 31 dias", () => {
+  it("9_Comprobar que un hijo con membresia Genio no pueda inscribirse a  una clase que exceda sus 31 dias", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("amalia@gmail.com");
     ingresar.type_contrasena("123");
@@ -190,10 +200,15 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     cy.wait(3000);
     home.click_seccionEnVivo();
     membresiahijos.tipoDeMembresiaParaInscribir(); //Cambio de nombre del curso js
-    clase.click_inscribeteGratis();
-    cy.get(".container > .mb-5").should(
-      "contain.text",
-      "Escoge el camino hacia la genialidad"
+    home.verificarExistenciaElemento(
+      ".site-container",
+      ".alert-warning",
+      "verificador9"
     );
+    cy.fixture("verificadores/verificador9").then((verifica) => {
+      cy.log("VERIFICADOR 9", verifica);
+      this.verifica = verifica;
+      claseshijo.verificarCursosExistentesSchedule(this.verifica.verify);
+    });
   });
 });
