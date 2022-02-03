@@ -112,9 +112,29 @@ describe("Perfil Padre y Registro de hijos", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos", () => {
+  it("09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos", function() {
     home.click_pestañaCursos();
-    registrarhijo.click_inscribeteCurso();
+
+    var a = [1, 2, 3, 4];
+    a.forEach((position) => {
+      registrarhijo.verificarExistenciaMultiple(
+        ".site-container",
+        "div:nth-child(" +
+          position +
+          ") > div > div > div.course-body.cursos-detail > div > div.w-50.mr-1.text-center > a",
+        "verificador10",
+        position
+      );
+    });
+    cy.fixture("verificadores/verificador10").then((elementoGuardadoJson) => {
+      this.elementoGuardadoJson = elementoGuardadoJson;
+      cy.get(
+        "div:nth-child(" +
+          this.elementoGuardadoJson.position +
+          ") > div > div > div.course-body.cursos-detail > div > div.w-50.mr-1.text-center > a"
+      ).click();
+    });
+
     registrarhijo.click_botonInscribeteGratis();
     perfiles.click_registrarHijo();
     registrarhijo.type_nombreHijo("Hijo");

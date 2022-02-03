@@ -54,4 +54,16 @@ export class RegistrarHijo {
       ":nth-child(6) > .px-0 > .course-block > .course-body > .d-flex > .mr-1 > .btn"
     ).click();
   }
+
+  verificarExistenciaMultiple(contenedor, elemento, fileName, position) {
+    cy.get(contenedor).then((body) => {
+      if (body.find(elemento).length > 0) {
+        cy.writeFile(`cypress/fixtures/verificadores/${fileName}.json`, {
+          position: position,
+        });
+        cy.log("EXISTE EL ELEMENTO", position);
+      }
+    });
+  }
+
 }
