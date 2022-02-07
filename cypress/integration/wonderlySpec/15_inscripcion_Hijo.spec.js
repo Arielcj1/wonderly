@@ -9,6 +9,7 @@ import { Clase } from "../../paginas/Hijo/Clase";
 import { MembresiasHijo } from "../../paginas/Hijo/MembresiasHijo";
 import { testCaseConfig } from "../../helpers/helpers";
 import { ClasesHijo } from "../../paginas/Hijo/ClasesHijo";
+import { RegistrarHijo } from "../../paginas/Padre/RegistrarHijo";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -21,6 +22,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
   const clase = new Clase();
   const membresiahijos = new MembresiasHijo();
   const claseshijo = new ClasesHijo();
+  const registrarhijo = new RegistrarHijo();
 
   beforeEach(() => {
     cy.visit("https://developers.learnwonderly.com/");
@@ -107,18 +109,35 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     });
   });
 
-  it.skip("5_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", () => {
+  it.skip("5_Verificar que se muestra un mensaje de confirmacion cuando se inscribe a un curso", function () {
     home.click_IniciaSesion();
     ingresar.type_Correo("marquito@gmail.com"); //Cambiar un nuevo usuario existente
     ingresar.type_contrasena("123");
     ingresar.click_continuar();
-    perfilhijo.click_seleccionarHijo(); //Se debe  Crear un hijo
-    claseshijo.botonInscribeteCursos();
-    clase.click_botonInscribeteCursos2davez("Inscríbete gratis");
-    //
+    perfilhijo.seleccionarHijoPosicion(2);
+    var a = [1, 2, 3, 4];
+    a.forEach((position) => {
+      registrarhijo.verificarExistenciaMultiple(
+        ".site-container",
+        "div:nth-child(" +
+          position +
+          ") > div > div > div.course-body.cursos-detail > div > div.w-50.mr-1.text-center > a",
+        "verificador11",
+        position
+      );
+    });
+    cy.fixture("verificadores/verificador11").then((elementoGuardadoJson) => {
+      this.elementoGuardadoJson = elementoGuardadoJson;
+      cy.get(
+        "div:nth-child(" +
+          this.elementoGuardadoJson.position +
+          ") > div > div > div.course-body.cursos-detail > div > div.w-50.mr-1.text-center > a"
+      ).click();
+      clase.click_botonInscribeteCursos2davez("Inscrito");
+    });
   });
 
-  it("6_Demostrar que un hijo con membresia free no pueda Inscribirse a una clase que exceda sus 7 dias gratis.", () => {
+  it.skip("6_Demostrar que un hijo con membresia free no pueda Inscribirse a una clase que exceda sus 7 dias gratis.", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yenny@gmail.com");
     ingresar.type_contrasena("123");

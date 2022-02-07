@@ -42,19 +42,23 @@ export class Clase {
   }
   //funcion boton inscribete Gratis desde el detalle de clase
   click_botonInscribeteCursos2davez(nombre) {
+    cy.wait(3000);
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
     )
       .invoke("text")
       .then((text) => {
+        cy.log("*", text);
         if (text == nombre) {
-          cy.log("El hijo puede inscribirse");
+          cy.log("El hijo ya ha reservado la clase anteriormente");
+          // cy.get(".modal-body > p").should("be.visible");
+          cy.wait(2000);
+        } else {
           cy.xpath(
             "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
           ).click();
+          cy.log("El hijo se inscribió con exito a la clase");
           cy.get(".modal-body > p").should("be.visible");
-        } else {
-          cy.log("El hijo ya esta inscrito al curso");
           cy.wait(2000);
         }
       });

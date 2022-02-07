@@ -1,7 +1,10 @@
-{ "projectId": "dw8s21",
-    "retries": {
-        "runMode": 2,
-        "openMode": 2
-      },
-      "browser": "chrome"
+{
+  "projectId": "dw8s21",
+  "retries": {
+    "runMode": 2,
+    "openMode": 2
+  },
+  "browser": "chrome",
+  "viewportWidth": 1500,
+  "viewportHeight": 1000
 }

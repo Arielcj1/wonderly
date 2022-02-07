@@ -147,4 +147,148 @@ export class Home {
       }
     });
   }
+
+  typeCorreo(email) {
+    cy.xpath(
+      "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"
+    ).type(email);
+  }
+
+  clickCalendario() {
+    cy.get("#input_35_20").click();
+    cy.wait(1000);
+  }
+  numeroCalendar(fecha) {
+    let contadorPromesas = 1;
+    let contadorFilaPromesa = 1;
+    let contadorColumnaPromesa = 1;
+    for (let colum = 1; colum <= 7; colum++) {
+      for (let fila = 1; fila <= 6; fila++) {
+        cy.xpath(
+          "/html/body/div[6]/div[1]/table/tbody/tr[" +
+            fila +
+            "]/td[" +
+            colum +
+            "]"
+        )
+          .invoke("text")
+          .then((text) => {
+            cy.log("fecha ", text, "fila y columna: ", fila, colum);
+            if (text === fecha) {
+              cy.log("Posicion de la fila y columna", fila, colum);
+              cy.log("Imprimiendo Contador: ", contadorPromesas);
+              contadorFilaPromesa = fila;
+              contadorColumnaPromesa = colum;
+            }
+
+            if (contadorPromesas == 42) {
+              cy.log(
+                "Haciendo click en la fecha  ",
+                contadorFilaPromesa,
+                contadorColumnaPromesa
+              );
+
+              cy.xpath(
+                "/html/body/div[6]/div[1]/table/tbody/tr[" +
+                  contadorFilaPromesa +
+                  "]/td[" +
+                  contadorColumnaPromesa +
+                  "]"
+              ).click();
+            }
+            contadorPromesas++;
+            cy.log("CONTADORRRR", contadorPromesas);
+          });
+      }
+    }
+  }
+
+  precio() {
+    cy.xpath(
+      "/html/body/div[3]/div[7]/div/div[1]/div[1]/div[1]/div/a/div/div[2]/div[3]/span"
+    )
+      .invoke("text")
+      .then((text) => {
+        cy.log("PRECIO ", text);
+      });
+  }
+
+  matriz(precioProducto) {
+    for (let c = 1; c <= 2; c++) {
+      for (let f = 1; f <= 3; f++) {
+        var guardarC;
+        var guardarF;
+        cy.xpath(
+          "/html/body/div[3]/div[8]/div/div[1]/div[" +
+            f +
+            "]/div[" +
+            c +
+            "]/div/a/div/div[2]/div[3]/span"
+        )
+          .invoke("text")
+          .then((precio) => {
+            cy.log(precio);
+
+            if (precio == precioProducto) {
+              guardarC = c;
+              guardarF = f;
+              cy.log("guardado", guardarF, guardarC);
+            }
+            if (c == 2 && f == 3) {
+              cy.log("CLICK", guardarF, guardarC);
+              cy.xpath(
+                "/html/body/div[3]/div[8]/div/div[1]/div[" +
+                  guardarF +
+                  "]/div[" +
+                  guardarC +
+                  "]/div/a/div/div[2]/div[3]/span"
+              ).click();
+            }
+          });
+      }
+    }
+  }
 }
+
+//   var contador = 1;
+
+//   for (let columna = 1; columna <= 3; columna++) {
+//     let guardarColumna = 1;
+//     for (let fila = 1; fila <= 2; fila++) {
+//       let guardarFila = 1;
+//       cy.xpath(
+//         "/html/body/div[3]/div[7]/div/div[1]/div[" +
+//           columna +
+//           "]/div[" +
+//           fila +
+//           "]/div/a/div/div[2]/div[3]/span"
+//       )
+//         .invoke("text")
+//         .then((text) => {
+//           cy.log("Imprimiendo filas y columnas ", text, columna, fila);
+//           cy.log("TEXTO ES IGUAL A", text, "PRECIO", precio);
+
+//           if (text === precio) {
+//             cy.log("POSICIONNNN del producto ", guardarColumna, guardarFila);
+//             guardarColumna = columna;
+//             guardarFila = fila;
+//           }
+//           cy.log("CONTADORRRRRRR", contador);
+//           if (contador === 6) {
+//             cy.log("ENTRO AQUI","la columna es " ,guardarColumna, "La fila es: ",guardarFila);
+
+//             cy.xpath(
+//               "/html/body/div[3]/div[7]/div/div[1]/div[" +
+//                 guardarColumna +
+//                 "]/div[" +
+//                 guardarFila +
+//                 "]/div/a/div/div[2]/div[3]/span"
+//             ).click();
+//           } else {
+//             cy.log("No encontro el precio");
+//           }
+//           contador++;
+//         });
+//     }
+//   }
+// }

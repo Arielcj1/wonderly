@@ -9,6 +9,7 @@ import { Clase } from "../../paginas/Hijo/Clase";
 import { ClasesHijo } from "../../paginas/Hijo/ClasesHijo";
 import { Autopayment } from "../../paginas/Hijo/Autopayment";
 import { MisHijos } from "../../paginas/Hijo/MisHijos";
+import { RegistrarHijo } from "../../paginas/Padre/RegistrarHijo";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -22,6 +23,7 @@ describe("Wonderly- clases hijos", () => {
   const claseshijo = new ClasesHijo();
   const mishijos = new MisHijos();
   const autopayment = new Autopayment();
+  const registrarhijo = new RegistrarHijo();
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     cy.fixture("variables/variablesUsuario").then((variables) => {
@@ -34,10 +36,30 @@ describe("Wonderly- clases hijos", () => {
   });
 
   //CLASES
-  it("1_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", () => {
+  it("1_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", function () {
     perfilhijo.click_seleccionarHijo();
     home.click_pestañaCursos();
-    claseshijo.botonInscribeteCursos();
+    cy.wait(2000);
+    var a = [1, 2, 3, 4];
+    a.forEach((position) => {
+      registrarhijo.verificarExistenciaMultiple(
+        ".site-container",
+        "div:nth-child(" +
+          position +
+          ") > div > div > div.course-body.cursos-detail > div > div.w-50.mr-1.text-center > a",
+        "verificador12",
+        position
+      );
+    });
+    cy.fixture("verificadores/verificador12").then((elementoGuardadoJson) => {
+      this.elementoGuardadoJson = elementoGuardadoJson;
+      cy.get(
+        "div:nth-child(" +
+          this.elementoGuardadoJson.position +
+          ") > div > div > div.course-body.cursos-detail > div > div.w-50.mr-1.text-center > a"
+      ).click();
+    });
+    // claseshijo.botonInscribeteCursos();
     claseshijo.botonPreguntaWhatsapp();
     claseshijo.aprendizajeProyecto();
     cy.get(".col-md-7 > .title").should("be.visible");

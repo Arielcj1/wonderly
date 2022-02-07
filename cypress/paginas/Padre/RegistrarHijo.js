@@ -61,9 +61,8 @@ export class RegistrarHijo {
         cy.writeFile(`cypress/fixtures/verificadores/${fileName}.json`, {
           position: position,
         });
-        cy.log("EXISTE EL ELEMENTO", position);
+        cy.log("EXISTE EL ELEMENTO:", position);
       }
     });
   }
-
 }
