@@ -8,4 +8,8 @@ export class MisHijos {
     cy.get(".btn-full-width").click();
     //cy.get('.entry-content > .mt-3').click()
   }
+
+  clickEditar(){
+    cy.get(':nth-child(1) > :nth-child(5) > .btn').click()
+  }
 }

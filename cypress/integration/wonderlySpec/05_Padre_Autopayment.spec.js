@@ -6,6 +6,7 @@ import { Ingresar } from "../../paginas/Ingresar";
 import { AutopaymentPadre } from "../../paginas/Padre/AutopaymentPadre";
 import { ClasesHijos } from "../../paginas/Padre/ClasesHijos";
 import { ComprarPaquete } from "../../paginas/Padre/ComprarPaquete";
+import { EditarHijo } from "../../paginas/Padre/EditarHijo";
 import { MetodoPago } from "../../paginas/Padre/MetodoPago";
 import { MisHijos } from "../../paginas/Padre/MisHijos";
 import { Perfil } from "../../paginas/Padre/Perfil";
@@ -25,6 +26,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   const metodopago = new MetodoPago();
   const comprarpaquete = new ComprarPaquete();
   const registrarhijo = new RegistrarHijo();
+  const editarhijo = new EditarHijo()
 
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
@@ -119,4 +121,15 @@ describe("Padre - Autopayment y otros TCs", () => {
     registrarhijo.click_botonInscribeteGratis();
     cy.get(".modal-content > .my-3").should("be.visible"); //Assert es que le muestre los perfiles de los hijos para elija un hijo
   });
+
+  it("11_Demostrar que un padre puede editar los datos de un hijo.", () => {
+    perfil.click_perfil();
+    mishijos.click_Tablero_MisHijos();
+    mishijos.clickEditar()
+    editarhijo.typeEditarNombre('Goku')
+    editarhijo.typeEditarApellido('Son')
+    editarhijo.typeFechaNacimiento('01/01/2016')
+    editarhijo.clickBotonGuardar()
+    cy.get('.alert').should('be.visible')    //Assert de datos guardados con exito
+  })
 });

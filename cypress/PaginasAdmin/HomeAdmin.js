@@ -24,4 +24,12 @@ export class HomeAdmin {
   click_paginacionSiguiente() {
     cy.get(".next").click();
   }
+
+  click_tableroReporteMembresias(){
+    cy.get('#menu-item-13388 > .nav-link').click()   
+  }
+
+  click_tableroReporteReservas(){
+    cy.get('#menu-item-13597 > .nav-link').click()
+  }
 }
