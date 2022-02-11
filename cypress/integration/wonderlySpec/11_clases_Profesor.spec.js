@@ -86,9 +86,18 @@ describe("Wonderly- PROFESOR", () => {
     home.click_LogoWonderly();
     home.click_seccionEnVivo();
     clase.clickNombreDelCursoSchedule();
+    home.verificarExistenciaElemento(
+      ".site-container",
+      "#countdown",
+      "verificador14"
+    );
+
+    cy.fixture("verificadores/verificador14").then((verifica) => {
+      cy.log("VERIFICADOR 14", verifica);
+      this.verifica = verifica;
+      claseshijo.verificaCounterClase(this.verifica.verify);
+    });
     // clase.click_botonEntrarClase();
-    cy.get(".countdown-container").should("be.visible");
-    cy.wait(3000);
   });
 
   it("p2_Probar que un profesor pueda ver sus clases asignadas desde el schedule", () => {

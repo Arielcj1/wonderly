@@ -84,4 +84,14 @@ export class ClasesHijo {
       cy.get(".parent-user > p").should("be.visible");
     }
   }
+  verificaCounterClase(verify) {
+    cy.wait(2000);
+    if (verify == "true") {
+      cy.log("se muestra el contador");
+      cy.get(".countdown-container").should("be.visible");
+      cy.wait(3000);
+    } else {
+      cy.log("La clase ya empezó");
+    }
+  }
 }
