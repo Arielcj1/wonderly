@@ -150,10 +150,7 @@ describe("Wonderly- Inscripcion a curso con Membresias", () => {
     cy.wait(3000);
     clase.click_InscribeteSchedule(); //Cambio de nombre del curso js
     clase.click_inscribeteGratis();
-    cy.get(".container > .mb-5").should(
-      "contain.text",
-      "Escoge el camino hacia la genialidad"
-    );
+    cy.get(".parent-user > p").should("be.visible");
   });
 
   it("7_Verificar que un hijo con membresia Explorador no pueda inscribirse a  una clase que exceda sus 31 dias", function () {

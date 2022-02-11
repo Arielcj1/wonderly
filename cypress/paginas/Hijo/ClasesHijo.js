@@ -81,10 +81,7 @@ export class ClasesHijo {
         "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
       ).click(); // boton inscribete gratis
       cy.wait(3000);
-      cy.get(".container > .mb-5").should(
-        "contain.text",
-        "Escoge el camino hacia la genialidad"
-      );
+      cy.get(".parent-user > p").should("be.visible");
     }
   }
 }

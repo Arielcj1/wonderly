@@ -66,7 +66,8 @@ export class ClasesProfesor {
   }
   botonAgregarMaterialForm() {
     cy.wait(3000);
-    cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+    cy.xpath("/html/body/div[6]/div/div[2]/button[2]").click();
+
     cy.wait(3000);
   }
 
@@ -106,7 +107,8 @@ export class ClasesProfesor {
       cy.get("input[type=file]").attachFile(attachFile);
 
       cy.wait(3000);
-      cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+      cy.xpath("/html/body/div[6]/div/div[2]/button[2]").click();
+
       cy.wait(3000);
     }
     cy.get(".btn-group > .btn").click(); //boton regresar
@@ -156,7 +158,8 @@ export class ClasesProfesor {
   //formato
   agregarMaterialForm() {
     cy.wait(3000);
-    cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+    cy.xpath("/html/body/div[6]/div/div[2]/button[2]").click();
+
     cy.xpath(
       "/html/body/div[6]/div[1]/div/div[2]/form/div[1]/div/div[2]/div[2]"
     ).should("be.visible");
@@ -181,7 +184,7 @@ export class ClasesProfesor {
         .type(descripcion + i);
       cy.get("input[type=file]").attachFile(attachFile);
       cy.wait(3000);
-      cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+      cy.xpath("/html/body/div[6]/div/div[2]/button[2]").click();
       cy.wait(3000);
     }
   }

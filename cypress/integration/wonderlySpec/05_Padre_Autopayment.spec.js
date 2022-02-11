@@ -26,7 +26,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   const metodopago = new MetodoPago();
   const comprarpaquete = new ComprarPaquete();
   const registrarhijo = new RegistrarHijo();
-  const editarhijo = new EditarHijo()
+  const editarhijo = new EditarHijo();
 
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
@@ -117,7 +117,7 @@ describe("Padre - Autopayment y otros TCs", () => {
   it("10_Comprobar que un padre no puede reservar un clase.", () => {
     home.click_LogoWonderly();
     cy.get("#vivo-tab").click();
-    cy.contains(testCaseConfig.nombreCursoNavegacion).click(); //Cambiar nombre de curso
+    cy.contains(testCaseConfig.nombreCursoNavegacion).click({ force: true }); //Cambiar nombre de curso
     registrarhijo.click_botonInscribeteGratis();
     cy.get(".modal-content > .my-3").should("be.visible"); //Assert es que le muestre los perfiles de los hijos para elija un hijo
   });
@@ -125,11 +125,11 @@ describe("Padre - Autopayment y otros TCs", () => {
   it("11_Demostrar que un padre puede editar los datos de un hijo.", () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
-    mishijos.clickEditar()
-    editarhijo.typeEditarNombre('Goku')
-    editarhijo.typeEditarApellido('Son')
-    editarhijo.typeFechaNacimiento('01/01/2016')
-    editarhijo.clickBotonGuardar()
-    cy.get('.alert').should('be.visible')    //Assert de datos guardados con exito
-  })
+    mishijos.clickEditar();
+    editarhijo.typeEditarNombre("Goku");
+    editarhijo.typeEditarApellido("Son");
+    editarhijo.typeFechaNacimiento("01/01/2016");
+    editarhijo.clickBotonGuardar();
+    cy.get(".alert").should("be.visible"); //Assert de datos guardados con exito
+  });
 });

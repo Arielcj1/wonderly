@@ -60,7 +60,7 @@ describe("Administrador - Wonderly Clases", () => {
     );
   });
 
-  it.skip("06_Comprobar que el admin puede Agregar clase on demand.", () => {
+  it("06_Comprobar que el admin puede Agregar clase on demand.", () => {
     homeadmin.click_tableroWonderlyOnDemand();
     ondemand.click_agregarClaseOnDemand();
     //Completar campos de la clase on demand

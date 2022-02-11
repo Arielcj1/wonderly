@@ -28,4 +28,30 @@ export class Destrezas {
   BotonInscribeteGratisHoy2() {
     cy.get(".py-5 > .text-lg-left > .btn").click();
   }
+
+  botonRobotica() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[1]/a"
+    ).click({ force: true });
+  }
+  botonProgramacion() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[2]/a"
+    ).click({ force: true });
+  }
+  botonMatematicas() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[4]/a"
+    ).click({ force: true });
+  }
+  botonDesarrolloVideoJuegos() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[3]/a"
+    ).click({ force: true });
+  }
+  botonIngles() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[5]/a"
+    ).click({ force: true });
+  }
 }

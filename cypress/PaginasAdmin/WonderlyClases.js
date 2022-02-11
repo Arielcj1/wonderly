@@ -25,7 +25,7 @@ export class WonderlyClases {
 
   click_confirmarAgregarMaterial() {
     cy.wait(3000);
-    cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+    cy.xpath("/html/body/div[6]/div/div[2]/button[2]").click();
   }
 
   click_Regresar() {
@@ -74,7 +74,8 @@ export class WonderlyClases {
         }
       }
       cy.wait(3000);
-      cy.xpath("/html/body/div[6]/div[2]/button[2]").click();
+      cy.xpath("/html/body/div[6]/div/div[2]/button[2]").click();
+
       cy.wait(3000);
     }
   }

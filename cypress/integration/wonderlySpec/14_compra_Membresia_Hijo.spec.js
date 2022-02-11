@@ -34,7 +34,7 @@ describe("MEMBRESIAS", () => {
   });
 
   // COMPRA DE MEMBRESIAS SOLO EXPLORADOR TEMPORALMENTE
-  it.skip("1_Verificar que un hijo puede comprar una membresia Explorador", () => {
+  it("1_Verificar que un hijo puede comprar una membresia Explorador", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("berthita@gmail.com");

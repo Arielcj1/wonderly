@@ -146,7 +146,7 @@ describe("Administrador - Wonderly Cursos", () => {
     asignarprofe.click_asignar();
   });
 
-  it("09_Comprobar que el Adimin pueda asignar una clase ondemand a un curso", () => {
+  it("09_Comprobar que el Admin pueda asignar una clase ondemand a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 3);
     claseondemand.select_claseOnDemand(
