@@ -55,7 +55,8 @@ describe("Comprar Membresias Hijos", () => {
     //cy.get(".text-primary").should("be.visible");
   });
 
-  it("03_Comprobar que un padre puede comprar una membresia 'Inventor'.", () => {
+  //OMITIR POR EL MOMENTO
+  it.skip("03_Comprobar que un padre puede comprar una membresia 'Inventor'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -65,7 +66,8 @@ describe("Comprar Membresias Hijos", () => {
     //cy.get(".text-primary").should("be.visible");
   });
 
-  it("04_Comprobar que un padre puede comprar una membresia 'Genio'.", () => {
+  //OMITIR POR EL MOMENTO
+  it.skip("04_Comprobar que un padre puede comprar una membresia 'Genio'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();
@@ -85,7 +87,8 @@ describe("Comprar Membresias Hijos", () => {
     paquete.verificarPrecioTotal("29.99 USD.");
   });
 
-  it("06_Comprobar que el detalle de la membresia 'Inventor' coincide con el 'Detalle de compra'.", () => {
+  //OMITIR POR EL MOMENTO
+  it.skip("06_Comprobar que el detalle de la membresia 'Inventor' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -96,7 +99,8 @@ describe("Comprar Membresias Hijos", () => {
     paquete.verificarPrecioTotal("49.99 USD.");
   });
 
-  it("07_Comprobar que el detalle de la membresia 'Genio' coincide con el 'Detalle de compra'.", () => {
+  //OMITIR POR EL MOMENTO
+  it.skip("07_Comprobar que el detalle de la membresia 'Genio' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();
@@ -130,7 +134,8 @@ describe("Comprar Membresias Hijos", () => {
     //cy.get(".text-primary").should("be.visible");
   });
 
-  it("10_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Inventor'. ", () => {
+  //OMITIR POR EL MOMENTO
+  it.skip("10_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Inventor'. ", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -145,7 +150,8 @@ describe("Comprar Membresias Hijos", () => {
     //cy.get(".text-primary").should("be.visible");
   });
 
-  it("11_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Genio'. ", () => {
+  //OMITIR POR EL MOMENTO
+  it.skip("11_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Genio'. ", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();

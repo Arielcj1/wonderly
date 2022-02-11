@@ -6,7 +6,7 @@ export class AutopaymentPadre {
             if (text == 'Activar'){
                 cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr['+posicion+']/td[4]/button[2]').click()  //Boton Activar
                 cy.get('#modalSubscription > .modal-dialog > .modal-content > .modal-footer > .btn').click()  // Boton aceptar para confirmar
-                cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr['+posicion+']/td[4]/a').click()   //Boton Actualizar Membresia
+                //cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr['+posicion+']/td[4]/a').click()   //Boton Actualizar Membresia
             }else{
                 cy.xpath('/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr['+posicion+']/td[4]/button[2]').click()  //Boton cancelar
                 cy.get('#modalSubscription > .modal-dialog > .modal-content > .modal-footer > .btn').click()   //Boton Aceptar

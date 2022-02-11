@@ -51,7 +51,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     autopaymentpadre.verificarAutopayment(1);
   });
 
-  it('03_Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', () => {
+  it.skip('03_Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
     autopaymentpadre.verificarAutopayment(4);
@@ -60,7 +60,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it('04_Verificar que pueda Actualizar Membresia "Inventor" desde el tablero Mis hijos', () => {
+  it.skip('04_Verificar que pueda Actualizar Membresia "Inventor" desde el tablero Mis hijos', () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
     autopaymentpadre.verificarAutopayment(5);
@@ -69,7 +69,7 @@ describe("Padre - Autopayment y otros TCs", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it('05_Verificar que pueda Actualizar Membresia "Genio" desde el tablero Mis hijos', () => {
+  it.skip('05_Verificar que pueda Actualizar Membresia "Genio" desde el tablero Mis hijos', () => {
     perfil.click_perfil();
     mishijos.click_Tablero_MisHijos();
     autopaymentpadre.verificarAutopayment(6);

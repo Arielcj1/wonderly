@@ -53,9 +53,7 @@ export class Home {
   }
 
   click_Membresia_Explorador() {
-    cy.get(
-      ".slick-current > :nth-child(1) > .mb-3 > .description > .btn"
-    ).click();
+    cy.get('.parent-user > .btn').click()
   }
 
   click_Membresia_Inventor() {
