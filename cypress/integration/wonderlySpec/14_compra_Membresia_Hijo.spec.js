@@ -21,20 +21,20 @@ describe("MEMBRESIAS", () => {
   const membresiahijos = new MembresiasHijo();
   const mishijos = new MisHijos();
 
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get('#input_1').type(this.variables.correoPadre1);
+      cy.get("#input_1").type(this.variables.correoPadre1);
       ingresar.type_contrasena("12345");
       ingresar.click_continuar();
-      perfilhijo.click_seleccionarHijo();
+      // perfilhijo.click_seleccionarHijo();
     });
   });
 
-  // COMPRA DE MEMBRESIAS EXPLORADOR, INVENTOR y GENIO
-  it("1_Verificar que un hijo puede comprar una membresia Explorador, Inventor y Genio", () => {
+  // COMPRA DE MEMBRESIAS SOLO EXPLORADOR TEMPORALMENTE
+  it.skip("1_Verificar que un hijo puede comprar una membresia Explorador", () => {
     home.click_salir();
     home.click_IniciaSesion();
     ingresar.type_Correo("berthita@gmail.com");
@@ -42,20 +42,24 @@ describe("MEMBRESIAS", () => {
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
-    membresiahijos.Membresia("Carito Salas");
+    home.botonComprarMembresia();
+    membresiahijos.seleccionarHijoMembresia("Carito Salas");
+    membresiahijos.botonComprar();
+    membresiahijos.botonMembresiasCompradas();
   });
 
   //DETALLE DE LA MEMBRESIA: EXPLORADOR, INVENTOR y GENIO
   it("2_Comprobar que el detalle de la membresia 'Explorador' coincide con el Detalle de compra", () => {
     home.click_LogoWonderly();
-    home.click_Membresia_Explorador();
+    home.botonComprarMembresia();
+    // home.click_Membresia_Explorador();
     membresiahijos.verificarDetalleCompraMembresiaExplorador(
       "Membresia: Explorador",
       "Precio Total: 29.99 USD."
     );
   });
 
-  it("3_Comprobar que el detalle de la membresia 'Inventor' coincide con el Detalle de compra", () => {
+  it.skip("3_Comprobar que el detalle de la membresia 'Inventor' coincide con el Detalle de compra", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Inventor();
     membresiahijos.verificarDetalleCompraMembresiaInventor(
@@ -64,7 +68,7 @@ describe("MEMBRESIAS", () => {
     );
   });
 
-  it("4_Comprobar que el detalle de la membresia 'Genio' coincide con el Detalle de compra", () => {
+  it.skip("4_Comprobar que el detalle de la membresia 'Genio' coincide con el Detalle de compra", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Genio();
     membresiahijos.verificarDetalleCompraMembresiaGenio(
@@ -76,17 +80,19 @@ describe("MEMBRESIAS", () => {
   //MENSAJE DE ADVERTENCIA: EXPLORADOR, INVENTOR y GENIO
   it("5_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Explorador", () => {
     home.click_LogoWonderly();
-    home.click_Membresia_Explorador();
+    home.botonComprarMembresia();
+    membresiahijos.botonComprar();
+    // home.click_Membresia_Explorador();
     membresiahijos.MensajeAdvertencia();
   });
 
-  it("6_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Inventor", () => {
+  it.skip("6_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Inventor", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Inventor();
     membresiahijos.MensajeAdvertencia();
   });
 
-  it("7_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Genio", () => {
+  it.skip("7_Verificar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia Genio", () => {
     home.click_LogoWonderly();
     home.click_Membresia_Genio();
     membresiahijos.MensajeAdvertencia();

@@ -52,6 +52,9 @@ export class Home {
     cy.get(".custom-logo").click();
   }
 
+  botonComprarMembresia() {
+    cy.get(".parent-user > .btn").click();
+  }
   click_Membresia_Explorador() {
     cy.get('.parent-user > .btn').click()
   }

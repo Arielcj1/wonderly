@@ -74,15 +74,16 @@ describe("Home Page - UI", () => {
     cy.wait(5000);
   });
 
-  it("11_Demostrar que un usuario Inicie sesion y pueda ir a las Membresias Explorador", () => {
+  it("11_Demostrar que un usuario Inicie sesion y pueda ir a la Membresia Explorador", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar ususario
     ingresar.type_contrasena("abcABC123"); //Cambiar password
     ingresar.click_continuar();
     cy.wait(3000);
     home.click_LogoWonderly();
-    home.click_Membresias();
-    home.click_Membresia_Explorador();
+    home.botonComprarMembresia();
+    // home.click_Membresias();
+    // home.click_Membresia_Explorador();
     cy.wait(3000);
     cy.get(".my-5").should("be.visible");
   });

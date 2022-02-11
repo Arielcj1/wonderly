@@ -31,8 +31,8 @@ describe("Wonderly- tablero hijo", () => {
     cy.fixture("variables/variablesUsuario").then((variables) => {
       this.variables = variables;
       home.click_IniciaSesion();
-      cy.get("#input_1").type(this.variables.correoAdmin);
-      ingresar.type_contrasena("abcABC123");
+      cy.get("#input_1").type(this.variables.correoPadre1);
+      ingresar.type_contrasena("12345");
       ingresar.click_continuar();
     });
   });

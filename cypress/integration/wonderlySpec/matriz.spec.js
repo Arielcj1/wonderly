@@ -6,7 +6,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Wonderly- tablero hijo", () => {
+describe.skip("Wonderly- tablero hijo", () => {
   const home = new Home();
 
   beforeEach(function () {
