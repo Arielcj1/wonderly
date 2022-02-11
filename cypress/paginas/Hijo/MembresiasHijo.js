@@ -4,7 +4,6 @@
 import { testCaseConfig } from "../../helpers/helpers";
 
 export class MembresiasHijo {
-  // Verificar membresia
   verificarMembresia(descripcion) {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/a"
@@ -68,10 +67,9 @@ export class MembresiasHijo {
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/section[2]/div[3]/div[1]/div[1]/div/div/div/ul/ul/div/div/div[40]/div/li/a"
     ).click(); //Click en la fecha
     cy.wait(3000);
-    // cy.contains(testCaseConfig.nombreCursoMembresiaExpirada).click(); //Cambio de nombre del curso
   }
 
-  //Compra de 3 membresias: Explorador, Inventor y Genio
+  //La funcion Membresia no se usara temporalmente
   Membresia(hijo) {
     for (var i = 1; i <= 3; i++) {
       cy.xpath(
@@ -81,7 +79,6 @@ export class MembresiasHijo {
       ).click();
       cy.get("#input_25_29").select(hijo);
       cy.get("#gform_submit_button_25").click(); //Subscribirse
-      //cy.get(".mx-2 > :nth-child(1)").should("be.visible");
       cy.get(".mt-5 > .btn").click(); //boton membresias compradas
       cy.get(
         ":nth-child(1) > :nth-child(3) > .list-group > .list-group-item"
@@ -89,20 +86,32 @@ export class MembresiasHijo {
       cy.get(".custom-logo").click();
     }
   }
+  seleccionarHijoMembresia(hijo) {
+    cy.get("#input_25_29").select(hijo);
+  }
 
-  //  Mensaje de advertencia de la membresia
+  botonComprar() {
+    cy.get("#gform_submit_button_25").click();
+  }
+
+  botonMembresiasCompradas() {
+    cy.get(".mt-5 > .btn").click();
+    cy.get(
+      ":nth-child(1) > :nth-child(3) > .list-group > .list-group-item"
+    ).should("be.visible");
+    cy.get(".custom-logo").click();
+  }
+
   MensajeAdvertencia() {
-    cy.get("#gform_submit_button_25").click(); //Subscribir
     cy.get(".title")
       .should("contain.text", "Hubo un problema con tu envío.")
       .should("be.visible");
     cy.get(
       "#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span"
     ).click(); //Salir
-    // }
   }
 
-  // Verificar el detalle de la compra de la memebresia Explorador
+  // Verificar el detalle de la compra de la membresia Explorador
   verificarDetalleCompraMembresiaExplorador(membresia, precio) {
     cy.get(".card-body > :nth-child(1)")
       .invoke("text")

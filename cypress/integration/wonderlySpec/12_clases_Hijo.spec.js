@@ -98,7 +98,7 @@ describe("Wonderly- clases hijos", () => {
     autopayment.verificarAutopaymentCancelar();
   });
 
-  it("7_Verificar que pueda Actualizar Membresia Genio, Inventor y Explorador desde el tablero Mis hijos", () => {
+  it.skip("7_Verificar que pueda Actualizar Membresia Genio, Inventor y Explorador desde el tablero Mis hijos", () => {
     cy.wait(2000);
     perfilhijo.click_seleccionarHijo();
     perfilhijo.click_cuenta();
