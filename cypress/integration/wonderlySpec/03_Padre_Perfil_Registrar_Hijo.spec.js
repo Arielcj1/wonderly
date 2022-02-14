@@ -112,7 +112,7 @@ describe("Perfil Padre y Registro de hijos", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos", function() {
+  it("09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos", function () {
     home.click_pestañaCursos();
 
     var a = [1, 2, 3, 4];

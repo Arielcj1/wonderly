@@ -64,9 +64,10 @@ export class ClasesHijo {
       cy.xpath(
         "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
       ).click(); //boton Inscribete
+      cy.wait(3000);
       cy.get(
         "#modalBooking > .modal-dialog > .modal-content > .modal-header > .close > span"
-      ).click(); //cerrar modal
+      ).click({ force: true }); //cerrar modal
     }
   }
 
@@ -93,5 +94,20 @@ export class ClasesHijo {
     } else {
       cy.log("La clase ya empezó");
     }
+  }
+  verificarCounter() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[1]/div/div[6]/div[1]"
+    )
+      .invoke("text")
+      .then((text) => {
+        var num2 = parseInt(text);
+        if (num2 < 1) {
+          cy.log("La clase ya empezó");
+        } else {
+          cy.log("Se muestra el contador");
+          cy.get(".countdown-container").should("be.visible");
+        }
+      });
   }
 }
