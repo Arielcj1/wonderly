@@ -5,6 +5,11 @@ export class Home {
     cy.get("#menu-item-139 > .nav-link").click();
   }
 
+  opcionRegistrateAqui() {
+    cy.get(
+      '.gf_login_links > [href="https://developers.learnwonderly.com/registrar-padre/"]'
+    ).click();
+  }
   botonWonderlyEnAccion() {
     cy.get(".openVideo").click();
     cy.wait(3000);

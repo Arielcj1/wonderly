@@ -113,7 +113,7 @@ describe("Perfil Padre y Registro de hijos", () => {
   });
 
   it("09_Verificar que un padre pueda registrar a un hijo cuando se inscribe a un curso desde la pestaña Cursos", function () {
-    home.click_pestañaCursos();
+    home.clickPestañaCursos();
 
     var a = [1, 2, 3, 4];
     a.forEach((position) => {

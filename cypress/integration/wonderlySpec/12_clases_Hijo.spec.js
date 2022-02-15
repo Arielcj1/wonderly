@@ -38,7 +38,7 @@ describe("Wonderly- clases hijos", () => {
   //CLASES
   it("1_Verificar que un hijo pueda ingresar al detalle de un curso desde la pestaña Cursos", function () {
     perfilhijo.click_seleccionarHijo();
-    home.click_pestañaCursos();
+    home.clickPestañaCursos();
     cy.wait(2000);
     var a = [1, 2, 3, 4];
     a.forEach((position) => {

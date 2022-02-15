@@ -21,8 +21,9 @@ describe("Padre - Registrar padre", () => {
     });
   });
 
-  it.skip("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", function () {
-    home.boton_RegistroGratis();
+  it("01_Demostrar que un padre pueda registrarse desde la opcion 'Aun no eres miembro? Registrate aqui', presionando el boton 'Inicia sesion'", function () {
+    home.click_IniciaSesion();
+    home.opcionRegistrateAqui();
     registro.type_nombre("Diego");
     registro.type_apellidos("Roca");
     cy.get("#input_21_2").type(this.variables.correoPadre1);
@@ -36,7 +37,7 @@ describe("Padre - Registrar padre", () => {
     home.botonConMovimiento14diasGratis();
     registro.type_nombre("Pedro");
     registro.type_apellidos("Perez");
-    cy.get("#input_21_2").type(this.variables.correoPadre1);
+    cy.get("#input_21_2").type(this.variables.correoPadre2);
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -47,7 +48,7 @@ describe("Padre - Registrar padre", () => {
     home.boton14diasGratis();
     registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
-    cy.get("#input_21_2").type(this.variables.correoPadre2);
+    cy.get("#input_21_2").type(this.variables.correoPadre3);
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
