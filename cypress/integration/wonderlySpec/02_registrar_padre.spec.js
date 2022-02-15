@@ -21,7 +21,7 @@ describe("Padre - Registrar padre", () => {
     });
   });
 
-  it("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", function () {
+  it.skip("01_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Registro Gratis' ", function () {
     home.boton_RegistroGratis();
     registro.type_nombre("Diego");
     registro.type_apellidos("Roca");
@@ -32,22 +32,22 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento 'Prueba por 7 dias' ", function () {
-    home.boton_conMovimiento7diasGratis();
+  it("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento '14 dias gratis' ", function () {
+    home.botonConMovimiento14diasGratis();
     registro.type_nombre("Pedro");
     registro.type_apellidos("Perez");
-    cy.get("#input_21_2").type(this.variables.correoPadre2);
+    cy.get("#input_21_2").type(this.variables.correoPadre1);
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
     cy.get("h2").should("be.visible");
   });
 
-  it("03_Verificar que un padre pueda registrarse desde el boton Menú '7 dias gratis' ", function () {
-    home.boton_7diasGratis();
+  it("03_Verificar que un padre pueda registrarse desde el boton Menú '14 dias gratis' ", function () {
+    home.boton14diasGratis();
     registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
-    cy.get("#input_21_2").type(this.variables.correoPadre3);
+    cy.get("#input_21_2").type(this.variables.correoPadre2);
     registro.type_contrasenia("12345");
     registro.type_numero("65266222");
     registro.click_siguiente();
@@ -70,7 +70,7 @@ describe("Padre - Registrar padre", () => {
   });
 
   it("06_Probar que un padre no pueda registrarse con un correo ya usado en Wonderly", function () {
-    home.boton_RegistroGratis();
+    home.boton14diasGratis();
     registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");
     cy.get("#input_21_2").type(this.variables.correoPadre1);

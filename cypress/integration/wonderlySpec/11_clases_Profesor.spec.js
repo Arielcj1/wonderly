@@ -45,6 +45,7 @@ describe("Wonderly- PROFESOR", () => {
     ingresar.click_continuar();
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
+    // claseshijo.buscarNombreClase();
     home.click_seccionEnVivo();
     cy.contains(testCaseConfig.nombreCursoNavegacion).click({ force: true }); //Cambiar nombre de curso
     claseshijo.aprendizajeProyecto();

@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 
 export class Destrezas {
+  clickDestrezas() {
+    cy.get("#menu-item-17 > .nav-link").click();
+  }
   // Boton mirar cursos
   botonMirarcursoProgramacion() {
     cy.get(".pt-3 > .container > .row > .col-md-7 > .btn").click();
@@ -31,27 +34,27 @@ export class Destrezas {
 
   botonRobotica() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[1]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[2]/ul/li[1]/a"
     ).click({ force: true });
   }
   botonProgramacion() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[2]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[2]/ul/li[2]/a"
     ).click({ force: true });
   }
   botonMatematicas() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[4]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[2]/ul/li[4]/a"
     ).click({ force: true });
   }
   botonDesarrolloVideoJuegos() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[3]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[2]/ul/li[3]/a"
     ).click({ force: true });
   }
   botonIngles() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[3]/ul/li[5]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[2]/ul/li[5]/a"
     ).click({ force: true });
   }
 }

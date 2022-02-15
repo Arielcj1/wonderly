@@ -4,7 +4,7 @@
 export class Perfil {
   click_salirDelMenu() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[2]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[2]/a"
     ).click({ force: true });
   }
   type_telefono_PrimeraVez(telefono) {

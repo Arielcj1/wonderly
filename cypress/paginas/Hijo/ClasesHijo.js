@@ -4,6 +4,19 @@
 import { testCaseConfig } from "../../helpers/helpers";
 
 export class ClasesHijo {
+  buscarNombreClase() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/section[3]/div/div/div/div/div[5]/div/div/div/div/div[2]/p"
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text == testCaseConfig.nombreCursoNavegacion) {
+          cy.xpath(
+            "/html/body/div[2]/div[3]/div/div/div/main/article/div/div/section[3]/div/div/div/div/div[5]/div/div/div/div/div[2]/div/div[1]/a"
+          ).click(); //botonComienza
+        }
+      });
+  }
   click_menu_clasesHijo() {
     cy.get("#menu-item-704 > .nav-link").click();
     // cy.get("#menu-item-2666 > .dropdown-item").click();
