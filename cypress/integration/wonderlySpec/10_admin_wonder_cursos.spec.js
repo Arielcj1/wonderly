@@ -36,25 +36,25 @@ describe("Administrador - Wonderly Cursos", () => {
     ingresar.click_continuar();
   });
 
-  it("01_Verificar que el administrador pueda ir al tablero Wonderly Cursos", () => {
+  it("1_Verificar que el administrador pueda ir al tablero Wonderly Cursos", () => {
     homeadmin.click_tableroWonderlyCursos();
     cy.contains("Todos los cursos").should("be.visible");
   });
 
-  it('02_Verificar que el Admin pueda seleccionar "Cursos pasados", "Todos los cursos" y "Cursos futuros" desde el tablero Wonderly Cursos', () => {
+  it('2_Verificar que el Admin pueda seleccionar "Cursos pasados", "Todos los cursos" y "Cursos futuros" desde el tablero Wonderly Cursos', () => {
     homeadmin.click_tableroWonderlyCursos();
     wonderlycursos.click_cursosPasados();
     wonderlycursos.click_cursosFuturos();
     wonderlycursos.click_todosLosCursos();
   });
 
-  it("03_Verificar que al seleccionar un curso lo redireccione al detalle del curso.", () => {
+  it("3_Verificar que al seleccionar un curso lo redireccione al detalle del curso.", () => {
     homeadmin.click_tableroWonderlyCursos();
     wonderlycursos.seleccionarCurso(); //Click en el 1er curso de la lista
     cy.get("#pills-proyecto-tab > :nth-child(1)").should("be.visible"); //Assert "Aprendizaje y proyecto final"
   });
 
-  it("04_Comprobar que el administrador pueda agregar un curso nuevo completando los campos requeridos.", () => {
+  it("4_Comprobar que el administrador pueda agregar un curso nuevo completando los campos requeridos.", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
     wonderlycursos.type_tituloCurso(testCaseConfig.nombreDelCursoCreado); //Cambiar nombre del curso
@@ -74,7 +74,8 @@ describe("Administrador - Wonderly Cursos", () => {
     wonderlycursos.horaInicio();
     wonderlycursos.duracionClases("30");
     wonderlycursos.recuerrenciaClases();
-    // wonderlycursos.zonaHoraria("(GMT-07:00) Arizona");
+    // wonderlycursos.zonaHoraria();
+    // wonderlycursos.zonaHoraria("(GMT-09:00) Alaska");
     wonderlycursos.type_youtubeVideo(
       "https://www.youtube.com/watch?v=Fn2-6zVqwX8"
     );
@@ -84,7 +85,7 @@ describe("Administrador - Wonderly Cursos", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("05_Verificar que el sistema muestra un mensaje de advertencia cuando no se completan los datos requeridos al agregar un curso.", () => {
+  it("5_Verificar que el sistema muestra un mensaje de advertencia cuando no se completan los datos requeridos al agregar un curso.", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
     wonderlycursos.type_tituloCurso("Viernes 07 de Ingles 12:00");
@@ -95,7 +96,7 @@ describe("Administrador - Wonderly Cursos", () => {
     cy.get(".title").should("be.visible");
   });
 
-  it("06_Verificar que el sistema señala cuales son los campos obligatorios para completar en el formulario de agregar curso.", () => {
+  it("6_Verificar que el sistema señala cuales son los campos obligatorios para completar en el formulario de agregar curso.", () => {
     homeadmin.click_tableroWonderlyCursos();
     homeadmin.click_botonAgregarCurso();
     wonderlycursos.type_tituloCurso("Campos Obligatorios");
@@ -118,7 +119,7 @@ describe("Administrador - Wonderly Cursos", () => {
     cy.wait(2000);
   });
 
-  it("07_Verificar que el Admin puede editar un curso", () => {
+  it("7_Verificar que el Admin puede editar un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreDelCursoCreado, 1); //1 editar, 2 asignarProfe, 3asignarClase, 4 verClase, 5 repetirCurso, 6 eliminarCurso
     editarcursos.type_editarTituloCurso(testCaseConfig.nombreCursoEditado);
@@ -137,7 +138,7 @@ describe("Administrador - Wonderly Cursos", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("08_Comprobar que el Admin puede asignar un profesor a un curso", () => {
+  it("8_Comprobar que el Admin puede asignar un profesor a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 2); //Click en el icono Asignar Profesor
     asignarprofe.type_seleccionarProfesor(
@@ -146,7 +147,7 @@ describe("Administrador - Wonderly Cursos", () => {
     asignarprofe.click_asignar();
   });
 
-  it("09_Comprobar que el Admin pueda asignar una clase ondemand a un curso", () => {
+  it("9_Comprobar que el Admin pueda asignar una clase ondemand a un curso", () => {
     homeadmin.click_tableroWonderlyCursos();
     editarcursos.buscar_curso(testCaseConfig.nombreCursoEditado, 3);
     claseondemand.select_claseOnDemand(

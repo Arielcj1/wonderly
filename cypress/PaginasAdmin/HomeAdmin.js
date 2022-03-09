@@ -10,8 +10,8 @@ export class HomeAdmin {
     cy.get("#menu-item-3885 > .nav-link").click();
   }
 
-  click_tableroWonderlyOnDemand(){
-    cy.get('#menu-item-7272 > .nav-link').click()
+  click_tableroWonderlyOnDemand() {
+    cy.get("#menu-item-7272 > .nav-link").click();
   }
 
   click_botonRegistrarProfesor() {
@@ -25,11 +25,11 @@ export class HomeAdmin {
     cy.get(".next").click();
   }
 
-  click_tableroReporteMembresias(){
-    cy.get('#menu-item-13388 > .nav-link').click()   
+  click_tableroReporteMembresias() {
+    cy.get("#menu-item-13388 > .nav-link").click();
   }
 
-  click_tableroReporteReservas(){
-    cy.get('#menu-item-13597 > .nav-link').click()
+  click_tableroReporteReservas() {
+    cy.get("#menu-item-13597 > .nav-link").click();
   }
 }

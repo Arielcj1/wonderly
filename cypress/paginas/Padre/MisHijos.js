@@ -9,7 +9,9 @@ export class MisHijos {
     //cy.get('.entry-content > .mt-3').click()
   }
 
-  clickEditar(){
-    cy.get(':nth-child(1) > :nth-child(5) > .btn').click()
+  clickEditar() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div[2]/div/table/tbody/tr[1]/td[5]/a"
+    ).click();
   }
 }

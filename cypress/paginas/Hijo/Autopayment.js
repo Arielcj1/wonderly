@@ -65,6 +65,9 @@ export class Autopayment {
           position++;
         });
     }
+    cy.get(
+      "#modalSubscription > .modal-dialog > .modal-content > .modal-footer > .btn"
+    ).click(); //boton acpetar
   }
 
   //PARA COMPRAR LA MEMBRESIA GENIO INVENTOR Y EXPLORADOR

@@ -21,7 +21,7 @@ describe("Padre - Registrar padre", () => {
     });
   });
 
-  it("01_Demostrar que un padre pueda registrarse desde la opcion 'Aun no eres miembro? Registrate aqui', presionando el boton 'Inicia sesion'", function () {
+  it("1_Demostrar que un padre pueda registrarse desde la opcion 'Aun no eres miembro? Registrate aqui', presionando el boton 'Inicia sesion'", function () {
     home.click_IniciaSesion();
     home.opcionRegistrateAqui();
     registro.type_nombre("Diego");
@@ -33,7 +33,7 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("02_Verificar que un padre pueda registrarse desde el boton con efecto de movimiento '14 dias gratis' ", function () {
+  it("2_Verificar que un padre pueda registrarse desde el boton 'Prueba por 14 dias' del Home Page ", function () {
     home.botonConMovimiento14diasGratis();
     registro.type_nombre("Pedro");
     registro.type_apellidos("Perez");
@@ -44,7 +44,7 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("03_Verificar que un padre pueda registrarse desde el boton Menú '14 dias gratis' ", function () {
+  it("3_Verificar que un padre pueda registrarse desde el boton Menú '14 dias gratis' del Header Menu ", function () {
     home.boton14diasGratis();
     registro.type_nombre("Juan");
     registro.type_apellidos("Perez");
@@ -55,22 +55,22 @@ describe("Padre - Registrar padre", () => {
     cy.get("h2").should("be.visible");
   });
 
-  it("04_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", function () {
+  it("4_Verificar que un padre puede hacer login en wonderly con email y contraseña validos", function () {
     home.click_IniciaSesion();
     cy.get("#input_1").type(this.variables.correoPadre1);
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
   });
 
-  it("05_Comprobar que un padre no pueda ingresar con email y contraseña invalidos", () => {
+  it("5_Comprobar que un padre no pueda ingresar con email y contraseña invalidos", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("padreXX@gmail.com");
     ingresar.type_contrasena("54321");
     ingresar.click_continuar();
-    cy.get(".message-error > .title").should("be.visible");
+    cy.get(".text").should("be.visible");
   });
 
-  it("06_Probar que un padre no pueda registrarse con un correo ya usado en Wonderly", function () {
+  it("6_Probar que un padre no pueda registrarse con un correo ya usado en Wonderly", function () {
     home.boton14diasGratis();
     registro.type_nombre("Carlos");
     registro.type_apellidos("Roca");

@@ -10,7 +10,6 @@ import { Ingresar } from "../../paginas/Ingresar";
 import { MetodoPago } from "../../paginas/Hijo/MetodoPago";
 import { ClaseOnDemand } from "../../PaginasAdmin/ClaseOnDemand";
 import { testCaseConfig } from "../../helpers/helpers";
-import { HomeAdmin } from "../../PaginasAdmin/HomeAdmin";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -24,7 +23,6 @@ describe("Wonderly- tablero hijo", () => {
   const claseshijo = new ClasesHijo();
   const metodopago = new MetodoPago();
   const claseondemand = new ClaseOnDemand();
-  const homeadmin = new HomeAdmin();
 
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
@@ -53,7 +51,7 @@ describe("Wonderly- tablero hijo", () => {
     cy.get("#menu-item-211 > .nav-link").should("contain.text", "Mis Hijos");
   });
 
-  it("3_Verificar que el hijo se encuentre en el tablero de Mis clases", () => {
+  it("3_Verificar que el hijo se encuentre en el tablero de 'Clases'", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_MenuUsuario();
     claseshijo.click_menu_clasesHijo();
@@ -71,14 +69,24 @@ describe("Wonderly- tablero hijo", () => {
   });
 
   // SECCION:
-  it("5_Probar que el hijo se encuentre en la sección ON DEMAND", () => {
+  it("5_Demostrar que un hijo con membresia inactiva no pueda ver el detalle de una clase OnDemand", function () {
+    perfilhijo.clickCerrarSesionHijo();
+    home.click_IniciaSesion();
+    ingresar.type_Correo("marquito@gmail.com");
+    ingresar.type_contrasena("123");
+    ingresar.click_continuar();
+    perfilhijo.seleccionarHijoPosicion(5); //hijo membresia inactiva
+    home.click_LogoWonderly();
+    claseshijo.verificarBotonComenzar();
+  });
+  it.skip("Probar que el hijo se encuentre en la sección ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     home.click_seccionOnDemand();
     cy.get("#ondemand-tab").should("contain.text", "ON-DEMAND");
   });
 
-  it("6_Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
+  it.skip("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
     perfilhijo.click_seleccionarHijo();
     home.click_LogoWonderly();
     claseondemand.verificarCursoOnDemand(testCaseConfig.claseOnDemandBuscar);

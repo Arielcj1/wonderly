@@ -21,7 +21,7 @@ describe("Home Page - UI", () => {
     cy.visit("https://developers.learnwonderly.com/");
   });
 
-  it("1_Verificar que un usuario pueda Iniciar sesion", () => {
+  it("1_Verificar que un usuario pueda Iniciar sesion en Wonderly", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario
     ingresar.type_contrasena("abcABC123"); //cambiar password
@@ -34,50 +34,27 @@ describe("Home Page - UI", () => {
     home.botonWonderlyEnAccion();
     home.clickCerrarVideoWonderly();
   });
-  it.skip("2_1_Demostrar que un usuario pueda ver los cursos de la seccion de EN VIVO", () => {
-    home.click_seccionEnVivo();
-    home.click_Flecha_Der();
-  });
 
   it("3_Comprobar que un usuario pueda Ir a la pestaña 'Por que Wonderly'", () => {
     home.click_PorqueWonderly();
     cy.wait(4000);
   });
 
-  it("4_Verificar que se pueda presionar las flechas Derecha e Izquierda en Schedule", () => {
-    // home.click_seccionEnVivo();
-    home.click_Flecha_Der();
-    home.click_Flecha_Izq();
-  });
-
-  it("5_Verificar que un usuario pueda ver el contenido de la pestaña Destrezas", () => {
+  it("4_Verificar que un usuario pueda ver el contenido de la pestaña Destrezas", () => {
     destrezas.clickDestrezas();
     cy.get("h2").should("be.visible");
   });
-
-  it("6_Probar que un usuario pueda ver el contenido de la pestaña Cursos", () => {
+  it("5_Probar que un usuario pueda ver el contenido de la pestaña Cursos", () => {
     home.clickPestañaCursos();
     cy.get(".header-cursos-page > h3.text-center").should("be.visible");
   });
 
-  it("7_Comprobar que al presionar botones de desplazamiento se dirijan abajo y arriba", () => {
-    home.clickDesplazarAbajo();
-    home.clickDesplazarArriba();
-    cy.get("h2").should("be.visible");
+  it("6_Verificar que la opción de Membresías redireccione a un usuario sin registro a un formulario de asesor al cliente", () => {
+    home.membresiasMenuAbajo();
+    cy.get("#gform_47").should("be.visible");
   });
 
-  it.skip("8_Verificar que un usuario pueda seleccionar la fecha del Schedule para ver los cursos", () => {
-    home.click_seccionEnVivo();
-    home.click_dia();
-    cy.wait(5000);
-  });
-
-  it.skip("9_Comprobar que un usuario pueda Ir al boton Explorar nuestras destrezas", () => {
-    home.click_Destrezas2();
-    cy.wait(5000);
-  });
-
-  it("11_Demostrar que un usuario Inicie sesion y pueda ir a la Membresia Explorador", () => {
+  it("7_Demostrar que un usuario Inicie sesion y pueda ir a la Membresia Explorador", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar ususario
     ingresar.type_contrasena("abcABC123"); //Cambiar password
@@ -90,86 +67,110 @@ describe("Home Page - UI", () => {
     cy.get(".my-5").should("be.visible");
   });
 
-  // Navegacion Menu Abajo
-  it("12_Comprobar que el usuario se encuentre en la pestaña de Impacto social", () => {
+  it('8_Probar que un usuario pueda ver el contenido haciendo click en la materia "Programación" desde el home', () => {
+    home.materiaProgramacionHome();
+    cy.get("h2.mb-4")
+      .should("contain.text", "Programación")
+      .should("be.visible");
+  });
+  it('9_Demostrar que un usuario pueda ver el contenido haciendo click en la materia "Desarrollo de videojuegos" desde el home', () => {
+    home.materiaDesarrolloDeVideoJuegosHome();
+    cy.get("h2.mb-4")
+      .should("contain.text", "Desarrollo de videojuegos")
+      .should("be.visible");
+  });
+
+  it('10_Demostrar que un usuario pueda ver el contenido haciendo click en la materia "Robotica" desde el home', () => {
+    home.materiaRoboticaHome();
+    cy.get("h2.mb-4").should("contain.text", "Robótica").should("be.visible");
+  });
+  it('11_Demostrar que un usuario pueda ver el contenido haciendo click en la materia "Matemáticas" desde el home', () => {
+    home.materiaMatematicasHome();
+    cy.get("h2.mb-4")
+      .should("contain.text", "Matemáticas")
+      .should("be.visible");
+  });
+  it('12_Demostrar que un usuario pueda ver el contenido haciendo click en la materia "Inglés" desde el home', () => {
+    home.materiaInglesHome();
+    cy.get("h2.mb-4").should("contain.text", "Inglés").should("be.visible");
+  });
+
+  it("13_Verificar que se pueda presionar las flechas Derecha e Izquierda en Schedule", () => {
+    home.click_Flecha_Der();
+    home.click_Flecha_Izq();
+  });
+  it('14_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Robotica', () => {
+    destrezas.botonRobotica();
+    destrezas.botonComenzarAhora();
+    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  });
+  it('15_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Matematica', () => {
+    destrezas.botonMatematicas();
+    destrezas.botonComenzarAhora();
+    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  });
+
+  it('16_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Programacion', () => {
+    destrezas.botonProgramacion();
+    destrezas.botonComenzarAhora();
+    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  });
+
+  it('17_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Ingles', () => {
+    destrezas.botonIngles();
+    destrezas.botonComenzarAhora();
+    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  });
+
+  it("18_Comprobar que al presionar botones de desplazamiento se dirijan abajo y arriba", () => {
+    home.clickDesplazarAbajo();
+    home.clickDesplazarArriba();
+    cy.get("h2").should("be.visible");
+  });
+
+  it("19_Comprobar que el usuario se encuentre en la pestaña de Impacto social", () => {
     home.impactoSocial();
     cy.get("h2").should("be.visible");
   });
 
-  it("13_Verificar que el usuario se encuentre en el contenido de Prensa", () => {
+  it("20_Verificar que el usuario se encuentre en el contenido de Prensa", () => {
     home.prensa();
     cy.get("h2")
       .should("contain.text", "Bienvenido a Wonderly")
       .should("be.visible");
   });
 
-  it("Verificar que redireccione al menu de Membresias desde la pagina de Wonderly", () => {
-    home.membresiasMenuAbajo();
-    cy.get(".content > .container > .mb-5").should("be.visible");
-    cy.wait(2000);
-  });
-
   // Desde la pestaña Destrezas menu Arriba
-  it.skip("19_Demostrar que redireccione al contenido de Programacion", () => {
+  it("21_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Programacion", () => {
     destrezas.clickDestrezas();
-
     destrezas.botonMirarcursoProgramacion();
     cy.get("h2.mb-4")
       .should("contain.text", "Programación")
       .should("be.visible");
   });
 
-  it.skip("20_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Robotica", () => {
+  it("22_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Robotica", () => {
     destrezas.clickDestrezas();
     destrezas.botonMirarCursoRobotica();
     cy.get("h2.mb-4").should("contain.text", "Robótica");
   });
 
-  it.skip("21_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Ingles", () => {
-    destrezas.clickDestrezas();
-    destrezas.botonMirarCursoIngles();
-    cy.get("h2.mb-4").should("contain.text", "Inglés");
-  });
-
-  it.skip("22_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Matematicas", () => {
-    destrezas.clickDestrezas();
-    destrezas.botonMirarCursoMatematicas();
-    cy.get("h2.mb-4").should("contain.text", "Matemáticas");
-  });
-
-  it.skip("23_Demostrar que al presionar el boton Mira el curso redireccione a la Vista de desarrollo de Video Juegos", () => {
+  it("23_Demostrar que al presionar el boton Mira el curso redireccione a la Vista de desarrollo de Video Juegos", () => {
     destrezas.clickDestrezas();
     destrezas.botonMirarCursoDesarrolloVideoJuego();
     cy.log;
     cy.get("h2.mb-4").should("contain.text", "Desarrollo de videojuegos");
   });
 
-  it('24_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Robotica', () => {
-    destrezas.botonRobotica();
-    destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
-  });
-  it('24_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Robotica', () => {
-    destrezas.botonRobotica();
-    destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  it("24_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Ingles", () => {
+    destrezas.clickDestrezas();
+    destrezas.botonMirarCursoIngles();
+    cy.get("h2.mb-4").should("contain.text", "Inglés");
   });
 
-  it('25_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Matematica', () => {
-    destrezas.botonMatematicas();
-    destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
-  });
-
-  it('26_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Programacion', () => {
-    destrezas.botonProgramacion();
-    destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
-  });
-
-  it('27_Verificar que redireccione a los cursos cuando se presiona el boton " Comenzar ahora" en Ingles', () => {
-    destrezas.botonIngles();
-    destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+  it("25_Demostrar que al presionar el boton Mira el curso redireccione al contenido de Matematicas", () => {
+    destrezas.clickDestrezas();
+    destrezas.botonMirarCursoMatematicas();
+    cy.get("h2.mb-4").should("contain.text", "Matemáticas");
   });
 });

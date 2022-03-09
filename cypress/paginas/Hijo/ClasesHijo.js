@@ -32,8 +32,10 @@ export class ClasesHijo {
   }
 
   // Navegacion entrando al detalle del curso
+
   aprendizajeProyecto() {
     cy.get("#pills-proyecto-tab > :nth-child(1)").click();
+    cy.wait(2000);
   }
   botonPreguntaWhatsapp() {
     cy.get("#pills-tab > .btn").click();
@@ -70,7 +72,49 @@ export class ClasesHijo {
   clickBotonReservaMiClase() {
     cy.contains("Reservar mi clase").click();
   }
+  botonInscribeteGratisEntraClase() {
+    cy.wait(4000);
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div[1]/div[1]/div[2]/div/div/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        cy.log("***********", text);
+        if (text === "Inscrito") {
+          cy.log("El hijo ya se encuentra inscrito a esta clase");
+        } else {
+          cy.log("El hijo puede inscribirse");
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div[1]/div[1]/div[2]/div/div/a"
+          ).click();
+          cy.get(".modal-body > p").should("be.visible");
+          cy.wait(3000);
+        }
+      });
+  }
 
+  botonInscribeteGratis() {
+    cy.wait(4000);
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div/div[2]/div/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        cy.log("***********", text);
+        if (text === "Inscrito") {
+          cy.log("El hijo ya se encuentra inscrito a esta clase");
+        } else {
+          cy.log("El hijo puede inscribirse");
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div/div[2]/div/a"
+          ).click();
+          cy.get(".modal-body > p").should("be.visible");
+          cy.wait(3000);
+        }
+      });
+  }
+
+  // botonComienzaOnDemand() {}
   inscribirCurso(verify) {
     cy.log("******" + verify);
     if (verify == "true") {
@@ -120,6 +164,26 @@ export class ClasesHijo {
         } else {
           cy.log("Se muestra el contador");
           cy.get(".countdown-container").should("be.visible");
+        }
+      });
+  }
+  verificarBotonComenzar() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/section[3]/div/div/div/div/div[4]/div/div/div/div/div[2]/div/div[2]/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        cy.log("TEXTTTTTTT", text);
+        if (text != "Próximamente") {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/section[3]/div/div/div/div/div[4]/div/div/div/div/div[2]/div/div[2]/a"
+          ).click({ force: true });
+          cy.wait(3000);
+          cy.get(".parent-user > .title").should("be.visible");
+          //click
+        } else {
+          cy.log("El boton se encuentra deshabilitado");
+          // UNA FUNCTION RECURSIVA PARA LLAMAR A LA FUNCION NUEVAMENT HASTA QUE PASE ALGO.
         }
       });
   }

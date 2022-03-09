@@ -21,6 +21,24 @@ export class Home {
   click_PorqueWonderly() {
     cy.get("#menu-item-71 > .nav-link").click();
   }
+
+  //Materias Home:
+  materiaProgramacionHome() {
+    cy.get(":nth-child(1) > .text-center > a > .mb-0").click();
+  }
+  materiaDesarrolloDeVideoJuegosHome() {
+    cy.get(":nth-child(2) > .text-center > a > .mb-0").click({ force: true });
+  }
+  materiaRoboticaHome() {
+    cy.get(":nth-child(3) > .text-center > a > .mb-0").click();
+  }
+  materiaMatematicasHome() {
+    cy.get(":nth-child(4) > .text-center > a > .mb-0").click();
+  }
+  materiaInglesHome() {
+    cy.get(":nth-child(5) > .text-center > a > .mb-0").click();
+  }
+
   click_Flecha_Izq() {
     cy.get(".slick-prev").click();
     cy.wait(1000);
@@ -91,7 +109,15 @@ export class Home {
 
   clickSalir() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[4]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[2]/a"
+      // "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[4]/a"
+      // "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[4]/a"
+    ).click({ force: true });
+  }
+
+  clickSalirHijo() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[4]/a"
     ).click({ force: true });
   }
 
@@ -121,6 +147,16 @@ export class Home {
 
   impactoSocial() {
     cy.get("#menu-item-6094 > .nav-link").click();
+  }
+  logoElPitazo() {
+    cy.get(":nth-child(1) > .logo").click();
+    cy.wait(2000);
+    cy.get(":nth-child(1) > .logo").click();
+  }
+  logoFeYAlegria() {
+    cy.get(":nth-child(2) > .logo").click();
+    cy.wait(2000);
+    cy.get(":nth-child(2) > .logo").click();
   }
   prensa() {
     cy.get("#menu-item-6097 > .nav-link").click();

@@ -48,7 +48,7 @@ export class Clase {
     )
       .invoke("text")
       .then((text) => {
-        cy.log("*", text);
+        cy.log("****", text);
         if (text == nombre) {
           cy.log("El hijo ya ha reservado la clase anteriormente");
           // cy.get(".modal-body > p").should("be.visible");

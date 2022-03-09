@@ -83,10 +83,16 @@ export class WonderlyCursos {
     if (day == "Saturday") {
       cy.get("#choice_35_36_5").click();
     }
+    if (day == "Sunday") {
+      cy.get("#choice_35_36_6").click();
+    }
     //0 Lunes, 1 Martes, 2 Miercoles
   }
   zonaHoraria(zonaHoraria) {
-    cy.get("#field_35_29 > div").select(zonaHoraria, { force: true });
+    cy.get(".chosen-single > span").click();
+    cy.get('[data-option-array-index="4"]').click();
+    // cy.get(".chosen-single > span").select(zonaHoraria);
+    // cy.get("#field_35_29 > div").select(zonaHoraria, { force: true });
   }
   type_youtubeVideo(url) {
     cy.get("#input_35_26").type(url);

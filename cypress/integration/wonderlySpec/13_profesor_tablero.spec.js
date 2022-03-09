@@ -31,7 +31,7 @@ describe("Wonderly- PROFESOR", () => {
     });
   });
 
-  // TABLEROS PROFESOR:
+  // TABLERO PROFESOR:
   it("1_Verificar que el profesor pueda dirigirse al tablero de sus Clases-Profesor", () => {
     clasesprofesor.tableroClasesProfesor();
     cy.get("thead > tr > :nth-child(2)").should("be.visible");
@@ -65,5 +65,6 @@ describe("Wonderly- PROFESOR", () => {
     perfil.subirArchivo();
     perfil.click_botonGuardar("¡Oops! Hubo un problema con tu envío.");
     cy.get(".title").should("be.visible");
+    //cy.get('#validationModal > .modal-dialog > .modal-content > .modal-header > .close > span').click()
   });
 });

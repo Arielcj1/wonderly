@@ -20,7 +20,12 @@ export class PerfilHijo {
 
   click_cuenta() {
     cy.xpath(
-      "/html/body/div[2]/header/div/nav/div[2]/ul/li[4]/ul/li[3]/a"
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[3]/a"
+    ).click({ force: true });
+  }
+  clickCerrarSesionHijo() {
+    cy.xpath(
+      "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[4]/a"
     ).click({ force: true });
   }
   click_perfiles() {

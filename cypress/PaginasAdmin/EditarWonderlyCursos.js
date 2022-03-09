@@ -133,3 +133,5 @@ export class EditarWonderlyCursos {
     cy.log("EXISTE CURSO:: ", existeCurso);
   }
 }
+
+//cy.get('.wonderly-paginator > :nth-child(2)')

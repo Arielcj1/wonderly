@@ -31,7 +31,7 @@ describe("Comprar Membresias Hijos", () => {
     });
   });
 
-  it("01_Verificar que un padre pueda Añadir Tarjeta.", () => {
+  it("1_Verificar que un padre pueda Añadir Tarjeta.", () => {
     perfil.click_perfil();
     pago.click_tablero_MetodoPago();
     pago.click_anadirTarjeta();
@@ -45,7 +45,7 @@ describe("Comprar Membresias Hijos", () => {
     //cy.get("#gform_confirmation_message_37").should("be.visible");
   });
 
-  it("02_Comprobar que un padre puede comprar una membresia 'Explorador'.", () => {
+  it("2_Comprobar que un padre puede comprar una membresia 'Explorador'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Explorador();
@@ -56,7 +56,7 @@ describe("Comprar Membresias Hijos", () => {
   });
 
   //OMITIR POR EL MOMENTO
-  it.skip("03_Comprobar que un padre puede comprar una membresia 'Inventor'.", () => {
+  it.skip("Comprobar que un padre puede comprar una membresia 'Inventor'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -67,7 +67,7 @@ describe("Comprar Membresias Hijos", () => {
   });
 
   //OMITIR POR EL MOMENTO
-  it.skip("04_Comprobar que un padre puede comprar una membresia 'Genio'.", () => {
+  it.skip("Comprobar que un padre puede comprar una membresia 'Genio'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();
@@ -76,7 +76,7 @@ describe("Comprar Membresias Hijos", () => {
     //cy.get(".text-primary").should("be.visible");
   });
 
-  it("05_Comprobar que el detalle de la membresia 'Explorador' coincide con el 'Detalle de compra'.", () => {
+  it("3_Comprobar que el detalle de la membresia 'Explorador' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Explorador();
@@ -88,7 +88,7 @@ describe("Comprar Membresias Hijos", () => {
   });
 
   //OMITIR POR EL MOMENTO
-  it.skip("06_Comprobar que el detalle de la membresia 'Inventor' coincide con el 'Detalle de compra'.", () => {
+  it.skip("Comprobar que el detalle de la membresia 'Inventor' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -100,7 +100,7 @@ describe("Comprar Membresias Hijos", () => {
   });
 
   //OMITIR POR EL MOMENTO
-  it.skip("07_Comprobar que el detalle de la membresia 'Genio' coincide con el 'Detalle de compra'.", () => {
+  it.skip("Comprobar que el detalle de la membresia 'Genio' coincide con el 'Detalle de compra'.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();
@@ -111,7 +111,7 @@ describe("Comprar Membresias Hijos", () => {
     paquete.verificarPrecioTotal("69.99 USD.");
   });
 
-  it("08_Comprobar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia.", () => {
+  it("4_Comprobar que el sistema muestra un mensaje de advertencia cuando no se completa los campos requeridos al comprar una membresia.", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Explorador();
@@ -119,7 +119,7 @@ describe("Comprar Membresias Hijos", () => {
     cy.get(".title").should("be.visible");
   });
 
-  it("09_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Explorador'. ", () => {
+  it("5_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Explorador'. ", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Explorador();
@@ -135,7 +135,7 @@ describe("Comprar Membresias Hijos", () => {
   });
 
   //OMITIR POR EL MOMENTO
-  it.skip("10_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Inventor'. ", () => {
+  it.skip("Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Inventor'. ", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Inventor();
@@ -151,7 +151,7 @@ describe("Comprar Membresias Hijos", () => {
   });
 
   //OMITIR POR EL MOMENTO
-  it.skip("11_Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Genio'. ", () => {
+  it.skip("Probar que un padre pueda registrar a un hijo cuando compra una membresia 'Genio'. ", () => {
     home.click_LogoWonderly();
     home.click_Membresias();
     home.click_Membresia_Genio();
