@@ -10,6 +10,11 @@ export class Home {
       '.gf_login_links > [href="https://developers.learnwonderly.com/registrar-padre/"]'
     ).click();
   }
+  opcionRegistrateAquiAutomatico() {
+    cy.get(
+      '.gf_login_links > [href="https://developers.learnwonderly.com/registrar-padre/?referrer_url=https://developers.learnwonderly.com/curso/curso-prueba-i-tester/"]'
+    ).click();
+  }
   botonWonderlyEnAccion() {
     cy.get(".openVideo").click();
     cy.wait(3000);
@@ -20,6 +25,22 @@ export class Home {
 
   click_PorqueWonderly() {
     cy.get("#menu-item-71 > .nav-link").click();
+  }
+
+  //Pagina cursos
+  clickOnDemand() {
+    cy.get("#ondemand-tab").click();
+    cy.wait(2000);
+  }
+  clickEnVivo() {
+    cy.get("#vivo-tab").click();
+    cy.wait(2000);
+  }
+
+  //Home
+
+  onDemandHome() {
+    cy.get("#ondemand-tab").click();
   }
 
   //Materias Home:
@@ -40,11 +61,13 @@ export class Home {
   }
 
   click_Flecha_Izq() {
-    cy.get(".slick-prev").click();
+    cy.get(".curos-ondemand-list > .slick-prev").click();
+    // cy.get(".slick-prev").click()
     cy.wait(1000);
   }
   click_Flecha_Der() {
-    cy.get(".slick-next").click();
+    cy.get(".curos-ondemand-list > .slick-next").click();
+    // cy.get(".slick-next").click();
     cy.wait(1000);
   }
   click_dia() {
@@ -119,17 +142,6 @@ export class Home {
     cy.xpath(
       "/html/body/div[2]/header/div/nav/div[2]/ul/li[5]/ul/li[4]/a"
     ).click({ force: true });
-  }
-
-  click_seccionOnDemand() {
-    //obs.
-    cy.get("#ondemand-tab").click();
-  }
-
-  click_seccionEnVivo() {
-    //obs.
-    cy.get("#vivo-tab").click();
-    cy.wait(2000);
   }
 
   clickPestañaCursos() {

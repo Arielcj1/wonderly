@@ -9,7 +9,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Padre - Registrar padre", () => {
+describe.skip("Padre - Registrar padre", () => {
   const home = new Home();
   const registro = new Registro();
   const ingresar = new Ingresar();
@@ -60,6 +60,7 @@ describe("Padre - Registrar padre", () => {
     cy.get("#input_1").type(this.variables.correoPadre1);
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
+    cy.get(".text-center > .btn").should("be.visible");
   });
 
   it("5_Comprobar que un padre no pueda ingresar con email y contraseña invalidos", () => {

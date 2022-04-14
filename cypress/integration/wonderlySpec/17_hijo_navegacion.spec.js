@@ -10,6 +10,7 @@ import { Ingresar } from "../../paginas/Ingresar";
 import { MetodoPago } from "../../paginas/Hijo/MetodoPago";
 import { ClaseOnDemand } from "../../PaginasAdmin/ClaseOnDemand";
 import { testCaseConfig } from "../../helpers/helpers";
+import { Cursos } from "../../paginas/Cursos";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -23,6 +24,7 @@ describe("Wonderly- tablero hijo", () => {
   const claseshijo = new ClasesHijo();
   const metodopago = new MetodoPago();
   const claseondemand = new ClaseOnDemand();
+  const cursos = new Cursos();
 
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
@@ -72,23 +74,12 @@ describe("Wonderly- tablero hijo", () => {
   it("5_Demostrar que un hijo con membresia inactiva no pueda ver el detalle de una clase OnDemand", function () {
     perfilhijo.clickCerrarSesionHijo();
     home.click_IniciaSesion();
-    ingresar.type_Correo("marquito@gmail.com");
-    ingresar.type_contrasena("123");
+    ingresar.type_Correo("yani238@mailinator.com");
+    ingresar.type_contrasena("12345");
     ingresar.click_continuar();
-    perfilhijo.seleccionarHijoPosicion(5); //hijo membresia inactiva
+    perfilhijo.seleccionarHijoPosicion(1); //hijo membresia inactiva
     home.click_LogoWonderly();
-    claseshijo.verificarBotonComenzar();
-  });
-  it.skip("Probar que el hijo se encuentre en la sección ON DEMAND", () => {
-    perfilhijo.click_seleccionarHijo();
-    home.click_LogoWonderly();
-    home.click_seccionOnDemand();
-    cy.get("#ondemand-tab").should("contain.text", "ON-DEMAND");
-  });
-
-  it.skip("Demostrar que el hijo pueda entrar a un curso desde la seccion ON DEMAND", () => {
-    perfilhijo.click_seleccionarHijo();
-    home.click_LogoWonderly();
-    claseondemand.verificarCursoOnDemand(testCaseConfig.claseOnDemandBuscar);
+    cursos.botonComienzaOndemandUsuario();
+    cursos.botonEntraPrimeraClase();
   });
 });

@@ -4,6 +4,57 @@
 import { testCaseConfig } from "../../helpers/helpers";
 
 export class ClasesHijo {
+  verificarInscrito() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/main/article/div/section/div[3]/div[1]/div/div/div[1]/div[2]/div/div/div[3]/a"
+    )
+      .invoke("text")
+      .then((text) => {
+        if (text == "Inscrito") {
+          cy.log("El estudiante se encuentra inscrito al curso");
+        } else {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/main/article/div/section/div[3]/div[1]/div/div/div[1]/div[2]/div/div/div[3]/a"
+          ).click({ force: true });
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div/div[2]/div/a"
+          ).click(); //Segundo boton Inscribete
+          cy.wait(6000);
+          cy.get(".alert").should("be.visible");
+        }
+      });
+  }
+
+  //Links
+  clickLinks() {
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/a"
+    ).click();
+    // cy.get('[data-date="2022-04-15 13:00:00"] > a').click();
+  }
+
+  //boton Inscribete al curso
+
+  verificarBotonInscribeteCurso(nombre) {
+    cy.wait(3000);
+    cy.xpath(
+      "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
+    )
+      .invoke("text")
+      .then((text) => {
+        cy.log("ESTE ES EL TEXTO", text);
+        if (text.trim() === nombre.trim()) {
+          cy.xpath(
+            "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
+          ).click({ force: true }); //inscribete
+          cy.wait(4000);
+        } else {
+          cy.log("Estudiante inscrito al curso");
+          cy.wait(4000);
+        }
+      });
+  }
+
   buscarNombreClase() {
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/main/article/div/div/section[3]/div/div/div/div/div[5]/div/div/div/div/div[2]/p"
@@ -60,11 +111,8 @@ export class ClasesHijo {
           ).click();
           cy.wait(2000);
         } else {
-          cy.contains("Reservar mi clase").click();
-          cy.xpath(
-            "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
-          ).click();
-          cy.wait(2000);
+          cy.log("El hijo no esta inscrito al curso");
+          cy.wait(3000);
         }
       });
   }

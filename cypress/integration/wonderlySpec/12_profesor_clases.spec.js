@@ -8,6 +8,7 @@ import { Ingresar } from "../../paginas/Ingresar";
 import { ClasesProfesor } from "../../paginas/Profesor/ClasesProfesor";
 import { testCaseConfig } from "../../helpers/helpers";
 import { AlumnosProfesor } from "../../paginas/Profesor/AlumnosProfesor";
+import { Cursos } from "../../paginas/Cursos";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
@@ -19,6 +20,7 @@ describe("Wonderly- Clases Profesor", () => {
   const perfil = new Perfil();
   const clasesprofesor = new ClasesProfesor();
   const alumnosprofesor = new AlumnosProfesor();
+  const cursos = new Cursos();
 
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
@@ -31,33 +33,27 @@ describe("Wonderly- Clases Profesor", () => {
     });
   });
 
-  it.skip("p2_Probar que un profesor pueda ver sus clases asignadas desde el schedule", () => {
+  it("1_Probar que un profesor pueda ingresar al detalle de su curso desde el home", () => {
     home.click_LogoWonderly();
-    home.click_seccionEnVivo();
-    clasesprofesor.click_nombreDeLaClase(); //Cambiar nombre de la clase
-    cy.get("h4").should("be.visible");
+    cursos.tabEnVivo();
+    cursos.botonVerificarNombreEnVivoUsuario(
+      testCaseConfig.nombreDelCursoCreado
+    );
     cy.wait(2000);
   });
 
-  it.skip("p3_Verificar que un profesor pueda Iniciar clase desde el Schedule", () => {
-    home.click_LogoWonderly();
-    home.click_seccionEnVivo();
-    clasesprofesor.click_nombreDeLaClase(); //Cambiar nombre de la clase
-    clasesprofesor.botonIniciarClase();
-  });
-
-  it("1_Demostrar que un profesor puede iniciar una clase desde el detalle de la clase", () => {
+  it("2_Demostrar que un profesor puede iniciar una clase desde el detalle de la clase", () => {
     perfil.click_tableroClasesProfesor();
     clasesprofesor.clickNombreClaseTablero();
     clasesprofesor.botonIniciarClase();
   });
 
-  it("2_Comprobar que un profesor puede Iniciar su clase 30 minutos antes que inicie su clase desde el tablero Clases profesor", () => {
+  it("3_Comprobar que un profesor puede Iniciar su clase 30 minutos antes que inicie su clase desde el tablero Clases profesor", () => {
     perfil.click_tableroClasesProfesor();
     perfil.click_iniciarClase();
   });
 
-  it("3_Demostrar que un profesor puede editar su clase.", () => {
+  it("4_Demostrar que un profesor puede editar su clase.", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.editarClase();
     clasesprofesor.type_youtubeVideo(
@@ -67,7 +63,7 @@ describe("Wonderly- Clases Profesor", () => {
     cy.get(".alert").should("be.visible");
   });
 
-  it("4_Comprobar que un profesor puede agregar material a su clase", () => {
+  it("5_Comprobar que un profesor puede agregar material a su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.click_botonAgregarMaterial();
@@ -81,7 +77,7 @@ describe("Wonderly- Clases Profesor", () => {
   });
 
   // Agregar material para Eliminar
-  it("5_Verificar que un profesor puede eliminar material de su clase", () => {
+  it("6_Verificar que un profesor puede eliminar material de su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.agregarMaterial2daVez(
@@ -96,7 +92,7 @@ describe("Wonderly- Clases Profesor", () => {
   });
 
   //Agregar Material para Editar
-  it("6_Probar que un profesor puede editar material a su clase", () => {
+  it("7_Probar que un profesor puede editar material a su clase", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.agregarMaterial2daVez(
@@ -113,7 +109,7 @@ describe("Wonderly- Clases Profesor", () => {
     );
   });
 
-  it("7_Demostrar que el material agregado por el profesor respeta los formatos permitidos y el tamaño maximo de archivo", () => {
+  it("8_Demostrar que el material agregado por el profesor respeta los formatos permitidos y el tamaño maximo de archivo", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.iconoAgregarMaterial();
     clasesprofesor.click_botonAgregarMaterial();
@@ -123,7 +119,7 @@ describe("Wonderly- Clases Profesor", () => {
     clasesprofesor.agregarMaterialForm();
   });
 
-  it("8_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
+  it("9_Verificar que el profesor pueda ver el detalle de una clase seleccionada", () => {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.clickNombreClaseTablero();
     cy.get(".actions-header > .class-title").should("be.visible");
@@ -131,10 +127,10 @@ describe("Wonderly- Clases Profesor", () => {
     cy.wait(2000);
   });
 
-  it("9_Comprobar que un profesor no pueda iniciar una clase hasta 30 minutos que inicie una clase.", () => {
+  it("10_Comprobar que un profesor no pueda iniciar una clase hasta 30 minutos que inicie una clase.", () => {
     perfil.click_salirDelMenu();
     home.click_IniciaSesion();
-    ingresar.type_Correo("profegoodman@gmail.com");
+    ingresar.type_Correo("profeangela552@mailinator.com");
     ingresar.type_contrasena("12345");
     ingresar.click_continuar();
     perfil.click_tableroClasesProfesor();
@@ -142,7 +138,7 @@ describe("Wonderly- Clases Profesor", () => {
     cy.wait(3000);
   });
 
-  it("10_Demostrar que un profesor pueda ver los alumnos registrados desde el icono ver Alumnos registrados.", function () {
+  it("11_Demostrar que un profesor pueda ver los alumnos registrados desde el icono ver Alumnos registrados.", function () {
     clasesprofesor.tableroClasesProfesor();
     clasesprofesor.clickIconoVerAlumnosInscritos();
     home.verificarExistenciaElemento(
@@ -157,26 +153,4 @@ describe("Wonderly- Clases Profesor", () => {
       alumnosprofesor.mensajeAlumnosInscritos(this.verifica.verify);
     });
   });
-
-  // it("p14_Probar que un profesor pueda ver el mensaje cuando no se han inscrito alumnos a su clase", function () {
-  //   perfil.click_salirDelMenu();
-  //   home.click_IniciaSesion();
-  //   ingresar.type_Correo("profepedro@gmail.com");
-  //   // ingresar.type_Correo("profeana@gmail.com");
-  //   ingresar.type_contrasena("12345");
-  //   ingresar.click_continuar();
-  //   clasesprofesor.tableroClasesProfesor();
-  //   clasesprofesor.clickIconoVerAlumnosInscritos();
-  //   home.verificarExistenciaElemento(
-  //     ".site-container",
-  //     ".table",
-  //     "verificador3"
-  //   );
-  //   cy.wait(2000);
-  //   cy.fixture("verificadores/verificador3").then((verifica) => {
-  //     cy.log("VERIFICADOR 3", verifica);
-  //     this.verifica = verifica;
-  //     alumnosprofesor.mensajeAlumnosInscritos(this.verifica.verify);
-  //   });
-  // });
 });

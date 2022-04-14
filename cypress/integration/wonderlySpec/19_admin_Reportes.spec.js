@@ -24,13 +24,13 @@ describe("Administrador - Wonderly Cursos", () => {
 
   //REPORTE EXCEL
   //Reporte Membresias //falla por el tiempo de respueta
-  it.skip("1_Verificar que el admin pueda descargar el reporte Excel de la seccion Membresias Espiradas", () => {
+  it("1_Verificar que el admin pueda descargar el reporte Excel de la seccion Membresias Espiradas", () => {
     reportes.tabReporteMembresias();
     reportes.membresiasExpiradas();
     reportes.clickExcelReporte();
   });
 
-  it.skip("2_Verificar que el admin pueda descargar el reporte Excel de la seccion Membresias Activas", () => {
+  it("2_Verificar que el admin pueda descargar el reporte Excel de la seccion Membresias Activas", () => {
     reportes.tabReporteMembresias();
     reportes.membresiasActivas();
     reportes.clickExcelReporte();
@@ -49,7 +49,7 @@ describe("Administrador - Wonderly Cursos", () => {
   });
 
   //Reporte On Demand
-  it("5_Verificar que el admin pueda descargar el reporte en Excel de 'REPORTE ON DEMAND'5 ", () => {
+  it("5_Verificar que el admin pueda descargar el reporte en Excel de 'REPORTE ON DEMAND' ", () => {
     reportes.tabReporteOnDemand();
     reportes.clickExcelReporte();
   });

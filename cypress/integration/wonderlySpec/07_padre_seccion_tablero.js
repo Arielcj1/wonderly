@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 // Casos de prueba realizado por Patrik Delgadillo
+import { Cursos } from "../../paginas/Cursos";
 import { Home } from "../../paginas/Home";
 import { Ingresar } from "../../paginas/Ingresar";
-import { AgregarNuevoHijo } from "../../paginas/Padre/AgregarNuevoHijo";
 import { AutopaymentPadre } from "../../paginas/Padre/AutopaymentPadre";
 import { ClasesHijos } from "../../paginas/Padre/ClasesHijos";
 import { ComprarPaquete } from "../../paginas/Padre/ComprarPaquete";
@@ -10,26 +10,22 @@ import { EditarHijo } from "../../paginas/Padre/EditarHijo";
 import { MetodoPago } from "../../paginas/Padre/MetodoPago";
 import { MisHijos } from "../../paginas/Padre/MisHijos";
 import { Perfil } from "../../paginas/Padre/Perfil";
-import { Perfiles } from "../../paginas/Padre/Perfiles";
-import { RegistrarHijo } from "../../paginas/Padre/RegistrarHijo";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Perfil Padre y Registro de hijos", () => {
+describe.skip("Padre - seccion tablero", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
-  const perfiles = new Perfiles();
-  const registrarhijo = new RegistrarHijo();
   const mishijos = new MisHijos();
-  const agregarnuevohijo = new AgregarNuevoHijo();
   const editarhijo = new EditarHijo();
   const autopaymentpadre = new AutopaymentPadre();
   const metodopago = new MetodoPago();
   const claseshijo = new ClasesHijos();
   const comprarpaquete = new ComprarPaquete();
+  const cursos = new Cursos();
 
   beforeEach(function () {
     cy.visit("https://developers.learnwonderly.com/");
@@ -74,33 +70,6 @@ describe("Perfil Padre y Registro de hijos", () => {
     autopaymentpadre.verificarAutopayment(1);
   });
 
-  it.skip('Verificar que pueda Actualizar Membresia "Explorador" desde el tablero Mis hijos', () => {
-    perfil.click_perfil();
-    mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(4);
-    autopaymentpadre.click_opcionExplorador();
-    autopaymentpadre.click_botonEnviar();
-    cy.get(".alert").should("be.visible");
-  });
-
-  it.skip('Verificar que pueda Actualizar Membresia "Inventor" desde el tablero Mis hijos', () => {
-    perfil.click_perfil();
-    mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(5);
-    autopaymentpadre.click_opcionInventor();
-    autopaymentpadre.click_botonEnviar();
-    cy.get(".alert").should("be.visible");
-  });
-
-  it.skip('Verificar que pueda Actualizar Membresia "Genio" desde el tablero Mis hijos', () => {
-    perfil.click_perfil();
-    mishijos.click_Tablero_MisHijos();
-    autopaymentpadre.verificarAutopayment(6);
-    autopaymentpadre.click_opcionGenio();
-    autopaymentpadre.click_botonEnviar();
-    cy.get(".alert").should("be.visible");
-  });
-
   it("5_Verificar que un padre puede ver todas las clases de sus hijos desde 'Clases'", () => {
     perfil.click_perfil();
     claseshijo.click_Tablero_ClasesHijo();
@@ -132,11 +101,11 @@ describe("Perfil Padre y Registro de hijos", () => {
     metodopago.click_enviar();
   });
 
-  it.skip("Comprobar que un padre no pueda reservar un clase.", () => {
+  it("8_Comprobar que un padre no pueda reservar un curso", () => {
     home.click_LogoWonderly();
-    home.click_seccionEnVivo();
-    cy.contains(testCaseConfig.nombreCursoNavegacion).click({ force: true }); //Cambiar nombre de curso
-    registrarhijo.click_botonInscribeteGratis();
+    cursos.clickEnVivo();
+    cursos.botonComienzaEnVivoUsuario();
+    cursos.segundoBotonInscribete();
     cy.get(".modal-content > .my-3").should("be.visible"); //Assert es que le muestre los perfiles de los hijos para elija un hijo
   });
 });

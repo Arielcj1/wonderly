@@ -13,7 +13,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Administrador - Wonderly Clases", () => {
+describe.skip("Administrador - Wonderly Clases", () => {
   const ingresar = new Ingresar();
   const home = new Home();
   const homeadmin = new HomeAdmin();
@@ -63,14 +63,12 @@ describe("Administrador - Wonderly Clases", () => {
   it("6_Comprobar que el admin puede Agregar clase on demand.", () => {
     homeadmin.click_tableroWonderlyOnDemand();
     ondemand.click_agregarClaseOnDemand();
-    //Completar campos de la clase on demand
     ondemand.type_tituloClase(testCaseConfig.nombreClaseOnDemand); //Cambiar clase on demand
     ondemand.type_descripcionClase("Detalle de la clase ondemand para niños");
     ondemand.select_materia("Inglés");
     ondemand.select_edades(); //Checkbox de edad 7-8
     ondemand.type_youtubeVideo("https://www.youtube.com/watch?v=zIWjYSfy0PQ");
     ondemand.select_herramienta("Eduten");
-
     ondemand.click_confirmarAgregarOnDemand();
   });
 
@@ -87,7 +85,7 @@ describe("Administrador - Wonderly Clases", () => {
     ondemand.type_editaryoutubeVideo(
       "https://www.youtube.com/watch?v=zIWjYSfy0PQ"
     );
-    ondemand.select_editarherramienta("Scratch");
+    ondemand.select_editarherramienta("Eduten");
     //Guardar cambios
     ondemand.click_guardar();
     cy.wait(3000);
@@ -102,7 +100,7 @@ describe("Administrador - Wonderly Clases", () => {
     modulosonDemand.agregar_Modulos_Clases(
       "Modulo ",
       "Clase ",
-      "https://www.youtube.com/watch?v=JWstLFgzxZM"
+      "https://youtu.be/k_U5LFvzyL4"
     );
     modulosonDemand.click_guardarModulo();
     cy.wait(3000);

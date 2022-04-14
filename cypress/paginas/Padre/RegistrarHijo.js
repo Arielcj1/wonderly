@@ -15,6 +15,7 @@ export class RegistrarHijo {
 
   click_registrar() {
     cy.get("#gform_submit_button_24").click();
+    cy.wait(3000);
   }
 
   type_nombreHijoPV(nombre) {
@@ -36,18 +37,6 @@ export class RegistrarHijo {
     cy.get(".form_footer > .btn").click();
   }
 
-  //Boton inscribete de un curso desde el home de Wonderly
-  click_botonInscribete() {
-    cy.get(
-      ".clases-vivo-list > .slick-list > .slick-track > .slick-current > :nth-child(1) > .col > :nth-child(1) > .course-block > .course-actions > .btn"
-    ).click();
-  }
-
-  click_botonInscribeteGratis() {
-    cy.xpath(
-      "/html/body/div[2]/div[2]/div/div/div/section/div[4]/div/div/div[1]/div/div[1]/div[2]/div/a"
-    ).click();
-  }
   //despues que se hace click en la pestaña Cursos
   click_inscribeteCurso() {
     cy.get(
@@ -64,5 +53,25 @@ export class RegistrarHijo {
         cy.log("EXISTE EL ELEMENTO:", position);
       }
     });
+  }
+
+  //1er Formulario de registro hijo
+  typeNombreHijo(nombre) {
+    cy.get("#nombre").type(nombre);
+  }
+  typeApellidoHijo(apellido) {
+    cy.get("#apellido").type(apellido);
+  }
+  typeFechaNacimiento(fecha) {
+    cy.get("#fecha_nacimiento").type(fecha);
+  }
+  botonRegistrarHijo() {
+    cy.get("#registrar-hijo-submit").click();
+    cy.wait(3000);
+  }
+
+  //boton de bienvendio
+  botonRegistraATuHijo() {
+    cy.get(".welcome_parent > .btn").click();
   }
 }

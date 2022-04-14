@@ -16,6 +16,13 @@ export class PerfilHijo {
         position +
         "]/button/div"
     ).click();
+    cy.wait(2000);
+  }
+  seleccionar2daPosicionHijo(position) {
+    cy.xpath(
+      "html/body/div[2]/div[6]/div/div/div[2]/div[" + position + "]/button"
+    ).click();
+    cy.wait(2000);
   }
 
   click_cuenta() {

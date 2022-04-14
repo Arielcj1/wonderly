@@ -11,7 +11,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-describe("Home Page - UI", () => {
+describe.skip("Home Page - UI", () => {
   const home = new Home();
   const ingresar = new Ingresar();
   const perfil = new Perfil();
@@ -24,7 +24,7 @@ describe("Home Page - UI", () => {
   it("1_Verificar que un usuario pueda Iniciar sesion en Wonderly", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar usuario
-    ingresar.type_contrasena("abcABC123"); //cambiar password
+    ingresar.type_contrasena("12345"); //cambiar password
     ingresar.click_continuar();
     cy.contains("¿Quién está aprendiendo?").should("be.visible");
     perfil.buscar_hijo("Alex Cardozo");
@@ -46,7 +46,9 @@ describe("Home Page - UI", () => {
   });
   it("5_Probar que un usuario pueda ver el contenido de la pestaña Cursos", () => {
     home.clickPestañaCursos();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+    cy.get(".pt-3")
+      .should("contain.text", "Elige los cursos que te apasionan")
+      .should("be.visible");
   });
 
   it("6_Verificar que la opción de Membresías redireccione a un usuario sin registro a un formulario de asesor al cliente", () => {
@@ -57,7 +59,7 @@ describe("Home Page - UI", () => {
   it("7_Demostrar que un usuario Inicie sesion y pueda ir a la Membresia Explorador", () => {
     home.click_IniciaSesion();
     ingresar.type_Correo("yani.cardozosalas@gmail.com"); //Cambiar ususario
-    ingresar.type_contrasena("abcABC123"); //Cambiar password
+    ingresar.type_contrasena("12345"); //Cambiar password
     ingresar.click_continuar();
     cy.wait(3000);
     home.click_LogoWonderly();
@@ -99,27 +101,35 @@ describe("Home Page - UI", () => {
     home.click_Flecha_Der();
     home.click_Flecha_Izq();
   });
-  it('14_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Robotica', () => {
+  it('14_Verificar que redireccione a Cursos cuando se presiona el boton " Comienza ahora" en Robotica', () => {
     destrezas.botonRobotica();
     destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+    cy.get(".pt-3")
+      .should("contain.text", "Elige los cursos que te apasionan")
+      .should("be.visible");
   });
-  it('15_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Matematica', () => {
+  it('15_Verificar que redireccione a Cursos cuando se presiona el boton " Comienza ahora" en Matematica', () => {
     destrezas.botonMatematicas();
     destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+    cy.get(".pt-3")
+      .should("contain.text", "Elige los cursos que te apasionan")
+      .should("be.visible");
   });
 
-  it('16_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Programacion', () => {
+  it('16_Verificar que redireccione a Cursos cuando se presiona el boton " Comienza ahora" en Programacion', () => {
     destrezas.botonProgramacion();
     destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+    cy.get(".pt-3")
+      .should("contain.text", "Elige los cursos que te apasionan")
+      .should("be.visible");
   });
 
-  it('17_Verificar que redireccione a los cursos cuando se presiona el boton " Comienza ahora" en Ingles', () => {
+  it('17_Verificar que redireccione a Cursos cuando se presiona el boton " Comienza ahora" en Ingles', () => {
     destrezas.botonIngles();
     destrezas.botonComenzarAhora();
-    cy.get(".header-cursos-page > h3.text-center").should("be.visible");
+    cy.get(".pt-3")
+      .should("contain.text", "Elige los cursos que te apasionan")
+      .should("be.visible");
   });
 
   it("18_Comprobar que al presionar botones de desplazamiento se dirijan abajo y arriba", () => {

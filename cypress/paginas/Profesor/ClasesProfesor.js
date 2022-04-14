@@ -18,6 +18,7 @@ export class ClasesProfesor {
   }
   //Iniciar clase desde el detalle de la clase
   botonIniciarClase() {
+    cy.wait(2000);
     cy.xpath(
       "/html/body/div[2]/div[2]/div/div/div/section/div[2]/div/div[2]/div[2]/div[2]/div[1]/button"
     ).click();
